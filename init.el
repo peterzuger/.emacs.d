@@ -62,6 +62,7 @@
 (load-file "~/.emacs.d/c.el")           ;; C/C++ configuration
 (load-file "~/.emacs.d/elisp.el")       ;; elisp configuration
 (load-file "~/.emacs.d/html.el")        ;; html configuration
+(load-file "~/.emacs.d/javascript.el")  ;; javascript configuration
 (load-file "~/.emacs.d/markdown.el")    ;; markdown configuration
 (load-file "~/.emacs.d/tex.el")         ;; tex configuration
 (load-file "~/.emacs.d/python.el")      ;; python configuration
