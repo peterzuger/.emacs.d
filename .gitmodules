@@ -1,48 +1,48 @@
-[submodule "/Users/peterzuger/.emacs.d/themes/zenburn"]
-	path = /Users/peterzuger/.emacs.d/themes/zenburn
+[submodule "themes/zenburn"]
+	path = themes/zenburn
 	url = https://github.com/bbatsov/zenburn-emacs
-[submodule "/Users/peterzuger/.emacs.d/themes/sanityinc"]
-	path = /Users/peterzuger/.emacs.d/themes/sanityinc
+[submodule "themes/sanityinc"]
+	path = themes/sanityinc
 	url = https://github.com/purcell/color-theme-sanityinc-tomorrow
-[submodule "/Users/peterzuger/.emacs.d/themes/moe"]
-	path = /Users/peterzuger/.emacs.d/themes/moe
+[submodule "themes/moe"]
+	path = themes/moe
 	url = https://github.com/kuanyui/moe-theme.el
-[submodule "/Users/peterzuger/.emacs.d/themes/material"]
-	path = /Users/peterzuger/.emacs.d/themes/material
+[submodule "themes/material"]
+	path = themes/material
 	url = https://github.com/cpaulik/emacs-material-theme
-[submodule "/Users/peterzuger/.emacs.d/themes/cyberpunk"]
-	path = /Users/peterzuger/.emacs.d/themes/cyberpunk
+[submodule "themes/cyberpunk"]
+	path = themes/cyberpunk
 	url = https://github.com/n3mo/cyberpunk-theme.el
-[submodule "/Users/peterzuger/.emacs.d/themes/anti-zenburn"]
-	path = /Users/peterzuger/.emacs.d/themes/anti-zenburn
+[submodule "themes/anti-zenburn"]
+	path = themes/anti-zenburn
 	url = https://github.com/m00natic/anti-zenburn-theme
-[submodule "/Users/peterzuger/.emacs.d/themes/ample"]
-	path = /Users/peterzuger/.emacs.d/themes/ample
+[submodule "themes/ample"]
+	path = themes/ample
 	url = https://github.com/jordonbiondo/ample-theme
-[submodule "/Users/peterzuger/.emacs.d/themes/alect"]
-	path = /Users/peterzuger/.emacs.d/themes/alect
+[submodule "themes/alect"]
+	path = themes/alect
 	url = https://github.com/alezost/alect-themes
-[submodule "/Users/peterzuger/.emacs.d/themes/gotham"]
-	path = /Users/peterzuger/.emacs.d/themes/gotham
+[submodule "themes/gotham"]
+	path = themes/gotham
 	url = https://github.com/wasamasa/gotham-theme
-[submodule "/Users/peterzuger/.emacs.d/themes/tangotango"]
-	path = /Users/peterzuger/.emacs.d/themes/tangotango
+[submodule "themes/tangotango"]
+	path = themes/tangotango
 	url = https://github.com/juba/color-theme-tangotango
-[submodule "/Users/peterzuger/.emacs.d/themes/gruber"]
-	path = /Users/peterzuger/.emacs.d/themes/gruber
+[submodule "themes/gruber"]
+	path = themes/gruber
 	url = https://github.com/rexim/gruber-darker-theme
-[submodule "/Users/peterzuger/.emacs.d/themes/ample-zen"]
-	path = /Users/peterzuger/.emacs.d/themes/ample-zen
+[submodule "themes/ample-zen"]
+	path = themes/ample-zen
 	url = https://github.com/mjwall/ample-zen
-[submodule "/Users/peterzuger/.emacs.d/themes/noctilux"]
-	path = /Users/peterzuger/.emacs.d/themes/noctilux
+[submodule "themes/noctilux"]
+	path = themes/noctilux
 	url = https://github.com/sjrmanning/noctilux-theme
-[submodule "/Users/peterzuger/.emacs.d/themes/afternoon"]
-	path = /Users/peterzuger/.emacs.d/themes/afternoon
+[submodule "themes/afternoon"]
+	path = themes/afternoon
 	url = https://github.com/osener/emacs-afternoon-theme
-[submodule "/Users/peterzuger/.emacs.d/themes/grandshell"]
-	path = /Users/peterzuger/.emacs.d/themes/grandshell
+[submodule "themes/grandshell"]
+	path = themes/grandshell
 	url = https://github.com/steckerhalter/grandshell-theme
-[submodule "/Users/peterzuger/.emacs.d/themes/subatomic"]
-	path = /Users/peterzuger/.emacs.d/themes/subatomic
+[submodule "themes/subatomic"]
+	path = themes/subatomic
 	url = https://github.com/cryon/subatomic
