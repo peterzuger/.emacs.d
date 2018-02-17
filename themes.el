@@ -33,4 +33,5 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/grandshell/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/subatomic/")
 
-	     
+;; load zenburn on start
+(load-theme 'zenburn t)
