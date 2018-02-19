@@ -25,43 +25,16 @@ it then auto installs some packages :
 
 | Package name               | language   | function            |
 |----------------------------|:----------:|---------------------|
-| ac-c-headers               | C/C++      | auto-completion     |
-| ac-clang                   | C/C++      | auto-completion     |
-| ac-html                    | HTML       | auto-completion     |
-| ac-js2                     | Javascript | auto-completion     |
 | auctex                     | Tex        | language Support    |
-| auto-complete              | *          | auto-completion     |
-| auto-complete-auctex       | Tex        | auto-completion     |
-| auto-complete-c-headers    | C/C++      | auto-completion     |
-| auto-complete-clang        | C/C++      | auto-completion     |
 | company                    | *          | text-completion     |
-| company-auctex             | Tex        | auto-completion     |
-| company-c-headers          | C/C++      | auto-completion     |
 | company-irony              | C/C++      | auto-completion     |
-| company-irony-c-headers    | C/C++      | auto-completion     |
-| company-jedi               | Python     | auto-completion     |
 | company-shell              | Shell      | auto-completion     |
 | fill-column-indicator      | *          | visibility          |
 | flycheck                   | *          | syntax check        |
-| flycheck-clang-analyzer    | C/C++      | syntax check        |
-| flycheck-clang-tidy        | C/C++      | syntax check        |
-| flycheck-clangcheck        | C/C++      | syntax check        |
-| flycheck-irony             | C/C++      | syntax check        |
-| function-args              | C/C++      | helper              |
-| gist                       | *          | *                   |
-| highlight-escape-sequences | *          | syntax highlighting |
-| highlight-function-calls   | C/C++      | syntax highlighting |
 | irony                      | C/C++      | language Support    |
 | jedi                       | Python     | language Support    |
-| js2-highlight-vars         | Javascript | syntax highlighting |
-| js2-refactor               | Javascript | code refractoring   |
-| js3-mode                   | Javascript | language Support    |
-| json-mode                  | JSON       | language Support    |
-| magit                      | *          | *                   |
 | markdown-mode              | Markdown   | language Support    |
-| python                     | Python     | language Support    |
 | smartparens                | *          | helper              |
-| string-edit                | *          | helper              |
 | whitespace-cleanup-mode    | *          | cleanup             |
 
 
