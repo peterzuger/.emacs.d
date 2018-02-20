@@ -118,11 +118,18 @@
      "04dd0236a367865e591927a3810f178e8d33c372ad5bfef48b5ce90d4b476481"
      "7356632cebc6a11a87bc5fcffaa49bae528026a78637acd03cae57c091afd9b9"
      "c335adbb7d7cb79bc34de77a16e12d28e6b927115b992bccc109fb752a365c72"
-     "8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a" default)))
+     "8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a"
+     default)))
+ '(nil nil t)
+ '(package-selected-packages
+   (quote
+    (whitespace-cleanup-mode smartparens markdown-mode
+			     jedi flycheck fill-column-indicator
+			     company-shell company-irony company
+			     auctex))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ))
-
+ )
