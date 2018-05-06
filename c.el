@@ -2,9 +2,23 @@
 (setq c-default-style "k&r"
       c-basic-offset 4)
 
+(sp-local-pair 'c++-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
+(sp-local-pair 'c-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
+
+(setq-default fci-rule-column 80)       ;; set fill column to 80
 (add-hook 'c-mode-common-hook
-	  (lambda()
-	    (c-set-offset 'inextern-lang 0)))
+          (lambda()
+            (fci-mode)
+            (yas-minor-mode-on)
+            (c-set-offset 'inextern-lang 0)
+            (define-key c-mode-base-map (kbd "C-c C-l") 'compile)))
+
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
 
 (defun my-make-CR-do-indent ()
   (define-key c-mode-base-map "\C-m" 'c-context-line-break))

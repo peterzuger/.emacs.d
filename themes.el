@@ -15,12 +15,9 @@
 ;; https://github.com/steckerhalter/grandshell-theme
 ;; https://github.com/cryon/subatomic
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/zenburn/")
-(add-to-list 'load-path              "~/.emacs.d/themes/sanityinc/")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/sanityinc/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/moe/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/material/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/cyberpunk/")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/anti-zenburn/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/ample/")
 (add-to-list 'load-path              "~/.emacs.d/themes/alect/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/alect/")
@@ -28,10 +25,9 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/tangotango/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/gruber/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/ample-zen/")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/noctillux/")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/noctilux/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/afternoon/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/grandshell/")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/subatomic/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/blackboard/")
 
 ;; load zenburn on start
