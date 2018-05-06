@@ -46,3 +46,6 @@
 [submodule "themes/subatomic"]
 	path = themes/subatomic
 	url = https://github.com/cryon/subatomic
+[submodule "themes/blackboard"]
+	path = themes/blackboard
+	url = https://github.com/don9z/blackboard-theme.git

@@ -32,6 +32,7 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/afternoon/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/grandshell/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/subatomic/")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/blackboard/")
 
 ;; load zenburn on start
 (load-theme 'zenburn t)
