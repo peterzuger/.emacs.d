@@ -5,13 +5,15 @@
 (sp-local-pair 'c++-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
 (sp-local-pair 'c-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
 
-(setq-default fci-rule-column 80)       ;; set fill column to 80
 (add-hook 'c-mode-common-hook
           (lambda()
-            (fci-mode)
             (yas-minor-mode-on)
             (c-set-offset 'inextern-lang 0)
             (define-key c-mode-base-map (kbd "C-c C-l") 'compile)))
+
+(add-hook 'makefile-mode-hook
+          (lambda()
+            (define-key makefile-mode-map (kbd "C-c C-l") 'compile)))
 
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'irony-mode)
