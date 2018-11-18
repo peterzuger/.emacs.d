@@ -38,8 +38,7 @@
 (setq create-lockfiles nil ;; don't create .#<filename> files
       global-linum-mode t  ;; display line,column numbers
       column-number-mode t) ;; "
-(if (not(display-graphic-p))
-    (menu-bar-mode -1))     ;; remove the menue bar in teminal mode
+(menu-bar-mode -1)     ;; remove the menue bar
 
 (setq-default indent-tabs-mode nil) ;; DONT EVER USE TABS !!
 (smartparens-global-mode t) ;; global (){} completion
