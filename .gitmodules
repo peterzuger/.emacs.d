@@ -34,9 +34,6 @@
 [submodule "themes/afternoon"]
 	path = themes/afternoon
 	url = https://github.com/osener/emacs-afternoon-theme
-[submodule "themes/grandshell"]
-	path = themes/grandshell
-	url = https://github.com/steckerhalter/grandshell-theme
 [submodule "themes/blackboard"]
 	path = themes/blackboard
 	url = https://github.com/don9z/blackboard-theme.git
