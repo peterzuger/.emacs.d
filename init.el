@@ -79,3 +79,4 @@
 (load-file "~/.emacs.d/python.el")      ;; python configuration
 (load-file "~/.emacs.d/org.el")         ;; org mode configuration
 (load-file "~/.emacs.d/themes.el")      ;; custom themes
+(load-file "~/.emacs.d/tex.el")         ;; LaTEX configuration
