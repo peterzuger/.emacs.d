@@ -39,6 +39,7 @@
       global-linum-mode t  ;; display line,column numbers
       column-number-mode t) ;; "
 (menu-bar-mode -1)     ;; remove the menue bar
+(setq ring-bell-function 'ignore)
 
 (setq-default indent-tabs-mode nil) ;; DONT EVER USE TABS !!
 (smartparens-global-mode t) ;; global (){} completion
