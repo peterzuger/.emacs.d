@@ -50,6 +50,9 @@
 (scroll-bar-mode -1)        ;; remove the scrollbar
 (add-hook 'before-save-hook 'whitespace-cleanup) ;; clean whitespace
 (setq company-minimum-prefix-length 2)
+
+(setq yas-snippet-dirs
+  '("~/.emacs.d/snippets"))
 (yas-global-mode)
 (eval-after-load 'company
   (lambda()
