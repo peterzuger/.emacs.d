@@ -41,6 +41,7 @@
 (menu-bar-mode -1)     ;; remove the menue bar
 (setq ring-bell-function 'ignore)
 
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 (setq-default indent-tabs-mode nil) ;; DONT EVER USE TABS !!
 (smartparens-global-mode t) ;; global (){} completion
 (show-smartparens-global-mode t) ;; gloabal (){} highlighting
