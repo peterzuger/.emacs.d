@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: operator==
+# key: operator==
+# group: operator overloading
+# --
+${1:constexpr }bool operator==(const ${2:Type}& lhs, const $2& rhs)${3:noexcept}{
+    $0
+}

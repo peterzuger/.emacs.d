@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: operator*
+# key: operator*()
+# group: operator overloading
+# --
+${1:constexpr }${3:Type}* operator*()${2:noexcept}{
+    $0
+}

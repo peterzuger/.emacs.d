@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: operator>>
+# key: operator>>
+# group: operator overloading
+# --
+template<class IntType>
+${1:constexpr }${2:Type} operator>>($2 lhs, IntType shift)${3:noexcept}{
+    return lhs >>= shift;
+}

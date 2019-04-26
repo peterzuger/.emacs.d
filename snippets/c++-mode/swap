@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: swap
+# key: swap
+# group: operator overloading
+# --
+void swap(${1:Type}& other)${2:const }${3:noexcept}{
+    $0
+}

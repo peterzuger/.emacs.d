@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: operator+=
+# key: operator+=
+# group: operator overloading
+# --
+${1:constexpr }${2:const }${3:Type}& operator+=(const $3& rhs)${4:noexcept}{
+    $0
+}

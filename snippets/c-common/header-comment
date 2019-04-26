@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: header-comment
+# key: header-comment
+# --
+/**
+ * @file   `(file-name-nondirectory (buffer-file-name))`
+ * @author `(getenv "NAME")`
+ * @date   `(format-time-string "%d.%m.%Y")`
+ * @brief  $1
+ */
+
+$0

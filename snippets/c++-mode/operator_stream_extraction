@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: operator>>
+# key: operator>>
+# group: operator overloading
+# --
+std::istream& operator>>(std::istream& is, ${1:Type}& obj){
+    $3
+    if($2)
+        is.setstate(std::ios::failbit);
+    return is;
+}

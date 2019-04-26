@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: range based for map
+# key: form
+# --
+for(${1:const }auto &[key, value]: ${2:Map}){
+    $0
+}

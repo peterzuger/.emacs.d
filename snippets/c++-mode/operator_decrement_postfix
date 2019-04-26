@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: operator--(int)
+# key: operator--(int)
+# group: operator overloading
+# --
+${1:constexpr }${2:Type} operator--(int)${3:noexcept}{
+    $0
+}

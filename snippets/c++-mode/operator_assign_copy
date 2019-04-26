@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: operator=copy
+# key: operator=
+# group: operator overloading
+# --
+${1:Type}& operator=($1 other)${2:noexcept}{
+    swap(other);
+    return *this;
+}

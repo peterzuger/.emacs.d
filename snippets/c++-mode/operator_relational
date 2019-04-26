@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: operator<=>
+# key: operator<=>
+# group: operator overloading
+# --
+${1:constexpr }bool operator<(const ${3:Type}& lhs, const $3& rhs)${2:noexcept}{
+    $0
+}
+$1bool operator>(const $3& lhs, const $3& rhs)$2{
+    return rhs < lhs;
+}
+$1bool operator<=(const $3& lhs, const $3& rhs)$2{
+    return !(lhs > rhs);
+}
+$1bool operator>=(const $3& lhs, const $3& rhs)$2{
+    return !(lhs < rhs);
+}

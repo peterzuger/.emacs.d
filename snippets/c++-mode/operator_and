@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: operator&
+# key: operator&
+# group: operator overloading
+# --
+${1:constexpr }${2:Type} operator&($2 lhs, const $2& rhs)${3:noexcept}{
+    return lhs &= rhs;
+}
