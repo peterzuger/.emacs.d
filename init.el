@@ -12,8 +12,8 @@
         company-shell             ;;
         fill-column-indicator     ;;
         flycheck                  ;;
-        helm                      ;;
         jedi                      ;;
+        magit                     ;;
         markdown-mode             ;;
         smartparens               ;;
         yasnippet                 ;;
