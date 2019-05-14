@@ -2,7 +2,7 @@
 # name: include-guard
 # key: include-guard
 # --
-#ifndef ${1:`(upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))`_`(upcase (file-name-extension (buffer-file-name)))`}
+#ifndef ${2:`(unless (file-name-extension (buffer-file-name)) "__")``(upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))``(if (file-name-extension (buffer-file-name)) (concat "_" (upcase (file-name-extension (buffer-file-name)))) "__")`}
 #define $1
 
 $0
