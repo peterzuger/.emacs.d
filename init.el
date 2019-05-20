@@ -51,6 +51,10 @@
 (add-hook 'before-save-hook 'whitespace-cleanup) ;; clean whitespace
 (setq company-minimum-prefix-length 2)
 
+;; enable some disabled commands
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region   'disabled nil)
+
 (setq yas-snippet-dirs
   '("~/.emacs.d/snippets"))
 (yas-global-mode)
