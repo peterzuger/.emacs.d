@@ -39,19 +39,20 @@
 
 ;; start emacs in fullscreen
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(setq create-lockfiles nil ;; don't create .#<filename> files
-      global-linum-mode t  ;; display line,column numbers
-      column-number-mode t) ;; "
+(setq create-lockfiles nil) ;; don't create .#<filename> files
+(setq global-linum-mode t)  ;; display line,column numbers
+(setq column-number-mode t) ;; "
+(global-flycheck-mode) ;; enable flycheck globaly
 (menu-bar-mode -1)     ;; remove the menue bar
 (setq ring-bell-function 'ignore)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-(setq-default indent-tabs-mode nil) ;; DONT EVER USE TABS !!
-(smartparens-global-mode t) ;; global (){} completion
-(show-smartparens-global-mode t) ;; gloabal (){} highlighting
-(setq compilation-scroll-output t) ;; scroll with the output
-(tool-bar-mode -1)          ;; remove the toolbar
-(scroll-bar-mode -1)        ;; remove the scrollbar
+(setq-default indent-tabs-mode nil)              ;; DONT EVER USE TABS !!
+(smartparens-global-mode t)                      ;; global (){} completion
+(show-smartparens-global-mode t)                 ;; gloabal (){} highlighting
+(setq compilation-scroll-output t)               ;; scroll with the output
+(tool-bar-mode -1)                               ;; remove the toolbar
+(scroll-bar-mode -1)                             ;; remove the scrollbar
 (add-hook 'before-save-hook 'whitespace-cleanup) ;; clean whitespace
 (setq company-minimum-prefix-length 2)
 
