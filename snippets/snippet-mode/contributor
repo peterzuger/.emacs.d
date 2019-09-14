@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: contributor
+# key: cont
+# --
+# contributor: `user-full-name`
