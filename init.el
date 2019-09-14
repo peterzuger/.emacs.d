@@ -57,8 +57,14 @@
 (setq company-minimum-prefix-length 2)
 
 ;; enable some disabled commands
-(put 'downcase-region 'disabled nil)
-(put 'upcase-region   'disabled nil)
+(defun downcase-char (arg)
+  "Lowercasify ARG chars starting from point.  Point doesn't move."
+  (interactive "p")
+  (save-excursion
+    (downcase-region (point) (progn (forward-char arg) (point)))))
+
+(global-set-key "" (quote upcase-char))
+(global-set-key "" (quote downcase-char))
 
 (setq yas-snippet-dirs
   '("~/.emacs.d/snippets"))
