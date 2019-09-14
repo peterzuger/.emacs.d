@@ -12,9 +12,13 @@
         company-shell             ;;
         fill-column-indicator     ;;
         flycheck                  ;;
+        flycheck-irony            ;;
+        ggtags                    ;;
         jedi                      ;;
         magit                     ;;
         markdown-mode             ;;
+        pdf-tools                 ;;
+        pinentry                  ;;
         smartparens               ;;
         yasnippet                 ;;
         whitespace-cleanup-mode)) ;;
