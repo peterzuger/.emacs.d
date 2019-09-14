@@ -55,6 +55,7 @@
 (scroll-bar-mode -1)                             ;; remove the scrollbar
 (add-hook 'before-save-hook 'whitespace-cleanup) ;; clean whitespace
 (setq company-minimum-prefix-length 2)
+(setq transient-default-level 5)
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
 
 (setq ibuffer-saved-filter-groups
