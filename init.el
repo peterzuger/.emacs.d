@@ -71,6 +71,8 @@
           (lambda ()
             (ibuffer-switch-to-saved-filter-groups "default")))
 
+(global-flycheck-mode)
+
 ;; enable some disabled commands
 (defun downcase-char (arg)
   "Lowercasify ARG chars starting from point.  Point doesn't move."
