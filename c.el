@@ -13,18 +13,20 @@
           (lambda()
             (yas-minor-mode-on)
             (c-set-offset 'inextern-lang 0)
-            (define-key c-mode-base-map (kbd "C-c C-l") 'compile)))
+            (define-key c-mode-base-map (kbd "C-c C-l") 'compile)
+            (when (derived-mode-p 'c-mode 'c++-mode)
+              (ggtags-mode 1))
+            (irony-mode)
+            (flycheck-irony-setup)))
 
 (add-hook 'makefile-mode-hook
           (lambda()
             (define-key makefile-mode-map (kbd "C-c C-l") 'compile)))
 
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
-
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+(add-hook 'irony-mode-hook
+          (lambda()
+            (irony-cdb-autosetup-compile-options)
+            (company-irony-setup-begin-commands)))
 
 (defun my-make-CR-do-indent ()
   (define-key c-mode-base-map "\C-m" 'c-context-line-break))
