@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: snippet
+# key: snip
+# --
+# -*- mode: snippet -*-
+# name: ${1:`(file-name-nondirectory (buffer-file-name))`}
+# key: ${2:trigger-key}
+# contributor: `(getenv "NAME")`
+# --
+$0
