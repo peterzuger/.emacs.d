@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: __call__
+# key: call
+# group: dunder methods
+# --
+def __call__(self$1):
+    $0

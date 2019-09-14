@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: __new__
+# key: new
+# group: dunder methods
+# --
+def __new__(self${1:, args}):
+    $0

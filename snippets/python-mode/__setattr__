@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: __setattr__
+# key: setattr
+# group: dunder methods
+# --
+def __setattr__(self, name, value):
+    $0

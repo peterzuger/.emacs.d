@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: __int__
+# key: int
+# group: dunder methods
+# --
+def __int__(self):
+    return ${1:self.integer}
