@@ -2,6 +2,10 @@
 (setq c-default-style "k&r"
       c-basic-offset 4)
 
+;; c++-mode does not know constexpr
+(require 'cc-mode)
+(custom-set-variables '(c-noise-macro-names '("constexpr")))
+
 (sp-local-pair 'c++-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
 (sp-local-pair 'c-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
 
