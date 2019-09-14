@@ -2,5 +2,5 @@
 # name: main
 # key: main
 # --
-if __name__ == '__main__':
-    ${1:main()}
+def main():
+    $0
