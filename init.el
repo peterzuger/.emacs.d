@@ -56,6 +56,20 @@
 (add-hook 'before-save-hook 'whitespace-cleanup) ;; clean whitespace
 (setq company-minimum-prefix-length 2)
 
+(setq ibuffer-saved-filter-groups
+      (quote (("default"
+               ("dired" (mode . dired-mode))
+               ("emacs" (or
+                         (name . "^\\*scratch\\*$")
+                         (name . "^\\*Messages\\*$")))
+               ("mu4e" (or
+                        (mode . message-mode)
+                        (mode . mail-mode)))))))
+
+(add-hook 'ibuffer-mode-hook
+          (lambda ()
+            (ibuffer-switch-to-saved-filter-groups "default")))
+
 ;; enable some disabled commands
 (defun downcase-char (arg)
   "Lowercasify ARG chars starting from point.  Point doesn't move."
