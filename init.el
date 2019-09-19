@@ -8,13 +8,14 @@
 (setq package-list
       '(auctex                    ;;
         company                   ;;
+        company-emoji             ;;
         company-irony             ;;
+        company-jedi              ;;
         company-shell             ;;
         fill-column-indicator     ;;
         flycheck                  ;;
         flycheck-irony            ;;
         ggtags                    ;;
-        jedi                      ;;
         magit                     ;;
         markdown-mode             ;;
         pdf-tools                 ;;
