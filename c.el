@@ -17,7 +17,8 @@
             (when (derived-mode-p 'c-mode 'c++-mode)
               (ggtags-mode 1))
             (irony-mode)
-            (flycheck-irony-setup)))
+            (flycheck-irony-setup)
+            (add-to-list 'company-backends 'company-irony)))
 
 (add-hook 'makefile-mode-hook
           (lambda()

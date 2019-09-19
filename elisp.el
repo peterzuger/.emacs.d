@@ -1,3 +1,3 @@
 (add-hook 'emacs-lisp-mode-hook
 	  (lambda()
-	    (company-mode)))
+	    (add-to-list 'company-backends 'company-elisp)))

@@ -55,7 +55,6 @@
 (tool-bar-mode -1)                               ;; remove the toolbar
 (scroll-bar-mode -1)                             ;; remove the scrollbar
 (add-hook 'before-save-hook 'whitespace-cleanup) ;; clean whitespace
-(setq company-minimum-prefix-length 2)
 (setq transient-default-level 5)
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
 
@@ -88,17 +87,15 @@
 (setq yas-snippet-dirs
   '("~/.emacs.d/snippets"))
 (yas-global-mode)
-(eval-after-load 'company
+(add-hook 'after-init-hook
   (lambda()
-    (global-company-mode)
-    (setq company-idle-delay 0)
-    (setq company-backends '(company-irony
-                             company-files
-                             company-capf
-                             company-shell
-                             company-elisp
-                             company-keywords
-                             company-yasnippet))))
+    (global-company-mode)))
+(setq company-idle-delay 0)
+(setq company-minimum-prefix-length 2)
+(setq company-backends '(company-files
+                         company-capf
+                         company-keywords
+                         company-yasnippet))
 
 ;; move backup files to ~/.emacs.d/backup
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
@@ -113,11 +110,14 @@
 (when (eq system-type 'darwin)(load-file    "~/.emacs.d/mac.el"  )) ;; Mac OS X
 (when (eq system-type 'gnu/linux)(load-file "~/.emacs.d/linux.el")) ;; Linux
 (load-file "~/.emacs.d/mail.el")        ;; Mail configuration
+(load-file "~/.emacs.d/org.el")         ;; org mode configuration
+
 (load-file "~/.emacs.d/c.el")           ;; C/C++ configuration
 (load-file "~/.emacs.d/elisp.el")       ;; elisp configuration
 (load-file "~/.emacs.d/html.el")        ;; html configuration
 (load-file "~/.emacs.d/javascript.el")  ;; javascript configuration
 (load-file "~/.emacs.d/python.el")      ;; python configuration
-(load-file "~/.emacs.d/org.el")         ;; org mode configuration
-(load-file "~/.emacs.d/themes.el")      ;; custom themes
+(load-file "~/.emacs.d/shell.el")       ;; shell configuration
 (load-file "~/.emacs.d/tex.el")         ;; LaTEX configuration
+
+(load-file "~/.emacs.d/themes.el")      ;; custom themes

@@ -1,2 +1,4 @@
-(setq auto-mode-alist (cons '("\\SConscript$" . python-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\SConstruct$" . python-mode) auto-mode-alist))
+(add-hook 'python-mode-hook
+          (lambda()
+            (add-to-list 'company-backends 'company-jedi)
+            (flycheck-pycheckers-setup)))
