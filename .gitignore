@@ -6,4 +6,6 @@ backup/
 elpa/
 games/
 transient/
-url
+url/
+.python-environments/
+ac-comphist.dat
