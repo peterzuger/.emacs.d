@@ -6,23 +6,24 @@
 
 ;; add packages for auto install
 (setq package-list
-      '(auctex                    ;;
-        company                   ;;
-        company-emoji             ;;
-        company-irony             ;;
-        company-jedi              ;;
-        company-shell             ;;
-        fill-column-indicator     ;;
-        flycheck                  ;;
-        flycheck-irony            ;;
-        ggtags                    ;;
-        magit                     ;;
-        markdown-mode             ;;
-        pdf-tools                 ;;
-        pinentry                  ;;
-        smartparens               ;;
-        yasnippet                 ;;
-        whitespace-cleanup-mode)) ;;
+      '(auctex                  ;; Integrated environment for *TeX*
+        company                 ;; Modular text completion framework
+        company-emoji           ;; company-mode backend for emoji
+        company-irony           ;; company-mode completion back-end for irony-mode
+        company-jedi            ;; company-mode completion back-end for Python JEDI
+        company-shell           ;; Company mode backend for shell functions
+        fill-column-indicator   ;; Graphically indicate the fill column
+        flycheck                ;; On-the-fly syntax checking
+        flycheck-irony          ;; Flycheck: C/C++ support via Irony
+        flycheck-pycheckers     ;; multiple syntax checker for Python, using Flycheck
+        ggtags                  ;; emacs frontend to GNU Global source code tagging system
+        magit                   ;; A Git porcelain inside Emacs.
+        markdown-mode           ;; Major mode for Markdown-formatted text
+        pdf-tools               ;; Support library for PDF documents.
+        pinentry                ;; GnuPG Pinentry server implementation
+        smartparens             ;; Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
+        whitespace-cleanup-mode ;; Intelligently call whitespace-cleanup on save
+        yasnippet))             ;; Yet another snippet extension for Emacs.
 (package-initialize)
 
 ;; fetch the list of packages available
