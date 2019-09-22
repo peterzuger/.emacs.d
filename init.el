@@ -93,7 +93,8 @@
     (global-company-mode)))
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 2)
-(setq company-backends '(company-files
+(setq company-backends '(company-emoji
+                         company-files
                          company-capf
                          company-keywords
                          company-yasnippet))
