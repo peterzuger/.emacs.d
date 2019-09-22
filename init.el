@@ -108,7 +108,6 @@
 
 
 ;; load some additional configurations
-(when (eq system-type 'darwin)(load-file    "~/.emacs.d/mac.el"  )) ;; Mac OS X
 (when (eq system-type 'gnu/linux)(load-file "~/.emacs.d/linux.el")) ;; Linux
 (load-file "~/.emacs.d/mail.el")        ;; Mail configuration
 (load-file "~/.emacs.d/org.el")         ;; org mode configuration
