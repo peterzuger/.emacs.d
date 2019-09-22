@@ -39,26 +39,33 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file t)
 
-;; start emacs in fullscreen
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
-(setq create-lockfiles nil) ;; don't create .#<filename> files
-(setq global-linum-mode t)  ;; display line,column numbers
-(setq column-number-mode t) ;; "
-(global-flycheck-mode) ;; enable flycheck globaly
-(menu-bar-mode -1)     ;; remove the menue bar
-(setq ring-bell-function 'ignore)
+;; core emacs config
+(add-to-list 'default-frame-alist '(fullscreen . maximized)) ;; start emacs in fullscreen
+(setq global-linum-mode t)                                   ;; display line,column numbers
+(setq column-number-mode t)                                  ;; "
+(menu-bar-mode -1)                                           ;; remove the menue bar
+(tool-bar-mode -1)                                           ;; remove the toolbar
+(scroll-bar-mode -1)                                         ;; remove the scrollbar
+(setq ring-bell-function 'ignore)                            ;; no audible bell
+(setq-default indent-tabs-mode nil)                          ;; DONT EVER USE TABS !!
+(setq compilation-scroll-output t)                           ;; scroll with the output
+(setq create-lockfiles nil)                                  ;; don't create .#<filename> files
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))) ;; move backup files to ~/.emacs.d/backup
+(setq backup-by-copying t)                                   ;; Don't delink hardlinks
+(setq version-control t)                                     ;; Use version numbers on backups
+(setq delete-old-versions t)                                 ;; Automatically delete excess backups
+(setq kept-new-versions 20)                                  ;; how many of the newest versions to keep
+(setq kept-old-versions 5)                                   ;; and how many of the old
 
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(setq-default indent-tabs-mode nil)              ;; DONT EVER USE TABS !!
-(smartparens-global-mode t)                      ;; global (){} completion
-(show-smartparens-global-mode t)                 ;; gloabal (){} highlighting
-(setq compilation-scroll-output t)               ;; scroll with the output
-(tool-bar-mode -1)                               ;; remove the toolbar
-(scroll-bar-mode -1)                             ;; remove the scrollbar
-(add-hook 'before-save-hook 'whitespace-cleanup) ;; clean whitespace
-(setq transient-default-level 5)
+(smartparens-global-mode t)                                  ;; global (){} completion
+(show-smartparens-global-mode t)                             ;; gloabal (){} highlighting
+(add-hook 'before-save-hook 'whitespace-cleanup)             ;; clean whitespace
+(global-flycheck-mode)                                       ;; enable flycheck globaly
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
+(setq transient-default-level 5)
 
+;; ibuffer configuration
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 (setq ibuffer-saved-filter-groups
       (quote (("default"
                ("dired" (mode . dired-mode))
@@ -73,21 +80,10 @@
           (lambda ()
             (ibuffer-switch-to-saved-filter-groups "default")))
 
-(global-flycheck-mode)
-
-;; enable some disabled commands
-(defun downcase-char (arg)
-  "Lowercasify ARG chars starting from point.  Point doesn't move."
-  (interactive "p")
-  (save-excursion
-    (downcase-region (point) (progn (forward-char arg) (point)))))
-
-(global-set-key "" (quote upcase-char))
-(global-set-key "" (quote downcase-char))
-
 (setq yas-snippet-dirs
   '("~/.emacs.d/snippets"))
 (yas-global-mode)
+
 (add-hook 'after-init-hook
   (lambda()
     (global-company-mode)))
@@ -99,14 +95,15 @@
                          company-keywords
                          company-yasnippet))
 
-;; move backup files to ~/.emacs.d/backup
-(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
-      backup-by-copying t    ;; Don't delink hardlinks
-      version-control t      ;; Use version numbers on backups
-      delete-old-versions t  ;; Automatically delete excess backups
-      kept-new-versions 20   ;; how many of the newest versions to keep
-      kept-old-versions 5)   ;; and how many of the old
+;; enable some disabled commands
+(defun downcase-char (arg)
+  "Lowercasify ARG chars starting from point.  Point doesn't move."
+  (interactive "p")
+  (save-excursion
+    (downcase-region (point) (progn (forward-char arg) (point)))))
 
+(global-set-key "" (quote upcase-char))
+(global-set-key "" (quote downcase-char))
 
 ;; load some additional configurations
 (when (eq system-type 'gnu/linux)(load-file "~/.emacs.d/linux.el")) ;; Linux
