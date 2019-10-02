@@ -37,3 +37,6 @@
 [submodule "themes/blackboard"]
 	path = themes/blackboard
 	url = https://github.com/don9z/blackboard-theme.git
+[submodule "themes/tron-legacy-emacs-theme"]
+	path = themes/tron-legacy-emacs-theme
+	url = https://github.com/ianpan870102/tron-legacy-emacs-theme
