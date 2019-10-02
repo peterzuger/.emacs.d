@@ -21,6 +21,7 @@
         markdown-mode           ;; Major mode for Markdown-formatted text
         pdf-tools               ;; Support library for PDF documents.
         pinentry                ;; GnuPG Pinentry server implementation
+        ranger                  ;; Make dired more like ranger
         smartparens             ;; Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
         whitespace-cleanup-mode ;; Intelligently call whitespace-cleanup on save
         yasnippet))             ;; Yet another snippet extension for Emacs.
@@ -59,6 +60,9 @@
 
 (smartparens-global-mode t)                                  ;; global (){} completion
 (show-smartparens-global-mode t)                             ;; gloabal (){} highlighting
+(ranger-override-dired-mode nil)                             ;; use ranger instead of dired
+(setq ranger-override-dired 'ranger)                         ;; use ranger not deer
+(setq ranger-cleanup-eagerly t)                              ;; auto kill unused buffers
 (add-hook 'before-save-hook 'whitespace-cleanup)             ;; clean whitespace
 (global-flycheck-mode)                                       ;; enable flycheck globaly
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
