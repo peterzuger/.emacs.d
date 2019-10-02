@@ -36,6 +36,10 @@
   (unless (package-installed-p package)
     (package-install package)))
 
+;; dont display the splash screen when a file is opened directly
+(when (> (length command-line-args) 1)
+  (setq inhibit-splash-screen t))
+
 ;; please dont litter my init.el
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file t)
