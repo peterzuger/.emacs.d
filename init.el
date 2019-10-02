@@ -96,12 +96,12 @@
             (ibuffer-switch-to-saved-filter-groups "default")))
 
 (setq yas-snippet-dirs
-  '("~/.emacs.d/snippets"))
+      '("~/.emacs.d/snippets"))
 (yas-global-mode)
 
 (add-hook 'after-init-hook
-  (lambda()
-    (global-company-mode)))
+          (lambda()
+            (global-company-mode)))
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 2)
 (setq company-backends '(company-emoji

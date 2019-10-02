@@ -5,11 +5,11 @@
 
 ;; set the location of my Maildir
 (setq
-   mu4e-maildir       "~/Mail"            ;; top-level Maildir
-   mu4e-sent-folder   "/Sent Messages"    ;; folder for sent messages
-   mu4e-drafts-folder "/Drafts"           ;; unfinished messages
-   mu4e-trash-folder  "/Deleted Messages" ;; trashed messages
-   mu4e-refile-folder "/Archive")         ;; saved messages
+ mu4e-maildir       "~/Mail"            ;; top-level Maildir
+ mu4e-sent-folder   "/Sent Messages"    ;; folder for sent messages
+ mu4e-drafts-folder "/Drafts"           ;; unfinished messages
+ mu4e-trash-folder  "/Deleted Messages" ;; trashed messages
+ mu4e-refile-folder "/Archive")         ;; saved messages
 
 ;; don't save message to Sent Messages, IMAP takes care of this
 (setq mu4e-sent-messages-behavior 'delete)
