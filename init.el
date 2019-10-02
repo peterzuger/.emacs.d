@@ -68,6 +68,17 @@
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
 (setq transient-default-level 5)
 
+(defun fmq-compilation-finish (buffer status)
+  (call-process "notify-send" nil nil nil
+                "-a" "emacs"
+                "-i" (format "/usr/share/emacs/%s/etc/images/icons/hicolor/32x32/apps/emacs.png" emacs-version)
+                "Compilation finished"
+                status))
+
+(setq compilation-finish-functions
+      (append compilation-finish-functions
+              '(fmq-compilation-finish)))
+
 ;; ibuffer configuration
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (setq ibuffer-saved-filter-groups
