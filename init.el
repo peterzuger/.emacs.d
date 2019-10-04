@@ -15,6 +15,7 @@
         company-shell           ;; Company mode backend for shell functions
         fill-column-indicator   ;; Graphically indicate the fill column
         flycheck                ;; On-the-fly syntax checking
+        flycheck-clang-analyzer ;; Integrate Clang Analyzer with flycheck  
         flycheck-irony          ;; Flycheck: C/C++ support via Irony
         flycheck-pycheckers     ;; multiple syntax checker for Python, using Flycheck
         ggtags                  ;; emacs frontend to GNU Global source code tagging system
