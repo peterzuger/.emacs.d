@@ -13,6 +13,7 @@
         company-irony           ;; company-mode completion back-end for irony-mode
         company-jedi            ;; company-mode completion back-end for Python JEDI
         company-shell           ;; Company mode backend for shell functions
+        emojify                 ;; Display emojis in Emacs
         fill-column-indicator   ;; Graphically indicate the fill column
         flycheck                ;; On-the-fly syntax checking
         flycheck-clang-analyzer ;; Integrate Clang Analyzer with flycheck
@@ -81,6 +82,7 @@
 (global-flycheck-mode)                                       ;; enable flycheck globaly
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
 (setq transient-default-level 5)
+(global-emojify-mode t)
 
 (defun fmq-compilation-finish (buffer status)
   (call-process "notify-send" nil nil nil
