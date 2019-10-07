@@ -67,6 +67,11 @@
 (setq kept-new-versions 20)                                  ;; how many of the newest versions to keep
 (setq kept-old-versions 5)                                   ;; and how many of the old
 
+;; keybindings
+(global-set-key (kbd "<f5>") 'compile)
+(global-set-key (kbd "<C-f5>") 'recompile)
+(global-set-key (kbd "<f6>") 'magit-status)
+
 (smartparens-global-mode t)                                  ;; global (){} completion
 (show-smartparens-global-mode t)                             ;; gloabal (){} highlighting
 (ranger-override-dired-mode nil)                             ;; use ranger instead of dired
