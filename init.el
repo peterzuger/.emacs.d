@@ -97,13 +97,14 @@
 
 (defun group-buffer-list()
   "Return an ibuffer group for all current buffers."
-  (remove 'nil
-          (mapcar
-           (lambda(buf)
-             (when (git-root-dir buf)
-               (let ((name (git-root-dir buf)))
-                 `(,name (name . ,(buffer-name buf))))))
-           (buffer-list))))
+  (ibuffer-remove-duplicates
+   (delq 'nil
+         (mapcar
+          (lambda(buf)
+            (when (git-root-dir buf)
+              (let ((name (git-root-dir buf)))
+                `(,name (filename . ,(expand-file-name name))))))
+          (buffer-list)))))
 
 (add-hook 'ibuffer-hook
           (lambda()
