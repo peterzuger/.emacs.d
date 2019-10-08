@@ -17,6 +17,7 @@
             (when (derived-mode-p 'c-mode 'c++-mode)
               (ggtags-mode 1))
             (irony-mode)
+            (setq irony-additional-clang-options '("-ferror-limit=0"))
             (flycheck-irony-setup)
             (flycheck-clang-analyzer-setup)
             (add-to-list 'company-backends 'company-irony)))
