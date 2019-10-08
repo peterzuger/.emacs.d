@@ -43,6 +43,9 @@
 (when (> (length command-line-args) 1)
   (setq inhibit-splash-screen t))
 
+;; don't quit immediately
+(setq confirm-kill-emacs 'y-or-n-p)
+
 ;; please dont litter my init.el
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file t)
