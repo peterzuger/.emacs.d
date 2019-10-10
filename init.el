@@ -87,6 +87,7 @@
 (setq ranger-cleanup-eagerly t)                              ;; auto kill unused buffers
 (add-hook 'before-save-hook 'whitespace-cleanup)             ;; clean whitespace
 (global-flycheck-mode)                                       ;; enable flycheck globaly
+(setq flycheck-checker-error-threshold 1024)                 ;; sometimes this happens
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
 (setq transient-default-level 5)
 (global-emojify-mode t)
