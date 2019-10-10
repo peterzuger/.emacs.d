@@ -74,6 +74,10 @@
 ;; keybindings
 (global-set-key (kbd "<f5>") 'compile)
 (global-set-key (kbd "<C-f5>") 'recompile)
+(global-set-key (kbd "<M-f5>") (lambda()
+                                 (interactive)
+                                 (when (get-buffer "*compilation*")
+                                   (pop-to-buffer "*compilation*"))))
 (global-set-key (kbd "<f6>") 'magit-status)
 
 (smartparens-global-mode t)                                  ;; global (){} completion
