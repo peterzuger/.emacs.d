@@ -1,83 +1,131 @@
-# My Emacs configuration
-My Personal Emacs configuration, contains some themes as well.
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=200px height=200px src="https://www.gnu.org/software/emacs/images/emacs.png" alt="Project logo"></a>
+</p>
 
-## init.el
-This is the main configuration file loaded by Emacs it should only contains the
-configurations that are used in all languages. All language dependent
-configurations are separated into different files called: `<language>.el` and
-are loaded with: `(load-file "~/.emacs.d/<language>.el")`
+<h3 align="center">~/.emacs.d</h3>
 
-## Packages
-### package.el
-`init.el` adds the melpa archive to the package archives it then auto installs
-some packages:
+<div align="center">
 
-| Package name            | language | function           |
-|-------------------------|:--------:|--------------------|
-| auctex                  | TeX      | language Support   |
-| company                 | *        | text-completion    |
-| company-irony           | C/C++    | auto-completion    |
-| company-shell           | Shell    | auto-completion    |
-| fill-column-indicator   | *        | visibility         |
-| flycheck                | *        | syntax check       |
-| flycheck-irony          | C/C++    | syntax check       |
-| ggtags                  | C/C++    | jump to definition |
-| helm                    | C/C++    | navigation         |
-| jedi                    | Python   | language Support   |
-| magit                   | *        | git support        |
-| markdown-mode           | Markdown | language Support   |
-| pdf-tools               | .pdf     | PDF support        |
-| pinentry                | passwd   | password entry     |
-| smartparens             | *        | helper             |
-| whitespace-cleanup-mode | *        | cleanup            |
-| yasnippet               | *        | code snippets      |
+  [![Status](https://img.shields.io/badge/status-active-success.svg)]()
+  [![GitHub Issues](https://img.shields.io/github/issues/peterzuger/dotfiles.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
+  [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/peterzuger/dotfiles.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
+  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-### Outside packages
-mu4e is an outside package, it is installed along with mu from the OS package
-manager. For this package to work some more things are required, read about
-them here: [mu](https://www.djcbsoftware.nl/code/mu/mu4e/index.html)
+</div>
 
-## Additional requirements
-Some of the packages require additional Software outside of Emacs:
+---
 
-| Package | requirements | Link                                 |
-|---------|--------------|--------------------------------------|
-| auctex  | Texlive      | https://www.tug.org/texlive/         |
-| ggtags  | GNU global   | https://www.gnu.org/software/global/ |
-| ggtags  | ctags        | http://ctags.sourceforge.net/        |
-| magit   | git          | https://git-scm.com/                 |
-| mu4e    | offlineimap  | http://www.offlineimap.org/          |
-| mu4e    | mu           | https://www.djcbsoftware.nl/code/mu/ |
+<p align="center"> My Emacs Configuration
+    <br>
+</p>
 
-# Installation
+## 📝 Table of Contents
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Usage](#usage)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgement)
+
+## 🧐 About <a name = "about"></a>
+This Repository contains the emacs configuration of all of my computers.
+This configuration is common across all my machines.
+
+## 🏁 Getting Started <a name = "getting_started"></a>
+These instructions will get you a copy of my emacs setup up and running on your local machine.
+
+### Prerequisites
+To use my ```~/.emacs.d``` you will need to install the following packages:
+
+| Emacs Package | Prerequisites                                                                        | Link                                 |
+|---------------|--------------------------------------------------------------------------------------|--------------------------------------|
+| auctex        | [Texlive](https://www.archlinux.org/groups/x86_64/texlive-most/)                     | https://www.tug.org/texlive/         |
+| ggtags        | [GNU global](https://aur.archlinux.org/packages/global/)                             | https://www.gnu.org/software/global/ |
+| ggtags        | [ctags](https://www.archlinux.org/packages/extra/x86_64/ctags/)                      | http://ctags.sourceforge.net/        |
+| magit         | [git](https://www.archlinux.org/packages/extra/x86_64/git/)                          | https://git-scm.com/                 |
+| mu4e          | [offlineimap](https://www.archlinux.org/packages/community/any/offlineimap/)         | http://www.offlineimap.org/          |
+| mu4e          | [mu](https://aur.archlinux.org/packages/mu/)                                         | https://www.djcbsoftware.nl/code/mu/ |
+| jedi          | [python-virtualenv](https://www.archlinux.org/packages/extra/any/python-virtualenv/) | https://pypi.org/project/virtualenv/ |
+| flyspell      | [aspell](https://www.archlinux.org/packages/extra/x86_64/aspell/)                    | http://aspell.net/                   |
+
 To use this emacs configuration, just clone this repo with:
-
-The ```--recursive``` is **required**, otherwise the sub-repository's wont be
-downloaded.
 
 ```
 git clone --recursive https://gitlab.com/peterzuger/emacsd.git
 ```
 
-Then you can start emacs with
+The ```--recursive``` is **required**, otherwise the sub-repository's wont be
+downloaded.
+
+And place it in ```~/```.
+
+You can also directly clone it into ```~/.emacs.d```:
 ```
-emacs -q --load "<path to this repo>/emacsd/init.el"
+git clone --recursive https://gitlab.com/peterzuger/emacsd.git ~/.emacs.d
 ```
 
-# Links
-## Themes
-links to all git repository's used as themes
+### Build Prerequisites
+For jedi and irony, a server has to be built during the first startup,
+this requires some additional packages, they can be removed once the installation is done:
 
-[zenburn](https://github.com/bbatsov/zenburn-emacs)<br>
-[moe](https://github.com/kuanyui/moe-theme.el)<br>
-[material](https://github.com/cpaulik/emacs-material-theme)<br>
-[cyberpunk](https://github.com/n3mo/cyberpunk-theme.el)<br>
-[ample](https://github.com/jordonbiondo/ample-theme)<br>
-[alect](https://github.com/alezost/alect-themes)<br>
-[gotham](https://github.com/wasamasa/gotham-theme)<br>
-[tangotango](https://github.com/juba/color-theme-tangotango)<br>
-[gruber-darker](https://github.com/rexim/gruber-darker-theme)<br>
-[ample-zen](https://github.com/mjwall/ample-zen)<br>
-[noctilux](https://github.com/sjrmanning/noctilux-theme)<br>
-[afternoon](https://github.com/osener/emacs-afternoon-theme)<br>
-[grandshell](https://github.com/steckerhalter/grandshell-theme)<br>
+| Prerequisite                                                      | Description                              | [Arch Packages](https://www.archlinux.org/packages/)              |
+|-------------------------------------------------------------------|------------------------------------------|-------------------------------------------------------------------|
+| [clang](https://clang.llvm.org/)                                  | C language family frontend for LLVM      | [clang](https://www.archlinux.org/packages/staging/x86_64/clang/) |
+| [cmake](https://cmake.org/)                                       | A cross-platform open-source make system | [cmake](https://www.archlinux.org/packages/extra/x86_64/cmake/)   |
+| [base-devel](https://www.archlinux.org/groups/x86_64/base-devel/) | Developer utilities                      | [base-devel](https://www.archlinux.org/groups/x86_64/base-devel/) |
+
+### Installing
+When starting emacs for the first time with my ```~/.emacs.d```,
+emacs will automatically install the following packages:
+
+| Package name            | language | function              |
+|-------------------------|:--------:|-----------------------|
+| auctex                  | TeX      | language Support      |
+| company                 | *        | text-completion       |
+| company-emoji           | *        | emoji-completion      |
+| company-irony           | C/C++    | auto-completion       |
+| company-jedi            | Python   | auto-completion       |
+| company-shell           | Shell    | auto-completion       |
+| emojify                 | Shell    | auto-completion       |
+| fill-column-indicator   | *        | visibility            |
+| flycheck                | *        | syntax check          |
+| flycheck-clang-analyzer | C/C++    | static analyzer check |
+| flycheck-irony          | C/C++    | syntax check          |
+| flycheck-pycheckers     | C/C++    | syntax check          |
+| ggtags                  | C/C++    | jump to definition    |
+| magit                   | *        | git support           |
+| markdown-mode           | Markdown | language Support      |
+| pdf-tools               | .pdf     | PDF support           |
+| pinentry                | passwd   | password entry        |
+| ranger                  | dired    | file browsing         |
+| smartparens             | *        | helper                |
+| whitespace-cleanup-mode | *        | cleanup               |
+| yasnippet               | *        | code snippets         |
+
+This should only take a few minutes.
+
+Once that has finished, excecute the following 2 commands, they install the irony and the jedi server.
+```
+M-x irony-install-server
+M-x jedi:install-server
+```
+
+## ✍️ Authors <a name = "authors"></a>
+- [@peterzuger](https://github.com/peterzuger)
+
+
+## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+- [zenburn](https://github.com/bbatsov/zenburn-emacs)
+- [moe](https://github.com/kuanyui/moe-theme.el)
+- [material](https://github.com/cpaulik/emacs-material-theme)
+- [cyberpunk](https://github.com/n3mo/cyberpunk-theme.el)
+- [ample](https://github.com/jordonbiondo/ample-theme)
+- [alect](https://github.com/alezost/alect-themes)
+- [gotham](https://github.com/wasamasa/gotham-theme)
+- [tangotango](https://github.com/juba/color-theme-tangotango)
+- [gruber-darker](https://github.com/rexim/gruber-darker-theme)
+- [ample-zen](https://github.com/mjwall/ample-zen)
+- [noctilux](https://github.com/sjrmanning/noctilux-theme)
+- [afternoon](https://github.com/osener/emacs-afternoon-theme)
+- [grandshell](https://github.com/steckerhalter/grandshell-theme)
+- [@kylelobo](https://github.com/kylelobo) - Documentation template
