@@ -70,6 +70,7 @@
 (setq delete-old-versions t)                                 ;; Automatically delete excess backups
 (setq kept-new-versions 20)                                  ;; how many of the newest versions to keep
 (setq kept-old-versions 5)                                   ;; and how many of the old
+(setq use-dialog-box nil)                                    ;; don't use dialog boxes
 
 ;; keybindings
 (global-set-key (kbd "<f5>") 'compile)
