@@ -30,6 +30,8 @@
         flycheck-irony          ;; Flycheck: C/C++ support via Irony
         flycheck-pycheckers     ;; multiple syntax checker for Python, using Flycheck
         ggtags                  ;; emacs frontend to GNU Global source code tagging system
+        js2-mode                ;; Improved JavaScript editing mode
+        js2-refactor            ;; A JavaScript refactoring library for emacs.
         magit                   ;; A Git porcelain inside Emacs.
         markdown-mode           ;; Major mode for Markdown-formatted text
         pdf-tools               ;; Support library for PDF documents.
@@ -37,6 +39,7 @@
         ranger                  ;; Make dired more like ranger
         smartparens             ;; Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
         whitespace-cleanup-mode ;; Intelligently call whitespace-cleanup on save
+        xref-js2                ;; Jump to references/definitions using ag & js2-mode's AST
         yasnippet))             ;; Yet another snippet extension for Emacs.
 (package-initialize)
 
