@@ -1,3 +1,9 @@
+(defvar gc-cons-threshold-default gc-cons-threshold)
+(setq gc-cons-threshold (* 1024 1024 1024)) ;; 1GB
+(run-with-idle-timer 5 nil
+                     (lambda()
+                       (setq gc-cons-threshold gc-cons-threshold-default)))
+
 (require 'package)
 
 ;; add elpa and melpa archive
