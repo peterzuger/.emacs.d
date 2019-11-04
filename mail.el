@@ -1,3 +1,7 @@
+;;; mail.el --- mail configuration
+;;; Commentary:
+;;; Code:
+
 (require 'mu4e)
 
 ;; use mu4e for e-mail in emacs
@@ -70,3 +74,5 @@
 ;; pinentry for gpg signed and encrypted messages
 (setq epa-pinentry-mode 'loopback)
 (pinentry-start)
+
+;;; mail.el ends here

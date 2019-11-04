@@ -1,3 +1,7 @@
+;;; init.el --- emacs configuration
+;;; Commentary:
+;;; Code:
+
 (defvar gc-cons-threshold-default gc-cons-threshold)
 (setq gc-cons-threshold (* 1024 1024 1024)) ;; 1GB
 (run-with-idle-timer 5 nil
@@ -191,3 +195,5 @@
 (load-file "~/.emacs.d/tex.el")         ;; LaTEX configuration
 
 (load-file "~/.emacs.d/themes.el")      ;; custom themes
+
+;;; init.el ends here

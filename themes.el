@@ -1,3 +1,7 @@
+;;; themes.el --- custom emacs themes
+;;; Commentary:
+;;; Code:
+
 ;; https://github.com/bbatsov/zenburn-emacs
 ;; https://github.com/purcell/color-theme-sanityinc-tomorrow
 ;; https://github.com/kuanyui/moe-theme.el
@@ -34,3 +38,5 @@
 
 ;; load zenburn on start
 (load-theme 'zenburn t)
+
+;;; themes.el ends here

@@ -1,3 +1,7 @@
+;;; tex.el --- TEX configuration
+;;; Commentary:
+;;; Code:
+
 ;; Use pdf-tools to open PDF files
 (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
       TeX-source-correlate-start-server t)
@@ -15,3 +19,5 @@
 
 ;; initialize pdf-tools
 (pdf-loader-install)
+
+;;; tex.el ends here
