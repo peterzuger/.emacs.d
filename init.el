@@ -44,7 +44,8 @@
   (setq inhibit-splash-screen t))
 
 ;; don't quit immediately
-(setq confirm-kill-emacs 'y-or-n-p)
+(when (display-graphic-p)
+  (setq confirm-kill-emacs 'y-or-n-p))
 
 ;; please dont litter my init.el
 (setq custom-file "~/.emacs.d/custom.el")
