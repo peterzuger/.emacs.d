@@ -44,7 +44,7 @@
 (setq message-send-mail-function 'smtpmail-send-it)
 (setq starttls-use-gnutls t)
 (setq smtpmail-starttls-credentials '(("smtp.mail.me.com" 587 nil nil)))
-(setq smtpmail-auth-credentials     '(("smtp.mail.me.com" 587 "zueger.peter@icloud.com" nil)))
+(setq smtpmail-auth-credentials     '(("smtp.mail.me.com" 587 user-mail-address nil)))
 (setq smtpmail-default-smtp-server     "smtp.mail.me.com")
 (setq smtpmail-smtp-server             "smtp.mail.me.com")
 (setq smtpmail-smtp-service             587)
