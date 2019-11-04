@@ -30,11 +30,8 @@
          ("/Archive"          . ?a)
          ("/Drafts"           . ?d)))
 
-;; something about me
-(setq user-mail-address "zueger.peter@icloud.com")
-(setq user-full-name    "Peter Züger")
-(setq mu4e-compose-signature (concat "Peter Züger\n"
-                                     "\n"))
+;; setup the default signature
+(setq mu4e-compose-signature (concat user-full-name "\n"))
 
 ;; setup compose mode
 (add-hook 'mu4e-compose-mode-hook
