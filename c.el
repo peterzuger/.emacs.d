@@ -16,7 +16,7 @@
 (c-set-offset 'inextern-lang 0)
 
 ;; c++-mode does not know constexpr
-(add-to-list 'c-noise-macro-names '("constexpr"))
+(custom-set-variables '(c-noise-macro-names '("constexpr")))
 
 (sp-local-pair 'c++-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
 (sp-local-pair 'c-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
