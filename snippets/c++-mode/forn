@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: for_n
+# name: forn
 # key: forn
 # --
 for(${1:std::size_t }${2:i} = ${3:0}; $2 < ${4:MAXIMUM}; ++$2){
