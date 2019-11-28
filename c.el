@@ -32,7 +32,6 @@
               (ggtags-mode 1))
             (irony-mode)
             (flycheck-irony-setup)
-            (flycheck-clang-analyzer-setup)
             (add-to-list 'company-backends 'company-irony)))
 
 (add-hook 'irony-mode-hook
