@@ -59,6 +59,9 @@
 (when (display-graphic-p)
   (setq confirm-kill-emacs 'y-or-n-p))
 
+(unless (display-graphic-p)
+  (set-background-color "ARGBBB000000"))
+
 ;; please dont litter my init.el
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file t)
