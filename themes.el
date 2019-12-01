@@ -39,4 +39,7 @@
 ;; load zenburn on start
 (load-theme 'zenburn t)
 
+(unless (display-graphic-p)
+  (set-background-color "ARGBBB000000"))
+
 ;;; themes.el ends here
