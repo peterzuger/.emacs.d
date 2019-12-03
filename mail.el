@@ -16,7 +16,7 @@
  mu4e-refile-folder "/Archive")         ;; saved messages
 
 ;; don't save message to Sent Messages, IMAP takes care of this
-(setq mu4e-sent-messages-behavior 'send)
+(setq mu4e-sent-messages-behavior 'sent)
 
 ;; allow for updating mail using 'U' in the main view:
 (setq mu4e-get-mail-command "offlineimap")
