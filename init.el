@@ -186,7 +186,9 @@
 
 ;; load some additional configurations
 (when (eq system-type 'gnu/linux)(load-file "~/.emacs.d/linux.el")) ;; Linux
-(load-file "~/.emacs.d/mail.el")        ;; Mail configuration
+(when (require 'mu4e nil 'noerror)
+  (load-file "~/.emacs.d/mail.el"))     ;; Mail configuration
+
 (load-file "~/.emacs.d/org.el")         ;; org mode configuration
 
 (load-file "~/.emacs.d/c.el")           ;; C/C++ configuration
