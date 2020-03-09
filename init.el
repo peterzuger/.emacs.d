@@ -20,6 +20,7 @@
       '(auctex                  ;; Integrated environment for *TeX*
         company                 ;; Modular text completion framework
         company-emoji           ;; company-mode backend for emoji
+        company-go              ;; company-mode backend for Go (using gocode)
         company-irony           ;; company-mode completion back-end for irony-mode
         company-jedi            ;; company-mode completion back-end for Python JEDI
         company-shell           ;; Company mode backend for shell functions
@@ -29,6 +30,7 @@
         flycheck-irony          ;; Flycheck: C/C++ support via Irony
         flycheck-pycheckers     ;; multiple syntax checker for Python, using Flycheck
         ggtags                  ;; emacs frontend to GNU Global source code tagging system
+        go-mode                 ;; Major mode for the Go programming language
         js2-mode                ;; Improved JavaScript editing mode
         js2-refactor            ;; A JavaScript refactoring library for emacs.
         magit                   ;; A Git porcelain inside Emacs.
@@ -193,6 +195,7 @@
 
 (load-file "~/.emacs.d/c.el")           ;; C/C++ configuration
 (load-file "~/.emacs.d/elisp.el")       ;; elisp configuration
+(load-file "~/.emacs.d/go.el")          ;; golang configuration
 (load-file "~/.emacs.d/html.el")        ;; html configuration
 (load-file "~/.emacs.d/javascript.el")  ;; javascript configuration
 (load-file "~/.emacs.d/python.el")      ;; python configuration
