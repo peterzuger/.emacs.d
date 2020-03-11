@@ -11,6 +11,8 @@
 
 (define-key go-mode-map (kbd "C-c C-l") 'compile)
 (define-key go-mode-map (kbd "C-c C-f") 'gofmt)
+(define-key go-mode-map (kbd "M-.") 'godef-jump)
+(define-key go-mode-map (kbd "M-,") 'pop-tag-mark)
 
 (add-hook 'go-mode-hook
           (lambda()
