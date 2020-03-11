@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: error
+# key: err
+# --
+if err != nil {
+    fmt.Println("Error: " + err.Error())
+    return
+}
