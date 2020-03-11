@@ -34,16 +34,19 @@ These instructions will get you a copy of my emacs setup up and running on your 
 ### Prerequisites
 To use my ```~/.emacs.d``` you will need to install the following packages:
 
-| Emacs Package | Prerequisites                                                                        | Link                                 |
-|---------------|--------------------------------------------------------------------------------------|--------------------------------------|
-| auctex        | [Texlive](https://www.archlinux.org/groups/x86_64/texlive-most/)                     | https://www.tug.org/texlive/         |
-| ggtags        | [GNU global](https://aur.archlinux.org/packages/global/)                             | https://www.gnu.org/software/global/ |
-| ggtags        | [ctags](https://www.archlinux.org/packages/extra/x86_64/ctags/)                      | http://ctags.sourceforge.net/        |
-| magit         | [git](https://www.archlinux.org/packages/extra/x86_64/git/)                          | https://git-scm.com/                 |
-| mu4e          | [offlineimap](https://www.archlinux.org/packages/community/any/offlineimap/)         | http://www.offlineimap.org/          |
-| mu4e          | [mu](https://aur.archlinux.org/packages/mu/)                                         | https://www.djcbsoftware.nl/code/mu/ |
-| jedi          | [python-virtualenv](https://www.archlinux.org/packages/extra/any/python-virtualenv/) | https://pypi.org/project/virtualenv/ |
-| flyspell      | [aspell](https://www.archlinux.org/packages/extra/x86_64/aspell/)                    | http://aspell.net/                   |
+| Emacs Package | Prerequisites                                                                        | Link                                   |
+|---------------|--------------------------------------------------------------------------------------|----------------------------------------|
+| auctex        | [Texlive](https://www.archlinux.org/groups/x86_64/texlive-most/)                     | https://www.tug.org/texlive/           |
+| ggtags        | [GNU global](https://aur.archlinux.org/packages/global/)                             | https://www.gnu.org/software/global/   |
+| ggtags        | [ctags](https://www.archlinux.org/packages/extra/x86_64/ctags/)                      | http://ctags.sourceforge.net/          |
+| go-mode       | [go](https://www.archlinux.org/packages/community/x86_64/go/)                        | https://golang.org/                    |
+| go-mode       | [gocode](https://www.github.com/rogpeppe/godef/)                                     | https://www.github.com/rogpeppe/godef/ |
+| go-mode       | [godef](https://github.com/mdempsky/gocode/)                                         | https://github.com/mdempsky/gocode/    |
+| magit         | [git](https://www.archlinux.org/packages/extra/x86_64/git/)                          | https://git-scm.com/                   |
+| mu4e          | [offlineimap](https://www.archlinux.org/packages/community/any/offlineimap/)         | http://www.offlineimap.org/            |
+| mu4e          | [mu](https://aur.archlinux.org/packages/mu/)                                         | https://www.djcbsoftware.nl/code/mu/   |
+| jedi          | [python-virtualenv](https://www.archlinux.org/packages/extra/any/python-virtualenv/) | https://pypi.org/project/virtualenv/   |
+| flyspell      | [aspell](https://www.archlinux.org/packages/extra/x86_64/aspell/)                    | http://aspell.net/                     |
 
 To use this emacs configuration, just clone this repo with:
 
@@ -65,11 +68,12 @@ git clone --recursive https://gitlab.com/peterzuger/emacsd.git ~/.emacs.d
 For jedi and irony, a server has to be built during the first startup,
 this requires some additional packages, they can be removed once the installation is done:
 
-| Prerequisite                                                      | Description                              | [Arch Packages](https://www.archlinux.org/packages/)              |
-|-------------------------------------------------------------------|------------------------------------------|-------------------------------------------------------------------|
-| [clang](https://clang.llvm.org/)                                  | C language family frontend for LLVM      | [clang](https://www.archlinux.org/packages/staging/x86_64/clang/) |
-| [cmake](https://cmake.org/)                                       | A cross-platform open-source make system | [cmake](https://www.archlinux.org/packages/extra/x86_64/cmake/)   |
-| [base-devel](https://www.archlinux.org/groups/x86_64/base-devel/) | Developer utilities                      | [base-devel](https://www.archlinux.org/groups/x86_64/base-devel/) |
+| Prerequisite                                                      | Description                              | [Arch Packages](https://www.archlinux.org/packages/)                    |
+|-------------------------------------------------------------------|------------------------------------------|-------------------------------------------------------------------------|
+| [clang](https://clang.llvm.org/)                                  | C language family frontend for LLVM      | [clang](https://www.archlinux.org/packages/staging/x86_64/clang/)       |
+| [cmake](https://cmake.org/)                                       | A cross-platform open-source make system | [cmake](https://www.archlinux.org/packages/extra/x86_64/cmake/)         |
+| [base-devel](https://www.archlinux.org/groups/x86_64/base-devel/) | Developer utilities                      | [base-devel](https://www.archlinux.org/groups/x86_64/base-devel/)       |
+| [llvm-libs](https://llvm.org/)                                    | The LLVM Compiler Infrastructure         | [llvm-libs](https://www.archlinux.org/packages/extra/x86_64/llvm-libs/) |
 
 ### Installing
 When starting emacs for the first time with my ```~/.emacs.d```,
