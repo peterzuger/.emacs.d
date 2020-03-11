@@ -10,10 +10,12 @@
 (sp-local-pair 'go-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
 
 (define-key go-mode-map (kbd "C-c C-l") 'compile)
+(define-key go-mode-map (kbd "C-c C-f") 'gofmt)
 
 (add-hook 'go-mode-hook
           (lambda()
             (yas-minor-mode-on)
-            (add-to-list 'company-backends 'company-go)))
+            (add-to-list 'company-backends 'company-go)
+            (add-hook 'before-save-hook 'gofmt-before-save)))
 
 ;;; go.el ends here
