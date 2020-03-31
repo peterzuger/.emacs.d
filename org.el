@@ -32,4 +32,13 @@
 (setq org-cycle-separator-lines 1)
 (setq org-src-fontify-natively t)
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((shell . t)
+   (C . t)
+   (dot . t)
+   (ditaa . t)
+   (emacs-lisp . t)
+   (python . t)))
+
 ;;; org.el ends here
