@@ -112,6 +112,7 @@
 (setq kept-old-versions 5)                                   ;; and how many of the old
 (setq use-dialog-box nil)                                    ;; don't use dialog boxes
 (setq vc-follow-symlinks t)                                  ;; always follow symlinks
+(setq help-window-select t)                                  ;; automatically select help windows
 
 ;; keybindings
 (global-set-key (kbd "<f5>") 'compile)
