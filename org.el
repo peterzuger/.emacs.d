@@ -31,6 +31,7 @@
 
 (setq org-cycle-separator-lines 1)
 (setq org-src-fontify-natively t)
+(setq org-catch-invisible-edits 'smart)
 
 (org-babel-do-load-languages
  'org-babel-load-languages
