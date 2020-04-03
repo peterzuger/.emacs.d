@@ -33,6 +33,20 @@
 (setq org-src-fontify-natively t)
 (setq org-catch-invisible-edits 'smart)
 
+(global-set-key (kbd "C-c c") 'org-capture)
+
+(setq org-capture-templates
+      (quote (
+              ("t" "todo" entry (file "~/Notes/refile.org")
+               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+
+              ("n" "note" entry (file "~/Notes/refile.org")
+               "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
+
+              ("j" "journal" entry (file+datetree "~/Notes/diary.org")
+               "* %?\n%U\n" :clock-in t :clock-resume t)
+              )))
+
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((shell . t)
