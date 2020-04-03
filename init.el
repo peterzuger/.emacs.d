@@ -113,6 +113,7 @@
 (setq use-dialog-box nil)                                    ;; don't use dialog boxes
 (setq vc-follow-symlinks t)                                  ;; always follow symlinks
 (setq help-window-select t)                                  ;; automatically select help windows
+(defalias 'yes-or-no-p 'y-or-n-p)                            ;; replace yes or no prompts by y-or-n prompts
 
 ;; keybindings
 (global-set-key (kbd "<f5>") 'compile)
