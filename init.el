@@ -60,6 +60,8 @@
         js2-refactor            ;; A JavaScript refactoring library for emacs.
         magit                   ;; A Git porcelain inside Emacs.
         markdown-mode           ;; Major mode for Markdown-formatted text
+        org                     ;; Outline-based notes management and organizer
+        org-plus-contrib        ;; Outline-based notes management and organizer
         pdf-tools               ;; Support library for PDF documents.
         pinentry                ;; GnuPG Pinentry server implementation
         ranger                  ;; Make dired more like ranger
