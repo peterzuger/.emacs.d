@@ -28,12 +28,15 @@
 ;;; Code:
 
 (require 'org)
+(require 'org-contacts)
 
 (setq org-cycle-separator-lines 1)
 (setq org-src-fontify-natively t)
 (setq org-catch-invisible-edits 'smart)
 
 (global-set-key (kbd "C-c c") 'org-capture)
+
+(setq org-contacts-files "~/Notes/contacts.org")
 
 (setq org-capture-templates
       (quote (
@@ -45,6 +48,16 @@
 
               ("j" "journal" entry (file+datetree "~/Notes/diary.org")
                "* %?\n%U\n" :clock-in t :clock-resume t)
+
+              ("c" "contact" entry (file "~/Notes/contacts.org")
+               "* %(org-contacts-template-name) %^g
+:PROPERTIES:
+:EMAIL: %(org-contacts-template-email)
+:PHONE: %^{Phone Number}
+:ADDRESS: %^{Adress}
+:BIRTHDAY: %^{Birthday}
+:NOTE: %^{Note}
+:END:" :empty-lines 0)
               )))
 
 (org-babel-do-load-languages
