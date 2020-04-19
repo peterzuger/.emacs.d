@@ -49,6 +49,7 @@
         company-irony           ;; company-mode completion back-end for irony-mode
         company-jedi            ;; company-mode completion back-end for Python JEDI
         company-shell           ;; Company mode backend for shell functions
+        engine-mode             ;; Define and query search engines from within Emacs
         emojify                 ;; Display emojis in Emacs
         fill-column-indicator   ;; Graphically indicate the fill column
         flycheck                ;; On-the-fly syntax checking
@@ -181,6 +182,7 @@
 
 (load-file "~/.emacs.d/ibuffer.el")     ;; ibuffer configuration
 (load-file "~/.emacs.d/org.el")         ;; org mode configuration
+(load-file "~/.emacs.d/engine.el")      ;; engine-mode configuration
 
 (load-file "~/.emacs.d/c.el")           ;; C/C++ configuration
 (load-file "~/.emacs.d/elisp.el")       ;; elisp configuration
