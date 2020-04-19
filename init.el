@@ -43,12 +43,14 @@
 ;; add packages for auto install
 (setq package-list
       '(auctex                  ;; Integrated environment for *TeX*
+        avy                     ;; Jump to arbitrary positions in visible text and select text quickly
         company                 ;; Modular text completion framework
         company-emoji           ;; company-mode backend for emoji
         company-go              ;; company-mode backend for Go (using gocode)
         company-irony           ;; company-mode completion back-end for irony-mode
         company-jedi            ;; company-mode completion back-end for Python JEDI
         company-shell           ;; Company mode backend for shell functions
+        counsel                 ;; Various completion functions using Ivy
         engine-mode             ;; Define and query search engines from within Emacs
         emojify                 ;; Display emojis in Emacs
         fill-column-indicator   ;; Graphically indicate the fill column
@@ -57,6 +59,9 @@
         flycheck-pycheckers     ;; multiple syntax checker for Python, using Flycheck
         ggtags                  ;; emacs frontend to GNU Global source code tagging system
         go-mode                 ;; Major mode for the Go programming language
+        hydra                   ;; Make bindings that stick around.
+        ivy                     ;; Incremental Vertical completYon
+        ivy-hydra               ;; Additional key bindings for Ivy
         js2-mode                ;; Improved JavaScript editing mode
         js2-refactor            ;; A JavaScript refactoring library for emacs.
         magit                   ;; A Git porcelain inside Emacs.
@@ -67,6 +72,7 @@
         pinentry                ;; GnuPG Pinentry server implementation
         ranger                  ;; Make dired more like ranger
         smartparens             ;; Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
+        swiper                  ;; Isearch with an overview. Oh, man!
         whitespace-cleanup-mode ;; Intelligently call whitespace-cleanup on save
         xref-js2                ;; Jump to references/definitions using ag & js2-mode's AST
         yasnippet))             ;; Yet another snippet extension for Emacs.
@@ -183,6 +189,7 @@
 (load-file "~/.emacs.d/ibuffer.el")     ;; ibuffer configuration
 (load-file "~/.emacs.d/org.el")         ;; org mode configuration
 (load-file "~/.emacs.d/engine.el")      ;; engine-mode configuration
+(load-file "~/.emacs.d/swiper.el")      ;; swiper/ivy/counsel configuration
 
 (load-file "~/.emacs.d/c.el")           ;; C/C++ configuration
 (load-file "~/.emacs.d/elisp.el")       ;; elisp configuration
