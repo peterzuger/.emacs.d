@@ -148,15 +148,17 @@
 (global-emojify-mode t)
 
 (defun fmq-compilation-finish (buffer status)
-  (call-process "notify-send" nil nil nil
-                "-a" "emacs"
-                "-i" (format "/usr/share/emacs/%s/etc/images/icons/hicolor/32x32/apps/emacs.png" emacs-version)
-                "Compilation finished"
-                status))
+  "Create a desktop notification on compilation finish with the STATUS.
+Only creates a notification if BUFFER is *compilation*."
+  (when (string= (buffer-name buffer) "*compilation*")
+    (call-process "notify-send" nil nil nil
+                  "-a" "emacs"
+                  "-i" (format "/usr/share/emacs/%s/etc/images/icons/hicolor/32x32/apps/emacs.png" emacs-version)
+                  "Compilation finished"
+                  status)))
 
 (setq compilation-finish-functions
-      (append compilation-finish-functions
-              '(fmq-compilation-finish)))
+      '(fmq-compilation-finish))
 
 (setq yas-snippet-dirs
       '("~/.emacs.d/snippets"))
