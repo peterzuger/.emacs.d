@@ -42,7 +42,8 @@
 
 ;; add packages for auto install
 (setq package-list
-      '(auctex                  ;; Integrated environment for *TeX*
+      '(ace-window              ;; Quickly switch windows
+        auctex                  ;; Integrated environment for *TeX*
         avy                     ;; Jump to arbitrary positions in visible text and select text quickly
         company                 ;; Modular text completion framework
         company-emoji           ;; company-mode backend for emoji
@@ -132,6 +133,7 @@
                                  (when (get-buffer "*compilation*")
                                    (pop-to-buffer "*compilation*"))))
 (global-set-key (kbd "<f6>") 'magit-status)
+(global-set-key (kbd "M-o") 'ace-window)
 
 (smartparens-global-mode t)                                  ;; global (){} completion
 (show-smartparens-global-mode t)                             ;; gloabal (){} highlighting
