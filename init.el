@@ -173,16 +173,6 @@
                          company-keywords
                          company-yasnippet))
 
-;; enable some disabled commands
-(defun downcase-char (arg)
-  "Lowercasify ARG chars starting from point.  Point doesn't move."
-  (interactive "p")
-  (save-excursion
-    (downcase-region (point) (progn (forward-char arg) (point)))))
-
-(global-set-key "" (quote upcase-char))
-(global-set-key "" (quote downcase-char))
-
 ;; load some additional configurations
 (when (eq system-type 'gnu/linux)(load-file "~/.emacs.d/linux.el")) ;; Linux
 (when (require 'mu4e nil 'noerror)
