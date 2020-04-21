@@ -169,11 +169,11 @@ Only creates a notification if BUFFER is *compilation*."
             (global-company-mode)))
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 2)
-(setq company-backends '(company-emoji
+(setq company-backends '(company-yasnippet
                          company-files
                          company-capf
                          company-keywords
-                         company-yasnippet))
+                         company-emoji))
 
 ;; load some additional configurations
 (when (eq system-type 'gnu/linux)(load-file "~/.emacs.d/linux.el")) ;; Linux
