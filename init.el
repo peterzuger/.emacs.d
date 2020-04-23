@@ -71,6 +71,7 @@
         org-plus-contrib        ;; Outline-based notes management and organizer
         pdf-tools               ;; Support library for PDF documents.
         pinentry                ;; GnuPG Pinentry server implementation
+        python-black            ;; Reformat Python using python-black
         ranger                  ;; Make dired more like ranger
         smartparens             ;; Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
         swiper                  ;; Isearch with an overview. Oh, man!

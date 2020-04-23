@@ -33,6 +33,7 @@
 (add-hook 'python-mode-hook
           (lambda()
             (add-to-list 'company-backends 'company-jedi)
-            (flycheck-pycheckers-setup)))
+            (flycheck-pycheckers-setup)
+            (python-black-on-save-mode)))
 
 ;;; python.el ends here

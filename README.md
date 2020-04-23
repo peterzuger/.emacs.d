@@ -37,6 +37,7 @@ To use my ```~/.emacs.d``` you will need to install the following packages:
 | Emacs Package | Prerequisites                                                                        | Link                                   |
 |---------------|--------------------------------------------------------------------------------------|----------------------------------------|
 | auctex        | [Texlive](https://www.archlinux.org/groups/x86_64/texlive-most/)                     | https://www.tug.org/texlive/           |
+| black         | [python-black](https://www.archlinux.org/packages/community/any/python-black/)       | https://github.com/psf/black           |
 | ggtags        | [GNU global](https://aur.archlinux.org/packages/global/)                             | https://www.gnu.org/software/global/   |
 | ggtags        | [ctags](https://www.archlinux.org/packages/extra/x86_64/ctags/)                      | http://ctags.sourceforge.net/          |
 | go-mode       | [go](https://www.archlinux.org/packages/community/x86_64/go/)                        | https://golang.org/                    |
