@@ -2,5 +2,5 @@
 # name: ifmain
 # key: ifmain
 # --
-if __name__ == '__main__':
+if __name__ == "__main__":
     ${1:main()}
