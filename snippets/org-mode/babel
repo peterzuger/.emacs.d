@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: babel
+# key: babel
+# --
+#+NAME: ${1:name}
+#+begin_src ${2:language} ${3::results silent}
+$0
+#+end_src

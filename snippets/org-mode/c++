@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: c++
+# key: c++
+# --
+#+begin_src C++ ${1::results silent} :includes ${2:<iostream>}
+$0
+#+end_src

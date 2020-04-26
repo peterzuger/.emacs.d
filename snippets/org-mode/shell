@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: shell
+# key: shell
+# --
+#+NAME: ${1:name}
+#+begin_src sh ${2:$$(yas-choose-value '("-n" "+n"))}
+$0
+#+end_src

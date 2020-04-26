@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: python
+# key: python
+# --
+#+begin_src python ${1::results silent}
+$0
+#+end_src
