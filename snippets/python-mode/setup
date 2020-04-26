@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: setup
+# key: setup
+# --
+from setuptools import setup
+
+setup(
+    name = "${1:preject-name}",
+    version = "${2:0.0.1}",
+    author = "`(user-full-name)`",
+    author_email = "`(user-mail-address)`",
+    description = ("${3:}"),
+    license = "${4:MIT}",
+    keywords = "${5:keywords}",
+    url = "${6:url}",
+)
