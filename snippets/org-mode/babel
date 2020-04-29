@@ -2,7 +2,8 @@
 # name: babel
 # key: babel
 # --
-#+NAME: ${1:name}
-#+begin_src ${2:language} ${3::results silent}
+#+CAPTION: ${1:caption}
+#+NAME: ${2:name}
+#+begin_src ${3:language} ${4::results silent} ${5::exports ${6:$$(yas-choose-value '("none" "both" "results"))}}
 $0
 #+end_src
