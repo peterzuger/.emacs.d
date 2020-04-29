@@ -2,5 +2,5 @@
 # name: image
 # key: image
 # --
-#+caption: ${1:caption of the image}
+#+CAPTION: ${1:caption of the image}
 [[file:${2:image_path}]]$0
