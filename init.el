@@ -176,6 +176,19 @@ Only creates a notification if BUFFER is *compilation*."
                          company-keywords
                          company-emoji))
 
+(defun defer-garbage-collection-h()
+  "Defer garbage collection."
+  (setq gc-cons-threshold most-positive-fixnum))
+
+(defun restore-garbage-collection-h()
+  "Defer it so that commands launched immediately after will enjoy the benefits."
+  (run-at-time 1 nil
+               (lambda ()
+                 (setq gc-cons-threshold gc-cons-threshold-default))))
+
+(add-hook 'minibuffer-setup-hook #'defer-garbage-collection-h)
+(add-hook 'minibuffer-exit-hook #'restore-garbage-collection-h)
+
 ;; load some additional configurations
 (when (eq system-type 'gnu/linux)(load-file "~/.emacs.d/linux.el")) ;; Linux
 (when (require 'mu4e nil 'noerror)
