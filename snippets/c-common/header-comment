@@ -2,7 +2,7 @@
 # name: header-comment
 # key: header-comment
 # --
-/**
+/** -*- mode: `(format "%s" major-mode)` -*-
  * @file   `(file-name-nondirectory (buffer-file-name))`
  * @author `(getenv "NAME")`
  * @date   `(format-time-string "%d.%m.%Y")`
