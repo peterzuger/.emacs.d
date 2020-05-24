@@ -46,7 +46,7 @@
               ("n" "note" entry (file "~/Notes/refile.org")
                "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
 
-              ("j" "journal" entry (file+datetree "~/Notes/diary.org")
+              ("j" "journal" entry (file+datetree "~/Notes/journal.org")
                "* %?\n%U\n" :clock-in t :clock-resume t)
 
               ("c" "contact" entry (file "~/Notes/contacts.org")
