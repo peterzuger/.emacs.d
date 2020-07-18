@@ -2,10 +2,10 @@
 # name: header-comment
 # key: header-comment
 # --
-/** -*- mode: `(format "%s" major-mode)` -*-
+/**${1: -*- mode: `(format "%s" major-mode)` -*-}
  * @file   `(file-name-nondirectory (buffer-file-name))`
  * @author `(getenv "NAME")`
  * @date   `(format-time-string "%d.%m.%Y")`
- * @brief  $1
+ * @brief  $2
  */
 $0

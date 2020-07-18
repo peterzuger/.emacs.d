@@ -2,15 +2,15 @@
 # name: header
 # key: header
 # --
-/** -*- mode: `(format "%s" major-mode)` -*-
+/**${1: -*- mode: `(format "%s" major-mode)` -*-}
  * @file   `(file-name-nondirectory (buffer-file-name))`
  * @author `(getenv "NAME")`
  * @date   `(format-time-string "%d.%m.%Y")`
- * @brief  $1
+ * @brief  $2
  */
-#ifndef ${2:`(unless (file-name-extension (buffer-file-name)) "__")``(upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))``(if (file-name-extension (buffer-file-name)) (concat "_" (upcase (file-name-extension (buffer-file-name)))) "__")`}
-#define $2
+#ifndef ${3:`(unless (file-name-extension (buffer-file-name)) "__")``(upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))``(if (file-name-extension (buffer-file-name)) (concat "_" (upcase (file-name-extension (buffer-file-name)))) "__")`}
+#define $3
 `(when (string= "h" (file-name-extension (buffer-file-name))) "\n#if defined(__cplusplus)\nextern \"C\"{\n#endif /* defined(__cplusplus) */\n")`
  $0
 `(when (string= "h" (file-name-extension (buffer-file-name))) "\n#if defined(__cplusplus)\n}\n#endif /* defined(__cplusplus) */\n")`
-#endif /* $2 */
+#endif /* $3 */
