@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: shell
-# key: sh
+# key: <sh
 # --
 #+begin_src sh${1: :results ${2:$$(yas-choose-value '("silent" "raw"))}}
 $0

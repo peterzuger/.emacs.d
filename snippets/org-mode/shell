@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: shell
-# key: shell
+# key: <shell
 # --
 #+NAME: ${1:name}
 #+begin_src sh ${2:$$(yas-choose-value '("-n" "+n"))}

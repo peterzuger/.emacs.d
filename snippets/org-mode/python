@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: python
-# key: python
+# key: <py
 # --
 #+begin_src python ${1::results silent}
 $0
