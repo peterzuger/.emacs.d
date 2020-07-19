@@ -146,6 +146,7 @@
 (setq flycheck-checker-error-threshold 1024)                 ;; sometimes this happens
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
 (setq transient-default-level 5)
+(setq magit-diff-refine-hunk 'all)
 (global-emojify-mode t)
 
 (defun fmq-compilation-finish (buffer status)
