@@ -33,6 +33,7 @@
 (setq org-cycle-separator-lines 1)
 (setq org-src-fontify-natively t)
 (setq org-catch-invisible-edits 'smart)
+(setq org-image-actual-width nil)
 
 (global-set-key (kbd "C-c c") 'org-capture)
 
