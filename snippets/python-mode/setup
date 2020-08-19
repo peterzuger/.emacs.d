@@ -2,15 +2,16 @@
 # name: setup
 # key: setup
 # --
+#!/usr/bin/env python
 from setuptools import setup
 
 setup(
-    name = "${1:preject-name}",
-    version = "${2:0.0.1}",
-    author = "`(user-full-name)`",
-    author_email = "`(user-mail-address)`",
-    description = ("${3:}"),
-    license = "${4:MIT}",
-    keywords = "${5:keywords}",
-    url = "${6:url}",
+    name="${1:project-name}",
+    version="${2:0.0.1}",
+    author="`user-full-name`",
+    author_email="`user-mail-address`",
+    description=("${3:}"),
+    license="${4:MIT}",
+    keywords="${5:keywords}",
+    url="${6:url}",
 )

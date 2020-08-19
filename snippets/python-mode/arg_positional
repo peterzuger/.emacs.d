@@ -3,4 +3,4 @@
 # key: arg
 # group: argparser
 # --
-parser.add_argument('${1:varname}', $0)
+parser.add_argument("${1:varname}", help="${2:helptext}", $0)
