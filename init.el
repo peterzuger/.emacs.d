@@ -27,12 +27,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(defvar gc-cons-threshold-default gc-cons-threshold)
-(setq gc-cons-threshold (* 1024 1024 1024)) ;; 1GB
-(run-with-idle-timer 5 nil
-                     (lambda()
-                       (setq gc-cons-threshold gc-cons-threshold-default)))
-
 (require 'package)
 
 ;; add elpa and melpa archive
@@ -104,11 +98,6 @@
 ;; core emacs config
 (add-to-list 'default-frame-alist '(fullscreen . maximized)) ;; start emacs in fullscreen
 (setq enable-recursive-minibuffers t)                        ;; enable minibuffers inside minibuffers
-(setq global-linum-mode t)                                   ;; display line,column numbers
-(setq column-number-mode t)                                  ;; "
-(menu-bar-mode -1)                                           ;; remove the menue bar
-(tool-bar-mode -1)                                           ;; remove the toolbar
-(scroll-bar-mode -1)                                         ;; remove the scrollbar
 (setq ring-bell-function 'ignore)                            ;; no audible bell
 (setq-default indent-tabs-mode nil)                          ;; DONT EVER USE TABS !!
 (setq default-tab-width 4)                                   ;; use 4 spaces
@@ -121,7 +110,6 @@
 (setq delete-old-versions t)                                 ;; Automatically delete excess backups
 (setq kept-new-versions 20)                                  ;; how many of the newest versions to keep
 (setq kept-old-versions 5)                                   ;; and how many of the old
-(setq use-dialog-box nil)                                    ;; don't use dialog boxes
 (setq vc-follow-symlinks t)                                  ;; always follow symlinks
 (setq help-window-select t)                                  ;; automatically select help windows
 (defalias 'yes-or-no-p 'y-or-n-p)                            ;; replace yes or no prompts by y-or-n prompts
