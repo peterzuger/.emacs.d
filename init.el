@@ -46,6 +46,7 @@
         company-jedi            ;; company-mode completion back-end for Python JEDI
         company-shell           ;; Company mode backend for shell functions
         counsel                 ;; Various completion functions using Ivy
+        dockerfile-mode         ;; Major mode for editing Docker's Dockerfiles
         engine-mode             ;; Define and query search engines from within Emacs
         emojify                 ;; Display emojis in Emacs
         fill-column-indicator   ;; Graphically indicate the fill column
