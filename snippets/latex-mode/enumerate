@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: nlist
+# key: nlist
+# --
+\begin{enumerate}
+\item $0
+\end{enumerate}

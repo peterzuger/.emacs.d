@@ -1,0 +1,26 @@
+# -*- mode: snippet -*-
+# name: beamer
+# key: beamer
+# --
+\documentclass{beamer}
+
+\usetheme{${1:default}}
+\usecolortheme{${2:default}}
+
+\title{${3:Title}}
+\author{`(getenv "NAME")`}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage{}
+\end{frame}
+
+\begin{frame}{Contents}
+  \tableofcontents
+\end{frame}
+
+$0
+
+\end{document}
