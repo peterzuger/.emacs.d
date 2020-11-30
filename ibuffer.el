@@ -65,6 +65,7 @@
                ("emacs" (or
                          (name . "^\\*scratch\\*$")
                          (name . "^\\*Messages\\*$")))
+               ("org" (mode . org-mode))
                ("mu4e" (or
                         (mode . message-mode)
                         (mode . mail-mode)))))))
