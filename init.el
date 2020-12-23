@@ -124,6 +124,8 @@
                                    (pop-to-buffer "*compilation*"))))
 (global-set-key (kbd "<f6>") 'magit-status)
 (global-set-key (kbd "M-o") 'ace-window)
+(global-set-key (kbd "C-x C-l") 'downcase-dwim)
+(global-set-key (kbd "C-x C-u") 'upcase-dwim)
 
 (smartparens-global-mode t)                                  ;; global (){} completion
 (show-smartparens-global-mode t)                             ;; gloabal (){} highlighting
