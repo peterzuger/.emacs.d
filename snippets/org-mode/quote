@@ -2,6 +2,6 @@
 # name: quote
 # key: <quote
 # --
-#+begin_quote
+#+BEGIN_QUOTE
 $0
-#+end_quote
+#+END_QUOTE

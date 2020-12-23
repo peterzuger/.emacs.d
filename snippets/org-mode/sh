@@ -2,6 +2,6 @@
 # name: shell
 # key: <sh
 # --
-#+begin_src sh${1: :results ${2:$$(yas-choose-value '("silent" "raw"))}}
+#+BEGIN_SRC sh${1: :results ${2:$$(yas-choose-value '("silent" "raw"))}}
 $0
-#+end_src
+#+END_SRC

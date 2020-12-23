@@ -2,7 +2,7 @@
 # name: dot
 # key: dot
 # --
-#+begin_src dot :file ${1:file} :cmdline -t${2:pdf} :exports none :results silent
+#+BEGIN_SRC dot :file ${1:file} :cmdline -t${2:pdf} :exports none :results silent
 $0
-#+end_src
+#+END_SRC
 [[file:${3:path}]]

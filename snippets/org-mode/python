@@ -2,6 +2,6 @@
 # name: python
 # key: <py
 # --
-#+begin_src python ${1::results silent}
+#+BEGIN_SRC python ${1::results silent}
 $0
-#+end_src
+#+END_SRC

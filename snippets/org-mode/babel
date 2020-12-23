@@ -4,6 +4,6 @@
 # --
 #+CAPTION: ${1:caption}
 #+NAME: ${2:name}
-#+begin_src ${3:language}${4: :results ${5:$$(yas-choose-value '("silent" "raw"))}}${6: :exports ${7:$$(yas-choose-value '("none" "both" "results"))}}
+#+BEGIN_SRC ${3:language}${4: :results ${5:$$(yas-choose-value '("silent" "raw"))}}${6: :exports ${7:$$(yas-choose-value '("none" "both" "results"))}}
 $0
-#+end_src
+#+END_SRC
