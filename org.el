@@ -34,6 +34,7 @@
 (setq org-src-fontify-natively t)
 (setq org-catch-invisible-edits 'smart)
 (setq org-image-actual-width nil)
+(setq org-return-follows-link t)
 
 (defun org-summary-todo (n-done n-not-done)
   "Switch entry to DONE when all subentries are done, to TODO otherwise."
