@@ -1,0 +1,55 @@
+# -*- mode: snippet -*-
+# name: mp-type
+# key: mp-type
+# --
+typedef struct _${1:`(file-name-nondirectory (directory-file-name (file-name-directory (buffer-file-name))))`}_$2_obj_t{
+    // base represents some basic information, like type
+    mp_obj_base_t base;
+
+}$1_$2_obj_t;
+
+
+mp_obj_t $1_$2_make_new(const mp_obj_type_t* type, size_t n_args, size_t n_kw, const mp_obj_t* args);
+STATIC void $1_$2_print(const mp_print_t* print, mp_obj_t self_in, mp_print_kind_t kind);
+
+
+STATIC const mp_rom_map_elem_t $1_$2_locals_dict_table[]={
+    // class methods
+};
+STATIC MP_DEFINE_CONST_DICT($1_$2_locals_dict,$1_$2_locals_dict_table);
+
+
+const mp_obj_type_t $1_$2_type={
+    // "inherit" the type "type"
+    { &mp_type_type },
+    // give it a name
+    .name = MP_QSTR_$2,
+    // give it a print-function
+    .print = $1_$2_print,
+    // give it a constructor
+    .make_new = $1_$2_make_new,
+    // and the global members
+    .locals_dict = (mp_obj_dict_t*)&$1_$2_locals_dict,
+};
+
+mp_obj_t $1_$2_make_new(const mp_obj_type_t* type,
+                                           size_t n_args,
+                                           size_t n_kw,
+                                           const mp_obj_t* args){
+    mp_arg_check_num(n_args, n_kw, 1, 1, false);
+
+    // raises MemoryError
+    $1_$2_obj_t* self = m_new_obj($1_$2_obj_t);
+
+    self->base.type = &$1_$2_type;
+
+    $0
+
+    return MP_OBJ_FROM_PTR(self);
+}
+
+STATIC void $1_$2_print(const mp_print_t* print,
+                                           mp_obj_t self_in, mp_print_kind_t kind){
+    //$1_$2_obj_t* self = MP_OBJ_TO_PTR(self_in);
+    mp_printf(print, "$2()");
+}

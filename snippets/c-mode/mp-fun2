@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: mp-fun2
+# key: mp-fun2
+# --
+STATIC mp_obj_t ${1:`(file-name-nondirectory (directory-file-name (file-name-directory (buffer-file-name))))`}_$2(mp_obj_t $3, mp_obj_t $4){
+    $0
+}
+STATIC MP_DEFINE_CONST_FUN_OBJ_2($1_$2_fun_obj, $1_$2);
