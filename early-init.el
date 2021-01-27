@@ -36,6 +36,7 @@
 (menu-bar-mode -1)                                           ;; remove the menue bar
 (tool-bar-mode -1)                                           ;; remove the toolbar
 (scroll-bar-mode -1)                                         ;; remove the scrollbar
+(mouse-avoidance-mode 'exile)                                ;; exile the mouse cursor
 (setq global-linum-mode t)                                   ;; display line,column numbers
 (setq column-number-mode t)                                  ;; "
 (setq use-dialog-box nil)                                    ;; don't use dialog boxes
