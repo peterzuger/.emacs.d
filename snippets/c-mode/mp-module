@@ -41,7 +41,7 @@
 
 $0
 
-STATIC const mp_map_elem_t $1_globals_table[] = {
+STATIC const mp_rom_map_elem_t $1_globals_table[] = {
     { MP_OBJ_NEW_QSTR(MP_QSTR___name__), MP_OBJ_NEW_QSTR(MP_QSTR_$1) },
 };
 
