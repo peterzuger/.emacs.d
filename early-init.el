@@ -40,5 +40,6 @@
 (setq global-linum-mode t)                                   ;; display line,column numbers
 (setq column-number-mode t)                                  ;; "
 (setq use-dialog-box nil)                                    ;; don't use dialog boxes
+(setq split-height-threshold 100)                            ;; don't split horizontally
 
 ;;; early-init.el ends here
