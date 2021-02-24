@@ -49,7 +49,7 @@
 
 (setq org-capture-templates
       (quote (
-              ("t" "todo" entry (file "~/Notes/refile.org")
+              ("t" "todo" entry (file "~/Notes/todo.org")
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
 
               ("n" "note" entry (file "~/Notes/refile.org")
