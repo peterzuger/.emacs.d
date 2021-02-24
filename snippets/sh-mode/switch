@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: switch
+# key: switch
+# --
+case $1 in
+    $0
+esac
