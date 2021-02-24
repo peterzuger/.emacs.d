@@ -55,6 +55,7 @@
         flycheck-pycheckers     ;; multiple syntax checker for Python, using Flycheck
         ggtags                  ;; emacs frontend to GNU Global source code tagging system
         go-mode                 ;; Major mode for the Go programming language
+        highlight-indent-guides ;; Minor mode to highlight indentation
         hydra                   ;; Make bindings that stick around.
         ivy                     ;; Incremental Vertical completYon
         ivy-hydra               ;; Additional key bindings for Ivy
@@ -139,6 +140,7 @@
 (setq transient-default-level 5)
 (setq magit-diff-refine-hunk 'all)
 (global-emojify-mode t)
+(setq highlight-indent-guides-method 'character)
 
 (defun fmq-compilation-finish (buffer status)
   "Create a desktop notification on compilation finish with the STATUS.
