@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: mp-module-init
+# key: __init__
+# --
+STATIC mp_obj_t ${1:`(file-name-nondirectory (directory-file-name (file-name-directory (buffer-file-name))))`}___init__(){
+    $0
+    return mp_const_none;
+}
+STATIC MP_DEFINE_CONST_FUN_OBJ_0($1___init___fun_obj, $1___init__);
