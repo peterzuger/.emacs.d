@@ -132,7 +132,6 @@
 (ranger-override-dired-mode nil)                             ;; use ranger instead of dired
 (setq ranger-override-dired 'ranger)                         ;; use ranger not deer
 (setq ranger-cleanup-eagerly t)                              ;; auto kill unused buffers
-(add-hook 'before-save-hook 'whitespace-cleanup)             ;; clean whitespace
 (global-flycheck-mode)                                       ;; enable flycheck globaly
 (setq flycheck-checker-error-threshold 1024)                 ;; sometimes this happens
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
@@ -140,6 +139,13 @@
 (setq magit-diff-refine-hunk 'all)
 (global-emojify-mode t)
 (setq highlight-indent-guides-method 'character)
+
+(defun my-whitespace-cleanup ()
+  "Clean up the whitespace in a buffer, unless that buffer is in 'fundamental-mode'."
+  (unless (eq major-mode 'fundamental-mode)
+    (whitespace-cleanup)))
+
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 (defun fmq-compilation-finish (buffer status)
   "Create a desktop notification on compilation finish with the STATUS.
