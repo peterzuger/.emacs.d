@@ -71,7 +71,6 @@
         ranger                  ;; Make dired more like ranger
         smartparens             ;; Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
         swiper                  ;; Isearch with an overview. Oh, man!
-        whitespace-cleanup-mode ;; Intelligently call whitespace-cleanup on save
         xref-js2                ;; Jump to references/definitions using ag & js2-mode's AST
         yasnippet))             ;; Yet another snippet extension for Emacs.
 (package-initialize)
