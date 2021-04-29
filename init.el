@@ -141,7 +141,7 @@
   (unless (eq major-mode 'fundamental-mode)
     (whitespace-cleanup)))
 
-(add-hook 'before-save-hook 'whitespace-cleanup)
+(add-hook 'before-save-hook 'my-whitespace-cleanup)
 
 (defun fmq-compilation-finish (buffer status)
   "Create a desktop notification on compilation finish with the STATUS.
