@@ -122,7 +122,6 @@
                                  (interactive)
                                  (when (get-buffer "*compilation*")
                                    (pop-to-buffer "*compilation*"))))
-(global-set-key (kbd "<f6>") 'magit-status)
 (global-set-key (kbd "M-o") 'ace-window)
 (global-set-key (kbd "C-x C-l") 'downcase-dwim)
 (global-set-key (kbd "C-x C-u") 'upcase-dwim)
@@ -134,9 +133,6 @@
 (setq ranger-cleanup-eagerly t)                              ;; auto kill unused buffers
 (global-flycheck-mode)                                       ;; enable flycheck globaly
 (setq flycheck-checker-error-threshold 1024)                 ;; sometimes this happens
-(add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
-(setq transient-default-level 5)
-(setq magit-diff-refine-hunk 'all)
 (global-emojify-mode t)
 (setq highlight-indent-guides-method 'character)
 
@@ -194,6 +190,7 @@ Only creates a notification if BUFFER is *compilation*."
   (load-file "~/.emacs.d/mail.el"))     ;; Mail configuration
 
 (load-file "~/.emacs.d/ibuffer.el")     ;; ibuffer configuration
+(load-file "~/.emacs.d/magit.el")       ;; magit configuration
 (load-file "~/.emacs.d/org.el")         ;; org mode configuration
 (load-file "~/.emacs.d/engine.el")      ;; engine-mode configuration
 (load-file "~/.emacs.d/swiper.el")      ;; swiper/ivy/counsel configuration
