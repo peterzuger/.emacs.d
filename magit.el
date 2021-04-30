@@ -47,7 +47,7 @@
   "Ignored files section for magit-status buffer."
   (-when-let (files (magit-ignored-files))
     (magit-insert-section (ignored)
-      (magit-insert-heading "Ignored files")
+      (magit-insert-heading "Ignored files:")
       (dolist (file files)
         (magit-insert-section (file file)
           (insert (propertize file 'font-lock-face 'magit-filename) ?\n)))
