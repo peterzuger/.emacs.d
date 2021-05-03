@@ -75,7 +75,8 @@
 (setq use-package-always-ensure t)
 
 
-(use-package ace-window)                ;; Quickly switch windows
+(use-package ace-window                 ;; Quickly switch windows
+  :bind* ("M-o" . ace-window))
 
 (use-package tex                        ;; Integrated environment for *TeX*
   :ensure auctex)
@@ -174,7 +175,6 @@
                                  (interactive)
                                  (when (get-buffer "*compilation*")
                                    (pop-to-buffer "*compilation*"))))
-(global-set-key (kbd "M-o") 'ace-window)
 (global-set-key (kbd "C-x C-l") 'downcase-dwim)
 (global-set-key (kbd "C-x C-u") 'upcase-dwim)
 
