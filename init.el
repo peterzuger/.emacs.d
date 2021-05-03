@@ -29,60 +29,57 @@
 
 (require 'package)
 
+;; ensure use-package is installed
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
 ;; add elpa and melpa archive
 (setq package-archives '(("org"   . "http://orgmode.org/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
                          ("melpa" . "http://melpa.org/packages/")))
 
-;; add packages for auto install
-(setq package-list
-      '(ace-window              ;; Quickly switch windows
-        auctex                  ;; Integrated environment for *TeX*
-        avy                     ;; Jump to arbitrary positions in visible text and select text quickly
-        company                 ;; Modular text completion framework
-        company-emoji           ;; company-mode backend for emoji
-        company-go              ;; company-mode backend for Go (using gocode)
-        company-irony           ;; company-mode completion back-end for irony-mode
-        company-jedi            ;; company-mode completion back-end for Python JEDI
-        company-shell           ;; Company mode backend for shell functions
-        counsel                 ;; Various completion functions using Ivy
-        dockerfile-mode         ;; Major mode for editing Docker's Dockerfiles
-        engine-mode             ;; Define and query search engines from within Emacs
-        emojify                 ;; Display emojis in Emacs
-        fill-column-indicator   ;; Graphically indicate the fill column
-        flycheck                ;; On-the-fly syntax checking
-        flycheck-irony          ;; Flycheck: C/C++ support via Irony
-        flycheck-pycheckers     ;; multiple syntax checker for Python, using Flycheck
-        ggtags                  ;; emacs frontend to GNU Global source code tagging system
-        go-mode                 ;; Major mode for the Go programming language
-        highlight-indent-guides ;; Minor mode to highlight indentation
-        hydra                   ;; Make bindings that stick around.
-        ivy                     ;; Incremental Vertical completYon
-        ivy-hydra               ;; Additional key bindings for Ivy
-        js2-mode                ;; Improved JavaScript editing mode
-        js2-refactor            ;; A JavaScript refactoring library for emacs.
-        magit                   ;; A Git porcelain inside Emacs.
-        markdown-mode           ;; Major mode for Markdown-formatted text
-        org                     ;; Outline-based notes management and organizer
-        org-plus-contrib        ;; Outline-based notes management and organizer
-        pdf-tools               ;; Support library for PDF documents.
-        pinentry                ;; GnuPG Pinentry server implementation
-        python-black            ;; Reformat Python using python-black
-        ranger                  ;; Make dired more like ranger
-        smartparens             ;; Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
-        swiper                  ;; Isearch with an overview. Oh, man!
-        xref-js2                ;; Jump to references/definitions using ag & js2-mode's AST
-        yasnippet))             ;; Yet another snippet extension for Emacs.
-(package-initialize)
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
 
-;; fetch the list of packages available
-(unless package-archive-contents
-  (package-refresh-contents))
-
-;; install the missing packages
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
+(use-package ace-window)                ;; Quickly switch windows
+(use-package tex                        ;; Integrated environment for *TeX*
+  :ensure auctex)
+(use-package avy)                       ;; Jump to arbitrary positions in visible text and select text quickly
+(use-package company)                   ;; Modular text completion framework
+(use-package company-emoji)             ;; company-mode backend for emoji
+(use-package company-go)                ;; company-mode backend for Go (using gocode)
+(use-package company-irony)             ;; company-mode completion back-end for irony-mode
+(use-package company-jedi)              ;; company-mode completion back-end for Python JEDI
+(use-package company-shell)             ;; Company mode backend for shell functions
+(use-package counsel)                   ;; Various completion functions using Ivy
+(use-package dockerfile-mode)           ;; Major mode for editing Docker's Dockerfiles
+(use-package engine-mode)               ;; Define and query search engines from within Emacs
+(use-package emojify)                   ;; Display emojis in Emacs
+(use-package fill-column-indicator)     ;; Graphically indicate the fill column
+(use-package flycheck)                  ;; On-the-fly syntax checking
+(use-package flycheck-irony)            ;; Flycheck: C/C++ support via Irony
+(use-package flycheck-pycheckers)       ;; multiple syntax checker for Python, using Flycheck
+(use-package ggtags)                    ;; emacs frontend to GNU Global source code tagging system
+(use-package go-mode)                   ;; Major mode for the Go programming language
+(use-package highlight-indent-guides)   ;; Minor mode to highlight indentation
+(use-package hydra)                     ;; Make bindings that stick around.
+(use-package ivy)                       ;; Incremental Vertical completYon
+(use-package ivy-hydra)                 ;; Additional key bindings for Ivy
+(use-package js2-mode)                  ;; Improved JavaScript editing mode
+(use-package js2-refactor)              ;; A JavaScript refactoring library for emacs.
+(use-package magit)                     ;; A Git porcelain inside Emacs.
+(use-package markdown-mode)             ;; Major mode for Markdown-formatted text
+(use-package org                        ;; Outline-based notes management and organizer
+  :ensure org-plus-contrib)
+(use-package pdf-tools)                 ;; Support library for PDF documents.
+(use-package pinentry)                  ;; GnuPG Pinentry server implementation
+(use-package python-black)              ;; Reformat Python using python-black
+(use-package ranger)                    ;; Make dired more like ranger
+(use-package smartparens)               ;; Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
+(use-package swiper)                    ;; Isearch with an overview. Oh, man!
+(use-package xref-js2)                  ;; Jump to references/definitions using ag & js2-mode's AST
+(use-package yasnippet)                 ;; Yet another snippet extension for Emacs.
 
 ;; dont display the splash screen when a file is opened directly
 (when (> (length command-line-args) 1)
