@@ -71,7 +71,8 @@
 (use-package magit)                     ;; A Git porcelain inside Emacs.
 (use-package markdown-mode)             ;; Major mode for Markdown-formatted text
 (use-package org                        ;; Outline-based notes management and organizer
-  :ensure org-plus-contrib)
+  :ensure org-plus-contrib
+  :pin org)
 (use-package pdf-tools)                 ;; Support library for PDF documents.
 (use-package pinentry)                  ;; GnuPG Pinentry server implementation
 (use-package python-black)              ;; Reformat Python using python-black
