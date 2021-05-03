@@ -29,6 +29,38 @@
 
 (require 'package)
 
+;; dont display the splash screen when a file is opened directly
+(when (> (length command-line-args) 1)
+  (setq inhibit-splash-screen t))
+
+;; don't quit immediately
+(when (display-graphic-p)
+  (setq confirm-kill-emacs 'y-or-n-p))
+
+;; please dont litter my init.el
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file t)
+
+;; core emacs config
+(add-to-list 'default-frame-alist '(fullscreen . maximized)) ;; start emacs in fullscreen
+(setq enable-recursive-minibuffers t)                        ;; enable minibuffers inside minibuffers
+(setq ring-bell-function 'ignore)                            ;; no audible bell
+(setq-default indent-tabs-mode nil)                          ;; DONT EVER USE TABS !!
+(setq sentence-end-double-space nil)                         ;; one space is enough
+(setq default-tab-width 4)                                   ;; use 4 spaces
+(setq tab-width 4)                                           ;; use 4 spaces
+(setq compilation-scroll-output t)                           ;; scroll with the output
+(setq create-lockfiles nil)                                  ;; don't create .#<filename> files
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))) ;; move backup files to ~/.emacs.d/backup
+(setq backup-by-copying t)                                   ;; Don't delink hardlinks
+(setq version-control t)                                     ;; Use version numbers on backups
+(setq delete-old-versions t)                                 ;; Automatically delete excess backups
+(setq kept-new-versions 20)                                  ;; how many of the newest versions to keep
+(setq kept-old-versions 5)                                   ;; and how many of the old
+(setq vc-follow-symlinks t)                                  ;; always follow symlinks
+(setq help-window-select t)                                  ;; automatically select help windows
+(defalias 'yes-or-no-p 'y-or-n-p)                            ;; replace yes or no prompts by y-or-n prompts
+
 ;; ensure use-package is installed
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -85,37 +117,17 @@
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
   (yas-global-mode))
 
-;; dont display the splash screen when a file is opened directly
-(when (> (length command-line-args) 1)
-  (setq inhibit-splash-screen t))
-
-;; don't quit immediately
-(when (display-graphic-p)
-  (setq confirm-kill-emacs 'y-or-n-p))
-
-;; please dont litter my init.el
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file t)
-
-;; core emacs config
-(add-to-list 'default-frame-alist '(fullscreen . maximized)) ;; start emacs in fullscreen
-(setq enable-recursive-minibuffers t)                        ;; enable minibuffers inside minibuffers
-(setq ring-bell-function 'ignore)                            ;; no audible bell
-(setq-default indent-tabs-mode nil)                          ;; DONT EVER USE TABS !!
-(setq sentence-end-double-space nil)                         ;; one space is enough
-(setq default-tab-width 4)                                   ;; use 4 spaces
-(setq tab-width 4)                                           ;; use 4 spaces
-(setq compilation-scroll-output t)                           ;; scroll with the output
-(setq create-lockfiles nil)                                  ;; don't create .#<filename> files
-(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))) ;; move backup files to ~/.emacs.d/backup
-(setq backup-by-copying t)                                   ;; Don't delink hardlinks
-(setq version-control t)                                     ;; Use version numbers on backups
-(setq delete-old-versions t)                                 ;; Automatically delete excess backups
-(setq kept-new-versions 20)                                  ;; how many of the newest versions to keep
-(setq kept-old-versions 5)                                   ;; and how many of the old
-(setq vc-follow-symlinks t)                                  ;; always follow symlinks
-(setq help-window-select t)                                  ;; automatically select help windows
-(defalias 'yes-or-no-p 'y-or-n-p)                            ;; replace yes or no prompts by y-or-n prompts
+;; package config
+;; TODO: move into use package section
+(smartparens-global-mode t)                                  ;; global (){} completion
+(show-smartparens-global-mode t)                             ;; gloabal (){} highlighting
+(ranger-override-dired-mode nil)                             ;; use ranger instead of dired
+(setq ranger-override-dired 'ranger)                         ;; use ranger not deer
+(setq ranger-cleanup-eagerly t)                              ;; auto kill unused buffers
+(global-flycheck-mode)                                       ;; enable flycheck globaly
+(setq flycheck-checker-error-threshold 1024)                 ;; sometimes this happens
+(global-emojify-mode t)
+(setq highlight-indent-guides-method 'character)
 
 ;; keybindings
 (global-set-key (kbd "<f5>") 'compile)
@@ -127,16 +139,6 @@
 (global-set-key (kbd "M-o") 'ace-window)
 (global-set-key (kbd "C-x C-l") 'downcase-dwim)
 (global-set-key (kbd "C-x C-u") 'upcase-dwim)
-
-(smartparens-global-mode t)                                  ;; global (){} completion
-(show-smartparens-global-mode t)                             ;; gloabal (){} highlighting
-(ranger-override-dired-mode nil)                             ;; use ranger instead of dired
-(setq ranger-override-dired 'ranger)                         ;; use ranger not deer
-(setq ranger-cleanup-eagerly t)                              ;; auto kill unused buffers
-(global-flycheck-mode)                                       ;; enable flycheck globaly
-(setq flycheck-checker-error-threshold 1024)                 ;; sometimes this happens
-(global-emojify-mode t)
-(setq highlight-indent-guides-method 'character)
 
 (defun my-whitespace-cleanup ()
   "Clean up the whitespace in a buffer, unless that buffer is in 'fundamental-mode'."
