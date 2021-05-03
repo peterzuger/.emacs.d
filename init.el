@@ -80,7 +80,10 @@
 (use-package smartparens)               ;; Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
 (use-package swiper)                    ;; Isearch with an overview. Oh, man!
 (use-package xref-js2)                  ;; Jump to references/definitions using ag & js2-mode's AST
-(use-package yasnippet)                 ;; Yet another snippet extension for Emacs.
+(use-package yasnippet                  ;; Yet another snippet extension for Emacs.
+  :config
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+  (yas-global-mode))
 
 ;; dont display the splash screen when a file is opened directly
 (when (> (length command-line-args) 1)
@@ -153,10 +156,6 @@ Only creates a notification if BUFFER is *compilation*."
 
 (setq compilation-finish-functions
       '(fmq-compilation-finish))
-
-(setq yas-snippet-dirs
-      '("~/.emacs.d/snippets"))
-(yas-global-mode)
 
 (add-hook 'after-init-hook
           (lambda()
