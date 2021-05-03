@@ -74,58 +74,94 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+
 (use-package ace-window)                ;; Quickly switch windows
+
 (use-package tex                        ;; Integrated environment for *TeX*
   :ensure auctex)
+
 (use-package avy)                       ;; Jump to arbitrary positions in visible text and select text quickly
+
 (use-package company)                   ;; Modular text completion framework
+
 (use-package company-emoji)             ;; company-mode backend for emoji
+
 (use-package company-go)                ;; company-mode backend for Go (using gocode)
+
 (use-package company-irony)             ;; company-mode completion back-end for irony-mode
+
 (use-package company-jedi)              ;; company-mode completion back-end for Python JEDI
+
 (use-package company-shell)             ;; Company mode backend for shell functions
+
 (use-package counsel)                   ;; Various completion functions using Ivy
+
 (use-package dockerfile-mode)           ;; Major mode for editing Docker's Dockerfiles
+
 (use-package engine-mode)               ;; Define and query search engines from within Emacs
+
 (use-package emojify                    ;; Display emojis in Emacs
   :config
   (global-emojify-mode t))
+
 (use-package fill-column-indicator)     ;; Graphically indicate the fill column
+
 (use-package flycheck                   ;; On-the-fly syntax checking
   :config
   (global-flycheck-mode)                          ;; enable flycheck globaly
   (setq flycheck-checker-error-threshold 1024))   ;; sometimes this happens
+
 (use-package flycheck-irony)            ;; Flycheck: C/C++ support via Irony
+
 (use-package flycheck-pycheckers)       ;; multiple syntax checker for Python, using Flycheck
+
 (use-package ggtags)                    ;; emacs frontend to GNU Global source code tagging system
+
 (use-package go-mode)                   ;; Major mode for the Go programming language
+
 (use-package highlight-indent-guides    ;; Minor mode to highlight indentation
   :config
   (setq highlight-indent-guides-method 'character))
+
 (use-package hydra)                     ;; Make bindings that stick around.
+
 (use-package ivy)                       ;; Incremental Vertical completYon
+
 (use-package ivy-hydra)                 ;; Additional key bindings for Ivy
+
 (use-package js2-mode)                  ;; Improved JavaScript editing mode
+
 (use-package js2-refactor)              ;; A JavaScript refactoring library for emacs.
+
 (use-package magit)                     ;; A Git porcelain inside Emacs.
+
 (use-package markdown-mode)             ;; Major mode for Markdown-formatted text
+
 (use-package org                        ;; Outline-based notes management and organizer
   :ensure org-plus-contrib
   :pin org)
+
 (use-package pdf-tools)                 ;; Support library for PDF documents.
+
 (use-package pinentry)                  ;; GnuPG Pinentry server implementation
+
 (use-package python-black)              ;; Reformat Python using python-black
+
 (use-package ranger                     ;; Make dired more like ranger
   :config
   (ranger-override-dired-mode nil)      ;; use ranger instead of dired
   (setq ranger-override-dired 'ranger)  ;; use ranger not deer
   (setq ranger-cleanup-eagerly t))      ;; auto kill unused buffers
+
 (use-package smartparens                ;; Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
   :config
   (smartparens-global-mode t)           ;; global (){} completion
   (show-smartparens-global-mode t))     ;; gloabal (){} highlighting
+
 (use-package swiper)                    ;; Isearch with an overview. Oh, man!
+
 (use-package xref-js2)                  ;; Jump to references/definitions using ag & js2-mode's AST
+
 (use-package yasnippet                  ;; Yet another snippet extension for Emacs.
   :config
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
