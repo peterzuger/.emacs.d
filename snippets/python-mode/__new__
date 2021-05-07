@@ -3,5 +3,5 @@
 # key: new
 # group: dunder methods
 # --
-def __new__(self${1:, args}):
+def __new__(cls${1:, args}):
     $0
