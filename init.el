@@ -100,6 +100,22 @@
 
 (use-package avy)                       ;; Jump to arbitrary positions in visible text and select text quickly
 
+(use-package cc-mode
+  :ensure nil
+  :bind (:map c-mode-base-map
+              ("C-c C-l" . compile)
+              ("\C-m" . c-context-line-break))
+  :config
+  (setq c-default-style "k&r")
+  (setq c-basic-offset 4)
+  (c-set-offset 'inextern-lang 0)
+
+  ;; c++-mode does not know constexpr
+  (custom-set-variables '(c-noise-macro-names '("constexpr")))
+
+  (sp-local-pair 'c++-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
+  (sp-local-pair 'c-mode "{" nil :post-handlers '(("||\n[i]" "RET"))))
+
 (use-package company                    ;; Modular text completion framework
   :config
   (add-hook 'emacs-lisp-mode-hook
@@ -113,7 +129,12 @@
   :after company)
 
 (use-package company-irony              ;; company-mode completion back-end for irony-mode
-  :after company)
+  :after (company irony)
+  :hook (irony-mode . company-irony-setup-begin-commands)
+  :config
+  (add-hook 'c-mode-common-hook
+            (lambda()
+              (add-to-list 'company-backends 'company-irony))))
 
 (use-package company-jedi               ;; company-mode completion back-end for Python JEDI
   :after company
@@ -169,13 +190,21 @@
   (setq flycheck-checker-error-threshold 1024))   ;; sometimes this happens
 
 (use-package flycheck-irony             ;; Flycheck: C/C++ support via Irony
-  :after flycheck)
+  :after (cc-mode flycheck irony)
+  :config
+  (add-hook 'c-mode-common-hook 'flycheck-irony-setup))
 
 (use-package flycheck-pycheckers        ;; multiple syntax checker for Python, using Flycheck
   :after flycheck
   :hook (python-mode . flycheck-pycheckers-setup))
 
-(use-package ggtags)                    ;; emacs frontend to GNU Global source code tagging system
+(use-package ggtags                     ;; emacs frontend to GNU Global source code tagging system
+  :after cc-mode
+  :config
+  (add-hook 'c-mode-common-hook
+            (lambda()
+              (when (derived-mode-p 'c-mode 'c++-mode)
+                (ggtags-mode 1)))))
 
 (use-package go-mode                    ;; Major mode for the Go programming language
   :after smartparens
@@ -188,7 +217,6 @@
   (sp-local-pair 'go-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
   (add-hook 'go-mode-hook
             (lambda()
-              (yas-minor-mode-on)
               (add-to-list 'company-backends 'company-go)
               (add-hook 'before-save-hook 'gofmt-before-save))))
 
@@ -197,6 +225,14 @@
   (setq highlight-indent-guides-method 'character))
 
 (use-package hydra)                     ;; Make bindings that stick around.
+
+(use-package irony                      ;; C/C++ minor mode powered by libclang
+  :after cc-mode
+  :init
+  (setq irony-additional-clang-options '("-ferror-limit=0"))
+  :hook (irony-mode . irony-cdb-autosetup-compile-options)
+  :config
+  (add-hook 'c-mode-common-hook 'irony-mode))
 
 (use-package ivy                        ;; Incremental Vertical completYon
   :config
@@ -268,6 +304,11 @@
   (magit-add-section-hook 'magit-status-sections-hook
                           'magit-insert-ignored-files
                           'magit-insert-stashes t))
+
+(use-package make-mode
+  :ensure nil
+  :bind (:map makefile-mode-map
+              ("C-c C-l" . compile)))
 
 (use-package markdown-mode)             ;; Major mode for Markdown-formatted text
 
@@ -430,7 +471,6 @@ Only creates a notification if BUFFER is *compilation*."
   (load-file "~/.emacs.d/mail.el"))     ;; Mail configuration
 
 (load-file "~/.emacs.d/ibuffer.el")     ;; ibuffer configuration
-(load-file "~/.emacs.d/c.el")           ;; C/C++ configuration
 
 (load-file "~/.emacs.d/themes.el")      ;; custom themes
 
