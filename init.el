@@ -210,7 +210,41 @@
 (use-package js2-refactor               ;; A JavaScript refactoring library for emacs.
   :after js2-mode)
 
-(use-package magit)                     ;; A Git porcelain inside Emacs.
+(use-package magit                      ;; A Git porcelain inside Emacs.
+  :bind ("<f6>" . magit-status)
+  :config
+  (setq transient-default-level 5)
+  (setq magit-diff-refine-hunk 'all)
+  (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
+
+  (setq magit-section-initial-visibility-alist
+        '((stashes . hide) (ignored . hide) (local . hide)))
+
+  (defun magit-ignored-files ()
+    "Command to show all ignored files."
+    (magit-git-items "ls-files" "--others" "--ignored" "--exclude-standard" "-z" "--directory"))
+
+  (defun magit-insert-ignored-files ()
+    "Ignored files section for magit-status buffer."
+    (-when-let (files (magit-ignored-files))
+      (magit-insert-section (ignored)
+        (magit-insert-heading "Ignored files:")
+        (dolist (file files)
+          (magit-insert-section (file file)
+            (insert (propertize file 'font-lock-face 'magit-filename) ?\n)))
+        (insert ?\n))))
+
+  (magit-add-section-hook 'magit-status-sections-hook
+                          'magit-insert-user-header
+                          'magit-insert-status-headers nil)
+
+  (magit-add-section-hook 'magit-status-sections-hook
+                          'magit-insert-local-branches
+                          'magit-insert-stashes t)
+
+  (magit-add-section-hook 'magit-status-sections-hook
+                          'magit-insert-ignored-files
+                          'magit-insert-stashes t))
 
 (use-package markdown-mode)             ;; Major mode for Markdown-formatted text
 
@@ -330,7 +364,6 @@ Only creates a notification if BUFFER is *compilation*."
   (load-file "~/.emacs.d/mail.el"))     ;; Mail configuration
 
 (load-file "~/.emacs.d/ibuffer.el")     ;; ibuffer configuration
-(load-file "~/.emacs.d/magit.el")       ;; magit configuration
 (load-file "~/.emacs.d/org.el")         ;; org mode configuration
 
 (load-file "~/.emacs.d/c.el")           ;; C/C++ configuration
