@@ -263,7 +263,43 @@
 
 (use-package org                        ;; Outline-based notes management and organizer
   :ensure org-plus-contrib
-  :pin org)
+  :pin org
+  :bind ("C-c c" . org-capture)
+  :config
+  (setq org-src-fontify-natively t)
+  (setq org-src-tab-acts-natively t)
+  (setq org-src-preserve-indentation t)
+  (setq org-cycle-separator-lines 1)
+  (setq org-catch-invisible-edits 'smart)
+  (setq org-image-actual-width nil)
+  (setq org-return-follows-link t)
+  (setq org-contacts-files "~/Notes/contacts.org")
+
+  (defun org-summary-todo (n-done n-not-done)
+    "Switch entry to DONE when all subentries are done, to TODO otherwise."
+    (let (org-log-done org-log-states)   ; turn off logging
+      (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+
+  (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
+
+  (setq org-capture-templates
+        '(("t" "todo" entry (file "~/Notes/todo.org")
+           "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+
+          ("n" "note" entry (file "~/Notes/refile.org")
+           "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
+
+          ("j" "journal" entry (file+datetree "~/Notes/journal.org")
+           "* %?\n%U\n" :clock-in t :clock-resume t)))
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((shell . t)
+     (C . t)
+     (dot . t)
+     (ditaa . t)
+     (emacs-lisp . t)
+     (python . t))))
 
 (use-package pdf-tools                  ;; Support library for PDF documents.
   :magic ("%PDF" . pdf-view-mode)
@@ -383,7 +419,6 @@ Only creates a notification if BUFFER is *compilation*."
   (load-file "~/.emacs.d/mail.el"))     ;; Mail configuration
 
 (load-file "~/.emacs.d/ibuffer.el")     ;; ibuffer configuration
-(load-file "~/.emacs.d/org.el")         ;; org mode configuration
 (load-file "~/.emacs.d/c.el")           ;; C/C++ configuration
 
 (load-file "~/.emacs.d/themes.el")      ;; custom themes
