@@ -169,6 +169,25 @@
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
   (yas-global-mode))
 
+(defun random-character ()
+  "Return a random character."
+  (let ((alnum "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"))
+    (elt alnum (random (length alnum)))))
+
+(defun random-string (length)
+  "Return a random string of LENGTH."
+  (let ((output ""))
+    (dotimes (_ length)
+      (setq output (concat output (string (random-character)))))
+    output))
+
+(defun insert-random-string (arg)
+  "Insert a random string of length ARG or 5."
+  (interactive "P")
+  (let ((str (random-string (if (numberp arg) (abs arg) 5))))
+    (kill-new str)
+    (insert str)))
+
 ;; keybindings
 (global-set-key (kbd "<f5>") 'compile)
 (global-set-key (kbd "<C-f5>") 'recompile)
@@ -176,6 +195,7 @@
                                  (interactive)
                                  (when (get-buffer "*compilation*")
                                    (pop-to-buffer "*compilation*"))))
+(global-set-key (kbd "C-x C-g") 'insert-random-string)
 (global-set-key (kbd "C-x C-l") 'downcase-dwim)
 (global-set-key (kbd "C-x C-u") 'upcase-dwim)
 
