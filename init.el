@@ -190,9 +190,25 @@
 
 (use-package ivy-hydra)                 ;; Additional key bindings for Ivy
 
-(use-package js2-mode)                  ;; Improved JavaScript editing mode
+(use-package js2-mode                   ;; Improved JavaScript editing mode
+  :mode "\\.js\\'"
+  ;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so unbind it.
+  :bind (:map js-mode-map
+              ("M-." . nil)
+              ("C-k" . js2r-kill))
+  :config
+  (setq js-indent-level 4)
 
-(use-package js2-refactor)              ;; A JavaScript refactoring library for emacs.
+  (js2r-add-keybindings-with-prefix "C-c C-r")
+
+  (add-hook 'js2-mode-hook
+            (lambda()
+              (add-hook 'xref-backend-functions 'xref-js2-xref-backend nil t)
+              (js2-imenu-extras-mode)
+              (js2-refactor-mode))))
+
+(use-package js2-refactor               ;; A JavaScript refactoring library for emacs.
+  :after js2-mode)
 
 (use-package magit)                     ;; A Git porcelain inside Emacs.
 
@@ -226,7 +242,8 @@
 (use-package swiper                     ;; Isearch with an overview. Oh, man!
   :bind ("C-s" . swiper))
 
-(use-package xref-js2)                  ;; Jump to references/definitions using ag & js2-mode's AST
+(use-package xref-js2                   ;; Jump to references/definitions using ag & js2-mode's AST
+  :after js2-mode)
 
 (use-package yasnippet                  ;; Yet another snippet extension for Emacs.
   :config
@@ -319,7 +336,6 @@ Only creates a notification if BUFFER is *compilation*."
 (load-file "~/.emacs.d/c.el")           ;; C/C++ configuration
 (load-file "~/.emacs.d/elisp.el")       ;; elisp configuration
 (load-file "~/.emacs.d/html.el")        ;; html configuration
-(load-file "~/.emacs.d/javascript.el")  ;; javascript configuration
 (load-file "~/.emacs.d/python.el")      ;; python configuration
 (load-file "~/.emacs.d/shell.el")       ;; shell configuration
 
