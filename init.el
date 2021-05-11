@@ -114,7 +114,11 @@
             (lambda ()
               (add-to-list 'company-backends 'company-jedi))))
 
-(use-package company-shell)             ;; Company mode backend for shell functions
+(use-package company-shell              ;; Company mode backend for shell functions
+  :config
+  (add-hook 'sh-mode-hook
+            (lambda()
+              (add-to-list 'company-backends 'company-shell))))
 
 (use-package counsel)                   ;; Various completion functions using Ivy
 
@@ -375,7 +379,6 @@ Only creates a notification if BUFFER is *compilation*."
 (load-file "~/.emacs.d/c.el")           ;; C/C++ configuration
 (load-file "~/.emacs.d/elisp.el")       ;; elisp configuration
 (load-file "~/.emacs.d/html.el")        ;; html configuration
-(load-file "~/.emacs.d/shell.el")       ;; shell configuration
 
 (load-file "~/.emacs.d/themes.el")      ;; custom themes
 
