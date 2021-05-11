@@ -106,25 +106,31 @@
             (lambda()
               (add-to-list 'company-backends 'company-elisp))))
 
-(use-package company-emoji)             ;; company-mode backend for emoji
+(use-package company-emoji              ;; company-mode backend for emoji
+  :after company)
 
-(use-package company-go)                ;; company-mode backend for Go (using gocode)
+(use-package company-go                 ;; company-mode backend for Go (using gocode)
+  :after company)
 
-(use-package company-irony)             ;; company-mode completion back-end for irony-mode
+(use-package company-irony              ;; company-mode completion back-end for irony-mode
+  :after company)
 
 (use-package company-jedi               ;; company-mode completion back-end for Python JEDI
+  :after company
   :config
   (add-hook 'python-mode-hook
             (lambda ()
               (add-to-list 'company-backends 'company-jedi))))
 
 (use-package company-shell              ;; Company mode backend for shell functions
+  :after company
   :config
   (add-hook 'sh-mode-hook
             (lambda()
               (add-to-list 'company-backends 'company-shell))))
 
-(use-package counsel)                   ;; Various completion functions using Ivy
+(use-package counsel                    ;; Various completion functions using Ivy
+  :after ivy)
 
 (use-package dockerfile-mode)           ;; Major mode for editing Docker's Dockerfiles
 
@@ -162,14 +168,17 @@
   (global-flycheck-mode)                          ;; enable flycheck globaly
   (setq flycheck-checker-error-threshold 1024))   ;; sometimes this happens
 
-(use-package flycheck-irony)            ;; Flycheck: C/C++ support via Irony
+(use-package flycheck-irony             ;; Flycheck: C/C++ support via Irony
+  :after flycheck)
 
 (use-package flycheck-pycheckers        ;; multiple syntax checker for Python, using Flycheck
+  :after flycheck
   :hook (python-mode . flycheck-pycheckers-setup))
 
 (use-package ggtags)                    ;; emacs frontend to GNU Global source code tagging system
 
 (use-package go-mode                    ;; Major mode for the Go programming language
+  :after smartparens
   :bind (:map go-mode-map
               ("C-c C-l" . compile)
               ("C-c C-f" . gofmt)
@@ -201,7 +210,8 @@
 
   (ivy-mode 1))
 
-(use-package ivy-hydra)                 ;; Additional key bindings for Ivy
+(use-package ivy-hydra                  ;; Additional key bindings for Ivy
+  :after (ivy hydra))
 
 (use-package js2-mode                   ;; Improved JavaScript editing mode
   :mode "\\.js\\'"
@@ -329,6 +339,7 @@
   (show-smartparens-global-mode t))     ;; gloabal (){} highlighting
 
 (use-package swiper                     ;; Isearch with an overview. Oh, man!
+  :after ivy
   :bind ("C-s" . swiper))
 
 (use-package xref-js2                   ;; Jump to references/definitions using ag & js2-mode's AST
