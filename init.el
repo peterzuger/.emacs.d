@@ -118,9 +118,14 @@
 
 (use-package company                    ;; Modular text completion framework
   :config
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 2)
+
   (add-hook 'emacs-lisp-mode-hook
             (lambda()
-              (add-to-list 'company-backends 'company-elisp))))
+              (add-to-list 'company-backends 'company-elisp)))
+
+  (global-company-mode))
 
 (use-package company-emoji              ;; company-mode backend for emoji
   :after company)
@@ -441,11 +446,6 @@ Only creates a notification if BUFFER is *compilation*."
 (setq compilation-finish-functions
       '(fmq-compilation-finish))
 
-(add-hook 'after-init-hook
-          (lambda()
-            (global-company-mode)))
-(setq company-idle-delay 0)
-(setq company-minimum-prefix-length 2)
 (setq company-backends '(company-yasnippet
                          company-files
                          company-capf
