@@ -79,8 +79,24 @@
 (use-package ace-window                 ;; Quickly switch windows
   :bind* ("M-o" . ace-window))
 
-(use-package tex                        ;; Integrated environment for *TeX*
-  :ensure auctex)
+(use-package latex                      ;; Integrated environment for *TeX*
+  :ensure auctex
+  :mode ("\\.tex\\'" . TeX-latex-mode)
+  :bind (:map LaTeX-mode-map
+              ("C-c C-g" . pdf-sync-forward-search))
+  :config
+  ;; Use pdf-tools to open PDF files
+  (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
+  (setq TeX-source-correlate-method 'synctex)
+  (setq TeX-source-correlate-start-server t)
+
+  ;; enable forward/inverse search
+  (add-hook 'LaTeX-mode-hook
+            'TeX-source-correlate-mode)
+
+  ;; Update PDF buffers after successful LaTeX runs
+  (add-hook 'TeX-after-compilation-finished-functions
+            'TeX-revert-document-buffer))
 
 (use-package avy)                       ;; Jump to arbitrary positions in visible text and select text quickly
 
@@ -143,7 +159,11 @@
   :ensure org-plus-contrib
   :pin org)
 
-(use-package pdf-tools)                 ;; Support library for PDF documents.
+(use-package pdf-tools                  ;; Support library for PDF documents.
+  :magic ("%PDF" . pdf-view-mode)
+  :config
+  ;; initialize pdf-tools
+  (pdf-tools-install))
 
 (use-package pinentry)                  ;; GnuPG Pinentry server implementation
 
@@ -261,7 +281,6 @@ Only creates a notification if BUFFER is *compilation*."
 (load-file "~/.emacs.d/javascript.el")  ;; javascript configuration
 (load-file "~/.emacs.d/python.el")      ;; python configuration
 (load-file "~/.emacs.d/shell.el")       ;; shell configuration
-(load-file "~/.emacs.d/tex.el")         ;; LaTEX configuration
 
 (load-file "~/.emacs.d/themes.el")      ;; custom themes
 
