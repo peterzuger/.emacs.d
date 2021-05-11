@@ -135,7 +135,19 @@
 
 (use-package ggtags)                    ;; emacs frontend to GNU Global source code tagging system
 
-(use-package go-mode)                   ;; Major mode for the Go programming language
+(use-package go-mode                    ;; Major mode for the Go programming language
+  :bind (:map go-mode-map
+              ("C-c C-l" . compile)
+              ("C-c C-f" . gofmt)
+              ("M-." . godef-jump)
+              ("M-," . pop-tag-mark))
+  :config
+  (sp-local-pair 'go-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
+  (add-hook 'go-mode-hook
+            (lambda()
+              (yas-minor-mode-on)
+              (add-to-list 'company-backends 'company-go)
+              (add-hook 'before-save-hook 'gofmt-before-save))))
 
 (use-package highlight-indent-guides    ;; Minor mode to highlight indentation
   :config
@@ -276,7 +288,6 @@ Only creates a notification if BUFFER is *compilation*."
 
 (load-file "~/.emacs.d/c.el")           ;; C/C++ configuration
 (load-file "~/.emacs.d/elisp.el")       ;; elisp configuration
-(load-file "~/.emacs.d/go.el")          ;; golang configuration
 (load-file "~/.emacs.d/html.el")        ;; html configuration
 (load-file "~/.emacs.d/javascript.el")  ;; javascript configuration
 (load-file "~/.emacs.d/python.el")      ;; python configuration
