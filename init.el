@@ -282,6 +282,11 @@
   (setq ranger-override-dired 'ranger)  ;; use ranger not deer
   (setq ranger-cleanup-eagerly t))      ;; auto kill unused buffers
 
+(use-package sgml-mode
+  :mode ("handlebars" . html-mode)
+  :config
+  (setq sgml-basic-offset 4))
+
 (use-package smartparens                ;; Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
   :config
   (smartparens-global-mode t)           ;; global (){} completion
@@ -379,9 +384,7 @@ Only creates a notification if BUFFER is *compilation*."
 
 (load-file "~/.emacs.d/ibuffer.el")     ;; ibuffer configuration
 (load-file "~/.emacs.d/org.el")         ;; org mode configuration
-
 (load-file "~/.emacs.d/c.el")           ;; C/C++ configuration
-(load-file "~/.emacs.d/html.el")        ;; html configuration
 
 (load-file "~/.emacs.d/themes.el")      ;; custom themes
 
