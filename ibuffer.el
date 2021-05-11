@@ -33,20 +33,19 @@
 (setq ibuffer-expert t)                    ;; delete unmodified buffers without asking
 (setq ibuffer-show-empty-filter-groups nil);; dont show empty groups
 
-(defun git-root-dir(buf)
+(defun git-root-dir (buf)
   "Return the git root directory of BUF, or nil."
   (when (buffer-file-name buf)
     (locate-dominating-file (buffer-file-name buf) ".git")))
 
-(defun group-buffer-list()
+(defun group-buffer-list ()
   "Return an ibuffer group for all current buffers."
   (ibuffer-remove-duplicates
    (delq 'nil
          (mapcar
           (lambda(buf)
-            (when (git-root-dir buf)
-              (let ((name (git-root-dir buf)))
-                `(,name (filename . ,(expand-file-name name))))))
+            (when-let ((name (git-root-dir buf)))
+              `(, name (filename . , (expand-file-name name)))))
           (buffer-list)))))
 
 (add-hook 'ibuffer-hook
