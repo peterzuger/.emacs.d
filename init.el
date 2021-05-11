@@ -231,6 +231,49 @@
 
 (use-package hydra)                     ;; Make bindings that stick around.
 
+(use-package ibuffer
+  :ensure nil
+  :bind ("C-x C-b" . ibuffer)
+  :config
+  (setq ibuffer-expert t)                    ;; delete unmodified buffers without asking
+  (setq ibuffer-show-empty-filter-groups nil);; dont show empty groups
+
+  (defun git-root-dir (buf)
+    "Return the git root directory of BUF, or nil."
+    (when (buffer-file-name buf)
+      (locate-dominating-file (buffer-file-name buf) ".git")))
+
+  (defun group-buffer-list ()
+    "Return an ibuffer group for all current buffers."
+    (ibuffer-remove-duplicates
+     (delq 'nil
+           (mapcar
+            (lambda(buf)
+              (when-let ((name (git-root-dir buf)))
+                `(, name (filename . , (expand-file-name name)))))
+            (buffer-list)))))
+
+  (add-hook 'ibuffer-hook
+            (lambda()
+              (ibuffer-switch-to-saved-filter-groups "default")
+              (setq ibuffer-filter-groups (append ibuffer-filter-groups (group-buffer-list)))
+              (let ((ibuf (get-buffer "*Ibuffer*")))
+                (when ibuf
+                  (with-current-buffer ibuf
+                    (pop-to-buffer ibuf)
+                    (ibuffer-update nil t))))))
+
+  (setq ibuffer-saved-filter-groups
+        '(("default"
+           ("dired" (mode . dired-mode))
+           ("emacs" (or
+                     (name . "^\\*scratch\\*$")
+                     (name . "^\\*Messages\\*$")))
+           ("org" (mode . org-mode))
+           ("mu4e" (or
+                    (mode . message-mode)
+                    (mode . mail-mode)))))))
+
 (use-package irony                      ;; C/C++ minor mode powered by libclang
   :after cc-mode
   :init
@@ -469,8 +512,6 @@ Only creates a notification if BUFFER is *compilation*."
 (when (eq system-type 'gnu/linux)(load-file "~/.emacs.d/linux.el")) ;; Linux
 (when (require 'mu4e nil 'noerror)
   (load-file "~/.emacs.d/mail.el"))     ;; Mail configuration
-
-(load-file "~/.emacs.d/ibuffer.el")     ;; ibuffer configuration
 
 (load-file "~/.emacs.d/themes.el")      ;; custom themes
 
