@@ -81,22 +81,19 @@
 
 (use-package latex                      ;; Integrated environment for *TeX*
   :ensure auctex
+  :demand t
   :mode ("\\.tex\\'" . TeX-latex-mode)
   :bind (:map LaTeX-mode-map
               ("C-c C-g" . pdf-sync-forward-search))
+  ;; enable forward/inverse search
+  :hook (LaTeX-mode . TeX-source-correlate-mode)
+  ;; Update PDF buffers after successful LaTeX runs
+  :hook (TeX-after-compilation-finished-functions . TeX-revert-document-buffer)
   :config
   ;; Use pdf-tools to open PDF files
   (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
   (setq TeX-source-correlate-method 'synctex)
-  (setq TeX-source-correlate-start-server t)
-
-  ;; enable forward/inverse search
-  (add-hook 'LaTeX-mode-hook
-            'TeX-source-correlate-mode)
-
-  ;; Update PDF buffers after successful LaTeX runs
-  (add-hook 'TeX-after-compilation-finished-functions
-            'TeX-revert-document-buffer))
+  (setq TeX-source-correlate-start-server t))
 
 (use-package avy)                       ;; Jump to arbitrary positions in visible text and select text quickly
 
@@ -122,7 +119,7 @@
   (setq company-minimum-prefix-length 2)
 
   (add-hook 'emacs-lisp-mode-hook
-            (lambda()
+            (lambda ()
               (add-to-list 'company-backends 'company-elisp)))
 
   (global-company-mode))
@@ -138,7 +135,7 @@
   :hook (irony-mode . company-irony-setup-begin-commands)
   :config
   (add-hook 'c-mode-common-hook
-            (lambda()
+            (lambda ()
               (add-to-list 'company-backends 'company-irony))))
 
 (use-package company-jedi               ;; company-mode completion back-end for Python JEDI
@@ -152,7 +149,7 @@
   :after company
   :config
   (add-hook 'sh-mode-hook
-            (lambda()
+            (lambda ()
               (add-to-list 'company-backends 'company-shell))))
 
 (use-package counsel                    ;; Various completion functions using Ivy
@@ -196,8 +193,7 @@
 
 (use-package flycheck-irony             ;; Flycheck: C/C++ support via Irony
   :after (cc-mode flycheck irony)
-  :config
-  (add-hook 'c-mode-common-hook 'flycheck-irony-setup))
+  :hook (c-mode-common . flycheck-irony-setup))
 
 (use-package flycheck-pycheckers        ;; multiple syntax checker for Python, using Flycheck
   :after flycheck
@@ -207,7 +203,7 @@
   :after cc-mode
   :config
   (add-hook 'c-mode-common-hook
-            (lambda()
+            (lambda ()
               (when (derived-mode-p 'c-mode 'c++-mode)
                 (ggtags-mode 1)))))
 
@@ -221,7 +217,7 @@
   :config
   (sp-local-pair 'go-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
   (add-hook 'go-mode-hook
-            (lambda()
+            (lambda ()
               (add-to-list 'company-backends 'company-go)
               (add-hook 'before-save-hook 'gofmt-before-save))))
 
@@ -233,7 +229,7 @@
 
 (use-package ibuffer
   :ensure nil
-  :bind ("C-x C-b" . ibuffer)
+  :bind* ("C-x C-b" . ibuffer)
   :config
   (setq ibuffer-expert t)                    ;; delete unmodified buffers without asking
   (setq ibuffer-show-empty-filter-groups nil);; dont show empty groups
@@ -254,7 +250,7 @@
             (buffer-list)))))
 
   (add-hook 'ibuffer-hook
-            (lambda()
+            (lambda ()
               (ibuffer-switch-to-saved-filter-groups "default")
               (setq ibuffer-filter-groups (append ibuffer-filter-groups (group-buffer-list)))
               (let ((ibuf (get-buffer "*Ibuffer*")))
@@ -278,9 +274,8 @@
   :after cc-mode
   :init
   (setq irony-additional-clang-options '("-ferror-limit=0"))
-  :hook (irony-mode . irony-cdb-autosetup-compile-options)
-  :config
-  (add-hook 'c-mode-common-hook 'irony-mode))
+  :hook (c-mode-common . irony-mode)
+  :hook (irony-mode . irony-cdb-autosetup-compile-options))
 
 (use-package ivy                        ;; Incremental Vertical completYon
   :config
@@ -309,7 +304,7 @@
   (js2r-add-keybindings-with-prefix "C-c C-r")
 
   (add-hook 'js2-mode-hook
-            (lambda()
+            (lambda ()
               (add-hook 'xref-backend-functions 'xref-js2-xref-backend nil t)
               (js2-imenu-extras-mode)
               (js2-refactor-mode))))
@@ -318,11 +313,12 @@
   :after js2-mode)
 
 (use-package magit                      ;; A Git porcelain inside Emacs.
+  :demand t
   :bind ("<f6>" . magit-status)
+  :hook (git-commit-setup . git-commit-turn-on-flyspell)
   :config
   (setq transient-default-level 5)
   (setq magit-diff-refine-hunk 'all)
-  (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
 
   (setq magit-section-initial-visibility-alist
         '((stashes . hide) (ignored . hide) (local . hide)))
@@ -461,7 +457,7 @@
 ;; keybindings
 (global-set-key (kbd "<f5>") 'compile)
 (global-set-key (kbd "<C-f5>") 'recompile)
-(global-set-key (kbd "<M-f5>") (lambda()
+(global-set-key (kbd "<M-f5>") (lambda ()
                                  (interactive)
                                  (when (get-buffer "*compilation*")
                                    (pop-to-buffer "*compilation*"))))
@@ -495,11 +491,11 @@ Only creates a notification if BUFFER is *compilation*."
                          company-keywords
                          company-emoji))
 
-(defun defer-garbage-collection-h()
+(defun defer-garbage-collection-h ()
   "Defer garbage collection."
   (setq gc-cons-threshold most-positive-fixnum))
 
-(defun restore-garbage-collection-h()
+(defun restore-garbage-collection-h ()
   "Defer it so that commands launched immediately after will enjoy the benefits."
   (run-at-time 1 nil
                (lambda ()
