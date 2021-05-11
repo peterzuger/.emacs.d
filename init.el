@@ -176,7 +176,17 @@
 
 (use-package hydra)                     ;; Make bindings that stick around.
 
-(use-package ivy)                       ;; Incremental Vertical completYon
+(use-package ivy                        ;; Incremental Vertical completYon
+  :config
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-use-selectable-prompt t)
+  (setq ivy-count-format "(%d/%d) ")
+
+  (setq ivy-re-builders-alist
+        '((swiper . ivy--regex-plus)
+          (t . ivy--regex-fuzzy)))
+
+  (ivy-mode 1))
 
 (use-package ivy-hydra)                 ;; Additional key bindings for Ivy
 
@@ -213,7 +223,8 @@
   (smartparens-global-mode t)           ;; global (){} completion
   (show-smartparens-global-mode t))     ;; gloabal (){} highlighting
 
-(use-package swiper)                    ;; Isearch with an overview. Oh, man!
+(use-package swiper                     ;; Isearch with an overview. Oh, man!
+  :bind ("C-s" . swiper))
 
 (use-package xref-js2)                  ;; Jump to references/definitions using ag & js2-mode's AST
 
@@ -304,7 +315,6 @@ Only creates a notification if BUFFER is *compilation*."
 (load-file "~/.emacs.d/ibuffer.el")     ;; ibuffer configuration
 (load-file "~/.emacs.d/magit.el")       ;; magit configuration
 (load-file "~/.emacs.d/org.el")         ;; org mode configuration
-(load-file "~/.emacs.d/swiper.el")      ;; swiper/ivy/counsel configuration
 
 (load-file "~/.emacs.d/c.el")           ;; C/C++ configuration
 (load-file "~/.emacs.d/elisp.el")       ;; elisp configuration
