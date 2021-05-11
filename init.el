@@ -116,7 +116,28 @@
 
 (use-package dockerfile-mode)           ;; Major mode for editing Docker's Dockerfiles
 
-(use-package engine-mode)               ;; Define and query search engines from within Emacs
+(use-package engine-mode                ;; Define and query search engines from within Emacs
+  :config
+  (defengine duckduckgo
+    "https://duckduckgo.com/?q=%s"
+    :keybinding "d")
+
+  (defengine github
+    "https://github.com/search?ref=simplesearch&q=%s")
+
+  (defengine stack-overflow
+    "https://stackoverflow.com/search?q=%s")
+
+  (defengine wikipedia
+    "http://www.wikipedia.org/search-redirect.php?language=en&go=Go&search=%s"
+    :keybinding "w"
+    :docstring "Searchin' the wikis.")
+
+  (defengine wolfram-alpha
+    "http://www.wolframalpha.com/input/?i=%s")
+
+  (engine/set-keymap-prefix (kbd "C-c s"))
+  (engine-mode 1))
 
 (use-package emojify                    ;; Display emojis in Emacs
   :config
@@ -283,7 +304,6 @@ Only creates a notification if BUFFER is *compilation*."
 (load-file "~/.emacs.d/ibuffer.el")     ;; ibuffer configuration
 (load-file "~/.emacs.d/magit.el")       ;; magit configuration
 (load-file "~/.emacs.d/org.el")         ;; org mode configuration
-(load-file "~/.emacs.d/engine.el")      ;; engine-mode configuration
 (load-file "~/.emacs.d/swiper.el")      ;; swiper/ivy/counsel configuration
 
 (load-file "~/.emacs.d/c.el")           ;; C/C++ configuration
