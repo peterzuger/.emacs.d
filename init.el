@@ -100,7 +100,11 @@
 
 (use-package avy)                       ;; Jump to arbitrary positions in visible text and select text quickly
 
-(use-package company)                   ;; Modular text completion framework
+(use-package company                    ;; Modular text completion framework
+  :config
+  (add-hook 'emacs-lisp-mode-hook
+            (lambda()
+              (add-to-list 'company-backends 'company-elisp))))
 
 (use-package company-emoji)             ;; company-mode backend for emoji
 
@@ -377,7 +381,6 @@ Only creates a notification if BUFFER is *compilation*."
 (load-file "~/.emacs.d/org.el")         ;; org mode configuration
 
 (load-file "~/.emacs.d/c.el")           ;; C/C++ configuration
-(load-file "~/.emacs.d/elisp.el")       ;; elisp configuration
 (load-file "~/.emacs.d/html.el")        ;; html configuration
 
 (load-file "~/.emacs.d/themes.el")      ;; custom themes
