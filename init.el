@@ -108,7 +108,11 @@
 
 (use-package company-irony)             ;; company-mode completion back-end for irony-mode
 
-(use-package company-jedi)              ;; company-mode completion back-end for Python JEDI
+(use-package company-jedi               ;; company-mode completion back-end for Python JEDI
+  :config
+  (add-hook 'python-mode-hook
+            (lambda ()
+              (add-to-list 'company-backends 'company-jedi))))
 
 (use-package company-shell)             ;; Company mode backend for shell functions
 
@@ -152,7 +156,8 @@
 
 (use-package flycheck-irony)            ;; Flycheck: C/C++ support via Irony
 
-(use-package flycheck-pycheckers)       ;; multiple syntax checker for Python, using Flycheck
+(use-package flycheck-pycheckers        ;; multiple syntax checker for Python, using Flycheck
+  :hook (python-mode . flycheck-pycheckers-setup))
 
 (use-package ggtags)                    ;; emacs frontend to GNU Global source code tagging system
 
@@ -260,7 +265,8 @@
 
 (use-package pinentry)                  ;; GnuPG Pinentry server implementation
 
-(use-package python-black)              ;; Reformat Python using python-black
+(use-package python-black               ;; Reformat Python using python-black
+  :hook (python-mode . python-black-on-save-mode))
 
 (use-package ranger                     ;; Make dired more like ranger
   :config
@@ -369,7 +375,6 @@ Only creates a notification if BUFFER is *compilation*."
 (load-file "~/.emacs.d/c.el")           ;; C/C++ configuration
 (load-file "~/.emacs.d/elisp.el")       ;; elisp configuration
 (load-file "~/.emacs.d/html.el")        ;; html configuration
-(load-file "~/.emacs.d/python.el")      ;; python configuration
 (load-file "~/.emacs.d/shell.el")       ;; shell configuration
 
 (load-file "~/.emacs.d/themes.el")      ;; custom themes
