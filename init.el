@@ -46,6 +46,7 @@
 (setq enable-recursive-minibuffers t)                        ;; enable minibuffers inside minibuffers
 (setq ring-bell-function 'ignore)                            ;; no audible bell
 (setq-default indent-tabs-mode nil)                          ;; DONT EVER USE TABS !!
+(setq-default truncate-lines t)                              ;; disable line wrap
 (setq sentence-end-double-space nil)                         ;; one space is enough
 (setq default-tab-width 4)                                   ;; use 4 spaces
 (setq tab-width 4)                                           ;; use 4 spaces
