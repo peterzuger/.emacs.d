@@ -27,6 +27,8 @@
 ;;; Commentary:
 ;;; Code:
 
+(defconst emacs-start-time (current-time))
+
 (require 'package)
 
 ;; dont display the splash screen when a file is opened directly
@@ -513,11 +515,22 @@ Only creates a notification if BUFFER is *compilation*."
 (add-hook 'minibuffer-setup-hook #'defer-garbage-collection-h)
 (add-hook 'minibuffer-exit-hook #'restore-garbage-collection-h)
 
+(defun emacs-uptime ()
+  "Get the time since this EMACS instance was started."
+  (float-time (time-subtract (current-time) emacs-start-time)))
+
 ;; load some additional configurations
 (when (eq system-type 'gnu/linux)(load-file "~/.emacs.d/linux.el")) ;; Linux
 (when (require 'mu4e nil 'noerror)
   (load-file "~/.emacs.d/mail.el"))     ;; Mail configuration
 
 (load-file "~/.emacs.d/themes.el")      ;; custom themes
+
+(message "Loading %s...done (%.3fs)" load-file-name (emacs-uptime))
+
+(add-hook 'after-init-hook
+          `(lambda ()
+             (message "Loading %s...done (%.3fs) [after-init]"
+                      ,load-file-name (emacs-uptime))) t)
 
 ;;; init.el ends here
