@@ -381,6 +381,22 @@
 
 (use-package markdown-mode)             ;; Major mode for Markdown-formatted text
 
+(use-package minibuffer                 ;; Minibuffer customization
+  :ensure nil
+  :config
+  (defun defer-garbage-collection-h ()
+    "Defer garbage collection."
+    (setq gc-cons-threshold most-positive-fixnum))
+
+  (defun restore-garbage-collection-h ()
+    "Defer it so that commands launched immediately after will enjoy the benefits."
+    (run-at-time 1 nil
+                 (lambda ()
+                   (setq gc-cons-threshold gc-cons-threshold-default))))
+
+  (add-hook 'minibuffer-setup-hook #'defer-garbage-collection-h)
+  (add-hook 'minibuffer-exit-hook #'restore-garbage-collection-h))
+
 (use-package org                        ;; Outline-based notes management and organizer
   :ensure org-plus-contrib
   :pin org
@@ -452,6 +468,16 @@
   :after ivy
   :bind ("C-s" . swiper))
 
+(use-package whitespace                 ;; whitespace-cleanup customization's
+  :ensure nil
+  :config
+  (defun my-whitespace-cleanup ()
+    "Clean up the whitespace in a buffer, unless that buffer is in 'fundamental-mode'."
+    (unless (eq major-mode 'fundamental-mode)
+      (whitespace-cleanup)))
+
+  (add-hook 'before-save-hook 'my-whitespace-cleanup))
+
 (use-package xref-js2                   ;; Jump to references/definitions using ag & js2-mode's AST
   :after js2-mode)
 
@@ -490,13 +516,6 @@
 (global-set-key (kbd "C-x C-l") 'downcase-dwim)
 (global-set-key (kbd "C-x C-u") 'upcase-dwim)
 
-(defun my-whitespace-cleanup ()
-  "Clean up the whitespace in a buffer, unless that buffer is in 'fundamental-mode'."
-  (unless (eq major-mode 'fundamental-mode)
-    (whitespace-cleanup)))
-
-(add-hook 'before-save-hook 'my-whitespace-cleanup)
-
 (defun fmq-compilation-finish (buffer status)
   "Create a desktop notification on compilation finish with the STATUS.
 Only creates a notification if BUFFER is *compilation*."
@@ -509,19 +528,6 @@ Only creates a notification if BUFFER is *compilation*."
 
 (setq compilation-finish-functions
       '(fmq-compilation-finish))
-
-(defun defer-garbage-collection-h ()
-  "Defer garbage collection."
-  (setq gc-cons-threshold most-positive-fixnum))
-
-(defun restore-garbage-collection-h ()
-  "Defer it so that commands launched immediately after will enjoy the benefits."
-  (run-at-time 1 nil
-               (lambda ()
-                 (setq gc-cons-threshold gc-cons-threshold-default))))
-
-(add-hook 'minibuffer-setup-hook #'defer-garbage-collection-h)
-(add-hook 'minibuffer-exit-hook #'restore-garbage-collection-h)
 
 (defun emacs-uptime ()
   "Get the time since this EMACS instance was started."
