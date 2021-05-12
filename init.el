@@ -47,6 +47,9 @@
 (tool-bar-mode -1)                                           ;; remove the toolbar
 (scroll-bar-mode -1)                                         ;; remove the scrollbar
 (mouse-avoidance-mode 'exile)                                ;; exile the mouse cursor
+(setq-default indent-tabs-mode nil)                          ;; DONT EVER USE TABS !!
+(setq-default truncate-lines t)                              ;; disable line wrap
+(setq-default tab-width 4)                                   ;; use 4 spaces
 (setq global-linum-mode t)                                   ;; display line,column numbers
 (setq column-number-mode t)                                  ;; "
 (setq use-dialog-box nil)                                    ;; don't use dialog boxes
@@ -55,11 +58,7 @@
 (setq initial-scratch-message nil)                           ;; no message for the scratch buffer
 (setq enable-recursive-minibuffers t)                        ;; enable minibuffers inside minibuffers
 (setq ring-bell-function 'ignore)                            ;; no audible bell
-(setq-default indent-tabs-mode nil)                          ;; DONT EVER USE TABS !!
-(setq-default truncate-lines t)                              ;; disable line wrap
 (setq sentence-end-double-space nil)                         ;; one space is enough
-(setq default-tab-width 4)                                   ;; use 4 spaces
-(setq tab-width 4)                                           ;; use 4 spaces
 (setq compilation-scroll-output t)                           ;; scroll with the output
 (setq create-lockfiles nil)                                  ;; don't create .#<filename> files
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))) ;; move backup files to ~/.emacs.d/backup
