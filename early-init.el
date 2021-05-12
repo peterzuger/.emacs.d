@@ -27,19 +27,11 @@
 ;;; Commentary:
 ;;; Code:
 
-(defvar gc-cons-threshold-default gc-cons-threshold)
-(setq gc-cons-threshold (* 1024 1024 1024)) ;; 1GB
-(run-with-idle-timer 5 nil
-                     (lambda()
-                       (setq gc-cons-threshold gc-cons-threshold-default)))
+(defconst gc-cons-threshold-default (* 16 1024 1024)) ;; 16MB
+(setq gc-cons-threshold (* 1024 1024 1024))           ;; 1GB
 
-(menu-bar-mode -1)                                           ;; remove the menue bar
-(tool-bar-mode -1)                                           ;; remove the toolbar
-(scroll-bar-mode -1)                                         ;; remove the scrollbar
-(mouse-avoidance-mode 'exile)                                ;; exile the mouse cursor
-(setq global-linum-mode t)                                   ;; display line,column numbers
-(setq column-number-mode t)                                  ;; "
-(setq use-dialog-box nil)                                    ;; don't use dialog boxes
-(setq split-height-threshold 100)                            ;; don't split horizontally
+(add-hook 'emacs-startup-hook
+          (lambda()
+            (setq gc-cons-threshold gc-cons-threshold-default)))
 
 ;;; early-init.el ends here

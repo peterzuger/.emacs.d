@@ -43,6 +43,14 @@
 
 ;; core emacs config
 (add-to-list 'default-frame-alist '(fullscreen . maximized)) ;; start emacs in fullscreen
+(menu-bar-mode -1)                                           ;; remove the menue bar
+(tool-bar-mode -1)                                           ;; remove the toolbar
+(scroll-bar-mode -1)                                         ;; remove the scrollbar
+(mouse-avoidance-mode 'exile)                                ;; exile the mouse cursor
+(setq global-linum-mode t)                                   ;; display line,column numbers
+(setq column-number-mode t)                                  ;; "
+(setq use-dialog-box nil)                                    ;; don't use dialog boxes
+(setq split-height-threshold 100)                            ;; don't split horizontally
 (setq enable-recursive-minibuffers t)                        ;; enable minibuffers inside minibuffers
 (setq ring-bell-function 'ignore)                            ;; no audible bell
 (setq-default indent-tabs-mode nil)                          ;; DONT EVER USE TABS !!
