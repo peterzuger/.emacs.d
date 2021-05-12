@@ -109,6 +109,7 @@
 (use-package avy)                       ;; Jump to arbitrary positions in visible text and select text quickly
 
 (use-package cc-mode
+  :after smartparens
   :ensure nil
   :bind (:map c-mode-base-map
               ("C-c C-l" . compile)
