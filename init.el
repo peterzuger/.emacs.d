@@ -130,6 +130,12 @@
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 2)
 
+  (setq company-backends
+        '(company-yasnippet
+          company-files
+          company-capf
+          company-keywords))
+
   (add-hook 'emacs-lisp-mode-hook
             (lambda ()
               (add-to-list 'company-backends 'company-elisp)))
@@ -137,7 +143,9 @@
   (global-company-mode))
 
 (use-package company-emoji              ;; company-mode backend for emoji
-  :after company)
+  :after company
+  :config
+  (add-to-list 'company-backends 'company-emoji))
 
 (use-package company-go                 ;; company-mode backend for Go (using gocode)
   :after company)
@@ -498,12 +506,6 @@ Only creates a notification if BUFFER is *compilation*."
 
 (setq compilation-finish-functions
       '(fmq-compilation-finish))
-
-(setq company-backends '(company-yasnippet
-                         company-files
-                         company-capf
-                         company-keywords
-                         company-emoji))
 
 (defun defer-garbage-collection-h ()
   "Defer garbage collection."
