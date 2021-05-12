@@ -110,6 +110,7 @@
 
 (use-package cc-mode                    ;; C, C++, Objective-C, Java, CORBA IDL Pike and AWK code
   :after smartparens
+  :demand t
   :ensure nil
   :bind (:map c-mode-base-map
               ("C-c C-l" . compile)
@@ -136,9 +137,14 @@
           company-capf
           company-keywords))
 
-  (add-hook 'emacs-lisp-mode-hook
-            (lambda ()
-              (add-to-list 'company-backends 'company-elisp)))
+  (defun company-add-local-backend (hook backend)
+    "Add a local BACKEND using the given HOOK."
+    (add-hook hook
+              `(lambda ()
+                 (make-local-variable 'company-backends)
+                 (add-to-list 'company-backends ',backend))))
+
+  (company-add-local-backend 'emacs-lisp-mode-hook 'company-elisp)
 
   (global-company-mode))
 
@@ -152,25 +158,20 @@
 
 (use-package company-irony              ;; company-mode completion back-end for irony-mode
   :after (company irony)
+  :demand t
   :hook (irony-mode . company-irony-setup-begin-commands)
   :config
-  (add-hook 'c-mode-common-hook
-            (lambda ()
-              (add-to-list 'company-backends 'company-irony))))
+  (company-add-local-backend 'c-mode-common-hook 'company-irony))
 
 (use-package company-jedi               ;; company-mode completion back-end for Python JEDI
   :after company
   :config
-  (add-hook 'python-mode-hook
-            (lambda ()
-              (add-to-list 'company-backends 'company-jedi))))
+  (company-add-local-backend 'python-mode-hook 'company-jedi))
 
 (use-package company-shell              ;; Company mode backend for shell functions
   :after company
   :config
-  (add-hook 'sh-mode-hook
-            (lambda ()
-              (add-to-list 'company-backends 'company-shell))))
+  (company-add-local-backend 'sh-mode-hook 'company-shell))
 
 (use-package counsel                    ;; Various completion functions using Ivy
   :after ivy)
@@ -228,7 +229,7 @@
                 (ggtags-mode 1)))))
 
 (use-package go-mode                    ;; Major mode for the Go programming language
-  :after smartparens
+  :after (company smartparens)
   :bind (:map go-mode-map
               ("C-c C-l" . compile)
               ("C-c C-f" . gofmt)
@@ -238,6 +239,7 @@
   (sp-local-pair 'go-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
   (add-hook 'go-mode-hook
             (lambda ()
+              (make-local-variable 'company-backends)
               (add-to-list 'company-backends 'company-go)
               (add-hook 'before-save-hook 'gofmt-before-save))))
 
@@ -292,6 +294,7 @@
 
 (use-package irony                      ;; C/C++ minor mode powered by libclang
   :after cc-mode
+  :demand t
   :init
   (setq irony-additional-clang-options '("-ferror-limit=0"))
   :hook (c-mode-common . irony-mode)
