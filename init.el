@@ -51,6 +51,8 @@
 (setq column-number-mode t)                                  ;; "
 (setq use-dialog-box nil)                                    ;; don't use dialog boxes
 (setq split-height-threshold 100)                            ;; don't split horizontally
+(setq initial-major-mode 'fundamental-mode)                  ;; start the scratch buffer in fundamental mode
+(setq initial-scratch-message nil)                           ;; no message for the scratch buffer
 (setq enable-recursive-minibuffers t)                        ;; enable minibuffers inside minibuffers
 (setq ring-bell-function 'ignore)                            ;; no audible bell
 (setq-default indent-tabs-mode nil)                          ;; DONT EVER USE TABS !!
