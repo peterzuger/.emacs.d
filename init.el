@@ -108,7 +108,7 @@
 
 (use-package avy)                       ;; Jump to arbitrary positions in visible text and select text quickly
 
-(use-package cc-mode
+(use-package cc-mode                    ;; C, C++, Objective-C, Java, CORBA IDL Pike and AWK code
   :after smartparens
   :ensure nil
   :bind (:map c-mode-base-map
@@ -239,7 +239,7 @@
 
 (use-package hydra)                     ;; Make bindings that stick around.
 
-(use-package ibuffer
+(use-package ibuffer                    ;; An advanced replacement for BufferMenu
   :ensure nil
   :bind* ("C-x C-b" . ibuffer)
   :config
@@ -324,6 +324,8 @@
 (use-package js2-refactor               ;; A JavaScript refactoring library for emacs.
   :after js2-mode)
 
+(use-package json-mode)                 ;; Major mode for editing JSON files
+
 (use-package magit                      ;; A Git porcelain inside Emacs.
   :demand t
   :bind ("<f6>" . magit-status)
@@ -361,7 +363,7 @@
                           'magit-insert-ignored-files
                           'magit-insert-stashes t))
 
-(use-package make-mode
+(use-package make-mode                  ;; Major mode for Makefile's
   :ensure nil
   :bind (:map makefile-mode-map
               ("C-c C-l" . compile)))
@@ -425,7 +427,7 @@
   (setq ranger-override-dired 'ranger)  ;; use ranger not deer
   (setq ranger-cleanup-eagerly t))      ;; auto kill unused buffers
 
-(use-package sgml-mode
+(use-package sgml-mode                  ;; The simplest mode to edit XML
   :mode ("handlebars" . html-mode)
   :config
   (setq sgml-basic-offset 4))
