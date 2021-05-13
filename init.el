@@ -534,7 +534,9 @@ Only creates a notification if BUFFER is *compilation*."
   (float-time (time-subtract (current-time) emacs-start-time)))
 
 ;; load some additional configurations
-(when (eq system-type 'gnu/linux)(load-file "~/.emacs.d/linux.el")) ;; Linux
+(when (eq system-type 'darwin)    (load-file "~/.emacs.d/mac.el" ))  ;; Mac OS X
+(when (eq system-type 'gnu/linux) (load-file "~/.emacs.d/linux.el")) ;; Linux
+
 (when (require 'mu4e nil 'noerror)
   (load-file "~/.emacs.d/mail.el"))     ;; Mail configuration
 
