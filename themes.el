@@ -61,10 +61,19 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/tron-legacy-emacs-theme/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/wilmersdorf-emacs-theme/")
 
-;; load zenburn on start
-(load-theme 'zenburn t)
+(defvar after-load-theme-hook nil
+  "Hook run after a color theme is loaded using `load-theme'.")
+
+(defadvice load-theme (after run-after-load-theme-hook activate)
+  "Run `after-load-theme-hook'."
+  (run-hooks 'after-load-theme-hook))
 
 (unless (display-graphic-p)
-  (set-background-color "ARGBBB000000"))
+  (add-hook 'after-load-theme-hook
+            (lambda ()
+              (set-background-color "ARGBBB000000"))))
+
+;; load zenburn on start
+(load-theme 'zenburn t)
 
 ;;; themes.el ends here
