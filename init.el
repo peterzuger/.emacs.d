@@ -29,7 +29,10 @@
 
 (defconst emacs-start-time (current-time))
 
-(require 'package)
+(defun emacs-uptime ()
+  "Get the time since this EMACS instance was started."
+  (float-time (time-subtract (current-time) emacs-start-time)))
+
 
 ;; dont display the splash screen when a file is opened directly
 (when (> (length command-line-args) 1)
@@ -72,6 +75,8 @@
 (setq vc-follow-symlinks t)                                  ;; always follow symlinks
 (setq help-window-select t)                                  ;; automatically select help windows
 (defalias 'yes-or-no-p 'y-or-n-p)                            ;; replace yes or no prompts by y-or-n prompts
+
+(require 'package)
 
 ;; ensure use-package is installed
 (unless (package-installed-p 'use-package)
@@ -486,6 +491,7 @@
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
   (yas-global-mode))
 
+
 (defun random-character ()
   "Return a random character."
   (let ((alnum "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"))
@@ -529,9 +535,6 @@ Only creates a notification if BUFFER is *compilation*."
 (setq compilation-finish-functions
       '(fmq-compilation-finish))
 
-(defun emacs-uptime ()
-  "Get the time since this EMACS instance was started."
-  (float-time (time-subtract (current-time) emacs-start-time)))
 
 ;; load some additional configurations
 (when (eq system-type 'darwin)    (load-file "~/.emacs.d/mac.el" ))  ;; Mac OS X
@@ -542,6 +545,7 @@ Only creates a notification if BUFFER is *compilation*."
 
 (load-file "~/.emacs.d/themes.el")      ;; custom themes
 
+;; log how loong emacs took to start
 (message "Loading %s...done (%.3fs)" load-file-name (emacs-uptime))
 
 (add-hook 'after-init-hook
