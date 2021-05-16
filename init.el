@@ -178,6 +178,30 @@
   :config
   (company-add-local-backend 'sh-mode-hook 'company-shell))
 
+(use-package compile                    ;; compile mode configuration
+  :ensure nil
+  :bind (("<f5>" . compile)
+         ("<C-f5>" . recompile)
+         ("<M-f5>" . pop-to-compilation))
+  :preface
+  (defun pop-to-compilation ()
+    (interactive)
+    (when (get-buffer "*compilation*")
+      (pop-to-buffer "*compilation*")))
+
+  (defun fmq-compilation-finish (buffer status)
+    "Create a desktop notification on compilation finish with the STATUS.
+Only creates a notification if BUFFER is *compilation*."
+    (when (string= (buffer-name buffer) "*compilation*")
+      (call-process "notify-send" nil nil nil
+                    "-a" "emacs"
+                    "-i" (format "/usr/share/emacs/%s/etc/images/icons/hicolor/32x32/apps/emacs.png" emacs-version)
+                    "Compilation finished"
+                    status)))
+
+  (setq compilation-finish-functions
+        '(fmq-compilation-finish)))
+
 (use-package counsel                    ;; Various completion functions using Ivy
   :after ivy)
 
@@ -511,29 +535,10 @@
     (kill-new str)
     (insert str)))
 
-;; keybindings
-(global-set-key (kbd "<f5>") 'compile)
-(global-set-key (kbd "<C-f5>") 'recompile)
-(global-set-key (kbd "<M-f5>") (lambda ()
-                                 (interactive)
-                                 (when (get-buffer "*compilation*")
-                                   (pop-to-buffer "*compilation*"))))
+;; global keybindings
 (global-set-key (kbd "C-x C-g") 'insert-random-string)
 (global-set-key (kbd "C-x C-l") 'downcase-dwim)
 (global-set-key (kbd "C-x C-u") 'upcase-dwim)
-
-(defun fmq-compilation-finish (buffer status)
-  "Create a desktop notification on compilation finish with the STATUS.
-Only creates a notification if BUFFER is *compilation*."
-  (when (string= (buffer-name buffer) "*compilation*")
-    (call-process "notify-send" nil nil nil
-                  "-a" "emacs"
-                  "-i" (format "/usr/share/emacs/%s/etc/images/icons/hicolor/32x32/apps/emacs.png" emacs-version)
-                  "Compilation finished"
-                  status)))
-
-(setq compilation-finish-functions
-      '(fmq-compilation-finish))
 
 
 ;; load some additional configurations
