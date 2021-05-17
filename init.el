@@ -48,10 +48,6 @@
 (load custom-file t)
 
 ;; core emacs config
-(add-to-list 'default-frame-alist '(fullscreen . maximized)) ;; start emacs in fullscreen
-(menu-bar-mode -1)                                           ;; remove the menue bar
-(tool-bar-mode -1)                                           ;; remove the toolbar
-(scroll-bar-mode -1)                                         ;; remove the scrollbar
 (mouse-avoidance-mode 'exile)                                ;; exile the mouse cursor
 (setq-default indent-tabs-mode nil)                          ;; DONT EVER USE TABS !!
 (setq-default truncate-lines t)                              ;; disable line wrap
