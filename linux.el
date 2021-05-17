@@ -1,4 +1,4 @@
-;;; linux.el --- linux specific configuration
+;;; linux.el --- linux specific configuration -*- lexical-binding: t; -*-
 ;;;
 ;;; The MIT License (MIT)
 ;;;

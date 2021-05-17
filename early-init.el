@@ -1,4 +1,4 @@
-;;; early-init.el --- emacs configuration
+;;; early-init.el --- emacs configuration -*- lexical-binding: t; -*-
 ;;;
 ;;; The MIT License (MIT)
 ;;;

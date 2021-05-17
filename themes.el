@@ -1,4 +1,4 @@
-;;; themes.el --- custom emacs themes
+;;; themes.el --- custom emacs themes -*- lexical-binding: t; -*-
 ;;;
 ;;; The MIT License (MIT)
 ;;;

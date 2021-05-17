@@ -1,4 +1,4 @@
-;;; mail.el --- mail configuration
+;;; mail.el --- mail configuration -*- lexical-binding: t; -*-
 ;;;
 ;;; The MIT License (MIT)
 ;;;

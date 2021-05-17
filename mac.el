@@ -1,4 +1,4 @@
-;;; mac.el --- mac specific configuration
+;;; mac.el --- mac specific configuration -*- lexical-binding: t; -*-
 ;;;
 ;;; The MIT License (MIT)
 ;;;
