@@ -32,9 +32,14 @@
 Reset 'gc-cons-threshold' to this value to prevent runaway memory usage.")
 
 (setq gc-cons-threshold most-positive-fixnum)
+(setq file-name-handler-alist nil)
 
-(add-hook 'emacs-startup-hook
-          (lambda()
-            (setq gc-cons-threshold gc-cons-threshold-default)))
+(let ((file-name-handler-alist-tmp file-name-handler-alist))
+  (defun late-startup-hook ()
+    (setq gc-cons-threshold gc-cons-threshold-default)
+    (setq file-name-handler-alist
+          (delete-dups (append file-name-handler-alist
+                               file-name-handler-alist-tmp))))
+  (add-hook 'emacs-startup-hook #'late-startup-hook t))
 
 ;;; early-init.el ends here
