@@ -27,8 +27,11 @@
 ;;; Commentary:
 ;;; Code:
 
-(defconst gc-cons-threshold-default (* 16 1024 1024)) ;; 16MB
-(setq gc-cons-threshold (* 1024 1024 1024))           ;; 1GB
+(defconst gc-cons-threshold-default (* 16 1024 1024)
+  "The default threshold for the GC increased from 800kB to 16MB.
+Reset 'gc-cons-threshold' to this value to prevent runaway memory usage.")
+
+(setq gc-cons-threshold most-positive-fixnum)
 
 (add-hook 'emacs-startup-hook
           (lambda()

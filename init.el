@@ -27,7 +27,8 @@
 ;;; Commentary:
 ;;; Code:
 
-(defconst emacs-start-time (current-time))
+(defconst emacs-start-time (current-time)
+  "The 'current-time' when EMACS was started.")
 
 (defun emacs-uptime ()
   "Get the time since this EMACS instance was started."
@@ -500,9 +501,13 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package whitespace                 ;; whitespace-cleanup customization's
   :ensure nil
   :config
+  (defvar no-whitespace-cleanup nil
+    "Variable for disabling whitespace-cleanup before save.")
+  (put 'no-whitespace-cleanup 'safe-local-variable #'booleanp)
+
   (defun my-whitespace-cleanup ()
     "Clean up the whitespace in a buffer, unless that buffer is in 'fundamental-mode'."
-    (unless (eq major-mode 'fundamental-mode)
+    (unless (or (eq major-mode 'fundamental-mode) no-whitespace-cleanup)
       (whitespace-cleanup)))
 
   (add-hook 'before-save-hook 'my-whitespace-cleanup))
