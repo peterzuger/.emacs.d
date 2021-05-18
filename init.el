@@ -451,14 +451,17 @@ Only creates a notification if BUFFER is *compilation*."
   (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
   (setq org-capture-templates
-        '(("t" "todo" entry (file "~/Notes/todo.org")
-           "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+        '(("t" "personal todo" entry (file (concat org-directory "todo.org"))
+           "* TODO %?\n  %U\n")
 
-          ("n" "note" entry (file "~/Notes/refile.org")
-           "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
+          ("w" "work todo" entry (file (concat org-directory "work.org"))
+           "* TODO %?\n  %U\n")
 
-          ("j" "journal" entry (file+datetree "~/Notes/journal.org")
-           "* %?\n%U\n" :clock-in t :clock-resume t)))
+          ("n" "general note" entry (file (concat org-directory "refile.org"))
+           "* %? :NOTE:\n  %U\n")
+
+          ("j" "journal entry" entry (file+datetree (concat org-directory "journal.org"))
+           "* %?\n  %U\n")))
 
   (org-babel-do-load-languages
    'org-babel-load-languages
