@@ -293,7 +293,7 @@ Only creates a notification if BUFFER is *compilation*."
     (ibuffer-remove-duplicates
      (delq 'nil
            (mapcar
-            (lambda(buf)
+            (lambda (buf)
               (when-let ((name (git-root-dir buf)))
                 `(, name (filename . , (expand-file-name name)))))
             (buffer-list)))))
@@ -315,6 +315,7 @@ Only creates a notification if BUFFER is *compilation*."
                      (name . "^\\*scratch\\*$")
                      (name . "^\\*Messages\\*$")))
            ("org" (mode . org-mode))
+           ("pdf" (name . "\\.pdf"))
            ("mu4e" (or
                     (mode . message-mode)
                     (mode . mail-mode)))))))
