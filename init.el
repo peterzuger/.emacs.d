@@ -266,6 +266,7 @@ Only creates a notification if BUFFER is *compilation*."
   (add-hook 'go-mode-hook
             (lambda ()
               (make-local-variable 'company-backends)
+              (make-local-variable 'before-save-hook)
               (add-to-list 'company-backends 'company-go)
               (add-hook 'before-save-hook 'gofmt-before-save))))
 
