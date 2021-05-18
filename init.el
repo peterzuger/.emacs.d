@@ -428,7 +428,8 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package org                        ;; Outline-based notes management and organizer
   :ensure org-plus-contrib
   :pin org
-  :bind ("C-c c" . org-capture)
+  :bind (("C-c c" . org-capture)
+         ("C-c a" . org-agenda))
   :config
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively t)
@@ -437,7 +438,10 @@ Only creates a notification if BUFFER is *compilation*."
   (setq org-catch-invisible-edits 'smart)
   (setq org-image-actual-width nil)
   (setq org-return-follows-link t)
-  (setq org-contacts-files "~/Notes/contacts.org")
+  (setq org-directory "~/Notes/")
+  (setq org-default-notes-file (concat org-directory "todo.org"))
+  (setq org-archive-location (concat org-directory "archive.org"))
+  (setq org-contacts-files (concat org-directory "contacts.org"))
 
   (defun org-summary-todo (n-done n-not-done)
     "Switch entry to DONE when all subentries are done, to TODO otherwise."
