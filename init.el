@@ -302,11 +302,10 @@ Only creates a notification if BUFFER is *compilation*."
             (lambda ()
               (ibuffer-switch-to-saved-filter-groups "default")
               (setq ibuffer-filter-groups (append ibuffer-filter-groups (group-buffer-list)))
-              (let ((ibuf (get-buffer "*Ibuffer*")))
-                (when ibuf
-                  (with-current-buffer ibuf
-                    (pop-to-buffer ibuf)
-                    (ibuffer-update nil t))))))
+              (when-let ((ibuf (get-buffer "*Ibuffer*")))
+                (with-current-buffer ibuf
+                  (pop-to-buffer ibuf)
+                  (ibuffer-update nil t)))))
 
   ;; simply overwrite the default size column
   (define-ibuffer-column size
@@ -387,7 +386,7 @@ Only creates a notification if BUFFER is *compilation*."
 
   (defun magit-insert-ignored-files ()
     "Ignored files section for magit-status buffer."
-    (-when-let (files (magit-ignored-files))
+    (when-let (files (magit-ignored-files))
       (magit-insert-section (ignored)
         (magit-insert-heading "Ignored files:")
         (dolist (file files)
