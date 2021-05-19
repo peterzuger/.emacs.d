@@ -58,10 +58,8 @@
 (setq split-height-threshold 100)                            ;; don't split horizontally
 (setq initial-major-mode 'fundamental-mode)                  ;; start the scratch buffer in fundamental mode
 (setq initial-scratch-message nil)                           ;; no message for the scratch buffer
-(setq enable-recursive-minibuffers t)                        ;; enable minibuffers inside minibuffers
 (setq ring-bell-function 'ignore)                            ;; no audible bell
 (setq sentence-end-double-space nil)                         ;; one space is enough
-(setq compilation-scroll-output t)                           ;; scroll with the output
 (setq create-lockfiles nil)                                  ;; don't create .#<filename> files
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))) ;; move backup files to ~/.emacs.d/backup
 (setq backup-by-copying t)                                   ;; Don't delink hardlinks
@@ -185,6 +183,9 @@
     (interactive)
     (when (get-buffer "*compilation*")
       (pop-to-buffer "*compilation*")))
+
+  :config
+  (setq compilation-scroll-output t)
 
   (defun fmq-compilation-finish (buffer status)
     "Create a desktop notification on compilation finish with the STATUS.
@@ -419,6 +420,9 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package minibuffer                 ;; Minibuffer customization
   :ensure nil
   :config
+  (setq enable-recursive-minibuffers t)
+  (minibuffer-depth-indicate-mode t)
+
   (defun defer-garbage-collection-h ()
     "Defer garbage collection."
     (setq gc-cons-threshold most-positive-fixnum))
