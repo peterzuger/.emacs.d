@@ -308,6 +308,11 @@ Only creates a notification if BUFFER is *compilation*."
                     (pop-to-buffer ibuf)
                     (ibuffer-update nil t))))))
 
+  ;; simply overwrite the default size column
+  (define-ibuffer-column size
+    (:name "Size" :inline t)
+    (file-size-human-readable (buffer-size) 'iec))
+
   (setq ibuffer-saved-filter-groups
         '(("default"
            ("dired" (mode . dired-mode))
