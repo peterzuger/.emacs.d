@@ -288,8 +288,8 @@ Only creates a notification if BUFFER is *compilation*."
     (when (buffer-file-name buf)
       (locate-dominating-file (buffer-file-name buf) ".git")))
 
-  (defun group-buffer-list ()
-    "Return an ibuffer group for all current buffers."
+  (defun ibuffer-make-git-filter-groups ()
+    "Return ibuffer filter groups based on the git-root of buffers."
     (ibuffer-remove-duplicates
      (delq 'nil
            (mapcar
@@ -298,14 +298,17 @@ Only creates a notification if BUFFER is *compilation*."
                 `(, name (filename . , (expand-file-name name)))))
             (buffer-list)))))
 
-  (add-hook 'ibuffer-hook
-            (lambda ()
-              (ibuffer-switch-to-saved-filter-groups "default")
-              (setq ibuffer-filter-groups (append ibuffer-filter-groups (group-buffer-list)))
-              (when-let ((ibuf (get-buffer "*Ibuffer*")))
-                (with-current-buffer ibuf
-                  (pop-to-buffer ibuf)
-                  (ibuffer-update nil t)))))
+  (defun ibuffer-append-git-filter-groups ()
+    "Append git filter groups to ibuffer-filter-groups and update ibuffer."
+    (ibuffer-switch-to-saved-filter-groups "default")
+    (setq ibuffer-filter-groups
+          (append ibuffer-filter-groups (ibuffer-make-git-filter-groups)))
+    (when-let ((ibuf (get-buffer "*Ibuffer*")))
+      (with-current-buffer ibuf
+        (pop-to-buffer ibuf)
+        (ibuffer-update nil t))))
+
+  (add-hook 'ibuffer-hook 'ibuffer-append-git-filter-groups)
 
   ;; simply overwrite the default size column
   (define-ibuffer-column size
