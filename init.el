@@ -128,13 +128,14 @@
   (sp-local-pair 'c-mode "{" nil :post-handlers '(("||\n[i]" "RET"))))
 
 (use-package company                    ;; Modular text completion framework
+  :demand t
+  :bind* ("<backtab>" . company-yasnippet)
   :config
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 2)
 
   (setq company-backends
-        '(company-yasnippet
-          company-files
+        '(company-files
           company-capf
           company-keywords))
 
@@ -152,10 +153,12 @@
 (use-package company-emoji              ;; company-mode backend for emoji
   :after company
   :config
-  (add-to-list 'company-backends 'company-emoji))
+  (add-to-list 'company-backends 'company-emoji t))
 
 (use-package company-go                 ;; company-mode backend for Go (using gocode)
-  :after company)
+  :after (company go-mode)
+  :config
+  (company-add-local-backend 'go-mode-hook 'company-go))
 
 (use-package company-irony              ;; company-mode completion back-end for irony-mode
   :after (company irony)
@@ -265,12 +268,10 @@ Only creates a notification if BUFFER is *compilation*."
               ("M-," . pop-tag-mark))
   :config
   (sp-local-pair 'go-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
+
   (add-hook 'go-mode-hook
             (lambda ()
-              (make-local-variable 'company-backends)
-              (make-local-variable 'before-save-hook)
-              (add-to-list 'company-backends 'company-go)
-              (add-hook 'before-save-hook 'gofmt-before-save))))
+              (add-hook 'before-save-hook 'gofmt-before-save nil t))))
 
 (use-package highlight-indent-guides    ;; Minor mode to highlight indentation
   :config
