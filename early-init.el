@@ -32,7 +32,6 @@
 Reset 'gc-cons-threshold' to this value to prevent runaway memory usage.")
 
 (setq gc-cons-threshold most-positive-fixnum)
-(setq file-name-handler-alist nil)
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized)) ;; start emacs in fullscreen
 (menu-bar-mode -1)                                           ;; remove the menue bar
@@ -40,6 +39,8 @@ Reset 'gc-cons-threshold' to this value to prevent runaway memory usage.")
 (scroll-bar-mode -1)                                         ;; remove the scrollbar
 
 (let ((file-name-handler-alist-tmp file-name-handler-alist))
+  (setq-default file-name-handler-alist nil)
+
   (defun late-startup-hook ()
     (setq gc-cons-threshold gc-cons-threshold-default)
     (setq file-name-handler-alist
