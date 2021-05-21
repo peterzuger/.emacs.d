@@ -143,8 +143,7 @@
     "Add a local BACKEND using the given HOOK."
     (add-hook hook
               (lambda ()
-                (make-local-variable 'company-backends)
-                (add-to-list 'company-backends backend))))
+                (add-to-list (make-local-variable 'company-backends) backend))))
 
   (company-add-local-backend 'emacs-lisp-mode-hook 'company-elisp)
 
