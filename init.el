@@ -52,6 +52,7 @@
 (setq-default indent-tabs-mode nil)                          ;; DONT EVER USE TABS !!
 (setq-default truncate-lines t)                              ;; disable line wrap
 (setq-default tab-width 4)                                   ;; use 4 spaces
+(setq-default fill-column 80)                                ;; use 80 characters text width
 (setq global-linum-mode t)                                   ;; display line,column numbers
 (setq column-number-mode t)                                  ;; "
 (setq use-dialog-box nil)                                    ;; don't use dialog boxes
