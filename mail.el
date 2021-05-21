@@ -93,8 +93,4 @@
 ;; ask if messages should be decrypted
 (setq mu4e-decryption-policy 'ask)
 
-;; pinentry for gpg signed and encrypted messages
-(setq epa-pinentry-mode 'loopback)
-(pinentry-start)
-
 ;;; mail.el ends here

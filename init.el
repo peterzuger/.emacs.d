@@ -500,7 +500,11 @@ Only creates a notification if BUFFER is *compilation*."
   ;; initialize pdf-tools
   (pdf-tools-install))
 
-(use-package pinentry)                  ;; GnuPG Pinentry server implementation
+(use-package pinentry                   ;; GnuPG Pinentry server implementation
+  :init
+  (setq epg-pinentry-mode 'loopback)
+  :config
+  (pinentry-start))
 
 (use-package python-black               ;; Reformat Python using python-black
   :hook (python-mode . python-black-on-save-mode))
