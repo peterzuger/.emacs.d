@@ -253,10 +253,12 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package ggtags                     ;; emacs frontend to GNU Global source code tagging system
   :after cc-mode
   :config
-  (add-hook 'c-mode-common-hook
-            (lambda ()
-              (when (derived-mode-p 'c-mode 'c++-mode)
-                (ggtags-mode 1)))))
+  (defun enable-ggtags-mode ()
+    "Enable ggtags mode for C/C++ files."
+    (when (derived-mode-p 'c-mode 'c++-mode)
+      (ggtags-mode 1)))
+
+  (add-hook 'c-mode-common-hook 'enable-ggtags-mode))
 
 (use-package go-mode                    ;; Major mode for the Go programming language
   :after (company smartparens)
@@ -268,9 +270,11 @@ Only creates a notification if BUFFER is *compilation*."
   :config
   (sp-local-pair 'go-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
 
-  (add-hook 'go-mode-hook
-            (lambda ()
-              (add-hook 'before-save-hook 'gofmt-before-save nil t))))
+  (defun add-gofmt-before-save-locally ()
+    "Add gofmt-before-save to the local before-save-hook."
+    (add-hook 'before-save-hook 'gofmt-before-save nil t))
+
+  (add-hook 'go-mode-hook 'add-gofmt-before-save-locally))
 
 (use-package highlight-indent-guides    ;; Minor mode to highlight indentation
   :config
@@ -290,15 +294,16 @@ Only creates a notification if BUFFER is *compilation*."
     (when (buffer-file-name buf)
       (locate-dominating-file (buffer-file-name buf) ".git")))
 
+  (defun ibuffer-make-git-filter-group (buf)
+    "Return an ibuffer filter group based on BUF, or nil."
+    (when-let ((name (git-root-dir buf)))
+      `(, name (filename . , (expand-file-name name)))))
+
   (defun ibuffer-make-git-filter-groups ()
     "Return ibuffer filter groups based on the git-root of buffers."
     (ibuffer-remove-duplicates
      (delq 'nil
-           (mapcar
-            (lambda (buf)
-              (when-let ((name (git-root-dir buf)))
-                `(, name (filename . , (expand-file-name name)))))
-            (buffer-list)))))
+           (mapcar #'ibuffer-make-git-filter-group (buffer-list)))))
 
   (defun ibuffer-append-git-filter-groups ()
     "Append git filter groups to ibuffer-filter-groups and update ibuffer."
@@ -363,11 +368,13 @@ Only creates a notification if BUFFER is *compilation*."
 
   (js2r-add-keybindings-with-prefix "C-c C-r")
 
-  (add-hook 'js2-mode-hook
-            (lambda ()
-              (add-hook 'xref-backend-functions 'xref-js2-xref-backend nil t)
-              (js2-imenu-extras-mode)
-              (js2-refactor-mode))))
+  (defun js2-mode-setup ()
+    "Enable js2-mode extras and xref-js2."
+    (add-hook 'xref-backend-functions 'xref-js2-xref-backend nil t)
+    (js2-imenu-extras-mode)
+    (js2-refactor-mode))
+
+  (add-hook 'js2-mode-hook 'js2-mode-setup))
 
 (use-package js2-refactor               ;; A JavaScript refactoring library for emacs.
   :after js2-mode)
@@ -429,13 +436,15 @@ Only creates a notification if BUFFER is *compilation*."
     (setq gc-cons-threshold most-positive-fixnum))
 
   (defun restore-garbage-collection-h ()
+    "Restore garbage collection."
+    (setq gc-cons-threshold gc-cons-threshold-default))
+
+  (defun restore-garbage-collection-soon-h ()
     "Defer it so that commands launched immediately after will enjoy the benefits."
-    (run-at-time 1 nil
-                 (lambda ()
-                   (setq gc-cons-threshold gc-cons-threshold-default))))
+    (run-at-time 1 nil #'restore-garbage-collection-h))
 
   (add-hook 'minibuffer-setup-hook #'defer-garbage-collection-h)
-  (add-hook 'minibuffer-exit-hook #'restore-garbage-collection-h))
+  (add-hook 'minibuffer-exit-hook #'restore-garbage-collection-soon-h))
 
 (use-package org                        ;; Outline-based notes management and organizer
   :ensure org-plus-contrib
