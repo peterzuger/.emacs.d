@@ -343,6 +343,11 @@ Only creates a notification if BUFFER is *compilation*."
   :hook (c-mode-common . irony-mode)
   :hook (irony-mode . irony-cdb-autosetup-compile-options))
 
+(use-package image                      ;; builtin image support
+  :ensure nil
+  :config
+  (imagemagick-register-types))
+
 (use-package ivy                        ;; Incremental Vertical completYon
   :config
   (setq ivy-use-virtual-buffers t)

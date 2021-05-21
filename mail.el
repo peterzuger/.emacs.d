@@ -86,10 +86,6 @@
 ;; attempt to show images when viewing messages
 (setq mu4e-view-show-images t)
 
-;; use imagemagick, if available
-(when (fboundp 'imagemagick-register-types)
-  (imagemagick-register-types))
-
 ;; ask if messages should be decrypted
 (setq mu4e-decryption-policy 'ask)
 
