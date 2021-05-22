@@ -452,6 +452,49 @@ Only creates a notification if BUFFER is *compilation*."
   (add-hook 'minibuffer-setup-hook #'defer-garbage-collection-h)
   (add-hook 'minibuffer-exit-hook #'restore-garbage-collection-soon-h))
 
+(use-package mu4e                       ;; an emacs-based e-mail client based on mu
+  :when (require 'mu4e nil 'noerror)
+  :ensure nil
+  :bind ("C-c m" . mu4e)
+  :hook (mu4e-compose-mode-hook . flyspell-mode)
+  :config
+  (setq mail-user-agent 'mu4e-user-agent)
+
+  (setq mu4e-maildir       "~/Mail")            ;; top-level Maildir
+  (setq mu4e-sent-folder   "/Sent Messages")    ;; folder for sent messages
+  (setq mu4e-drafts-folder "/Drafts")           ;; unfinished messages
+  (setq mu4e-trash-folder  "/Deleted Messages") ;; trashed messages
+  (setq mu4e-refile-folder "/Archive")          ;; saved messages
+  (setq mu4e-attachment-dir "~/Downloads/Mail") ;; attachments
+
+  (setq mu4e-maildir-shortcuts
+        '( ("/INBOX"            . ?i)
+           ("/Sent Messages"    . ?s)
+           ("/Deleted Messages" . ?t)
+           ("/Archive"          . ?a)
+           ("/Drafts"           . ?d)))
+
+  (setq mu4e-use-fancy-chars t)
+  (setq mu4e-view-prefer-html t)
+  (setq mu4e-view-show-images t)
+  (setq mu4e-decryption-policy 'ask)
+  (setq mu4e-sent-messages-behavior 'sent)
+  (setq mu4e-get-mail-command "offlineimap")
+  (setq mu4e-update-interval  300)
+  (setq mu4e-compose-signature (concat user-full-name "\n"))
+
+  (use-package smtpmail
+    :ensure nil
+    :config
+    (setq message-send-mail-function 'smtpmail-send-it)
+    (setq message-kill-buffer-on-exit t)    ;; don't keep message buffers around
+    (setq starttls-use-gnutls t)
+    (setq smtpmail-starttls-credentials '(("smtp.mail.me.com" 587 nil nil)))
+    (setq smtpmail-auth-credentials     '(("smtp.mail.me.com" 587 user-mail-address nil)))
+    (setq smtpmail-default-smtp-server     "smtp.mail.me.com")
+    (setq smtpmail-smtp-server             "smtp.mail.me.com")
+    (setq smtpmail-smtp-service             587)))
+
 (use-package org                        ;; Outline-based notes management and organizer
   :ensure org-plus-contrib
   :pin org
@@ -583,13 +626,10 @@ Only creates a notification if BUFFER is *compilation*."
 
 
 ;; load some additional configurations
-(when (eq system-type 'darwin)    (load-file "~/.emacs.d/mac.el" ))  ;; Mac OS X
+(when (eq system-type 'darwin)    (load-file "~/.emacs.d/mac.el" ))  ;; macOS
 (when (eq system-type 'gnu/linux) (load-file "~/.emacs.d/linux.el")) ;; Linux
 
-(when (require 'mu4e nil 'noerror)
-  (load-file "~/.emacs.d/mail.el"))     ;; Mail configuration
-
-(load-file "~/.emacs.d/themes.el")      ;; custom themes
+(load-file "~/.emacs.d/themes.el") ;; custom themes
 
 ;; log how loong emacs took to start
 (message "Loading %s...done (%.3fs)" load-file-name (emacs-uptime))
