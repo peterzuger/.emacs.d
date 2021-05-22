@@ -80,10 +80,9 @@
         ("gnu" . "http://elpa.gnu.org/packages/")
         ("melpa" . "http://melpa.org/packages/")))
 
-;; ensure use-package is installed
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+(eval-when-compile
+  (add-to-list 'load-path "~/.emacs.d/lisp/use-package/")
+  (require 'use-package))
 
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
