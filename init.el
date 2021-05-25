@@ -27,14 +27,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(defconst emacs-start-time (current-time)
-  "The 'current-time' when EMACS was started.")
-
-(defun emacs-uptime ()
-  "Get the time since this EMACS instance was started."
-  (float-time (time-subtract (current-time) emacs-start-time)))
-
-
 ;; dont display the splash screen when a file is opened directly
 (when (> (length command-line-args) 1)
   (setq inhibit-splash-screen t))
@@ -585,6 +577,10 @@ Only creates a notification if BUFFER is *compilation*."
   (yas-global-mode))
 
 
+(defun my-emacs-uptime ()
+  "Get the time since this EMACS instance was started."
+  (format-time-string "%s.%6Ns" (time-since before-init-time)))
+
 (defun random-character ()
   "Return a random character."
   (let ((alnum "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"))
@@ -617,11 +613,11 @@ Only creates a notification if BUFFER is *compilation*."
 (load-file "~/.emacs.d/themes.el") ;; custom themes
 
 ;; log how loong emacs took to start
-(message "Loading %s...done (%.3fs)" load-file-name (emacs-uptime))
+(message "Loading %s...done (%s)" load-file-name (my-emacs-uptime))
 
 (add-hook 'after-init-hook
           `(lambda ()
-             (message "Loading %s...done (%.3fs) [after-init]"
-                      ,load-file-name (emacs-uptime))) t)
+             (message "Loading %s...done (%s) [after-init]"
+                      ,load-file-name (my-emacs-uptime))) t)
 
 ;;; init.el ends here
