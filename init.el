@@ -397,20 +397,6 @@ Only creates a notification if BUFFER is *compilation*."
   (setq magit-section-initial-visibility-alist
         '((stashes . hide) (ignored . hide) (local . hide)))
 
-  (defun magit-ignored-files ()
-    "Command to show all ignored files."
-    (magit-git-items "ls-files" "--others" "--ignored" "--exclude-standard" "-z" "--directory"))
-
-  (defun magit-insert-ignored-files ()
-    "Ignored files section for magit-status buffer."
-    (when-let (files (magit-ignored-files))
-      (magit-insert-section (ignored)
-        (magit-insert-heading "Ignored files:")
-        (dolist (file files)
-          (magit-insert-section (file file)
-            (insert (propertize file 'font-lock-face 'magit-filename) ?\n)))
-        (insert ?\n))))
-
   (magit-add-section-hook 'magit-status-sections-hook
                           'magit-insert-user-header
                           'magit-insert-status-headers nil)
