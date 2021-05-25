@@ -28,3 +28,6 @@ tramp
 
 # byte-compiled elisp files
 *.elc
+
+# compiled snippets
+snippets/*/.yas-compiled-snippets.el
