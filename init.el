@@ -542,6 +542,7 @@ Only creates a notification if BUFFER is *compilation*."
   (setq ranger-cleanup-eagerly t))      ;; auto kill unused buffers
 
 (use-package sgml-mode                  ;; The simplest mode to edit XML
+  :ensure nil
   :mode ("handlebars" . html-mode)
   :config
   (setq sgml-basic-offset 4))
