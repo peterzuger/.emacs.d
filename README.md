@@ -20,36 +20,49 @@
 ## 📝 Table of Contents
 - [About](#about)
 - [Getting Started](#getting_started)
-- [Usage](#usage)
-- [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
-This Repository contains the emacs configuration of all of my computers.
-This configuration is common across all my machines.
+This Repository contains my emacs configuration for everything.
+
+The entire configuration is centered around `use-package` and almost everything
+is configured using it.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
-These instructions will get you a copy of my emacs setup up and running on your local machine.
+These instructions will get you a copy of my emacs setup up and running on your
+local machine.
 
 ### Prerequisites
-To use my ```~/.emacs.d``` you will need to install the following packages:
+To use my ```~/.emacs.d``` you will need to install the following packages on
+your system these examples are the ArchLinux packages but they should exist in
+other repositories:
 
-| Emacs Package | Prerequisites                                                                        | Link                                   |
-|---------------|--------------------------------------------------------------------------------------|----------------------------------------|
-| auctex        | [Texlive](https://www.archlinux.org/groups/x86_64/texlive-most/)                     | https://www.tug.org/texlive/           |
-| black         | [python-black](https://www.archlinux.org/packages/community/any/python-black/)       | https://github.com/psf/black           |
-| ggtags        | [GNU global](https://aur.archlinux.org/packages/global/)                             | https://www.gnu.org/software/global/   |
-| ggtags        | [ctags](https://www.archlinux.org/packages/extra/x86_64/ctags/)                      | http://ctags.sourceforge.net/          |
-| go-mode       | [go](https://www.archlinux.org/packages/community/x86_64/go/)                        | https://golang.org/                    |
-| go-mode       | [gocode](https://www.github.com/rogpeppe/godef/)                                     | https://www.github.com/rogpeppe/godef/ |
-| go-mode       | [godef](https://github.com/mdempsky/gocode/)                                         | https://github.com/mdempsky/gocode/    |
-| magit         | [git](https://www.archlinux.org/packages/extra/x86_64/git/)                          | https://git-scm.com/                   |
-| mu4e          | [offlineimap](https://www.archlinux.org/packages/community/any/offlineimap/)         | http://www.offlineimap.org/            |
-| mu4e          | [mu](https://aur.archlinux.org/packages/mu/)                                         | https://www.djcbsoftware.nl/code/mu/   |
-| jedi          | [python-virtualenv](https://www.archlinux.org/packages/extra/any/python-virtualenv/) | https://pypi.org/project/virtualenv/   |
-| flyspell      | [aspell](https://www.archlinux.org/packages/extra/x86_64/aspell/)                    | http://aspell.net/                     |
+| Emacs Package | Prerequisites                                                                        | Link                                                |
+|---------------|--------------------------------------------------------------------------------------|-----------------------------------------------------|
+| auctex        | [Texlive](https://www.archlinux.org/groups/x86_64/texlive-most/)                     | https://www.tug.org/texlive/                        |
+| black         | [python-black](https://www.archlinux.org/packages/community/any/python-black/)       | https://github.com/psf/black                        |
+| ggtags        | [GNU global](https://aur.archlinux.org/packages/global/)                             | https://www.gnu.org/software/global/                |
+| ggtags        | [ctags](https://www.archlinux.org/packages/extra/x86_64/ctags/)                      | http://ctags.sourceforge.net/                       |
+| magit         | [git](https://www.archlinux.org/packages/extra/x86_64/git/)                          | https://git-scm.com/                                |
+| mu4e          | [offlineimap](https://www.archlinux.org/packages/community/any/offlineimap/)         | http://www.offlineimap.org/                         |
+| mu4e          | [mu](https://aur.archlinux.org/packages/mu/)                                         | https://www.djcbsoftware.nl/code/mu/                |
+| jedi          | [python-virtualenv](https://www.archlinux.org/packages/extra/any/python-virtualenv/) | https://pypi.org/project/virtualenv/                |
+| flyspell      | [aspell](https://www.archlinux.org/packages/extra/x86_64/aspell/)                    | http://aspell.net/                                  |
+| irony         | [clang](https://www.archlinux.org/packages/staging/x86_64/clang/)                    | https://clang.llvm.org/                             |
+| irony         | [cmake](https://www.archlinux.org/packages/extra/x86_64/cmake/)                      | https://cmake.org/                                  |
+| irony         | [base-devel](https://www.archlinux.org/groups/x86_64/base-devel/)                    | https://www.archlinux.org/groups/x86_64/base-devel/ |
+| irony         | [llvm-libs](https://www.archlinux.org/packages/extra/x86_64/llvm-libs/)              | https://llvm.org/                                   |
+| go-mode       | [go](https://www.archlinux.org/packages/community/x86_64/go/)                        | https://golang.org/                                 |
+| go-mode       | [gocode](https://www.github.com/rogpeppe/godef/)                                     | https://www.github.com/rogpeppe/godef/              |
+| go-mode       | [godef](https://github.com/mdempsky/gocode/)                                         | https://github.com/mdempsky/gocode/                 |
 
-To use this emacs configuration, just clone this repo with:
+The go packages can be installed like this:
+```
+go get -u github.com/mdempsky/gocode
+go get -u github.com/rogpeppe/godef
+```
+
+#### install ~\/.emacs.d\/
+Just clone this repo with:
 
 ```
 git clone --recursive https://gitlab.com/peterzuger/emacsd.git
@@ -65,69 +78,88 @@ You can also directly clone it into ```~/.emacs.d```:
 git clone --recursive https://gitlab.com/peterzuger/emacsd.git ~/.emacs.d
 ```
 
-### Build Prerequisites
-For jedi and irony, a server has to be built during the first startup,
-this requires some additional packages, they can be removed once the installation is done:
-
-| Prerequisite                                                      | Description                              | [Arch Packages](https://www.archlinux.org/packages/)                    |
-|-------------------------------------------------------------------|------------------------------------------|-------------------------------------------------------------------------|
-| [clang](https://clang.llvm.org/)                                  | C language family frontend for LLVM      | [clang](https://www.archlinux.org/packages/staging/x86_64/clang/)       |
-| [cmake](https://cmake.org/)                                       | A cross-platform open-source make system | [cmake](https://www.archlinux.org/packages/extra/x86_64/cmake/)         |
-| [base-devel](https://www.archlinux.org/groups/x86_64/base-devel/) | Developer utilities                      | [base-devel](https://www.archlinux.org/groups/x86_64/base-devel/)       |
-| [llvm-libs](https://llvm.org/)                                    | The LLVM Compiler Infrastructure         | [llvm-libs](https://www.archlinux.org/packages/extra/x86_64/llvm-libs/) |
-
-### Installing
+### Package Installation
 When starting emacs for the first time with my ```~/.emacs.d```,
-emacs will automatically install the following packages:
-
-| Package name            | language | function              |
-|-------------------------|:--------:|-----------------------|
-| auctex                  | TeX      | language Support      |
-| company                 | *        | text-completion       |
-| company-emoji           | *        | emoji-completion      |
-| company-irony           | C/C++    | auto-completion       |
-| company-jedi            | Python   | auto-completion       |
-| company-shell           | Shell    | auto-completion       |
-| emojify                 | Shell    | auto-completion       |
-| fill-column-indicator   | *        | visibility            |
-| flycheck                | *        | syntax check          |
-| flycheck-clang-analyzer | C/C++    | static analyzer check |
-| flycheck-irony          | C/C++    | syntax check          |
-| flycheck-pycheckers     | C/C++    | syntax check          |
-| ggtags                  | C/C++    | jump to definition    |
-| magit                   | *        | git support           |
-| markdown-mode           | Markdown | language Support      |
-| pdf-tools               | .pdf     | PDF support           |
-| pinentry                | passwd   | password entry        |
-| ranger                  | dired    | file browsing         |
-| smartparens             | *        | helper                |
-| whitespace-cleanup-mode | *        | cleanup               |
-| yasnippet               | *        | code snippets         |
+emacs will automatically install all packages that are not builtin.
 
 This should only take a few minutes.
+This only takes long during the very first startup.
 
-Once that has finished, excecute the following 2 commands, they install the irony and the jedi server.
-```
-M-x irony-install-server
-M-x jedi:install-server
-```
+| Package Name                                                                      | Notes                               |
+|-----------------------------------------------------------------------------------|-------------------------------------|
+| [ace-window](https://github.com/abo-abo/ace-window)                               |                                     |
+| [auctex](https://www.gnu.org/software/auctex/)                                    |                                     |
+| [avy](https://github.com/abo-abo/avy)                                             |                                     |
+| [company](https://github.com/company-mode/company-mode)                           |                                     |
+| [company-emoji](https://github.com/dunn/company-emoji)                            |                                     |
+| [company-go](https://github.com/emacsmirror/company-go)                           |                                     |
+| [company-irony](https://github.com/Sarcasm/company-irony)                         |                                     |
+| [company-jedi](https://github.com/emacsorphanage/company-jedi)                    |                                     |
+| [company-shell](https://github.com/Alexander-Miller/company-shell)                |                                     |
+| [counsel](https://github.com/abo-abo/swiper#counsel)                              |                                     |
+| [dockerfile-mode](https://github.com/spotify/dockerfile-mode)                     |                                     |
+| [engine-mode](https://github.com/hrs/engine-mode)                                 |                                     |
+| [emojify](https://github.com/iqbalansari/emacs-emojify#emojify)                   |                                     |
+| [fill-column-indicator](https://github.com/alpaker/fill-column-indicator)         |                                     |
+| [flycheck](https://www.flycheck.org/en/latest/)                                   |                                     |
+| [flycheck-irony](https://github.com/Sarcasm/flycheck-irony)                       |                                     |
+| [flycheck-pycheckers](https://github.com/msherry/flycheck-pycheckers)             |                                     |
+| [ggtags](https://github.com/leoliu/ggtags)                                        |                                     |
+| [go-mode](https://github.com/dominikh/go-mode.el)                                 |                                     |
+| [highlight-indent-guides](https://github.com/DarthFennec/highlight-indent-guides) |                                     |
+| [hydra](https://github.com/abo-abo/hydra)                                         |                                     |
+| [irony](https://github.com/Sarcasm/irony-mode)                                    |                                     |
+| [ivy](https://github.com/abo-abo/swiper#ivy)                                      |                                     |
+| [ivy-hydra](https://github.com/abo-abo/swiper/blob/master/ivy-hydra.el)           |                                     |
+| [js2-mode](https://github.com/mooz/js2-mode)                                      |                                     |
+| [js2-refactor](https://github.com/js-emacs/js2-refactor.el)                       |                                     |
+| [json-mode](https://github.com/joshwnj/json-mode)                                 |                                     |
+| [magit](https://magit.vc/)                                                        |                                     |
+| [mu4e](https://www.djcbsoftware.nl/code/mu/mu4e.html)                             | is only loaded when mu is installed |
+| [markdown-mode](https://github.com/jrblevin/markdown-mode)                        |                                     |
+| [org](https://orgmode.org/)                                                       |                                     |
+| [pdf-tools](https://github.com/politza/pdf-tools)                                 |                                     |
+| [pinentry](https://github.com/ueno/pinentry-el)                                   |                                     |
+| [python-black](https://github.com/wbolster/emacs-python-black)                    |                                     |
+| [ranger](https://github.com/ralesi/ranger.el)                                     |                                     |
+| [smartparens](https://github.com/Fuco1/smartparens)                               |                                     |
+| [swiper](https://github.com/abo-abo/swiper)                                       |                                     |
+| [xref-js2](https://github.com/js-emacs/xref-js2)                                  |                                     |
+| [yasnippet](https://joaotavora.github.io/yasnippet/)                              |                                     |
 
-## ✍️ Authors <a name = "authors"></a>
-- [@peterzuger](https://github.com/peterzuger)
 
+### Builtin Packages
+The following packages are builtins that have `use-package` definitions just for
+configuration purposes:
 
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-- [zenburn](https://github.com/bbatsov/zenburn-emacs)
-- [moe](https://github.com/kuanyui/moe-theme.el)
-- [material](https://github.com/cpaulik/emacs-material-theme)
-- [cyberpunk](https://github.com/n3mo/cyberpunk-theme.el)
-- [ample](https://github.com/jordonbiondo/ample-theme)
-- [alect](https://github.com/alezost/alect-themes)
-- [gotham](https://github.com/wasamasa/gotham-theme)
-- [tangotango](https://github.com/juba/color-theme-tangotango)
-- [gruber-darker](https://github.com/rexim/gruber-darker-theme)
-- [ample-zen](https://github.com/mjwall/ample-zen)
-- [noctilux](https://github.com/sjrmanning/noctilux-theme)
-- [afternoon](https://github.com/osener/emacs-afternoon-theme)
-- [grandshell](https://github.com/steckerhalter/grandshell-theme)
-- [@kylelobo](https://github.com/kylelobo) - Documentation template
+| Builtin Package Name | Notes                         |
+|----------------------|-------------------------------|
+| cc-mode              |                               |
+| compile              | creates desktop notifications |
+| ibuffer              |                               |
+| image                |                               |
+| make-mode            |                               |
+| minibuffer           |                               |
+| sgml-mode            |                               |
+| whitespace           |                               |
+
+### Use emacs
+And emacs is ready to use !
+
+Some usefull keybinds that are not standard are listed here sorted by their
+usefulness:
+
+| Keybinding  | Description                          | Note                    |
+|-------------|--------------------------------------|-------------------------|
+| `M-o`       | switch window using ace shortcuts    |                         |
+| `C-c c`     | org capture                          |                         |
+| `<f6>`      | magit (just the best)                |                         |
+| `<f5>`      | compile from anywhere                |                         |
+| `<backtab>` | complete any yasnippet               |                         |
+| `C-x C-g`   | insert a random string               |                         |
+| `C-x C-l`   | smart downcase region/word           |                         |
+| `C-x C-u`   | smart upcase region/word             |                         |
+| `C-c m`     | mu4e                                 | only if mu is installed |
+| `C-c a`     | org agenda                           |                         |
+| `<C-f5>`    | recompile using last compile command |                         |
+| `M-f5`      | switch to compilation window         |                         |
