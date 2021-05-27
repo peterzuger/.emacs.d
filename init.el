@@ -159,7 +159,7 @@
   (company-add-local-backend 'c-mode-common-hook 'company-irony))
 
 (use-package company-jedi               ;; company-mode completion back-end for Python JEDI
-  :after company
+  :after (company python)
   :config
   (company-add-local-backend 'python-mode-hook 'company-jedi))
 
@@ -239,7 +239,7 @@ Only creates a notification if BUFFER is *compilation*."
   :hook (c-mode-common . flycheck-irony-setup))
 
 (use-package flycheck-pycheckers        ;; multiple syntax checker for Python, using Flycheck
-  :after flycheck
+  :after (flycheck python)
   :hook (python-mode . flycheck-pycheckers-setup))
 
 (use-package ggtags                     ;; emacs frontend to GNU Global source code tagging system
@@ -532,6 +532,7 @@ Only creates a notification if BUFFER is *compilation*."
   (pinentry-start))
 
 (use-package python-black               ;; Reformat Python using python-black
+  :after python
   :hook (python-mode . python-black-on-save-mode))
 
 (use-package ranger                     ;; Make dired more like ranger
