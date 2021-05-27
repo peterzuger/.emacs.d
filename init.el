@@ -332,7 +332,10 @@ Only creates a notification if BUFFER is *compilation*."
   :init
   (setq irony-additional-clang-options '("-ferror-limit=0"))
   :hook (c-mode-common . irony-mode)
-  :hook (irony-mode . irony-cdb-autosetup-compile-options))
+  :hook (irony-mode . irony-cdb-autosetup-compile-options)
+  :config
+  (unless (file-exists-p (concat irony-user-dir "bin/irony-server"))
+    (call-interactively 'irony-install-server)))
 
 (use-package image                      ;; builtin image support
   :ensure nil
