@@ -2,9 +2,9 @@
 # name: include-guard
 # key: include-guard
 # --
-#ifndef ${2:`(unless (file-name-extension (buffer-file-name)) "__")``(upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))``(if (file-name-extension (buffer-file-name)) (concat "_" (upcase (file-name-extension (buffer-file-name)))) "__")`}
+#ifndef ${1:`(include-guard-string (buffer-file-name))`}
 #define $1
-
-$0
-
+`(c-extern-c-begin (buffer-file-name))`
+ $0
+`(c-extern-c-end (buffer-file-name))`
 #endif /* $1 */

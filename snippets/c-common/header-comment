@@ -3,7 +3,7 @@
 # key: header-comment
 # --
 /**${1: -*- mode: `(format "%s" major-mode)` -*-}
- * @file   `(file-name-nondirectory (buffer-file-name))`
+ * @file   `(c-header-file-name (buffer-file-name))`
  * @author `(getenv "NAME")`
  * @date   `(format-time-string "%d.%m.%Y")`
  * @brief  $2

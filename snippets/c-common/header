@@ -3,14 +3,14 @@
 # key: header
 # --
 /**${1: -*- mode: `(format "%s" major-mode)` -*-}
- * @file   `(file-name-nondirectory (buffer-file-name))`
+ * @file   `(c-header-file-name (buffer-file-name))`
  * @author `(getenv "NAME")`
  * @date   `(format-time-string "%d.%m.%Y")`
  * @brief  $2
  */
-#ifndef ${3:`(unless (file-name-extension (buffer-file-name)) "__")``(upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))``(if (file-name-extension (buffer-file-name)) (concat "_" (upcase (file-name-extension (buffer-file-name)))) "__")`}
+#ifndef ${3:`(include-guard-string (buffer-file-name))`}
 #define $3
-`(when (string= "h" (file-name-extension (buffer-file-name))) "\n#if defined(__cplusplus)\nextern \"C\"{\n#endif /* defined(__cplusplus) */\n")`
+`(c-extern-c-begin (buffer-file-name))`
  $0
-`(when (string= "h" (file-name-extension (buffer-file-name))) "\n#if defined(__cplusplus)\n}\n#endif /* defined(__cplusplus) */\n")`
+`(c-extern-c-end (buffer-file-name))`
 #endif /* $3 */
