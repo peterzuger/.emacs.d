@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: preprocessor if/ndef
+# key: ppif
+# --
+#if${1:ndef} ${2:condition}
+$0
+#endif /* $2 */
