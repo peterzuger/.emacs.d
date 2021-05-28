@@ -502,13 +502,13 @@ Only creates a notification if BUFFER is *compilation*."
 
   (setq org-capture-templates
         '(("t" "personal todo" entry (file "todo.org")
-           "* TODO %?\n  %U\n")
+           "* TODO %?\n  - Created on %U\n")
 
           ("w" "work todo" entry (file "work.org")
-           "* TODO %?\n  %U\n")
+           "* TODO %?\n  - Created on %U\n")
 
-          ("n" "general note" entry (file "refile.org")
-           "* %? :NOTE:\n  %U\n")
+          ("n" "general note" entry (file "notes.org")
+           "* %?\n  %U\n")
 
           ("j" "journal entry" entry (file+datetree "journal.org")
            "* %?\n  %U\n")))
