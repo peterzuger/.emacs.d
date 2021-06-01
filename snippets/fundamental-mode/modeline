@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Mode line
+# key: modeline
+# --
+-*- mode: ${1:`major-mode`}; -*-
