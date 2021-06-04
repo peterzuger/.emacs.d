@@ -37,6 +37,7 @@ Reset 'gc-cons-threshold' to this value to prevent runaway memory usage.")
 (menu-bar-mode -1)                                           ;; remove the menue bar
 (tool-bar-mode -1)                                           ;; remove the toolbar
 (scroll-bar-mode -1)                                         ;; remove the scrollbar
+(tooltip-mode -1)                                            ;; disable tooltips
 
 (let ((file-name-handler-alist-tmp file-name-handler-alist))
   (setq-default file-name-handler-alist nil)
