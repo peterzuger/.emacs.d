@@ -195,7 +195,8 @@ Only creates a notification if BUFFER is *compilation*."
   (add-hook 'compilation-finish-functions 'fmq-compilation-finish))
 
 (use-package counsel                    ;; Various completion functions using Ivy
-  :after ivy)
+  :after ivy
+  :bind ("C-x C-M-f" . counsel-locate))
 
 (use-package dockerfile-mode)           ;; Major mode for editing Docker's Dockerfiles
 
