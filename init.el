@@ -344,6 +344,7 @@ Only creates a notification if BUFFER is *compilation*."
   :config
   (setq ivy-use-virtual-buffers t)
   (setq ivy-use-selectable-prompt t)
+  (setq search-default-mode #'char-fold-to-regexp)
   (setq ivy-count-format "(%d/%d) ")
 
   (setq ivy-re-builders-alist
