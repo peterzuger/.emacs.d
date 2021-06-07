@@ -149,17 +149,16 @@ And emacs is ready to use !
 Some usefull keybinds that are not standard are listed here sorted by their
 usefulness:
 
-| Keybinding  | Description                          | Note                    |
-|-------------|--------------------------------------|-------------------------|
-| `M-o`       | switch window using ace shortcuts    |                         |
-| `C-c c`     | org capture                          |                         |
-| `<f6>`      | magit (just the best)                |                         |
-| `<f5>`      | compile from anywhere                |                         |
-| `<backtab>` | complete any yasnippet               |                         |
-| `C-x C-g`   | insert a random string               |                         |
-| `C-x C-l`   | smart downcase region/word           |                         |
-| `C-x C-u`   | smart upcase region/word             |                         |
-| `C-c m`     | mu4e                                 | only if mu is installed |
-| `C-c a`     | org agenda                           |                         |
-| `<C-f5>`    | recompile using last compile command |                         |
-| `M-f5`      | switch to compilation window         |                         |
+| Keybinding  | Description                       | Note                    |
+|-------------|-----------------------------------|-------------------------|
+| `M-o`       | switch window using ace shortcuts |                         |
+| `C-c c`     | org capture                       |                         |
+| `C-c g`     | magit (just the best)             |                         |
+| `C-c C-l`   | compile from anywhere             |                         |
+| `<backtab>` | complete any yasnippet            |                         |
+| `C-x C-g`   | insert a random string            |                         |
+| `C-x C-l`   | smart downcase region/word        |                         |
+| `C-x C-u`   | smart upcase region/word          |                         |
+| `C-c m`     | mu4e                              | only if mu is installed |
+| `C-c a`     | org agenda                        |                         |
+| `C-M-c C-l` | switch to compilation window      |                         |

@@ -89,7 +89,7 @@
   :demand t
   :mode ("\\.tex\\'" . TeX-latex-mode)
   :bind (:map LaTeX-mode-map
-              ("C-c C-g" . pdf-sync-forward-search))
+              ("C-c C-s" . pdf-sync-forward-search))
   ;; enable forward/inverse search
   :hook (LaTeX-mode . TeX-source-correlate-mode)
   ;; Update PDF buffers after successful LaTeX runs
@@ -107,7 +107,6 @@
   :demand t
   :ensure nil
   :bind (:map c-mode-base-map
-              ("C-c C-l" . compile)
               ("\C-m" . c-context-line-break))
   :config
   (setq c-default-style "k&r")
@@ -172,9 +171,8 @@
 
 (use-package compile                    ;; compile mode configuration
   :ensure nil
-  :bind (("<f5>" . compile)
-         ("<C-f5>" . recompile)
-         ("<M-f5>" . pop-to-compilation))
+  :bind* (("C-c C-l" . compile)
+          ("C-M-c C-l" . pop-to-compilation))
   :preface
   (defun pop-to-compilation ()
     (interactive)
@@ -256,8 +254,6 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package go-mode                    ;; Major mode for the Go programming language
   :after (company smartparens)
   :bind (:map go-mode-map
-              ("C-c C-l" . compile)
-              ("C-c C-f" . gofmt)
               ("M-." . godef-jump)
               ("M-," . pop-tag-mark))
   :config
@@ -385,7 +381,7 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package magit                      ;; A Git porcelain inside Emacs.
   :demand t
-  :bind ("<f6>" . magit-status)
+  :bind ("C-c g" . magit-status)
   :hook (git-commit-setup . git-commit-turn-on-flyspell)
   :config
   (setq transient-default-level 5)
@@ -405,11 +401,6 @@ Only creates a notification if BUFFER is *compilation*."
   (magit-add-section-hook 'magit-status-sections-hook
                           'magit-insert-ignored-files
                           'magit-insert-stashes t))
-
-(use-package make-mode                  ;; Major mode for Makefile's
-  :ensure nil
-  :bind (:map makefile-mode-map
-              ("C-c C-l" . compile)))
 
 (use-package markdown-mode)             ;; Major mode for Markdown-formatted text
 
