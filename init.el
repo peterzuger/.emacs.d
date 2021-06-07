@@ -123,6 +123,13 @@
 (use-package company                    ;; Modular text completion framework
   :demand t
   :bind* ("<backtab>" . company-yasnippet)
+  :preface
+  (defun company-add-local-backend (hook backend)
+    "Add a local BACKEND using the given HOOK."
+    (add-hook hook
+              (lambda ()
+                (add-to-list (make-local-variable 'company-backends) backend))))
+
   :config
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 2)
@@ -131,12 +138,6 @@
         '(company-files
           company-capf
           company-keywords))
-
-  (defun company-add-local-backend (hook backend)
-    "Add a local BACKEND using the given HOOK."
-    (add-hook hook
-              (lambda ()
-                (add-to-list (make-local-variable 'company-backends) backend))))
 
   (company-add-local-backend 'emacs-lisp-mode-hook 'company-elisp)
 
