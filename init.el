@@ -33,7 +33,8 @@
 
 ;; don't quit immediately
 (when (display-graphic-p)
-  (setq confirm-kill-emacs 'y-or-n-p))
+  (setq confirm-kill-emacs 'y-or-n-p)
+  (unbind-key "C-z"))
 
 ;; please dont litter my init.el
 (setq custom-file "~/.emacs.d/custom.el")
