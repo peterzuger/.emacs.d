@@ -293,17 +293,18 @@ Only creates a notification if BUFFER is *compilation*."
     (when-let ((name (git-root-dir buf)))
       `(, name (filename . , (expand-file-name name)))))
 
-  (defun ibuffer-make-git-filter-groups ()
-    "Return ibuffer filter groups based on the git-root of buffers."
+  (defun ibuffer-make-git-filter-groups (buffers)
+    "Return ibuffer filter groups based on the git-root of BUFFERS."
     (ibuffer-remove-duplicates
      (delq 'nil
-           (mapcar #'ibuffer-make-git-filter-group (buffer-list)))))
+           (mapcar #'ibuffer-make-git-filter-group buffers))))
 
   (defun ibuffer-append-git-filter-groups ()
     "Append git filter groups to ibuffer-filter-groups and update ibuffer."
     (ibuffer-switch-to-saved-filter-groups "default")
     (setq ibuffer-filter-groups
-          (append ibuffer-filter-groups (ibuffer-make-git-filter-groups)))
+          (append ibuffer-filter-groups
+                  (ibuffer-make-git-filter-groups (buffer-list))))
     (when-let ((ibuf (get-buffer "*Ibuffer*")))
       (with-current-buffer ibuf
         (pop-to-buffer ibuf)
