@@ -105,7 +105,7 @@
 (use-package cc-mode                    ;; C, C++, Objective-C, Java, CORBA IDL Pike and AWK code
   :after smartparens
   :demand t
-  :ensure nil
+  :ensure nil ;; builtin
   :bind (:map c-mode-base-map
               ("\C-m" . c-context-line-break))
   :config
@@ -170,7 +170,7 @@
   (company-add-local-backend 'sh-mode-hook 'company-shell))
 
 (use-package compile                    ;; compile mode configuration
-  :ensure nil
+  :ensure nil ;; builtin
   :bind* (("C-c C-l" . compile)
           ("C-M-c C-l" . pop-to-compilation))
   :preface
@@ -272,7 +272,7 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package hydra)                     ;; Make bindings that stick around.
 
 (use-package ibuffer                    ;; An advanced replacement for BufferMenu
-  :ensure nil
+  :ensure nil ;; builtin
   :bind* ("C-x C-b" . ibuffer)
   :config
   (setq ibuffer-expert t)                    ;; delete unmodified buffers without asking
@@ -336,7 +336,7 @@ Only creates a notification if BUFFER is *compilation*."
     (call-interactively 'irony-install-server)))
 
 (use-package image                      ;; builtin image support
-  :ensure nil
+  :ensure nil ;; builtin
   :config
   (imagemagick-register-types))
 
@@ -405,7 +405,7 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package markdown-mode)             ;; Major mode for Markdown-formatted text
 
 (use-package minibuffer                 ;; Minibuffer customization
-  :ensure nil
+  :ensure nil ;; builtin
   :config
   (setq enable-recursive-minibuffers t)
   (minibuffer-depth-indicate-mode t)
@@ -538,7 +538,7 @@ Only creates a notification if BUFFER is *compilation*."
   (setq ranger-cleanup-eagerly t))      ;; auto kill unused buffers
 
 (use-package sgml-mode                  ;; The simplest mode to edit XML
-  :ensure nil
+  :ensure nil ;; builtin
   :mode ("handlebars" . html-mode)
   :config
   (setq sgml-basic-offset 4))
@@ -553,7 +553,7 @@ Only creates a notification if BUFFER is *compilation*."
   :bind ("C-s" . swiper))
 
 (use-package whitespace                 ;; whitespace-cleanup customization's
-  :ensure nil
+  :ensure nil ;; builtin
   :config
   (defvar no-whitespace-cleanup nil
     "Variable for disabling whitespace-cleanup before save.")
