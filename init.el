@@ -194,8 +194,7 @@ Only creates a notification if BUFFER is *compilation*."
                     "Compilation finished"
                     status)))
 
-  (setq compilation-finish-functions
-        '(fmq-compilation-finish)))
+  (add-hook 'compilation-finish-functions 'fmq-compilation-finish))
 
 (use-package counsel                    ;; Various completion functions using Ivy
   :after ivy)
