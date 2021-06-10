@@ -34,6 +34,7 @@
 ;; don't quit immediately
 (when (display-graphic-p)
   (setq confirm-kill-emacs 'y-or-n-p)
+  (unbind-key "C-x C-z")
   (unbind-key "C-z"))
 
 ;; please dont litter my init.el
