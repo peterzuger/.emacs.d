@@ -496,6 +496,9 @@ Only creates a notification if BUFFER is *compilation*."
 
   (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
+  (setq org-file-apps
+        '((auto-mode . emacs)))
+
   (setq org-capture-templates
         '(("t" "personal todo" entry (file "todo.org")
            "* TODO %?\n  - Created on %U\n")
