@@ -484,6 +484,7 @@ Only creates a notification if BUFFER is *compilation*."
   (setq org-catch-invisible-edits 'smart)
   (setq org-image-actual-width nil)
   (setq org-return-follows-link t)
+  (setq org-log-into-drawer t)
   (setq org-directory "~/Notes/")
   (setq org-default-notes-file (concat org-directory "todo.org"))
   (setq org-archive-location (concat org-directory "archive.org"))
@@ -501,19 +502,30 @@ Only creates a notification if BUFFER is *compilation*."
 
   (setq org-capture-templates
         '(("t" "personal todo" entry (file "todo.org")
-           "* TODO %?\n  - Created on %U\n")
+           "* TODO %?
+  :LOGBOOK:
+  - Created on %U
+  :END:")
 
           ("o" "order something" entry (file "todo.org")
-           "* ORDER %?\n  - Created on %U\n")
+           "* ORDER %?
+  :LOGBOOK:
+  - Created on %U
+  :END:")
 
           ("w" "work todo" entry (file "work.org")
-           "* TODO %?\n  - Created on %U\n")
+           "* TODO %?
+  :LOGBOOK:
+  - Created on %U
+  :END:")
 
           ("n" "general note" entry (file "notes.org")
-           "* %?\n  %U\n")
+           "* %?
+  %U")
 
           ("j" "journal entry" entry (file+datetree "journal.org")
-           "* %?\n  %U\n")))
+           "* %?
+  %U")))
 
   (org-babel-do-load-languages
    'org-babel-load-languages
