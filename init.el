@@ -503,6 +503,9 @@ Only creates a notification if BUFFER is *compilation*."
         '(("t" "personal todo" entry (file "todo.org")
            "* TODO %?\n  - Created on %U\n")
 
+          ("o" "order something" entry (file "todo.org")
+           "* ORDER %?\n  - Created on %U\n")
+
           ("w" "work todo" entry (file "work.org")
            "* TODO %?\n  - Created on %U\n")
 
