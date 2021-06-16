@@ -173,7 +173,7 @@
 (use-package compile                    ;; compile mode configuration
   :ensure nil ;; builtin
   :bind (("C-c C-l" . compile)
-         ("C-c l" . pop-to-compilation))
+         ("C-c M-l" . pop-to-compilation))
   :preface
   (defun pop-to-compilation ()
     (interactive)
@@ -475,6 +475,7 @@ Only creates a notification if BUFFER is *compilation*."
   :ensure org-plus-contrib
   :pin org
   :bind (("C-c c" . org-capture)
+         ("C-c l" . org-store-link)
          ("C-c a" . org-agenda))
   :config
   (setq org-src-fontify-natively t)
