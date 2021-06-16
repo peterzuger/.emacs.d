@@ -474,9 +474,9 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package org                        ;; Outline-based notes management and organizer
   :ensure org-plus-contrib
   :pin org
-  :bind (("C-c c" . org-capture)
-         ("C-c l" . org-store-link)
-         ("C-c a" . org-agenda))
+  :bind* (("C-c c" . org-capture)
+          ("C-c l" . org-store-link)
+          ("C-c a" . org-agenda))
   :config
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively t)
