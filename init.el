@@ -465,7 +465,7 @@ Only creates a notification if BUFFER is *compilation*."
     (setq message-send-mail-function 'smtpmail-send-it)
     (setq message-kill-buffer-on-exit t)    ;; don't keep message buffers around
     (setq starttls-use-gnutls t)
-    (setq auth-sources '("~/.config/authinfo"))
+    (setq auth-sources '("~/.config/authinfo.gpg"))
     (setq smtpmail-starttls-credentials '(("smtp.mail.me.com" 587 nil nil)))
     (setq smtpmail-auth-credentials     '(("smtp.mail.me.com" 587 user-mail-address nil)))
     (setq smtpmail-default-smtp-server     "smtp.mail.me.com")
