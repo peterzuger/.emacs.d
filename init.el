@@ -197,7 +197,13 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package counsel                    ;; Various completion functions using Ivy
   :after ivy
-  :bind ("C-x C-M-f" . counsel-locate))
+  :bind (("C-x C-f" . counsel-find-file)
+         ("C-x C-M-f" . counsel-locate))
+  :config
+  (setq counsel-find-file-ignore-regexp
+        (concat
+         "^" (regexp-opt '("__pycache__/" "GTAGS" "GRTAGS" "GPATH")) "$"
+         "\\|" (regexp-opt '(".pyc" ".elc" ".o")) "$")))
 
 (use-package dockerfile-mode)           ;; Major mode for editing Docker's Dockerfiles
 
