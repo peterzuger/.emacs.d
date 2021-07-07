@@ -186,7 +186,7 @@ Only creates a notification if BUFFER is *compilation*."
   :config
   (setq counsel-find-file-ignore-regexp
         (concat
-         "^" (regexp-opt '("__pycache__/" "GTAGS" "GRTAGS" "GPATH")) "$"
+         "^" (regexp-opt '("__pycache__/" ".mypy_cache/" "GTAGS" "GRTAGS" "GPATH")) "$"
          "\\|" (regexp-opt '(".pyc" ".elc" ".o")) "$")))
 
 (use-package dockerfile-mode)           ;; Major mode for editing Docker's Dockerfiles
