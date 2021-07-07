@@ -85,22 +85,6 @@
 (use-package ace-window                 ;; Quickly switch windows
   :bind* ("M-o" . ace-window))
 
-(use-package latex                      ;; Integrated environment for *TeX*
-  :ensure auctex
-  :demand t
-  :mode ("\\.tex\\'" . TeX-latex-mode)
-  :bind (:map LaTeX-mode-map
-              ("C-c C-s" . pdf-sync-forward-search))
-  ;; enable forward/inverse search
-  :hook (LaTeX-mode . TeX-source-correlate-mode)
-  ;; Update PDF buffers after successful LaTeX runs
-  :hook (TeX-after-compilation-finished-functions . TeX-revert-document-buffer)
-  :config
-  ;; Use pdf-tools to open PDF files
-  (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
-  (setq TeX-source-correlate-method 'synctex)
-  (setq TeX-source-correlate-start-server t))
-
 (use-package avy)                       ;; Jump to arbitrary positions in visible text and select text quickly
 
 (use-package cc-mode                    ;; C, C++, Objective-C, Java, CORBA IDL Pike and AWK code
@@ -387,6 +371,22 @@ Only creates a notification if BUFFER is *compilation*."
   :after js2-mode)
 
 (use-package json-mode)                 ;; Major mode for editing JSON files
+
+(use-package latex                      ;; Integrated environment for *TeX*
+  :ensure auctex
+  :demand t
+  :mode ("\\.tex\\'" . TeX-latex-mode)
+  :bind (:map LaTeX-mode-map
+              ("C-c C-s" . pdf-sync-forward-search))
+  ;; enable forward/inverse search
+  :hook (LaTeX-mode . TeX-source-correlate-mode)
+  ;; Update PDF buffers after successful LaTeX runs
+  :hook (TeX-after-compilation-finished-functions . TeX-revert-document-buffer)
+  :config
+  ;; Use pdf-tools to open PDF files
+  (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
+  (setq TeX-source-correlate-method 'synctex)
+  (setq TeX-source-correlate-start-server t))
 
 (use-package magit                      ;; A Git porcelain inside Emacs.
   :demand t
