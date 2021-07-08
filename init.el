@@ -156,8 +156,8 @@
 
 (use-package compile                    ;; compile mode configuration
   :ensure nil ;; builtin
-  :bind (("C-c C-l" . compile)
-         ("C-c M-l" . pop-to-compilation))
+  :bind* (("C-c C-l" . compile)
+          ("C-c M-l" . pop-to-compilation))
   :preface
   (defun pop-to-compilation ()
     (interactive)
