@@ -611,16 +611,13 @@ Only creates a notification if BUFFER is *compilation*."
   "Get the time since this EMACS instance was started."
   (format-time-string "%s.%6Ns" (time-since before-init-time)))
 
-(defun random-character ()
-  "Return a random character."
-  (let ((alnum "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"))
-    (elt alnum (random (length alnum)))))
-
 (defun random-string (length)
   "Return a random string of LENGTH."
-  (let ((output ""))
+  (let* ((alnum "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+         (len-alnum (length alnum))
+         (output ""))
     (dotimes (_ length)
-      (setq output (concat output (string (random-character)))))
+      (setq output (concat output (string (elt alnum (random len-alnum))))))
     output))
 
 (defun insert-random-string (arg)
