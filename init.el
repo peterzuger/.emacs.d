@@ -42,7 +42,7 @@
 (load custom-file t)
 
 ;; core emacs config
-(mouse-avoidance-mode 'exile)                                ;; exile the mouse cursor
+(mouse-avoidance-mode 'cat-and-mouse)                        ;; play cat and mouse with the cursor
 (setq-default indent-tabs-mode nil)                          ;; DONT EVER USE TABS !!
 (setq-default truncate-lines t)                              ;; disable line wrap
 (setq-default tab-width 4)                                   ;; use 4 spaces
