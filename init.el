@@ -536,7 +536,16 @@ Only creates a notification if BUFFER is *compilation*."
 
           ("j" "journal entry" entry (file+datetree "journal.org")
            "* %<%H:%M> %^{title}
-  %?" :time-prompt t))
+  %?" :time-prompt t)
+
+          ("c" "contact" entry (file "contacts.org")
+           "* %^{full name}
+  :PROPERTIES:
+  :EMAIL:    %^{email}
+  :PHONE:    %^{phone number}
+  :ADDRESS:  %^{address}
+  :BIRTHDAY: %^{birthday}u
+  :END:" :immediate-finish t)))
 
   (org-babel-do-load-languages
    'org-babel-load-languages
