@@ -511,30 +511,32 @@ Only creates a notification if BUFFER is *compilation*."
 
   (setq org-capture-templates
         '(("t" "personal todo" entry (file "todo.org")
-           "* TODO %?
+           "* TODO %^{title}
   :LOGBOOK:
   - Created on %U
-  :END:")
+  :END:
+  %?")
 
           ("o" "order something" entry (file "todo.org")
-           "* ORDER %?
+           "* ORDER %^{title}
   :LOGBOOK:
   - Created on %U
-  :END:")
+  :END:
+  %?")
 
           ("w" "work todo" entry (file "work.org")
-           "* TODO %?
+           "* TODO %^{title}
   :LOGBOOK:
   - Created on %U
-  :END:")
+  :END:
+  %?")
 
           ("n" "general note" entry (file "notes.org")
-           "* %?
-  %U")
+           "* %?")
 
           ("j" "journal entry" entry (file+datetree "journal.org")
-           "* %?
-  %U")))
+           "* %<%H:%M> %^{title}
+  %?" :time-prompt t))
 
   (org-babel-do-load-languages
    'org-babel-load-languages
