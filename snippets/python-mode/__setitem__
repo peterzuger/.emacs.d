@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: __setitem__
+# key: setitem
+# group: dunder methods
+# --
+def __setitem__(self, index, value):
+    $0
