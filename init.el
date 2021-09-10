@@ -494,6 +494,7 @@ Only creates a notification if BUFFER is *compilation*."
   (setq org-catch-invisible-edits 'smart)
   (setq org-image-actual-width nil)
   (setq org-return-follows-link t)
+  (setq org-insert-heading-respect-content t)
   (setq org-log-into-drawer t)
   (setq org-directory "~/Notes/")
   (setq org-default-notes-file (concat org-directory "todo.org"))
