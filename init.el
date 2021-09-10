@@ -526,11 +526,24 @@ Only creates a notification if BUFFER is *compilation*."
   :END:
   %?")
 
-          ("w" "work todo" entry (file "work.org")
+          ("w" "work templates")
+
+          ("wt" "todo" entry (file "work.org")
            "* TODO %^{title}
   :LOGBOOK:
   - Created on %U
   :END:
+  %?")
+
+          ("wp" "phone call" entry (file+headline "work.org" "Calls")
+           "* %<%H:%M> %^{title}
+  :PROPERTIES:
+  :CALLER: %^{caller}
+  :END:
+  %?")
+
+          ("wm" "meeting" entry (file+headline "work.org" "Meeting Notes")
+           "* %<%H:%M> %^{title}
   %?")
 
           ("n" "general note" entry (file "notes.org")
