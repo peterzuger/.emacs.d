@@ -104,6 +104,8 @@
   (sp-local-pair 'c++-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
   (sp-local-pair 'c-mode "{" nil :post-handlers '(("||\n[i]" "RET"))))
 
+(use-package cmake-mode)                ;; major-mode for editing CMake sources
+
 (use-package company                    ;; Modular text completion framework
   :demand t
   :bind* ("<backtab>" . company-yasnippet)
