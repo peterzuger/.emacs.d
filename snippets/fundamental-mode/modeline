@@ -2,4 +2,4 @@
 # name: Mode line
 # key: modeline
 # --
--*- mode: ${1:`major-mode`}; -*-
+-*- mode: ${1:`(substring (symbol-name major-mode) 0 -5)`}; -*-
