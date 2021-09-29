@@ -42,7 +42,6 @@
 (load custom-file t)
 
 ;; core emacs config
-(mouse-avoidance-mode 'cat-and-mouse)                        ;; play cat and mouse with the cursor
 (setq-default indent-tabs-mode nil)                          ;; DONT EVER USE TABS !!
 (setq-default truncate-lines t)                              ;; disable line wrap
 (setq-default tab-width 4)                                   ;; use 4 spaces
@@ -65,6 +64,9 @@
 (setq vc-follow-symlinks t)                                  ;; always follow symlinks
 (setq help-window-select t)                                  ;; automatically select help windows
 (defalias 'yes-or-no-p 'y-or-n-p)                            ;; replace yes or no prompts by y-or-n prompts
+
+(mouse-avoidance-mode 'cat-and-mouse)                        ;; play cat and mouse with the cursor
+(global-prettify-symbols-mode t)                             ;; draw tokens as unicode glyph's
 
 (require 'package)
 
