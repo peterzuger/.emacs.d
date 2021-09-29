@@ -141,7 +141,6 @@
 
 (use-package company-irony              ;; company-mode completion back-end for irony-mode
   :after (company irony)
-  :demand t
   :hook (irony-mode . company-irony-setup-begin-commands)
   :config
   (company-add-local-backend 'c-mode-common-hook 'company-irony))
@@ -320,7 +319,6 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package irony                      ;; C/C++ minor mode powered by libclang
   :after cc-mode
-  :demand t
   :init
   (setq irony-additional-clang-options '("-ferror-limit=0"))
   :hook (c-mode-common . irony-mode)
@@ -391,7 +389,6 @@ Only creates a notification if BUFFER is *compilation*."
   (setq TeX-source-correlate-start-server t))
 
 (use-package magit                      ;; A Git porcelain inside Emacs.
-  :demand t
   :bind ("C-c g" . magit-status)
   :hook (git-commit-setup . git-commit-turn-on-flyspell)
   :config
