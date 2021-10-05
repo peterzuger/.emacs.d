@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: for i in range
+# key: fori
+# group : control structure
+# --
+for ${1:i} in range(${2:STOP}):
+    $0
