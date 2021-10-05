@@ -96,8 +96,10 @@
   :bind (:map c-mode-base-map
               ("\C-m" . c-context-line-break))
   :config
-  (setq c-default-style "k&r")
   (setq c-basic-offset 4)
+  (setq c-default-style
+        '((awk-mode . "awk")
+          (other . "k&r")))
   (c-set-offset 'inextern-lang 0)
 
   ;; c++-mode does not know constexpr
@@ -145,7 +147,8 @@
   :after (company irony)
   :hook (irony-mode . company-irony-setup-begin-commands)
   :config
-  (company-add-local-backend 'c-mode-common-hook 'company-irony))
+  (company-add-local-backend 'c-mode-hook 'company-irony)
+  (company-add-local-backend 'c++-mode-hook 'company-irony))
 
 (use-package company-jedi               ;; company-mode completion back-end for Python JEDI
   :after (company python)
@@ -230,7 +233,7 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package flycheck-irony             ;; Flycheck: C/C++ support via Irony
   :after (cc-mode flycheck irony)
-  :hook (c-mode-common . flycheck-irony-setup))
+  :hook ((c-mode c++-mode) . flycheck-irony-setup))
 
 (use-package flycheck-pycheckers        ;; multiple syntax checker for Python, using Flycheck
   :after (flycheck python)
@@ -238,13 +241,12 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package ggtags                     ;; emacs frontend to GNU Global source code tagging system
   :after cc-mode
-  :config
+  :hook ((c-mode c++-mode) . 'enable-ggtags-mode)
+  :preface
   (defun enable-ggtags-mode ()
     "Enable ggtags mode for C/C++ files."
     (when (derived-mode-p 'c-mode 'c++-mode)
-      (ggtags-mode 1)))
-
-  (add-hook 'c-mode-common-hook 'enable-ggtags-mode))
+      (ggtags-mode 1))))
 
 (use-package go-mode                    ;; Major mode for the Go programming language
   :after (company smartparens)
@@ -323,7 +325,7 @@ Only creates a notification if BUFFER is *compilation*."
   :after cc-mode
   :init
   (setq irony-additional-clang-options '("-ferror-limit=0"))
-  :hook (c-mode-common . irony-mode)
+  :hook ((c-mode c++-mode) . irony-mode)
   :hook (irony-mode . irony-cdb-autosetup-compile-options)
   :config
   (unless (file-exists-p (concat irony-user-dir "bin/irony-server"))
