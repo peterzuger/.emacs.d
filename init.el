@@ -37,8 +37,13 @@
   (unbind-key "C-x C-z")
   (unbind-key "C-z"))
 
+(eval-and-compile
+  (defun emacs-path (path)
+    "Expand PATH to the current `user-emacs-directory`."
+    (expand-file-name path user-emacs-directory)))
+
 ;; please dont litter my init.el
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file (emacs-path "custom.el"))
 (load custom-file t)
 
 ;; core emacs config
@@ -64,7 +69,9 @@
 (setq delete-old-versions t)                                 ;; Automatically delete excess backups
 (setq kept-new-versions 20)                                  ;; how many of the newest versions to keep
 (setq kept-old-versions 5)                                   ;; and how many of the old
-(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))) ;; move backup files to ~/.emacs.d/backup
+(setq backup-directory-alist                                 ;; move backup files to backup
+      `(("." . ,(emacs-path "backup"))))
+
 (defalias 'yes-or-no-p 'y-or-n-p)                            ;; replace yes or no prompts by y-or-n prompts
 
 (mouse-avoidance-mode 'cat-and-mouse)                        ;; play cat and mouse with the cursor
@@ -79,7 +86,7 @@
         ("melpa" . "http://melpa.org/packages/")))
 
 (eval-when-compile
-  (add-to-list 'load-path "~/.emacs.d/lisp/use-package/")
+  (add-to-list 'load-path (emacs-path "lisp/use-package/"))
   (require 'use-package))
 
 (require 'use-package-ensure)
@@ -635,7 +642,6 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package yasnippet                  ;; Yet another snippet extension for Emacs.
   :config
-  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
   (yas-global-mode))
 
 
@@ -666,10 +672,10 @@ Only creates a notification if BUFFER is *compilation*."
 
 
 ;; load some additional configurations
-(when (eq system-type 'darwin)    (load-file "~/.emacs.d/mac.el" ))  ;; macOS
-(when (eq system-type 'gnu/linux) (load-file "~/.emacs.d/linux.el")) ;; Linux
+(when (eq system-type 'darwin)    (load (emacs-path "mac")))   ;; macOS
+(when (eq system-type 'gnu/linux) (load (emacs-path "linux"))) ;; Linux
 
-(load-file "~/.emacs.d/themes.el") ;; custom themes
+(load (emacs-path "themes")) ;; custom themes
 
 ;; log how loong emacs took to start
 (message "Loading %s...done (%s)" load-file-name (my-emacs-uptime))

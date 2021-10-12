@@ -28,9 +28,9 @@
 ;;; Code:
 
 ;; alect must be added to load-path too
-(add-to-list 'load-path "~/.emacs.d/themes/alect/")
+(add-to-list 'load-path (expand-file-name "themes/alect/" user-emacs-directory))
 
-(let ((basedir "~/.emacs.d/themes/"))
+(let ((basedir (expand-file-name "themes/" user-emacs-directory)))
   (dolist (f (directory-files basedir))
     (if (and (not (or (equal f ".") (equal f "..")))
              (file-directory-p (concat basedir f)))
