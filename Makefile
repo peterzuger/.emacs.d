@@ -13,7 +13,7 @@ MU    = $(Q)mu
 ECHO  = @echo -e
 
 
-all: init.elc
+all: early-init.elc linux.elc mac.elc themes.elc
 
 %.elc: %.el
 	$(ECHO) "EMACS\t$@"
