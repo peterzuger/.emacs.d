@@ -56,15 +56,15 @@
 (setq initial-scratch-message nil)                           ;; no message for the scratch buffer
 (setq ring-bell-function 'ignore)                            ;; no audible bell
 (setq sentence-end-double-space nil)                         ;; one space is enough
+(setq vc-follow-symlinks t)                                  ;; always follow symlinks
+(setq help-window-select t)                                  ;; automatically select help windows
 (setq create-lockfiles nil)                                  ;; don't create .#<filename> files
-(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))) ;; move backup files to ~/.emacs.d/backup
 (setq backup-by-copying t)                                   ;; Don't delink hardlinks
 (setq version-control t)                                     ;; Use version numbers on backups
 (setq delete-old-versions t)                                 ;; Automatically delete excess backups
 (setq kept-new-versions 20)                                  ;; how many of the newest versions to keep
 (setq kept-old-versions 5)                                   ;; and how many of the old
-(setq vc-follow-symlinks t)                                  ;; always follow symlinks
-(setq help-window-select t)                                  ;; automatically select help windows
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))) ;; move backup files to ~/.emacs.d/backup
 (defalias 'yes-or-no-p 'y-or-n-p)                            ;; replace yes or no prompts by y-or-n prompts
 
 (mouse-avoidance-mode 'cat-and-mouse)                        ;; play cat and mouse with the cursor
