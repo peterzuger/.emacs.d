@@ -587,7 +587,8 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package pdf-tools                  ;; Support library for PDF documents.
   :magic ("%PDF" . pdf-view-mode)
   :bind (:map pdf-view-mode-map
-              ("C-s" . isearch-forward))
+              ("C-s" . isearch-forward)
+              ("C-g" . pdf-view-goto-page))
   :config
   ;; initialize pdf-tools
   (pdf-tools-install))
