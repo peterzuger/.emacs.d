@@ -182,17 +182,24 @@
   :config
   (setq compilation-scroll-output t)
 
-  (defun fmq-compilation-finish (buffer status)
+  (defvar compilation-time 0)
+  (defun my-compilation-start (_)
+    (setq compilation-time (current-time)))
+
+  (defun my-compilation-finish (buffer status)
     "Create a desktop notification on compilation finish with the STATUS.
 Only creates a notification if BUFFER is *compilation*."
     (when (string= (buffer-name buffer) "*compilation*")
       (call-process "notify-send" nil nil nil
                     "-a" "emacs"
-                    "-i" (format "/usr/share/emacs/%s/etc/images/icons/hicolor/32x32/apps/emacs.png" emacs-version)
+                    "-i" (format "%simages/icons/hicolor/32x32/apps/emacs.png" data-directory)
                     "Compilation finished"
-                    status)))
+                    (format "%s (%s)"
+                            (string-trim status)
+                            (format-time-string "%s.%3Ns" (time-since compilation-time))))))
 
-  (add-hook 'compilation-finish-functions 'fmq-compilation-finish))
+  (add-hook 'compilation-start-hook 'my-compilation-start)
+  (add-hook 'compilation-finish-functions 'my-compilation-finish))
 
 (use-package counsel                    ;; Various completion functions using Ivy
   :after ivy
