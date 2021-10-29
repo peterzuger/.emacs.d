@@ -496,6 +496,7 @@ Only creates a notification if BUFFER is *compilation*."
   :bind* (("C-c c" . org-capture)
           ("C-c l" . org-store-link)
           ("C-c a" . org-agenda))
+  :hook (org-mode . flyspell-mode)
   :config
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively t)
