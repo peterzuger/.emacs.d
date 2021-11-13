@@ -617,6 +617,11 @@ Only creates a notification if BUFFER is *compilation*."
   (setq ranger-override-dired 'ranger)  ;; use ranger not deer
   (setq ranger-cleanup-eagerly t))      ;; auto kill unused buffers
 
+(use-package server                     ;; Lisp code for GNU Emacs running as server process
+  :ensure nil ;; builtin
+  :no-require
+  :hook (after-init . server-start))
+
 (use-package sgml-mode                  ;; The simplest mode to edit XML
   :ensure nil ;; builtin
   :mode ("handlebars" . html-mode)
