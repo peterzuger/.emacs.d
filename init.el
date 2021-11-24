@@ -31,12 +31,6 @@
 (when (> (length command-line-args) 1)
   (setq inhibit-splash-screen t))
 
-;; don't quit immediately
-(when (display-graphic-p)
-  (setq confirm-kill-emacs 'y-or-n-p)
-  (unbind-key "C-x C-z")
-  (unbind-key "C-z"))
-
 (eval-and-compile
   (defun emacs-path (path)
     "Expand PATH to the current `user-emacs-directory`."
@@ -92,6 +86,13 @@
 
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
+
+
+;; don't quit immediately
+(when (display-graphic-p)
+  (setq confirm-kill-emacs 'y-or-n-p)
+  (unbind-key "C-x C-z")
+  (unbind-key "C-z"))
 
 
 (use-package ace-window                 ;; Quickly switch windows
