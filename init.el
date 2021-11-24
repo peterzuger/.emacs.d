@@ -78,11 +78,12 @@
 (global-prettify-symbols-mode t)                             ;; draw tokens as unicode glyph's
 
 (require 'package)
+(package-initialize)
 
 ;; add elpa and melpa archive
 (setq package-archives
-      '(("org"   . "http://orgmode.org/elpa/")
-        ("gnu" . "http://elpa.gnu.org/packages/")
+      '(("gnu" . "http://elpa.gnu.org/packages/")
+        ("nongnu" . "https://elpa.nongnu.org/nongnu/")
         ("melpa" . "http://melpa.org/packages/")))
 
 (eval-when-compile
@@ -498,8 +499,8 @@ Only creates a notification if BUFFER is *compilation*."
     (setq smtpmail-smtp-service             587)))
 
 (use-package org                        ;; Outline-based notes management and organizer
-  :ensure org-plus-contrib
-  :pin org
+  :ensure org-contrib
+  :pin gnu
   :bind* (("C-c c" . org-capture)
           ("C-c l" . org-store-link)
           ("C-c a" . org-agenda))
