@@ -520,7 +520,6 @@ Only creates a notification if BUFFER is *compilation*."
   (setq org-directory "~/Notes/")
   (setq org-default-notes-file (concat org-directory "todo.org"))
   (setq org-archive-location (concat org-directory "archive.org"))
-  (setq org-contacts-files (concat org-directory "contacts.org"))
   (setq org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
 
   (defun org-summary-todo (n-done n-not-done)
