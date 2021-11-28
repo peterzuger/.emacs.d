@@ -656,6 +656,8 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package xref-js2                   ;; Jump to references/definitions using ag & js2-mode's AST
   :after js2-mode)
 
+(use-package yaml-mode)                 ;; Major mode for editing YAML files
+
 (use-package yasnippet                  ;; Yet another snippet extension for Emacs.
   :config
   (yas-global-mode))
