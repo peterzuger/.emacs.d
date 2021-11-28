@@ -266,6 +266,10 @@ Only creates a notification if BUFFER is *compilation*."
     (when (derived-mode-p 'c-mode 'c++-mode)
       (ggtags-mode 1))))
 
+(use-package grep                       ;; run `grep' and display the results
+  :ensure nil ;; builtin
+  :bind* ("C-c r" . rgrep))
+
 (use-package go-mode                    ;; Major mode for the Go programming language
   :after (company smartparens)
   :bind (:map go-mode-map
