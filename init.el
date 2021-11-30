@@ -418,7 +418,7 @@ Only creates a notification if BUFFER is *compilation*."
   :bind ("C-c g" . magit-status)
   :hook (git-commit-setup . git-commit-turn-on-flyspell)
   :config
-  (setq transient-default-level 5)
+  (setq transient-default-level 7)
   (setq magit-diff-refine-hunk 'all)
 
   (setq magit-section-initial-visibility-alist
