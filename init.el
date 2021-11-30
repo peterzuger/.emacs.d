@@ -255,7 +255,9 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package flycheck-pycheckers        ;; multiple syntax checker for Python, using Flycheck
   :after (flycheck python)
-  :hook (python-mode . flycheck-pycheckers-setup))
+  :hook (python-mode . flycheck-pycheckers-setup)
+  :config
+  (setq flycheck-pycheckers-checkers '(pylint flake8 pyflakes bandit)))
 
 (use-package ggtags                     ;; emacs frontend to GNU Global source code tagging system
   :after cc-mode

@@ -40,20 +40,24 @@ other repositories:
 |---------------|--------------------------------------------------------------------------------------|-----------------------------------------------------|
 | auctex        | [Texlive](https://www.archlinux.org/groups/x86_64/texlive-most/)                     | https://www.tug.org/texlive/                        |
 | black         | [python-black](https://www.archlinux.org/packages/community/any/python-black/)       | https://github.com/psf/black                        |
+| flyspell      | [aspell](https://www.archlinux.org/packages/extra/x86_64/aspell/)                    | http://aspell.net/                                  |
 | ggtags        | [GNU global](https://aur.archlinux.org/packages/global/)                             | https://www.gnu.org/software/global/                |
 | ggtags        | [ctags](https://www.archlinux.org/packages/extra/x86_64/ctags/)                      | http://ctags.sourceforge.net/                       |
-| magit         | [git](https://www.archlinux.org/packages/extra/x86_64/git/)                          | https://git-scm.com/                                |
-| mu4e          | [offlineimap](https://www.archlinux.org/packages/community/any/offlineimap/)         | http://www.offlineimap.org/                         |
-| mu4e          | [mu](https://aur.archlinux.org/packages/mu/)                                         | https://www.djcbsoftware.nl/code/mu/                |
-| jedi          | [python-virtualenv](https://www.archlinux.org/packages/extra/any/python-virtualenv/) | https://pypi.org/project/virtualenv/                |
-| flyspell      | [aspell](https://www.archlinux.org/packages/extra/x86_64/aspell/)                    | http://aspell.net/                                  |
-| irony         | [clang](https://www.archlinux.org/packages/staging/x86_64/clang/)                    | https://clang.llvm.org/                             |
-| irony         | [cmake](https://www.archlinux.org/packages/extra/x86_64/cmake/)                      | https://cmake.org/                                  |
-| irony         | [base-devel](https://www.archlinux.org/groups/x86_64/base-devel/)                    | https://www.archlinux.org/groups/x86_64/base-devel/ |
-| irony         | [llvm-libs](https://www.archlinux.org/packages/extra/x86_64/llvm-libs/)              | https://llvm.org/                                   |
 | go-mode       | [go](https://www.archlinux.org/packages/community/x86_64/go/)                        | https://golang.org/                                 |
 | go-mode       | [gocode](https://www.github.com/rogpeppe/godef/)                                     | https://www.github.com/rogpeppe/godef/              |
 | go-mode       | [godef](https://github.com/mdempsky/gocode/)                                         | https://github.com/mdempsky/gocode/                 |
+| irony         | [base-devel](https://www.archlinux.org/groups/x86_64/base-devel/)                    | https://www.archlinux.org/groups/x86_64/base-devel/ |
+| irony         | [clang](https://www.archlinux.org/packages/staging/x86_64/clang/)                    | https://clang.llvm.org/                             |
+| irony         | [cmake](https://www.archlinux.org/packages/extra/x86_64/cmake/)                      | https://cmake.org/                                  |
+| irony         | [llvm-libs](https://www.archlinux.org/packages/extra/x86_64/llvm-libs/)              | https://llvm.org/                                   |
+| jedi          | [python-virtualenv](https://www.archlinux.org/packages/extra/any/python-virtualenv/) | https://pypi.org/project/virtualenv/                |
+| magit         | [git](https://www.archlinux.org/packages/extra/x86_64/git/)                          | https://git-scm.com/                                |
+| mu4e          | [mu](https://aur.archlinux.org/packages/mu/)                                         | https://www.djcbsoftware.nl/code/mu/                |
+| mu4e          | [offlineimap](https://www.archlinux.org/packages/community/any/offlineimap/)         | http://www.offlineimap.org/                         |
+| pycheckers    | [bandit](https://archlinux.org/packages/community/any/bandit/)                       | https://github.com/PyCQA/bandit                     |
+| pycheckers    | [flake8](https://archlinux.org/packages/community/any/flake8/)                       | http://flake8.pycqa.org/                            |
+| pycheckers    | [pyflakes](https://archlinux.org/packages/community/any/python-pyflakes/)            | https://pypi.python.org/pypi/pyflakes               |
+| pycheckers    | [pylint](https://archlinux.org/packages/community/any/python-pylint/)                | https://pylint.org/                                 |
 
 The go packages can be installed like this:
 ```
