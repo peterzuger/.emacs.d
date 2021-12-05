@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: nodefault for __post_init__
+# key: _nodefault
+# group: dataclasses
+# --
+_no_default = object()

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: __post_init__ nodefault
+# key: nodefault
+# group: dataclasses
+# --
+def __post_init__(self):
+        for f in self.__dataclass_fields__:
+            if getattr(self, f) is _no_default:
+                raise TypeError(f"__init__ missing 1 required argument: '{f}'")
