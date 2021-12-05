@@ -619,6 +619,12 @@ Only creates a notification if BUFFER is *compilation*."
   :after python
   :hook (python-mode . python-black-on-save-mode))
 
+(use-package pyvenv                     ;; Python virtual environment interface
+  :hook (python-mode . pyvenv-mode)
+  :config
+  (add-hook 'pyvenv-post-activate-hooks 'pyvenv-restart-python)
+  (add-hook 'pyvenv-post-deactivate-hooks 'pyvenv-restart-python))
+
 (use-package ranger                     ;; Make dired more like ranger
   :config
   (ranger-override-dired-mode nil)      ;; use ranger instead of dired
