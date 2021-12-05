@@ -2,6 +2,6 @@
 # name: python
 # key: <py
 # --
-#+BEGIN_SRC python ${1::results silent}
+#+BEGIN_SRC python ${1::results silent} ${2::session ${3:venv}}
 $0
 #+END_SRC
