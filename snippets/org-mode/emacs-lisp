@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: emacs-lisp
+# key: <el
+# group: org-babel
+# contributor: Peter Züger
+# --
+${1:#+NAME: ${2:name}
+}#+BEGIN_SRC emacs-lisp -n${3: :results silent}
+$0
+#+END_SRC

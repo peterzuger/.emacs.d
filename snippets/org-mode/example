@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: example
+# key: <ex
+# contributor: Peter Züger
+# --
+#+BEGIN_EXAMPLE
+$0
+#+END_EXAMPLE
