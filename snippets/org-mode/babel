@@ -2,8 +2,8 @@
 # name: babel
 # key: babel
 # --
-#+CAPTION: ${1:caption}
-#+NAME: ${2:name}
-#+BEGIN_SRC ${3:language}${4: :results ${5:$$(yas-choose-value '("silent" "raw"))}}${6: :exports ${7:$$(yas-choose-value '("none" "both" "results"))}}
+${1:#+CAPTION: ${2:caption}
+}#+NAME: ${3:name}
+#+BEGIN_SRC ${4:$$(yas-choose-value (mapcar 'symbol-name (mapcar 'car org-babel-load-languages)))} -n${5: :results ${6:$$(yas-choose-value '("output" "silent" "none"))}}${7: :exports ${8:$$(yas-choose-value '("code" "results" "both" "none"))}}
 $0
 #+END_SRC
