@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 # name: verse
 # key: <ve
+# contributor: Peter Züger
 # --
 #+BEGIN_VERSE
 $0

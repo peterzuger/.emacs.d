@@ -1,6 +1,8 @@
 # -*- mode: snippet -*-
 # name: babel
 # key: babel
+# group: org-babel
+# contributor: Peter Züger
 # --
 ${1:#+CAPTION: ${2:caption}
 }#+NAME: ${3:name}

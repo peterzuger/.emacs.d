@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 # name: verbatim
 # key: <vb
+# contributor: Peter Züger
 # --
 #+BEGIN_VERBATIM
 $0

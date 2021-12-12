@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 # name: image
 # key: image
+# contributor: Peter Züger
 # --
 #+CAPTION: ${1:caption of the image}
 [[file:${2:image_path}]]$0

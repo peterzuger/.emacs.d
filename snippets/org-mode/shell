@@ -1,6 +1,8 @@
 # -*- mode: snippet -*-
 # name: shell
 # key: <sh
+# group: org-babel
+# contributor: Peter Züger
 # --
 ${1:#+NAME: ${2:name}
 }#+BEGIN_SRC sh -n${3: :results ${4:$$(yas-choose-value '("silent" "raw"))}}

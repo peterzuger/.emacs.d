@@ -1,6 +1,8 @@
 # -*- mode: snippet -*-
 # name: dot
 # key: dot
+# group: org-babel
+# contributor: Peter Züger
 # --
 #+BEGIN_SRC dot :file ${1:file} :cmdline -t${2:pdf} :exports none :results silent
 $0

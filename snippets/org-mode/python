@@ -1,6 +1,8 @@
 # -*- mode: snippet -*-
 # name: python
 # key: <py
+# group: org-babel
+# contributor: Peter Züger
 # --
 ${1:#+NAME: ${2:name}
 }#+BEGIN_SRC python -n${3: :results silent}${4: :session ${5:venv}}

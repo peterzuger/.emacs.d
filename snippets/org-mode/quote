@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 # name: quote
 # key: <quote
+# contributor: Peter Züger
 # --
 #+BEGIN_QUOTE
 $0
