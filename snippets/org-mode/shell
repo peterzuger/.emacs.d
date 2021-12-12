@@ -1,8 +1,8 @@
 # -*- mode: snippet -*-
 # name: shell
-# key: <shell
+# key: <sh
 # --
-#+NAME: ${1:name}
-#+BEGIN_SRC sh ${2:$$(yas-choose-value '("-n" "+n"))}
+${1:#+NAME: ${2:name}
+}#+BEGIN_SRC sh -n${3: :results ${4:$$(yas-choose-value '("silent" "raw"))}}
 $0
 #+END_SRC

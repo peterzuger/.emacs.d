@@ -2,6 +2,7 @@
 # name: c++
 # key: c++
 # --
-#+BEGIN_SRC C++ ${1::results silent} :includes ${2:<iostream>}
+${1:#+NAME: ${2:name}
+}#+BEGIN_SRC C++ -n${3: :results silent} :includes ${4:<iostream>}
 $0
 #+END_SRC
