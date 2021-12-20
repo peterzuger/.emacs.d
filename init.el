@@ -632,6 +632,8 @@ Only creates a notification if BUFFER is *compilation*."
   (setq ranger-cleanup-eagerly t))      ;; auto kill unused buffers
 
 (use-package server                     ;; Lisp code for GNU Emacs running as server process
+  :when (display-graphic-p)             ;; only start the server in X
+  :unless (server-running-p)            ;; unless there is already a server running
   :ensure nil ;; builtin
   :no-require
   :hook (after-init . server-start))
