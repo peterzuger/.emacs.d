@@ -286,6 +286,9 @@ Only creates a notification if BUFFER is *compilation*."
 
   (add-hook 'go-mode-hook 'add-gofmt-before-save-locally))
 
+(use-package haskell-mode               ;; A Haskell editing mode
+  :hook (haskell-mode . interactive-haskell-mode))
+
 (use-package highlight-indent-guides    ;; Minor mode to highlight indentation
   :config
   (setq highlight-indent-guides-method 'character))
