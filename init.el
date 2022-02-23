@@ -66,6 +66,25 @@
 (setq backup-directory-alist                                 ;; move backup files to backup
       `(("." . ,(emacs-path "backup"))))
 
+(setq display-buffer-alist
+      '(("\\.pdf\\(<[^>]+>\\)?$"
+         (display-buffer-reuse-window display-buffer-same-window)
+         (inhibit-same-window . nil))
+        ("^magit:.*"
+         (display-buffer-in-side-window)
+         (inhibit-same-window . t)
+         (side . right)
+         (window-width . 120)
+         (window-height . 0.66)
+         (dedicated . t))
+        ("\\*compilation\\*"
+         (display-buffer-in-side-window)
+         (inhibit-same-window . t)
+         (side . right)
+         (slot . 1)
+         (window-width . 120)
+         (window-height . 0.33))))
+
 (defalias 'yes-or-no-p 'y-or-n-p)                            ;; replace yes or no prompts by y-or-n prompts
 
 (mouse-avoidance-mode 'cat-and-mouse)                        ;; play cat and mouse with the cursor
