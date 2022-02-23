@@ -224,6 +224,10 @@ Only creates a notification if BUFFER is *compilation*."
   (defengine github
     "https://github.com/search?ref=simplesearch&q=%s")
 
+  (defengine pydocs
+    "https://docs.python.org/3.9/search.html?q=%s"
+    :keybinding "p")
+
   (defengine stack-overflow
     "https://stackoverflow.com/search?q=%s")
 
