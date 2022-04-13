@@ -51,6 +51,7 @@
 (setq split-height-threshold 100)                            ;; don't split horizontally
 (setq kill-ring-max 256)                                     ;; large kill-ring, never loose anything
 (setq large-file-warning-threshold (* 64 1024 1024))         ;; 64MiB files are large
+(setq ad-redefinition-action 'accept)                        ;; no warning for advice redefinition
 (setq initial-major-mode 'fundamental-mode)                  ;; start the scratch buffer in fundamental mode
 (setq initial-scratch-message nil)                           ;; no message for the scratch buffer
 (setq ring-bell-function 'ignore)                            ;; no audible bell
