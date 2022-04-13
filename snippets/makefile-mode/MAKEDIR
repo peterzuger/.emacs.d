@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: MAKEDIR
+# key: MAKEDIR
+# --
+MAKEDIR ?= $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
