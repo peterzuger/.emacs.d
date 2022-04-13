@@ -220,8 +220,14 @@ Only creates a notification if BUFFER is *compilation*."
                             (string-trim status)
                             (format-time-string "%s.%3Ns" (time-since compilation-time))))))
 
+  (defun my-colorize-compilation-buffer ()
+    "Interpret ANSI colors in the compilation buffer."
+    (let ((inhibit-read-only t))
+      (ansi-color-apply-on-region compilation-filter-start (point))))
+
   (add-hook 'compilation-start-hook 'my-compilation-start)
-  (add-hook 'compilation-finish-functions 'my-compilation-finish))
+  (add-hook 'compilation-finish-functions 'my-compilation-finish)
+  (add-hook 'compilation-filter-hook 'my-colorize-compilation-buffer))
 
 (use-package counsel                    ;; Various completion functions using Ivy
   :after ivy
