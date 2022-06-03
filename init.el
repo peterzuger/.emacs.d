@@ -553,7 +553,6 @@ Only creates a notification if BUFFER is *compilation*."
   (setq org-src-tab-acts-natively t)
   (setq org-src-preserve-indentation t)
   (setq org-adapt-indentation t)
-  (setq org-cycle-separator-lines 1)
   (setq org-catch-invisible-edits 'smart)
   (setq org-image-actual-width nil)
   (setq org-return-follows-link t)
