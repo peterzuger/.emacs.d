@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: __enter__
+# key: __enter__
+# --
+def __enter__(self):
+    return self
