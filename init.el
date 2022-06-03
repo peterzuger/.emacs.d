@@ -71,6 +71,9 @@
       '(("\\.pdf\\(<[^>]+>\\)?$"
          (display-buffer-reuse-window display-buffer-same-window)
          (inhibit-same-window . nil))
+        ("^\\*Help\\*"
+         (display-buffer-in-side-window)
+         (side . right))
         ("^magit:.*"
          (display-buffer-in-side-window)
          (inhibit-same-window . t)
