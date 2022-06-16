@@ -294,6 +294,7 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package ggtags                     ;; emacs frontend to GNU Global source code tagging system
   :after cc-mode
+  :custom (ggtags-mode-prefix-key (kbd "C-'"))
   :hook ((c-mode c++-mode) . 'enable-ggtags-mode)
   :preface
   (defun enable-ggtags-mode ()
