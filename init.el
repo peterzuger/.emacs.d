@@ -643,7 +643,7 @@ Only creates a notification if BUFFER is *compilation*."
               ("C-g" . pdf-view-goto-page))
   :config
   ;; initialize pdf-tools
-  (pdf-tools-install))
+  (pdf-tools-install :no-query))
 
 (use-package pinentry                   ;; GnuPG Pinentry server implementation
   :init
