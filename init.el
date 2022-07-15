@@ -45,6 +45,7 @@
 (setq-default truncate-lines t)                              ;; disable line wrap
 (setq-default tab-width 4)                                   ;; use 4 spaces
 (setq-default fill-column 80)                                ;; use 80 characters text width
+(setq message-log-max 16384)                                 ;; increase max message buffer size
 (setq global-linum-mode t)                                   ;; display line,column numbers
 (setq column-number-mode t)                                  ;; "
 (setq use-dialog-box nil)                                    ;; don't use dialog boxes
