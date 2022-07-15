@@ -27,7 +27,7 @@
 ;;; Commentary:
 ;;; Code:
 
-;; dont display the splash screen when a file is opened directly
+;; don't display the splash screen when a file is opened directly
 (when (> (length command-line-args) 1)
   (setq inhibit-splash-screen t))
 
@@ -36,12 +36,12 @@
     "Expand PATH to the current `user-emacs-directory`."
     (expand-file-name path user-emacs-directory)))
 
-;; please dont litter my init.el
+;; please don't litter my init.el
 (setq custom-file (emacs-path "custom.el"))
 (load custom-file t)
 
 ;; core emacs config
-(setq-default indent-tabs-mode nil)                          ;; DONT EVER USE TABS !!
+(setq-default indent-tabs-mode nil)                          ;; DON'T EVER USE TABS !!
 (setq-default truncate-lines t)                              ;; disable line wrap
 (setq-default tab-width 4)                                   ;; use 4 spaces
 (setq-default fill-column 80)                                ;; use 80 characters text width
@@ -334,7 +334,7 @@ Only creates a notification if BUFFER is *compilation*."
   :bind* ("C-x C-b" . ibuffer)
   :config
   (setq ibuffer-expert t)                    ;; delete unmodified buffers without asking
-  (setq ibuffer-show-empty-filter-groups nil);; dont show empty groups
+  (setq ibuffer-show-empty-filter-groups nil);; don't show empty groups
 
   (defun git-root-dir (buf)
     "Return the git root directory of BUF, or nil."
