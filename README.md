@@ -69,7 +69,7 @@ go get -u github.com/rogpeppe/godef
 Just clone this repo with:
 
 ```
-git clone --recursive https://gitlab.com/peterzuger/emacsd.git
+git clone --recursive https://github.com/peterzuger/emacsd.git
 ```
 
 The ```--recursive``` is **required**, otherwise the sub-repository's wont be
@@ -79,7 +79,7 @@ And place it in ```~/```.
 
 You can also directly clone it into ```~/.emacs.d```:
 ```
-git clone --recursive https://gitlab.com/peterzuger/emacsd.git ~/.emacs.d
+git clone --recursive https://github.com/peterzuger/emacsd.git ~/.emacs.d
 ```
 
 ### Package Installation
