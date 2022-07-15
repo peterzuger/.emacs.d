@@ -217,7 +217,7 @@ Only creates a notification if BUFFER is *compilation*."
     (when (string= (buffer-name buffer) "*compilation*")
       (call-process "notify-send" nil nil nil
                     "-a" "emacs"
-                    "-i" (format "%simages/icons/hicolor/32x32/apps/emacs.png" data-directory)
+                    "-i" (expand-file-name "images/icons/hicolor/32x32/apps/emacs.png" data-directory)
                     "Compilation finished"
                     (format "%s (%s)"
                             (string-trim status)
@@ -389,7 +389,7 @@ Only creates a notification if BUFFER is *compilation*."
   :hook ((c-mode c++-mode) . irony-mode)
   :hook (irony-mode . irony-cdb-autosetup-compile-options)
   :config
-  (unless (file-exists-p (concat irony-user-dir "bin/irony-server"))
+  (unless (file-exists-p (expand-file-name "bin/irony-server" irony-user-dir))
     (call-interactively 'irony-install-server)))
 
 (use-package image                      ;; builtin image support
@@ -562,8 +562,8 @@ Only creates a notification if BUFFER is *compilation*."
   (setq org-log-reschedule t)
   (setq org-log-redeadline t)
   (setq org-directory "~/Notes/")
-  (setq org-default-notes-file (concat org-directory "todo.org"))
-  (setq org-archive-location (concat org-directory "archive.org"))
+  (setq org-default-notes-file (expand-file-name "todo.org" org-directory))
+  (setq org-archive-location (expand-file-name "archive.org" org-directory))
   (setq org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
 
   (defun org-summary-todo (n-done n-not-done)
