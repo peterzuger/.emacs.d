@@ -576,6 +576,8 @@ Only creates a notification if BUFFER is *compilation*."
 
   (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
+  (add-to-list 'org-latex-classes '("scrlttr2" "\\documentclass{scrlttr2}"))
+
   (setq org-file-apps
         '((auto-mode . emacs)))
 
