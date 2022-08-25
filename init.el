@@ -67,6 +67,8 @@
 (setq kept-old-versions 5)                                   ;; and how many of the old
 (setq backup-directory-alist                                 ;; move backup files to backup
       `(("." . ,(emacs-path "backup"))))
+(setq auto-save-file-name-transforms                         ;; move auto-save files to backup
+      `((".*" ,(emacs-path "backup/") t)))
 
 (setq display-buffer-alist
       '(("\\.pdf\\(<[^>]+>\\)?$"
