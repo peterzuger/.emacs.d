@@ -642,6 +642,10 @@ Only creates a notification if BUFFER is *compilation*."
      (latex . t)
      (python . t))))
 
+(use-package ox-extra                   ;; Convenience functions for org export
+  :config
+  (ox-extras-activate '(ignore-headlines)))
+
 (use-package pdf-tools                  ;; Support library for PDF documents.
   :magic ("%PDF" . pdf-view-mode)
   :bind (:map pdf-view-mode-map
