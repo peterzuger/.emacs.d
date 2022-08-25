@@ -639,6 +639,7 @@ Only creates a notification if BUFFER is *compilation*."
      (dot . t)
      (ditaa . t)
      (emacs-lisp . t)
+     (latex . t)
      (python . t))))
 
 (use-package pdf-tools                  ;; Support library for PDF documents.
