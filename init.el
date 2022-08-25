@@ -503,7 +503,7 @@ Only creates a notification if BUFFER is *compilation*."
   :when (require 'mu4e nil 'noerror)
   :ensure nil
   :bind ("C-c m" . mu4e)
-  :hook (mu4e-compose-mode-hook . flyspell-mode)
+  :hook (mu4e-compose-mode . flyspell-mode)
   :config
   (setq mail-user-agent 'mu4e-user-agent)
 
