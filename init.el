@@ -576,10 +576,12 @@ Only creates a notification if BUFFER is *compilation*."
 
   (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
-  (add-to-list 'org-latex-classes '("scrlttr2" "\\documentclass{scrlttr2}"))
-
   (setq org-file-apps
         '((auto-mode . emacs)))
+
+  (require 'ox-extra)
+  (ox-extras-activate '(ignore-headlines))
+  (add-to-list 'org-latex-classes '("scrlttr2" "\\documentclass{scrlttr2}"))
 
   (setq org-capture-templates
         '(("t" "personal todo" entry (file "todo.org")
@@ -641,10 +643,6 @@ Only creates a notification if BUFFER is *compilation*."
      (emacs-lisp . t)
      (latex . t)
      (python . t))))
-
-(use-package ox-extra                   ;; Convenience functions for org export
-  :config
-  (ox-extras-activate '(ignore-headlines)))
 
 (use-package pdf-tools                  ;; Support library for PDF documents.
   :magic ("%PDF" . pdf-view-mode)
