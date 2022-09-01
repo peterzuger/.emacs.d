@@ -552,6 +552,13 @@ Only creates a notification if BUFFER is *compilation*."
           ("C-c l" . org-store-link)
           ("C-c a" . org-agenda))
   :hook (org-mode . flyspell-mode)
+  :hook (org-after-todo-statistics . org-summary-todo)
+  :preface
+  (defun org-summary-todo (n-done n-not-done)
+    "Switch entry to DONE when all subentries are done, to TODO otherwise."
+    (let (org-log-done org-log-states)   ; turn off logging
+      (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+
   :config
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively t)
@@ -568,13 +575,6 @@ Only creates a notification if BUFFER is *compilation*."
   (setq org-default-notes-file (expand-file-name "todo.org" org-directory))
   (setq org-archive-location (expand-file-name "archive.org" org-directory))
   (setq org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
-
-  (defun org-summary-todo (n-done n-not-done)
-    "Switch entry to DONE when all subentries are done, to TODO otherwise."
-    (let (org-log-done org-log-states)   ; turn off logging
-      (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
-
-  (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
   (setq org-file-apps
         '((auto-mode . emacs)))
