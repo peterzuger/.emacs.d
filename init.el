@@ -72,10 +72,12 @@
 
 (setq display-buffer-alist
       '(("\\.pdf\\(<[^>]+>\\)?$"
-         (display-buffer-reuse-window display-buffer-same-window)
-         (inhibit-same-window . nil))
+         (display-buffer-in-side-window)
+         (window-width . 120)
+         (side . right))
         ("^\\*Help\\*"
          (display-buffer-in-side-window)
+         (window-width . 120)
          (side . right))
         ("^magit:.*"
          (display-buffer-in-side-window)
