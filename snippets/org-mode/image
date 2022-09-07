@@ -4,4 +4,5 @@
 # contributor: Peter Züger
 # --
 #+CAPTION: ${1:caption of the image}
-[[file:${2:image_path}]]$0
+#+ATTR_ORG: :width ${2}
+[[file:${3:image_path}]]$0
