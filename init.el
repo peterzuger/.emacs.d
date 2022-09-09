@@ -512,6 +512,7 @@ Only creates a notification if BUFFER is *compilation*."
   :hook (mu4e-compose-mode . flyspell-mode)
   :config
   (setq mail-user-agent 'mu4e-user-agent)
+  (setq read-mail-command 'mu4e)
 
   (setq mu4e-maildir       "~/Mail")            ;; top-level Maildir
   (setq mu4e-sent-folder   "/Sent Messages")    ;; folder for sent messages
