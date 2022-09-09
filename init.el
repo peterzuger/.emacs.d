@@ -521,6 +521,11 @@ Only creates a notification if BUFFER is *compilation*."
   (setq mu4e-refile-folder "/Archive")          ;; saved messages
   (setq mu4e-attachment-dir "~/Downloads/Mail") ;; attachments
 
+  (setf (nth 0 mu4e-bookmarks)
+        '( :name  "Unread messages"
+           :query "flag:unread AND NOT flag:trashed AND NOT maildir:/Junk"
+           :key   ?u))
+
   (setq mu4e-maildir-shortcuts
         '( ("/INBOX"            . ?i)
            ("/Sent Messages"    . ?s)
