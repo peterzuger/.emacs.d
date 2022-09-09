@@ -555,6 +555,15 @@ Only creates a notification if BUFFER is *compilation*."
     (setq smtpmail-smtp-server             "smtp.mail.me.com")
     (setq smtpmail-smtp-service             587)))
 
+(use-package mu4e-alert                 ;; Desktop notification for mu4e
+  :after mu4e
+  :config
+  (setq mu4e-alert-email-notification-types '(count))
+  (setq mu4e-alert-interesting-mail-query "flag:unread AND NOT flag:trashed AND NOT maildir:/Junk")
+  (mu4e-alert-set-default-style 'libnotify)
+  (mu4e-alert-enable-notifications)
+  (mu4e-alert-enable-mode-line-display))
+
 (use-package org                        ;; Outline-based notes management and organizer
   :ensure org-contrib
   :pin gnu
