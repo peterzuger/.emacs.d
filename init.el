@@ -247,6 +247,8 @@ Only creates a notification if BUFFER is *compilation*."
          "^" (regexp-opt '("__pycache__/" ".mypy_cache/" "GTAGS" "GRTAGS" "GPATH")) "$"
          "\\|" (regexp-opt '(".pyc" ".elc" ".o")) "$")))
 
+(use-package debbugs)                   ;; SOAP library to access debbugs servers
+
 (use-package dockerfile-mode)           ;; Major mode for editing Docker's Dockerfiles
 
 (use-package engine-mode                ;; Define and query search engines from within Emacs
