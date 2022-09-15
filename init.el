@@ -567,6 +567,8 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package org                        ;; Outline-based notes management and organizer
   :ensure org-contrib
   :pin gnu
+  :bind (:map org-mode-map
+              ("C-c i" . org-insert-link))
   :bind* (("C-c c" . org-capture)
           ("C-c l" . org-store-link)
           ("C-c a" . org-agenda))
