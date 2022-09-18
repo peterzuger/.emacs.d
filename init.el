@@ -59,6 +59,7 @@
 (setq ring-bell-function 'ignore)                            ;; no audible bell
 (setq sentence-end-double-space nil)                         ;; one space is enough
 (setq vc-follow-symlinks t)                                  ;; always follow symlinks
+(setq vc-make-backup-files t)                                ;; also backup version controlled files
 (setq help-window-select t)                                  ;; automatically select help windows
 (setq create-lockfiles nil)                                  ;; don't create .#<filename> files
 (setq backup-by-copying t)                                   ;; Don't delink hardlinks
