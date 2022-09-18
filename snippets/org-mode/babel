@@ -5,7 +5,7 @@
 # contributor: Peter Züger
 # --
 ${1:#+CAPTION: ${2:caption}
-}#+NAME: ${3:name}
-#+BEGIN_SRC ${4:$$(yas-choose-value (mapcar 'symbol-name (mapcar 'car org-babel-load-languages)))} -n${5: :results ${6:$$(yas-choose-value '("output" "silent" "none"))}}${7: :exports ${8:$$(yas-choose-value '("code" "results" "both" "none"))}}
+}${3:#+NAME: ${4:name}
+}#+BEGIN_SRC ${5:$$(yas-choose-value (mapcar 'symbol-name (mapcar 'car org-babel-load-languages)))}${6: -n}${7: :results ${8:$$(yas-choose-value '("output" "silent" "none"))}}${9: :exports ${10:$$(yas-choose-value '("code" "results" "both" "none"))}}
 $0
 #+END_SRC

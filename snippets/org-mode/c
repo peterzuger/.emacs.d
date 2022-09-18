@@ -1,10 +1,10 @@
 # -*- mode: snippet -*-
-# name: shell
-# key: <sh
+# name: c
+# key: <c
 # group: org-babel
 # contributor: Peter Züger
 # --
 ${1:#+NAME: ${2:name}
-}#+BEGIN_SRC sh${3: -n}${4: :results ${5:$$(yas-choose-value '("silent" "raw"))}}
+}#+BEGIN_SRC C${3: -n}${4: :results silent} :includes ${5:<stdio.h>}
 $0
 #+END_SRC

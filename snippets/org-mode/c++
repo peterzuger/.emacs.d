@@ -1,10 +1,10 @@
 # -*- mode: snippet -*-
 # name: c++
-# key: c++
+# key: <c++
 # group: org-babel
 # contributor: Peter Züger
 # --
 ${1:#+NAME: ${2:name}
-}#+BEGIN_SRC C++ -n${3: :results silent} :includes ${4:<iostream>}
+}#+BEGIN_SRC C++${3: -n}${4: :results silent} :includes ${5:<iostream>}
 $0
 #+END_SRC
