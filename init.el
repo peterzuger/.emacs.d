@@ -48,6 +48,7 @@
 (setq-default truncate-lines t)                              ;; disable line wrap
 (setq-default tab-width 4)                                   ;; use 4 spaces
 (setq-default fill-column 80)                                ;; use 80 characters text width
+(setq-default require-final-newline t)                       ;; default to requiring a newline
 (setq message-log-max 16384)                                 ;; increase max message buffer size
 (setq use-dialog-box nil)                                    ;; don't use dialog boxes
 (setq split-height-threshold 100)                            ;; don't split horizontally
