@@ -41,13 +41,14 @@
 (load custom-file t)
 
 ;; core emacs config
+(size-indication-mode t)                                     ;; display the buffer size
+(global-linum-mode t)                                        ;; display line,column numbers
+(column-number-mode t)                                       ;; "
 (setq-default indent-tabs-mode nil)                          ;; DON'T EVER USE TABS !!
 (setq-default truncate-lines t)                              ;; disable line wrap
 (setq-default tab-width 4)                                   ;; use 4 spaces
 (setq-default fill-column 80)                                ;; use 80 characters text width
 (setq message-log-max 16384)                                 ;; increase max message buffer size
-(setq global-linum-mode t)                                   ;; display line,column numbers
-(setq column-number-mode t)                                  ;; "
 (setq use-dialog-box nil)                                    ;; don't use dialog boxes
 (setq split-height-threshold 100)                            ;; don't split horizontally
 (setq kill-ring-max 256)                                     ;; large kill-ring, never loose anything
