@@ -19,18 +19,14 @@ STATIC const mp_rom_map_elem_t $1_$2_locals_dict_table[]={
 STATIC MP_DEFINE_CONST_DICT($1_$2_locals_dict,$1_$2_locals_dict_table);
 
 
-const mp_obj_type_t $1_$2_type={
-    // "inherit" the type "type"
-    { &mp_type_type },
-    // give it a name
-    .name = MP_QSTR_$2,
-    // give it a print-function
-    .print = $1_$2_print,
-    // give it a constructor
-    .make_new = $1_$2_make_new,
-    // and the global members
-    .locals_dict = (mp_obj_dict_t*)&$1_$2_locals_dict,
-};
+MP_DEFINE_CONST_OBJ_TYPE(
+    $1_$2_type,
+    MP_QSTR_$2,
+    MP_TYPE_FLAG_NONE,
+    print, $1_$2_print,
+    make_new, $1_$2_make_new,
+    locals_dict, (mp_obj_dict_t*)&$1_$2_locals_dict,
+);
 
 mp_obj_t $1_$2_make_new(const mp_obj_type_t* type,
                                            size_t n_args,
