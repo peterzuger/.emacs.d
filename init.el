@@ -660,13 +660,16 @@ Only creates a notification if BUFFER is *compilation*."
 
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((shell . t)
-     (C . t)
-     (dot . t)
+   '((C . t)
+     (awk . t)
+     (cpp . t)
      (ditaa . t)
+     (dot . t)
      (emacs-lisp . t)
      (latex . t)
-     (python . t))))
+     (makefile . t)
+     (python . t)
+     (shell . t))))
 
 (use-package pdf-tools                  ;; Support library for PDF documents.
   :magic ("%PDF" . pdf-view-mode)
