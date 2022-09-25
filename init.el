@@ -662,7 +662,6 @@ Only creates a notification if BUFFER is *compilation*."
    'org-babel-load-languages
    '((C . t)
      (awk . t)
-     (cpp . t)
      (ditaa . t)
      (dot . t)
      (emacs-lisp . t)
