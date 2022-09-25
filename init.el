@@ -42,8 +42,7 @@
 
 ;; core emacs config
 (size-indication-mode t)                                     ;; display the buffer size
-(global-linum-mode t)                                        ;; display line,column numbers
-(column-number-mode t)                                       ;; "
+(column-number-mode t)                                       ;; display line,column numbers
 (setq-default indent-tabs-mode nil)                          ;; DON'T EVER USE TABS !!
 (setq-default truncate-lines t)                              ;; disable line wrap
 (setq-default tab-width 4)                                   ;; use 4 spaces
