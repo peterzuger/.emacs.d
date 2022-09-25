@@ -73,28 +73,22 @@
       `((".*" ,(emacs-path "backup/") t)))
 
 (setq display-buffer-alist
-      '(("\\.pdf\\(<[^>]+>\\)?$"
-         (display-buffer-in-side-window)
-         (window-width . 120)
-         (side . right))
-        ("^\\*Help\\*"
-         (display-buffer-in-side-window)
-         (window-width . 120)
-         (side . right))
-        ("^magit:.*"
-         (display-buffer-in-side-window)
-         (inhibit-same-window . t)
-         (side . right)
-         (window-width . 120)
-         (window-height . 0.66)
-         (dedicated . t))
-        ("\\*compilation\\*"
+      `((,(rx bol "*compilation*" eol)
          (display-buffer-in-side-window)
          (inhibit-same-window . t)
          (side . right)
          (slot . 1)
          (window-width . 120)
-         (window-height . 0.33))))
+         (window-height . 0.33))
+        (,(rx
+           (or
+            (: bol "magit:" (* nonl))
+            (: bol "*" (* nonl) "*")
+            (: ".pdf" (? (group "<" (1+ (not ">")) ">"))))
+           eol)
+         (display-buffer-in-side-window)
+         (window-width . 120)
+         (side . right))))
 
 (defalias 'yes-or-no-p 'y-or-n-p)                            ;; replace yes or no prompts by y-or-n prompts
 
