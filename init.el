@@ -289,7 +289,7 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package flycheck                   ;; On-the-fly syntax checking
   :config
-  (global-flycheck-mode)                          ;; enable flycheck globaly
+  (global-flycheck-mode)                          ;; enable flycheck globally
   (setq flycheck-checker-error-threshold 1024))   ;; sometimes this happens
 
 (use-package flycheck-irony             ;; Flycheck: C/C++ support via Irony
@@ -392,7 +392,7 @@ Only creates a notification if BUFFER is *compilation*."
                     (mode . message-mode)
                     (mode . mail-mode)))))))
 
-(use-package irony                      ;; C/C++ minor mode powered by libclang
+(use-package irony                      ;; C/C++ minor mode powered by lib-clang
   :after cc-mode
   :init
   (setq irony-additional-clang-options '("-ferror-limit=0"))
@@ -579,7 +579,7 @@ Only creates a notification if BUFFER is *compilation*."
   :hook (org-after-todo-statistics . org-summary-todo)
   :preface
   (defun org-summary-todo (n-done n-not-done)
-    "Switch entry to DONE when all subentries are done, to TODO otherwise."
+    "Switch entry to DONE when all sub-entries are done, to TODO otherwise."
     (let (org-log-done org-log-states)   ; turn off logging
       (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
 
@@ -717,7 +717,7 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package smartparens                ;; Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
   :config
   (smartparens-global-mode t)           ;; global (){} completion
-  (show-smartparens-global-mode t))     ;; gloabal (){} highlighting
+  (show-smartparens-global-mode t))     ;; global (){} highlighting
 
 (use-package swiper                     ;; Isearch with an overview. Oh, man!
   :after ivy
@@ -779,7 +779,7 @@ Only creates a notification if BUFFER is *compilation*."
 
 (load (emacs-path "themes")) ;; custom themes
 
-;; log how loong emacs took to start
+;; log how long emacs took to start
 (message "Loading %s...done (%s)" load-file-name (my-emacs-uptime))
 
 (add-hook 'after-init-hook
