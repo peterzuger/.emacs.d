@@ -93,7 +93,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p)                            ;; replace yes or no prompts by y-or-n prompts
 
 (mouse-avoidance-mode 'cat-and-mouse)                        ;; play cat and mouse with the cursor
-(global-prettify-symbols-mode t)                             ;; draw tokens as unicode glyph's
+(global-prettify-symbols-mode)                               ;; draw tokens as unicode glyph's
 
 (require 'package)
 (package-initialize)
@@ -279,7 +279,7 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package emojify                    ;; Display emojis in Emacs
   :config
-  (global-emojify-mode t))
+  (global-emojify-mode))
 
 (use-package fill-column-indicator)     ;; Graphically indicate the fill column
 
@@ -714,8 +714,8 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package smartparens                ;; Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
   :diminish
   :config
-  (smartparens-global-mode t)           ;; global (){} completion
-  (show-smartparens-global-mode t))     ;; global (){} highlighting
+  (smartparens-global-mode)             ;; global (){} completion
+  (show-smartparens-global-mode))       ;; global (){} highlighting
 
 (use-package swiper                     ;; Isearch with an overview. Oh, man!
   :after ivy
