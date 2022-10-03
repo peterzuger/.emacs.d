@@ -73,7 +73,11 @@
       `((".*" ,(emacs-path "backup/") t)))
 
 (setq display-buffer-alist
-      `((,(rx bol "*compilation*" eol)
+      `((,(rx bol (or
+                   (: "*Ibuffer*")
+                   (: "*Packages*"))
+              eol))
+        (,(rx bol "*compilation*" eol)
          (display-buffer-in-side-window)
          (inhibit-same-window . t)
          (side . right)
