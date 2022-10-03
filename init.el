@@ -147,6 +147,7 @@
 
 (use-package company                    ;; Modular text completion framework
   :demand t
+  :diminish
   :bind* ("<backtab>" . company-yasnippet)
   :preface
   (defun company-add-local-backend (hook backend)
@@ -244,6 +245,8 @@ Only creates a notification if BUFFER is *compilation*."
          "\\|" (regexp-opt '(".pyc" ".elc" ".o")) "$")))
 
 (use-package debbugs)                   ;; SOAP library to access debbugs servers
+
+(use-package diminish)                  ;; Diminished modes are minor modes with no modeline display
 
 (use-package dockerfile-mode)           ;; Major mode for editing Docker's Dockerfiles
 
@@ -401,6 +404,7 @@ Only creates a notification if BUFFER is *compilation*."
   (imagemagick-register-types))
 
 (use-package ivy                        ;; Incremental Vertical completYon
+  :diminish
   :config
   (setq ivy-use-virtual-buffers t)
   (setq ivy-use-selectable-prompt t)
@@ -708,6 +712,7 @@ Only creates a notification if BUFFER is *compilation*."
   (setq sgml-basic-offset 4))
 
 (use-package smartparens                ;; Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
+  :diminish
   :config
   (smartparens-global-mode t)           ;; global (){} completion
   (show-smartparens-global-mode t))     ;; global (){} highlighting
@@ -736,6 +741,7 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package yaml-mode)                 ;; Major mode for editing YAML files
 
 (use-package yasnippet                  ;; Yet another snippet extension for Emacs.
+  :diminish yas-minor-mode
   :config
   (yas-global-mode))
 
