@@ -48,20 +48,21 @@
 (setq-default tab-width 4)                                   ;; use 4 spaces
 (setq-default fill-column 80)                                ;; use 80 characters text width
 (setq-default require-final-newline t)                       ;; default to requiring a newline
-(setq message-log-max 16384)                                 ;; increase max message buffer size
+(setq use-short-answers t)
 (setq use-dialog-box nil)                                    ;; don't use dialog boxes
-(setq split-height-threshold 100)                            ;; don't split horizontally
-(setq kill-ring-max 256)                                     ;; large kill-ring, never loose anything
-(setq large-file-warning-threshold (* 64 1024 1024))         ;; 64MiB files are large
-(setq ad-redefinition-action 'accept)                        ;; no warning for advice redefinition
+(setq create-lockfiles nil)                                  ;; don't create .#<filename> files
+(setq message-log-max 16384)                                 ;; increase max message buffer size
 (setq initial-major-mode 'fundamental-mode)                  ;; start the scratch buffer in fundamental mode
 (setq initial-scratch-message nil)                           ;; no message for the scratch buffer
+(setq split-height-threshold 100)                            ;; don't split horizontally
+(setq kill-ring-max 256)                                     ;; large kill-ring, never loose anything
+(setq ad-redefinition-action 'accept)                        ;; no warning for advice redefinition
 (setq ring-bell-function 'ignore)                            ;; no audible bell
 (setq sentence-end-double-space nil)                         ;; one space is enough
 (setq vc-follow-symlinks t)                                  ;; always follow symlinks
 (setq vc-make-backup-files t)                                ;; also backup version controlled files
 (setq help-window-select t)                                  ;; automatically select help windows
-(setq create-lockfiles nil)                                  ;; don't create .#<filename> files
+(setq large-file-warning-threshold (* 64 1024 1024))         ;; 64MiB files are large
 (setq backup-by-copying t)                                   ;; Don't delink hardlinks
 (setq version-control t)                                     ;; Use version numbers on backups
 (setq delete-old-versions t)                                 ;; Automatically delete excess backups
