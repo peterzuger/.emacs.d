@@ -711,6 +711,11 @@ Only creates a notification if BUFFER is *compilation*."
   :config
   (setq sgml-basic-offset 4))
 
+(use-package simple                     ;; basic editing commands for Emacs
+  :ensure nil ;; builtin
+  :bind (("M-n" . next-error)
+         ("M-p" . previous-error)))
+
 (use-package smartparens                ;; Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
   :diminish
   :config
