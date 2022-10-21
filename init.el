@@ -75,6 +75,8 @@
 
 (setq display-buffer-alist
       `((,(rx bol (or
+                   (: "*Emacs Bugs*")
+                   (: "*Summary" (* nonl))
                    (: "*Ibuffer*")
                    (: "*Packages*"))
               eol))
