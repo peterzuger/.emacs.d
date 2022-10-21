@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: escape
+# key: escape
+# --
+static void escape(void* p){
+    asm volatile("" : : "g"(p) : "memory");
+}

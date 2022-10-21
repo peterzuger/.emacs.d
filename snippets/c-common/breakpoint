@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: breakpoint
+# key: breakpoint
+# --
+asm("${1:$$(yas-choose-value '("bkpt" "int \$3"))}");
