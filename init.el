@@ -80,6 +80,7 @@
               eol))
         (,(rx bol "*compilation*" eol)
          (display-buffer-in-side-window)
+         (dedicated . t)
          (inhibit-same-window . t)
          (side . right)
          (slot . 1)
@@ -92,6 +93,7 @@
             (: ".pdf" (? (group "<" (1+ (not ">")) ">"))))
            eol)
          (display-buffer-in-side-window)
+         (dedicated . t)
          (window-width . 120)
          (side . right))))
 
