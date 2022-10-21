@@ -78,7 +78,10 @@
                    (: "*Ibuffer*")
                    (: "*Packages*"))
               eol))
-        (,(rx bol "*compilation*" eol)
+        (,(rx bol (or
+                   (: "*compilation*")
+                   (: "*Org Links*"))
+              eol)
          (display-buffer-in-side-window)
          (dedicated . t)
          (inhibit-same-window . t)
