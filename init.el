@@ -33,7 +33,7 @@
 
 (eval-and-compile
   (defun emacs-path (path)
-    "Expand PATH to the current `user-emacs-directory`."
+    "Expand PATH to the current `user-emacs-directory'."
     (expand-file-name path user-emacs-directory)))
 
 ;; please don't litter my init.el
