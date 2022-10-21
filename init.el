@@ -331,6 +331,12 @@ Only creates a notification if BUFFER is *compilation*."
 
   (add-hook 'go-mode-hook 'add-gofmt-before-save-locally))
 
+(use-package gdb-mi                     ;; User Interface for running GDB
+  :ensure nil ;; builtin
+  :init
+  (setq gdb-show-main t)
+  (setq gdb-many-windows t))
+
 (use-package haskell-mode               ;; A Haskell editing mode
   :hook (haskell-mode . interactive-haskell-mode))
 
