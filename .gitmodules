@@ -46,3 +46,6 @@
 [submodule "lisp/use-package"]
         path = lisp/use-package
         url = https://github.com/jwiegley/use-package.git
+[submodule "lisp/immortal-scratch"]
+        path = lisp/immortal-scratch
+        url = git@github.com:peterzuger/immortal-scratch.git

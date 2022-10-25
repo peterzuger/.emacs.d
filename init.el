@@ -421,6 +421,11 @@ Only creates a notification if BUFFER is *compilation*."
   :config
   (imagemagick-register-types))
 
+(use-package immortal-scratch           ;; respawn the scratch buffer when it's killed
+  :load-path "lisp/immortal-scratch/"
+  :config
+  (immortal-scratch-mode))
+
 (use-package ivy                        ;; Incremental Vertical completYon
   :diminish
   :config
