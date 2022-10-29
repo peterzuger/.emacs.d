@@ -246,6 +246,18 @@ Only creates a notification if BUFFER is *compilation*."
   (add-hook 'compilation-finish-functions 'my-compilation-finish)
   (add-hook 'compilation-filter-hook 'my-colorize-compilation-buffer))
 
+(use-package conf-mode                  ;; Simple major mode for editing conf/ini/properties files
+  :ensure nil ;; builtin
+  :mode (rx
+         (or
+          (: "ssh" (? "d") "_config")
+          ".service"
+          ".timer"
+          ".socket"
+          ".network")
+         string-end)
+  :mode ((rx "rc" string-end) . conf-space-mode))
+
 (use-package counsel                    ;; Various completion functions using Ivy
   :after ivy
   :bind (("C-x C-f" . counsel-find-file)
