@@ -444,7 +444,7 @@ Only creates a notification if BUFFER is *compilation*."
   :after (ivy hydra))
 
 (use-package js2-mode                   ;; Improved JavaScript editing mode
-  :mode "\\.js\\'"
+  :mode (rx ".js" string-end)
   ;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so unbind it.
   :bind (:map js-mode-map
               ("M-." . nil)
@@ -470,7 +470,7 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package latex                      ;; Integrated environment for *TeX*
   :ensure auctex
   :demand t
-  :mode ("\\.tex\\'" . TeX-latex-mode)
+  :mode ((rx ".tex" string-end) . TeX-latex-mode)
   :bind (:map LaTeX-mode-map
               ("C-c C-s" . pdf-sync-forward-search))
   ;; enable forward/inverse search
@@ -730,7 +730,7 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package sgml-mode                  ;; The simplest mode to edit XML
   :ensure nil ;; builtin
-  :mode ("handlebars" . html-mode)
+  :mode ((rx ".handlebars" string-end) . html-mode)
   :config
   (setq sgml-basic-offset 4))
 
