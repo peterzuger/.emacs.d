@@ -152,8 +152,7 @@
   ;; c++-mode does not know constexpr
   (custom-set-variables '(c-noise-macro-names '("constexpr")))
 
-  (sp-local-pair 'c++-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
-  (sp-local-pair 'c-mode "{" nil :post-handlers '(("||\n[i]" "RET"))))
+  (sp-local-pair '(c-mode c++-mode) "{" nil :post-handlers '(("||\n[i]" "RET"))))
 
 (use-package cmake-mode)                ;; major-mode for editing CMake sources
 
