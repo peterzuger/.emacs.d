@@ -136,6 +136,15 @@
 
 (use-package avy)                       ;; Jump to arbitrary positions in visible text and select text quickly
 
+(use-package auth-source                ;; authentication sources for Gnus and Emacs
+  :ensure nil);; builtin
+
+(use-package auth-source-pass           ;; Integrate auth-source with password-store
+  :after auth-source
+  :ensure nil ;; builtin
+  :init
+  (setq auth-sources '(password-store)))
+
 (use-package cc-mode                    ;; C, C++, Objective-C, Java, CORBA IDL Pike and AWK code
   :after smartparens
   :demand t
@@ -582,12 +591,12 @@ Only creates a notification if BUFFER is *compilation*."
   (setq mu4e-compose-signature (concat user-full-name "\n"))
 
   (use-package smtpmail
+    :after auth-source
     :ensure nil
     :config
     (setq message-send-mail-function 'smtpmail-send-it)
     (setq message-kill-buffer-on-exit t)    ;; don't keep message buffers around
     (setq starttls-use-gnutls t)
-    (setq auth-sources '("~/.config/authinfo.gpg"))
     (setq smtpmail-starttls-credentials '(("smtp.mail.me.com" 587 nil nil)))
     (setq smtpmail-auth-credentials     '(("smtp.mail.me.com" 587 user-mail-address nil)))
     (setq smtpmail-default-smtp-server     "smtp.mail.me.com")
