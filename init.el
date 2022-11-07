@@ -177,8 +177,6 @@
           company-capf
           company-keywords))
 
-  (company-add-local-backend 'emacs-lisp-mode-hook 'company-elisp)
-
   (global-company-mode))
 
 (use-package company-emoji              ;; company-mode backend for emoji
@@ -273,6 +271,13 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package diminish)                  ;; Diminished modes are minor modes with no modeline display
 
 (use-package dockerfile-mode)           ;; Major mode for editing Docker's Dockerfiles
+
+(use-package elisp-mode                 ;; Emacs Lisp mode
+  :ensure nil ;; builtin
+  :after (company smartparens)
+  :config
+  (company-add-local-backend 'emacs-lisp-mode-hook 'company-elisp)
+  (sp-local-pair 'emacs-lisp-mode "`" "'"))
 
 (use-package engine-mode                ;; Define and query search engines from within Emacs
   :config
