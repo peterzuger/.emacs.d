@@ -601,12 +601,10 @@ Only creates a notification if BUFFER is *compilation*."
     :ensure nil ;; builtin
     :after auth-source-pass
     :config
-    (setq starttls-use-gnutls t)
-    (setq smtpmail-starttls-credentials '(("smtp.mail.me.com" 587 nil nil)))
-    (setq smtpmail-auth-credentials     '(("smtp.mail.me.com" 587 user-mail-address nil)))
-    (setq smtpmail-default-smtp-server     "smtp.mail.me.com")
-    (setq smtpmail-smtp-server             "smtp.mail.me.com")
-    (setq smtpmail-smtp-service             587)))
+    (setq smtpmail-default-smtp-server "smtp.mail.me.com")
+    (setq smtpmail-smtp-server         "smtp.mail.me.com")
+    (setq smtpmail-smtp-user           user-mail-address)
+    (setq smtpmail-smtp-service        587)))
 
 (use-package mu4e-alert                 ;; Desktop notification for mu4e
   :after mu4e
