@@ -598,8 +598,8 @@ Only creates a notification if BUFFER is *compilation*."
   (setq mu4e-update-interval  300)
 
   (use-package smtpmail
-    :after auth-source
-    :ensure nil
+    :ensure nil ;; builtin
+    :after auth-source-pass
     :config
     (setq starttls-use-gnutls t)
     (setq smtpmail-starttls-credentials '(("smtp.mail.me.com" 587 nil nil)))
