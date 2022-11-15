@@ -532,6 +532,13 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package markdown-mode)             ;; Major mode for Markdown-formatted text
 
+(use-package message                    ;; composing mail and news messages
+  :ensure nil ;; builtin
+  :config
+  (setq message-signature (concat user-full-name "\n"))
+  (setq message-send-mail-function 'smtpmail-send-it)
+  (setq message-kill-buffer-on-exit t))    ;; don't keep message buffers around
+
 (use-package minibuffer                 ;; Minibuffer customization
   :ensure nil ;; builtin
   :config
@@ -556,6 +563,7 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package mu4e                       ;; an emacs-based e-mail client based on mu
   :when (require 'mu4e nil 'noerror)
   :ensure nil
+  :after message
   :bind ("C-c m" . mu4e)
   :hook (mu4e-compose-mode . flyspell-mode)
   :config
@@ -588,14 +596,11 @@ Only creates a notification if BUFFER is *compilation*."
   (setq mu4e-sent-messages-behavior 'sent)
   (setq mu4e-get-mail-command "offlineimap")
   (setq mu4e-update-interval  300)
-  (setq mu4e-compose-signature (concat user-full-name "\n"))
 
   (use-package smtpmail
     :after auth-source
     :ensure nil
     :config
-    (setq message-send-mail-function 'smtpmail-send-it)
-    (setq message-kill-buffer-on-exit t)    ;; don't keep message buffers around
     (setq starttls-use-gnutls t)
     (setq smtpmail-starttls-credentials '(("smtp.mail.me.com" 587 nil nil)))
     (setq smtpmail-auth-credentials     '(("smtp.mail.me.com" 587 user-mail-address nil)))
