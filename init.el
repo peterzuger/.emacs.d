@@ -624,6 +624,7 @@ Only creates a notification if BUFFER is *compilation*."
           ("C-c l" . org-store-link)
           ("C-c a" . org-agenda))
   :hook (org-mode . flyspell-mode)
+  :hook (org-mode . auto-revert-mode)
   :hook (org-after-todo-statistics . org-summary-todo)
   :preface
   (defun org-summary-todo (n-done n-not-done)
