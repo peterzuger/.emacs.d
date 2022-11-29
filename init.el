@@ -520,15 +520,27 @@ Only creates a notification if BUFFER is *compilation*."
 
   (magit-add-section-hook 'magit-status-sections-hook
                           'magit-insert-user-header
-                          'magit-insert-status-headers nil)
+                          'magit-insert-status-headers)
+
+  (magit-add-section-hook 'magit-status-sections-hook
+                          'magit-insert-repo-header
+                          'magit-insert-status-headers)
+
+  (magit-add-section-hook 'magit-status-sections-hook
+                          'magit-insert-remote-header
+                          'magit-insert-status-headers)
+
+  (magit-add-section-hook 'magit-status-sections-hook
+                          'magit-insert-branch-description
+                          'magit-insert-untracked-files)
 
   (magit-add-section-hook 'magit-status-sections-hook
                           'magit-insert-local-branches
-                          'magit-insert-stashes t)
+                          'magit-insert-stashes)
 
   (magit-add-section-hook 'magit-status-sections-hook
                           'magit-insert-ignored-files
-                          'magit-insert-stashes t))
+                          'magit-insert-stashes))
 
 (use-package markdown-mode)             ;; Major mode for Markdown-formatted text
 
