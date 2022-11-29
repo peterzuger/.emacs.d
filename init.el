@@ -518,6 +518,14 @@ Only creates a notification if BUFFER is *compilation*."
   (setq magit-section-initial-visibility-alist
         '((stashes . hide) (ignored . hide) (local . hide)))
 
+  (defun magit-insert-notes-header ()
+    "Insert a header about the current note."
+    (let ((note  (magit-git-output "notes" "show")))
+      (unless (string-empty-p note)
+        (magit-insert-section (note)
+          (magit-insert-heading "Note")
+          (insert note "\n")))))
+
   (magit-add-section-hook 'magit-status-sections-hook
                           'magit-insert-user-header
                           'magit-insert-status-headers)
@@ -532,6 +540,10 @@ Only creates a notification if BUFFER is *compilation*."
 
   (magit-add-section-hook 'magit-status-sections-hook
                           'magit-insert-branch-description
+                          'magit-insert-untracked-files)
+
+  (magit-add-section-hook 'magit-status-sections-hook
+                          'magit-insert-notes-header
                           'magit-insert-untracked-files)
 
   (magit-add-section-hook 'magit-status-sections-hook
