@@ -149,6 +149,7 @@
   :after smartparens
   :demand t
   :ensure nil ;; builtin
+  :custom (c-noise-macro-names '("constexpr"))
   :bind (:map c-mode-base-map
               ("\C-m" . c-context-line-break))
   :config
@@ -157,9 +158,6 @@
         '((awk-mode . "awk")
           (other . "k&r")))
   (c-set-offset 'inextern-lang 0)
-
-  ;; c++-mode does not know constexpr
-  (custom-set-variables '(c-noise-macro-names '("constexpr")))
 
   (sp-local-pair '(c-mode c++-mode) "{" nil :post-handlers '(("||\n[i]" "RET"))))
 
