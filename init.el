@@ -744,6 +744,9 @@ Only creates a notification if BUFFER is *compilation*."
      (python . t)
      (shell . t))))
 
+(use-package orgit                      ;; Support for Org links to Magit buffers
+  :after (magit org))
+
 (use-package pdf-tools                  ;; Support library for PDF documents.
   :magic ("%PDF" . pdf-view-mode)
   :bind (:map pdf-view-mode-map
