@@ -272,6 +272,9 @@ Only creates a notification if BUFFER is *compilation*."
          "^" (regexp-opt '("__pycache__/" ".mypy_cache/" "GTAGS" "GRTAGS" "GPATH")) "$"
          "\\|" (regexp-opt '(".pyc" ".elc" ".o")) "$")))
 
+(use-package csv-mode                   ;; Major mode for editing comma/char separated values
+  :custom (csv-separators '("," "\t" ";")))
+
 (use-package debbugs)                   ;; SOAP library to access debbugs servers
 
 (use-package diminish)                  ;; Diminished modes are minor modes with no modeline display
