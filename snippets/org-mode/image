@@ -5,4 +5,4 @@
 # --
 #+CAPTION: ${1:caption of the image}
 #+ATTR_ORG: :width $2
-[[file:${3:image_path}]]$0
+[[`(org-link-complete-file)`]]$0
