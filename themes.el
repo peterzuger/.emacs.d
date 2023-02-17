@@ -36,17 +36,12 @@
              (file-directory-p (concat basedir f)))
         (add-to-list 'custom-theme-load-path (concat basedir f)))))
 
-(defvar after-load-theme-hook nil
-  "Hook run after a color theme is loaded using `load-theme'.")
-
-(defadvice load-theme (after run-after-load-theme-hook activate)
-  "Run `after-load-theme-hook'."
-  (run-hooks 'after-load-theme-hook))
-
+;; TODO: use new frame parameter alpha-background in 29.1
 (unless (display-graphic-p)
-  (add-hook 'after-load-theme-hook
+  (add-hook 'tty-setup-hook
             (lambda ()
-              (set-background-color "ARGBBB000000"))))
+              (modify-frame-parameters nil '((background-color))))))
+
 
 ;; load zenburn on start
 (load-theme 'zenburn t)
