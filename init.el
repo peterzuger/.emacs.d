@@ -27,6 +27,9 @@
 ;;; Commentary:
 ;;; Code:
 
+(when (version< emacs-version "28.2")
+  (error "Emacs Version 28.2 required"))
+
 ;; don't display the splash screen when a file is opened directly
 (when (> (length command-line-args) 1)
   (setq inhibit-splash-screen t))
