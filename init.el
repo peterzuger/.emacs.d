@@ -653,12 +653,18 @@ Only creates a notification if BUFFER is *compilation*."
           ("C-c a" . org-agenda))
   :hook (org-mode . flyspell-mode)
   :hook (org-mode . auto-revert-mode)
+  :hook (org-capture-after-finalize . revert-buffer-noconfirm)
   :hook (org-after-todo-statistics . org-summary-todo)
   :preface
   (defun org-summary-todo (n-done n-not-done)
     "Switch entry to DONE when all sub-entries are done, to TODO otherwise."
     (let (org-log-done org-log-states)   ; turn off logging
       (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+
+  (defun revert-buffer-noconfirm ()
+    "Call revert-buffer with noconfirm = t."
+    (interactive)
+    (revert-buffer nil t))
 
   :config
   (setq org-src-fontify-natively t)
