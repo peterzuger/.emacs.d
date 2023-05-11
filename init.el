@@ -342,6 +342,9 @@ Only creates a notification if BUFFER is *compilation*."
   :config
   (setq flycheck-pycheckers-checkers '(pylint flake8 pyflakes bandit)))
 
+(use-package flyspell                   ;; On-the-fly spell checker
+  :ensure nil);; builtin
+
 (use-package ggtags                     ;; emacs frontend to GNU Global source code tagging system
   :after cc-mode
   :custom (ggtags-mode-prefix-key (kbd "C-'"))
@@ -594,7 +597,7 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package mu4e                       ;; an emacs-based e-mail client based on mu
   :when (require 'mu4e nil 'noerror)
   :ensure nil
-  :after message
+  :after (flyspell message)
   :bind ("C-c m" . mu4e)
   :hook (mu4e-compose-mode . flyspell-mode)
   :config
@@ -649,6 +652,7 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package org                        ;; Outline-based notes management and organizer
   :ensure org-contrib
   :pin gnu
+  :after flyspell
   :bind (:map org-mode-map
               ("C-c i" . org-insert-link))
   :bind* (("C-c c" . org-capture)
