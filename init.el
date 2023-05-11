@@ -283,6 +283,10 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package diminish)                  ;; Diminished modes are minor modes with no modeline display
 
+(use-package display-fill-column-indicator ;; interface for display-fill-column-indicator
+  :ensure nil ;; builtin
+  :bind ("C-|" . #'display-fill-column-indicator-mode))
+
 (use-package dockerfile-mode)           ;; Major mode for editing Docker's Dockerfiles
 
 (use-package elisp-mode                 ;; Emacs Lisp mode
@@ -322,8 +326,6 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package emojify                    ;; Display emojis in Emacs
   :config
   (global-emojify-mode))
-
-(use-package fill-column-indicator)     ;; Graphically indicate the fill column
 
 (use-package flycheck                   ;; On-the-fly syntax checking
   :config
