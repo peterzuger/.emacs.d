@@ -270,9 +270,11 @@ Only creates a notification if BUFFER is *compilation*."
          ("C-x C-M-f" . counsel-locate))
   :config
   (setq counsel-find-file-ignore-regexp
-        (concat
-         "^" (regexp-opt '("__pycache__/" ".mypy_cache/" "GTAGS" "GRTAGS" "GPATH")) "$"
-         "\\|" (regexp-opt '(".pyc" ".elc" ".o")) "$")))
+        (rx
+         (or
+          (: bol (or "__pycache__/" ".mypy_cache/" "GTAGS" "GRTAGS" "GPATH"))
+          (or ".pyc" ".elc" ".o" ".d"))
+         eol)))
 
 (use-package csv-mode                   ;; Major mode for editing comma/char separated values
   :custom (csv-separators '("," "\t" ";")))
