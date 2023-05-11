@@ -219,6 +219,9 @@
   :bind* (("C-c C-l" . compile)
           ("C-c M-l" . pop-to-compilation))
   :preface
+  (require 'ansi-color)
+  (require 'notifications)
+
   (defun pop-to-compilation ()
     (interactive)
     (when (get-buffer "*compilation*")
@@ -235,13 +238,10 @@
     "Create a desktop notification on compilation finish with the STATUS.
 Only creates a notification if BUFFER is *compilation*."
     (when (string= (buffer-name buffer) "*compilation*")
-      (call-process "notify-send" nil nil nil
-                    "-a" "emacs"
-                    "-i" (expand-file-name "images/icons/hicolor/32x32/apps/emacs.png" data-directory)
-                    "Compilation finished"
-                    (format "%s (%s)"
-                            (string-trim status)
-                            (format-time-string "%s.%3Ns" (time-since compilation-time))))))
+      (notifications-notify :title "Compilation finished"
+                            :body (format "%s (%s)"
+                                          (string-trim status)
+                                          (format-time-string "%s.%3Ns" (time-since compilation-time))))))
 
   (defun my-colorize-compilation-buffer ()
     "Interpret ANSI colors in the compilation buffer."
