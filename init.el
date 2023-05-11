@@ -130,9 +130,8 @@
 ;; don't quit immediately
 (when (display-graphic-p)
   (setq confirm-kill-emacs 'y-or-n-p)
-  (unbind-key "C-x C-z")
-  (unbind-key "C-z"))
-
+  (global-unset-key (kbd "C-x C-z"))
+  (global-unset-key (kbd "C-z")))
 
 (use-package ace-window                 ;; Quickly switch windows
   :bind* ("M-o" . ace-window))
