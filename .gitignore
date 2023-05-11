@@ -8,6 +8,7 @@ games/
 irony/
 transient/
 url/
+.cache/
 
 # Autocomplete history
 ac-comphist.dat
