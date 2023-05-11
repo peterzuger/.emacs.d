@@ -121,9 +121,9 @@
 
 (eval-when-compile
   (add-to-list 'load-path (emacs-path "lisp/use-package/"))
-  (require 'use-package))
+  (require 'use-package)
+  (require 'use-package-ensure))
 
-(require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
 
