@@ -321,7 +321,7 @@ Only creates a notification if BUFFER is *compilation*."
     "http://www.wolframalpha.com/input/?i=%s")
 
   (engine/set-keymap-prefix (kbd "C-c s"))
-  (engine-mode 1))
+  (engine-mode))
 
 (use-package emojify                    ;; Display emojis in Emacs
   :config
