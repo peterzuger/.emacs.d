@@ -328,8 +328,9 @@ Only creates a notification if BUFFER is *compilation*."
   (global-emojify-mode))
 
 (use-package flycheck                   ;; On-the-fly syntax checking
-  :config
+  :init
   (global-flycheck-mode)                          ;; enable flycheck globally
+  :config
   (setq flycheck-checker-error-threshold 1024))   ;; sometimes this happens
 
 (use-package flycheck-irony             ;; Flycheck: C/C++ support via Irony
