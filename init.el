@@ -479,6 +479,9 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package ivy-hydra                  ;; Additional key bindings for Ivy
   :after (ivy hydra))
 
+(use-package js                         ;; Major mode for editing JavaScript
+  :ensure nil);; builtin
+
 (use-package js2-mode                   ;; Improved JavaScript editing mode
   :mode (rx ".js" string-end)
   ;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so unbind it.
@@ -501,7 +504,14 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package js2-refactor               ;; A JavaScript refactoring library for emacs.
   :after js2-mode)
 
-(use-package json-mode)                 ;; Major mode for editing JSON files
+(use-package json                       ;; JavaScript Object Notation parser / generator
+  :ensure nil ;; builtin
+  :config
+  (setq json-encoding-default-indentation "    "))
+
+(use-package json-mode                  ;; Major mode for editing JSON files
+  :after js
+  :mode (rx ".json" string-end))
 
 (use-package latex                      ;; Integrated environment for *TeX*
   :ensure auctex
