@@ -81,8 +81,14 @@
                    (: "*Emacs Bugs*")
                    (: "*Summary" (* nonl))
                    (: "*Ibuffer*")
-                   (: "*Packages*"))
-              eol))
+                   (: "*Packages*")
+                   (: "*mu4e-main*")
+                   (: "*mu4e-draft*")
+                   (: "*mu4e-headers*"))
+              eol)
+         (display-buffer-same-window))
+        (,(rx (: "*mu4e-article*"))
+         (display-buffer-below-selected))
         (,(rx bol (or
                    (: "*compilation*")
                    (: "*Org Links*"))
@@ -102,8 +108,8 @@
            eol)
          (display-buffer-in-side-window)
          (dedicated . t)
-         (window-width . 120)
-         (side . right))))
+         (side . right)
+         (window-width . 120))))
 
 (defalias 'yes-or-no-p 'y-or-n-p)                            ;; replace yes or no prompts by y-or-n prompts
 
