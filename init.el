@@ -116,8 +116,9 @@
 (mouse-avoidance-mode 'cat-and-mouse)                        ;; play cat and mouse with the cursor
 (global-prettify-symbols-mode)                               ;; draw tokens as unicode glyph's
 
-(require 'package)
-(package-initialize)
+(eval-and-compile
+  (require 'package)
+  (package-initialize))
 
 ;; add elpa and melpa archive
 (setq package-archives
