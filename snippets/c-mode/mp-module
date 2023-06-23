@@ -3,7 +3,7 @@
 # key: mp-module
 # --
 /**
- * @file   ${1:`(file-name-nondirectory (directory-file-name (file-name-directory (buffer-file-name))))`}/`(file-name-nondirectory (buffer-file-name))`
+ * @file   ${1:`(mpy-mod-name (buffer-file-name))`}/`(file-name-nondirectory (buffer-file-name))`
  * @author `(getenv "NAME")`
  * @date   `(format-time-string "%d.%m.%Y")`
  * @brief  $2

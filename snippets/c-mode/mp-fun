@@ -2,7 +2,7 @@
 # name: mp-fun
 # key: mp-fun
 # --
-STATIC mp_obj_t ${1:`(file-name-nondirectory (directory-file-name (file-name-directory (buffer-file-name))))`}_$2(mp_obj_t $3){
+STATIC mp_obj_t ${1:`(mpy-mod-name (buffer-file-name))`}_$2(size_t n_args, const mp_obj_t* args){
     $0
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_VAR($1_$2_fun_obj, $4, $1_$2);

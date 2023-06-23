@@ -2,7 +2,7 @@
 # name: mp-type
 # key: mp-type
 # --
-typedef struct _${1:`(file-name-nondirectory (directory-file-name (file-name-directory (buffer-file-name))))`}_$2_obj_t{
+typedef struct _${1:`(mpy-mod-name (buffer-file-name))`}_$2_obj_t{
     // base represents some basic information, like type
     mp_obj_base_t base;
 
