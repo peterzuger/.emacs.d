@@ -723,6 +723,13 @@ Only creates a notification if BUFFER is *compilation*."
   :END:
   %?")
 
+          ("p" "email todo" entry (file "todo.org")
+           "* TODO %:fromname: %a %^{title}
+  :LOGBOOK:
+  - Created on %U
+  :END:
+  %?")
+
           ("w" "work templates")
 
           ("wt" "todo" entry (file "work.org")
@@ -758,6 +765,9 @@ Only creates a notification if BUFFER is *compilation*."
   :ADDRESS:  %^{address}
   :BIRTHDAY: %^{birthday}u
   :END:" :immediate-finish t)))
+
+  (setq org-capture-templates-contexts
+        '(("p" ((in-mode . "mu4e-headers") (in-mode . "mu4e-view")))))
 
   (org-babel-do-load-languages
    'org-babel-load-languages
