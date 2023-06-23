@@ -716,6 +716,14 @@ Only creates a notification if BUFFER is *compilation*."
   :END:
   %?")
 
+          ("a" "appointment" entry (file "todo.org")
+           "* APPT %^{title}
+  %^t
+  :LOGBOOK:
+  - Created on %U
+  :END:
+  %?")
+
           ("o" "order something" entry (file "todo.org")
            "* ORDER %^{title}
   :LOGBOOK:
