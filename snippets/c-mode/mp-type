@@ -28,6 +28,9 @@ MP_DEFINE_CONST_OBJ_TYPE(
     locals_dict, (mp_obj_dict_t*)&$1_$2_locals_dict,
 );
 
+/**
+ * Python: $1.$2()
+ */
 mp_obj_t $1_$2_make_new(const mp_obj_type_t* type,
                                            size_t n_args,
                                            size_t n_kw,
@@ -44,6 +47,10 @@ mp_obj_t $1_$2_make_new(const mp_obj_type_t* type,
     return MP_OBJ_FROM_PTR(self);
 }
 
+/**
+ * Python: print($1.$2())
+ * @param obj
+ */
 STATIC void $1_$2_print(const mp_print_t* print,
                                            mp_obj_t self_in, mp_print_kind_t kind){
     //$1_$2_obj_t* self = MP_OBJ_TO_PTR(self_in);

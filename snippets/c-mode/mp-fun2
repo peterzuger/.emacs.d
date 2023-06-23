@@ -2,6 +2,11 @@
 # name: mp-fun2
 # key: mp-fun2
 # --
+/**
+ * Python: $1.$2($3, $4)
+ * @param $3
+ * @param $4
+ */
 STATIC mp_obj_t ${1:`(mpy-mod-name (buffer-file-name))`}_$2(mp_obj_t $3_in, mp_obj_t $4_in){
     $0
 }
