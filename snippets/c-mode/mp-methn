@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: mp-methn
+# key: mp-methn
+# --
+/**
+ * Python: $1.$2.$3(*args)
+ * @param ${5:*args}
+ */
+STATIC mp_obj_t ${1:`(mpy-mod-name (buffer-file-name))`}_$2_$3(size_t n_args, const mp_obj_t* args){
+    $0
+}
+
+STATIC mp_obj_t ${1:`(mpy-mod-name (buffer-file-name))`}_$2_$3(size_t n_args, const mp_obj_t* args);
+STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN($1_$2_$3_fun_obj, ${3:args-min}, ${4:args-max}, $1_$2_$3);
