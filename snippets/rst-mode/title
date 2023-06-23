@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: title
+# key: title
+# --
+${1:$(make-string (string-width yas-text) ?\*)}
+${1:title}
+${1:$(make-string (string-width yas-text) ?\*)}
+
+$0
