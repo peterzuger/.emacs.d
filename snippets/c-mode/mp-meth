@@ -8,6 +8,8 @@
  * @param ${5:*args}
  */
 STATIC mp_obj_t $1_$2_$3(size_t n_args, const mp_obj_t* args){
+    $1_$2_obj_t* self = MP_OBJ_TO_PTR(args[0]);
+
     $0
 }
 

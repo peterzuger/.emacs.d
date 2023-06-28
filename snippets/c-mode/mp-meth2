@@ -9,6 +9,8 @@
  * @param $5
  */
 STATIC mp_obj_t $1_$2_$3(mp_obj_t self_in, mp_obj_t $4_in, mp_obj_t $5_in){
+    $1_$2_obj_t* self = MP_OBJ_TO_PTR(self_in);
+
     $0
 }
 
