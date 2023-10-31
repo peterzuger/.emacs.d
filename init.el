@@ -578,11 +578,11 @@ Only creates a notification if BUFFER is *compilation*."
 
   (magit-add-section-hook 'magit-status-sections-hook
                           'magit-insert-local-branches
-                          'magit-insert-stashes)
+                          'magit-insert-stashes t)
 
   (magit-add-section-hook 'magit-status-sections-hook
                           'magit-insert-ignored-files
-                          'magit-insert-stashes))
+                          'magit-insert-stashes t))
 
 (use-package markdown-mode)             ;; Major mode for Markdown-formatted text
 
