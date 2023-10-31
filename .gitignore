@@ -9,6 +9,7 @@ irony/
 transient/
 url/
 .cache/
+eln-cache/
 
 # Autocomplete history
 ac-comphist.dat
