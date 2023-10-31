@@ -47,6 +47,6 @@ Reset `gc-cons-threshold' to this value to prevent runaway memory usage.")
     (setq file-name-handler-alist
           (delete-dups (append file-name-handler-alist
                                file-name-handler-alist-tmp))))
-  (add-hook 'emacs-startup-hook #'late-startup-hook t))
+  (add-hook 'emacs-startup-hook 'late-startup-hook t))
 
 ;;; early-init.el ends here

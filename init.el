@@ -856,7 +856,7 @@ Only creates a notification if BUFFER is *compilation*."
   :config
   (defvar no-whitespace-cleanup nil
     "Variable for disabling whitespace-cleanup before save.")
-  (put 'no-whitespace-cleanup 'safe-local-variable #'booleanp)
+  (put 'no-whitespace-cleanup 'safe-local-variable 'booleanp)
 
   (defun my-whitespace-cleanup ()
     "Clean up the whitespace in a buffer, unless that buffer is in 'fundamental-mode'."
