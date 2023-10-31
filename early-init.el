@@ -29,7 +29,7 @@
 
 (defconst gc-cons-threshold-default (* 16 1024 1024)
   "The default threshold for the GC increased from 800kB to 16MB.
-Reset 'gc-cons-threshold' to this value to prevent runaway memory usage.")
+Reset `gc-cons-threshold' to this value to prevent runaway memory usage.")
 
 (setq gc-cons-threshold most-positive-fixnum)
 
