@@ -817,6 +817,7 @@ Only creates a notification if BUFFER is *compilation*."
   (add-hook 'pyvenv-post-deactivate-hooks 'pyvenv-restart-python))
 
 (use-package ranger                     ;; Make dired more like ranger
+  :disabled
   :config
   (ranger-override-dired-mode nil)      ;; use ranger instead of dired
   (setq ranger-override-dired 'ranger)  ;; use ranger not deer
