@@ -76,6 +76,7 @@
 (setq auto-save-file-name-transforms                         ;; move auto-save files to backup
       `((".*" ,(emacs-path "backup/") t)))
 
+(setq switch-to-buffer-obey-display-actions t)
 (setq display-buffer-alist
       `((,(rx bol (or
                    (: "*Emacs Bugs*")
