@@ -545,6 +545,8 @@ Only creates a notification if BUFFER is *compilation*."
   (setq transient-default-level 7)
   (setq magit-diff-refine-hunk 'all)
 
+  (setq magit-display-buffer-function 'display-buffer)
+
   (setq magit-section-initial-visibility-alist
         '((stashes . hide) (ignored . hide) (local . hide)))
 
