@@ -280,7 +280,7 @@ Only creates a notification if BUFFER is *compilation*."
         (rx
          (or
           (: bol (or "__pycache__/" ".mypy_cache/" "GTAGS" "GRTAGS" "GPATH"))
-          (or ".pyc" ".elc" ".o" ".d"))
+          (or ".pyc" ".elc" ".o" ".d" ".aux" ".synctex.gz"))
          eol)))
 
 (use-package csv-mode                   ;; Major mode for editing comma/char separated values
