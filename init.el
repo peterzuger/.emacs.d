@@ -548,6 +548,9 @@ Only creates a notification if BUFFER is *compilation*."
   (setq magit-section-initial-visibility-alist
         '((stashes . hide) (ignored . hide) (local . hide)))
 
+  (setq magit-log-section-commit-count 25)
+  (setq magit-revision-show-gravatars t)
+
   (defun magit-insert-notes-header ()
     "Insert a header about the current note."
     (let ((note  (magit-git-output "notes" "show")))
