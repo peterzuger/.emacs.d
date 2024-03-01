@@ -823,6 +823,8 @@ Only creates a notification if BUFFER is *compilation*."
   (setq ranger-override-dired 'ranger)  ;; use ranger not deer
   (setq ranger-cleanup-eagerly t))      ;; auto kill unused buffers
 
+(use-package scad-mode)                 ;; A major mode for editing OpenSCAD code
+
 (use-package server                     ;; Lisp code for GNU Emacs running as server process
   :when (display-graphic-p)             ;; only start the server in X
   :unless (server-running-p)            ;; unless there is already a server running
