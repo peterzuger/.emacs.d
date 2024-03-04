@@ -714,14 +714,15 @@ Only creates a notification if BUFFER is *compilation*."
   (add-to-list 'org-latex-classes '("scrlttr2" "\\documentclass{scrlttr2}"))
 
   (setq org-capture-templates
-        '(("t" "personal todo" entry (file "todo.org")
+        '(("t" "Tasks")
+          ("tt" "personal todo" entry (file "todo.org")
            "* TODO %^{title}
   :LOGBOOK:
   - Created on %U
   :END:
   %?")
 
-          ("a" "appointment" entry (file "todo.org")
+          ("ta" "appointment" entry (file "todo.org")
            "* APPT %^{title}
   %^t
   :LOGBOOK:
@@ -729,21 +730,35 @@ Only creates a notification if BUFFER is *compilation*."
   :END:
   %?")
 
-          ("o" "order something" entry (file "todo.org")
+          ("tr" "repair something" entry (file "todo.org")
+           "* REPAIR %^{title}
+  :LOGBOOK:
+  - Created on %U
+  :END:
+  %?")
+
+          ("tl" "loaned something" entry (file "todo.org")
+           "* LOAN %^{title}
+  :LOGBOOK:
+  - Created on %U
+  :END:
+  %?")
+
+          ("to" "order something" entry (file "todo.org")
            "* ORDER %^{title}
   :LOGBOOK:
   - Created on %U
   :END:
   %?")
 
-          ("p" "email todo" entry (file "todo.org")
+          ("tp" "email todo" entry (file "todo.org")
            "* TODO %:fromname: %a %^{title}
   :LOGBOOK:
   - Created on %U
   :END:
   %?")
 
-          ("w" "work templates")
+          ("w" "Work")
 
           ("wt" "todo" entry (file "work.org")
            "* TODO %^{title}
