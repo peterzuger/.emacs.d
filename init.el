@@ -176,7 +176,7 @@
 (use-package company                    ;; Modular text completion framework
   :demand t
   :diminish
-  :bind* ("<backtab>" . company-yasnippet)
+  :bind ("C-<tab>" . company-yasnippet)
   :preface
   (defun company-add-local-backend (hook backend)
     "Add a local BACKEND using the given HOOK."
