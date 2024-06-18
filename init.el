@@ -524,7 +524,7 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package latex                      ;; Integrated environment for *TeX*
   :ensure auctex
   :demand t
-  :mode ((rx ".tex" string-end) . TeX-latex-mode)
+  :mode ((rx ".tex" string-end) . latex-mode)
   :bind (:map LaTeX-mode-map
               ("C-c C-s" . pdf-sync-forward-search))
   ;; enable forward/inverse search
