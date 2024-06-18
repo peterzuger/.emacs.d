@@ -676,6 +676,7 @@ Only creates a notification if BUFFER is *compilation*."
           ("C-c a" . org-agenda))
   :hook (org-mode . flyspell-mode)
   :hook (org-mode . auto-revert-mode)
+  :hook (org-mode . hl-line-mode)
   :hook (org-capture-after-finalize . revert-buffer-noconfirm)
   :hook (org-after-todo-statistics . org-summary-todo)
   :preface
