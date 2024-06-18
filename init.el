@@ -78,6 +78,8 @@
       `((".*" ,(emacs-path "backup/") t)))
 
 (setq switch-to-buffer-obey-display-actions t)
+(setq display-buffer-base-action '(display-buffer-use-some-window))
+
 (setq display-buffer-alist
       `((,(rx bol (or
                    (: "*Emacs Bugs*")
