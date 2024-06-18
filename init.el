@@ -57,7 +57,8 @@
 (setq message-log-max 16384)                                 ;; increase max message buffer size
 (setq initial-major-mode 'fundamental-mode)                  ;; start the scratch buffer in fundamental mode
 (setq initial-scratch-message nil)                           ;; no message for the scratch buffer
-(setq split-height-threshold 100)                            ;; don't split horizontally
+(setq split-width-threshold nil)                             ;; don't split vertically
+(setq split-height-threshold nil)                            ;; don't split horizontally
 (setq kill-ring-max 256)                                     ;; large kill-ring, never loose anything
 (setq ad-redefinition-action 'accept)                        ;; no warning for advice redefinition
 (setq ring-bell-function 'ignore)                            ;; no audible bell
