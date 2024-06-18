@@ -690,6 +690,8 @@ Only creates a notification if BUFFER is *compilation*."
     (revert-buffer nil t))
 
   :config
+  (setq org-agenda-window-setup 'current-window)
+  (setq org-agenda-restore-windows-after-quit t)
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively t)
   (setq org-src-preserve-indentation t)
