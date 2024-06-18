@@ -82,38 +82,81 @@
 
 (setq display-buffer-alist
       `((,(rx bol (or
-                   (: "*Emacs Bugs*")
-                   (: "*Summary" (* nonl))
-                   (: "*Ibuffer*")
-                   (: "*Packages*")
+                   (: "*Org Select*")
+                   (: "*Capture*")
+                   (: "CAPTURE-" (* nonl) ".org")
+                   (: " *Org tags*")
                    (: "*mu4e-main*")
+                   (: "*Ibuffer*")
+                   (: "*Messages*")
+                   (: "magit-log:" (* nonl))
+                   (: ".pdf" (? (group "<" (1+ (not ">")) ">")))
+                   eol))
+         display-buffer-use-some-window)
+        (,(rx bol (or
                    (: "*mu4e-draft*")
                    (: "*mu4e-headers*"))
               eol)
-         (display-buffer-same-window))
+         display-buffer-same-window)
         (,(rx (: "*mu4e-article*"))
-         (display-buffer-below-selected))
+         display-buffer-below-selected)
+        (,(rx
+           (or
+            (: bol "magit:" (* nonl))
+            (: bol "*Help*")
+            (: bol "*Warnings*")
+            (: bol "*xref*")
+            (: bol "*grep*")
+            (: bol "*Org Agenda" (* nonl) "*")
+            (: bol "*ggtags-global*")
+            (: bol "COMMIT_EDITMSG")
+            (: bol "*Python*"))
+           eol)
+         display-buffer-in-side-window
+         (dedicated . side)
+         (side . right)
+         (window-width . 120)
+         (window-height . 0.66)
+         (window-parameters . ((no-other-window . t))))
         (,(rx bol (or
                    (: "*compilation*")
-                   (: "*Org Links*"))
+                   (: "*Org Links*")
+                   (: "*eshell*")
+                   (: "*shell*")
+                   (: "*terminal*")
+                   (: "*TeX Help*")
+                   (: "*ansi-term*"))
               eol)
-         (display-buffer-in-side-window)
-         (dedicated . t)
+         display-buffer-in-side-window
+         (dedicated . side)
          (inhibit-same-window . t)
          (side . right)
          (slot . 1)
          (window-width . 120)
-         (window-height . 0.33))
-        (,(rx
-           (or
-            (: bol "magit:" (* nonl))
-            (: bol "*" (* nonl) "*")
-            (: ".pdf" (? (group "<" (1+ (not ">")) ">"))))
-           eol)
-         (display-buffer-in-side-window)
-         (dedicated . t)
+         (window-height . 0.33)
+         (window-parameters . ((no-other-window . t))))
+        (,(lambda (name _) (with-current-buffer name (derived-mode-p 'term-mode)))
+         display-buffer-in-side-window
+         (dedicated . side)
+         (inhibit-same-window . t)
          (side . right)
-         (window-width . 120))))
+         (slot . 1)
+         (window-width . 120)
+         (window-height . 0.33)
+         (window-parameters . ((no-other-window . t))))
+        (,(rx bol
+              (or
+               (: " *Agenda Commands*"))
+              eol)
+         display-buffer-in-side-window
+         (side . bottom)
+         (slot . 0)
+         (window-height . 0.35)
+         (window-parameters . ((no-other-window . t))))
+        (,(rx bol
+              (or
+               (: " *transient*"))
+              eol))))
 
 (defalias 'yes-or-no-p 'y-or-n-p)                            ;; replace yes or no prompts by y-or-n prompts
 
