@@ -6,12 +6,12 @@
  * Python: ${1:`(mpy-mod-name (buffer-file-name))`}.$2.$3(self)
  * @param self
  */
-STATIC mp_obj_t $1_$2_$3(mp_obj_t self_in){
+static mp_obj_t $1_$2_$3(mp_obj_t self_in){
     $1_$2_obj_t* self = MP_OBJ_TO_PTR(self_in);
 
     $0
 }
 
-STATIC mp_obj_t $1_$2_$3(mp_obj_t self_in);
-STATIC MP_DEFINE_CONST_FUN_OBJ_1($1_$2_$3_fun_obj, $1_$2_$3);
+static mp_obj_t $1_$2_$3(mp_obj_t self_in);
+static MP_DEFINE_CONST_FUN_OBJ_1($1_$2_$3_fun_obj, $1_$2_$3);
 { MP_ROM_QSTR(MP_QSTR_$3), MP_ROM_PTR(&$1_$2_$3_fun_obj) },

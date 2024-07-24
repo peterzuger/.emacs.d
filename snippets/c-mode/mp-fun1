@@ -6,7 +6,7 @@
  * Python: $1.$2($3)
  * @param $3
  */
-STATIC mp_obj_t ${1:`(mpy-mod-name (buffer-file-name))`}_$2(mp_obj_t $3_in){
+static mp_obj_t ${1:`(mpy-mod-name (buffer-file-name))`}_$2(mp_obj_t $3_in){
     $0
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1($1_$2_fun_obj, $1_$2);
+static MP_DEFINE_CONST_FUN_OBJ_1($1_$2_fun_obj, $1_$2);

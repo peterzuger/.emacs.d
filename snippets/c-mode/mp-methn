@@ -7,12 +7,12 @@
  * @param self
  * @param ${5:*args}
  */
-STATIC mp_obj_t $1_$2_$3(size_t n_args, const mp_obj_t* args){
+static mp_obj_t $1_$2_$3(size_t n_args, const mp_obj_t* args){
     $1_$2_obj_t* self = MP_OBJ_TO_PTR(args[0]);
 
     $0
 }
 
-STATIC mp_obj_t $1_$2_$3(size_t n_args, const mp_obj_t* args);
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN($1_$2_$3_fun_obj, ${4:args-min}, ${5:args-max}, $1_$2_$3);
+static mp_obj_t $1_$2_$3(size_t n_args, const mp_obj_t* args);
+static MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN($1_$2_$3_fun_obj, ${4:args-min}, ${5:args-max}, $1_$2_$3);
 { MP_ROM_QSTR(MP_QSTR_$3), MP_ROM_PTR(&$1_$2_$3_fun_obj) },

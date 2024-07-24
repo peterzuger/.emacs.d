@@ -8,13 +8,13 @@ typedef struct _${1:`(mpy-mod-name (buffer-file-name))`}_$2_obj_t{
 }$1_$2_obj_t;
 
 mp_obj_t $1_$2_make_new(const mp_obj_type_t* type, size_t n_args, size_t n_kw, const mp_obj_t* args);
-STATIC void $1_$2_print(const mp_print_t* print, mp_obj_t self_in, mp_print_kind_t kind);
+static void $1_$2_print(const mp_print_t* print, mp_obj_t self_in, mp_print_kind_t kind);
 
 
-STATIC const mp_rom_map_elem_t $1_$2_locals_dict_table[] = {
+static const mp_rom_map_elem_t $1_$2_locals_dict_table[] = {
     // class methods
 };
-STATIC MP_DEFINE_CONST_DICT($1_$2_locals_dict, $1_$2_locals_dict_table);
+static MP_DEFINE_CONST_DICT($1_$2_locals_dict, $1_$2_locals_dict_table);
 
 
 MP_DEFINE_CONST_OBJ_TYPE(
@@ -45,7 +45,7 @@ mp_obj_t $1_$2_make_new(const mp_obj_type_t* type,
  * Python: print($1.$2())
  * @param obj
  */
-STATIC void $1_$2_print(const mp_print_t* print,
+static void $1_$2_print(const mp_print_t* print,
                                            mp_obj_t self_in, mp_print_kind_t kind){
     //$1_$2_obj_t* self = MP_OBJ_TO_PTR(self_in);
     mp_printf(print, "$2()");

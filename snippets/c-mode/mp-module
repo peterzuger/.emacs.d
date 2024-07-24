@@ -41,11 +41,11 @@
 
 $0
 
-STATIC const mp_rom_map_elem_t $1_globals_table[] = {
+static const mp_rom_map_elem_t $1_globals_table[] = {
     { MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_$1) },
 };
 
-STATIC MP_DEFINE_CONST_DICT(
+static MP_DEFINE_CONST_DICT(
     mp_module_$1_globals,
     $1_globals_table
     );
