@@ -90,7 +90,6 @@
                    (: "*Ibuffer*")
                    (: "*Messages*")
                    (: "magit-log:" (* nonl))
-                   (: ".pdf" (? (group "<" (1+ (not ">")) ">")))
                    eol))
          display-buffer-use-some-window)
         (,(rx bol (or
@@ -103,6 +102,7 @@
         (,(rx
            (or
             (: bol "magit:" (* nonl))
+            (: ".pdf" (? (group "<" (1+ (not ">")) ">")))
             (: bol "*Help*")
             (: bol "*xref*")
             (: bol "*grep*")
