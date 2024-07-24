@@ -104,7 +104,6 @@
            (or
             (: bol "magit:" (* nonl))
             (: bol "*Help*")
-            (: bol "*Warnings*")
             (: bol "*xref*")
             (: bol "*grep*")
             (: bol "*Org Agenda" (* nonl) "*")
@@ -120,6 +119,7 @@
          (window-parameters . ((no-other-window . t))))
         (,(rx bol (or
                    (: "*compilation*")
+                   (: "*Warnings*")
                    (: "*Org Links*")
                    (: "*eshell*")
                    (: "*shell*")
