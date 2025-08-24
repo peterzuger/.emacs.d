@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: selfassing
+# key: sn
+# --
+self.$1 = $1

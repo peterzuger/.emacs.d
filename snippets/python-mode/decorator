@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: decorator
+# key: dec
+# --
+def ${1:decorator}(fun):
+    $2
+    def _$1(*args, **kwargs):
+        $3
+        return fun(*args, **kwargs)
+
+    return _$1
