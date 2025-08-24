@@ -400,6 +400,8 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package flyspell                   ;; On-the-fly spell checker
   :ensure nil);; builtin
 
+(use-package git-modes)                 ;; Major modes for editing Git configuration files
+
 (use-package ggtags                     ;; emacs frontend to GNU Global source code tagging system
   :after cc-mode
   :custom (ggtags-mode-prefix-key (kbd "C-'"))
@@ -918,6 +920,8 @@ Only creates a notification if BUFFER is *compilation*."
   :config
   (smartparens-global-mode)             ;; global (){} completion
   (show-smartparens-global-mode))       ;; global (){} highlighting
+
+(use-package systemd)                   ;; Major mode for editing systemd units
 
 (use-package swiper                     ;; Isearch with an overview. Oh, man!
   :after ivy
