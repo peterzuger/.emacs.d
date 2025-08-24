@@ -114,7 +114,7 @@
          display-buffer-in-side-window
          (dedicated . side)
          (side . right)
-         (window-width . 120)
+         (window-width . 0.4)
          (window-height . 0.66)
          (window-parameters . ((no-other-window . t))))
         (,(rx bol (or
@@ -132,7 +132,7 @@
          (inhibit-same-window . t)
          (side . right)
          (slot . 1)
-         (window-width . 120)
+         (window-width . 0.4)
          (window-height . 0.33)
          (window-parameters . ((no-other-window . t))))
         (,(lambda (name _) (with-current-buffer name (derived-mode-p 'term-mode)))
@@ -141,7 +141,7 @@
          (inhibit-same-window . t)
          (side . right)
          (slot . 1)
-         (window-width . 120)
+         (window-width . 0.4)
          (window-height . 0.33)
          (window-parameters . ((no-other-window . t))))
         (,(rx bol
