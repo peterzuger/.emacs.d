@@ -638,7 +638,9 @@ Only creates a notification if BUFFER is *compilation*."
                           'magit-insert-ignored-files
                           'magit-insert-stashes t))
 
-(use-package markdown-mode)             ;; Major mode for Markdown-formatted text
+(use-package markdown-mode             ;; Major mode for Markdown-formatted text
+  :config
+  (setq markdown-fontify-code-blocks-natively t))
 
 (use-package message                    ;; composing mail and news messages
   :ensure nil ;; builtin
