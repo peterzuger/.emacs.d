@@ -3,5 +3,5 @@
 # key: cm
 # --
 @classmethod
-def ${1:func}(cls, $1):
+def ${1:func}(cls, $2):
     $0

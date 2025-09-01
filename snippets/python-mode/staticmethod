@@ -3,5 +3,5 @@
 # key: sm
 # --
 @staticmethod
-def ${1:func}($1):
+def ${1:func}($2):
     $0
