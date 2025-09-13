@@ -57,8 +57,6 @@
 (setq message-log-max 16384)                                 ;; increase max message buffer size
 (setq initial-major-mode 'fundamental-mode)                  ;; start the scratch buffer in fundamental mode
 (setq initial-scratch-message nil)                           ;; no message for the scratch buffer
-(setq split-width-threshold nil)                             ;; don't split vertically
-(setq split-height-threshold nil)                            ;; don't split horizontally
 (setq kill-ring-max 256)                                     ;; large kill-ring, never loose anything
 (setq ring-bell-function 'ignore)                            ;; no audible bell
 (setq sentence-end-double-space nil)                         ;; one space is enough
@@ -73,87 +71,6 @@
 (setq auto-save-file-name-transforms                         ;; move auto-save files to backup
       `((".*" ,(emacs-path "backup/") t)))
 
-(setq switch-to-buffer-obey-display-actions t)
-(setq display-buffer-base-action '(display-buffer-use-some-window))
-
-(setq display-buffer-alist
-      `((,(rx bol (or
-                   (: "*Org Select*")
-                   (: "*Capture*")
-                   (: "CAPTURE-" (* nonl) ".org")
-                   (: " *Org tags*")
-                   (: "*mu4e-main*")
-                   (: "*Ibuffer*")
-                   (: "*Messages*")
-                   (: "magit-log:" (* nonl))
-                   eol))
-         display-buffer-use-some-window)
-        (,(rx bol (or
-                   (: "*mu4e-draft*")
-                   (: "*mu4e-headers*"))
-              eol)
-         display-buffer-same-window)
-        (,(rx (: "*mu4e-article*"))
-         display-buffer-below-selected)
-        (,(rx
-           (or
-            (: bol "magit:" (* nonl))
-            (: ".pdf" (? (group "<" (1+ (not ">")) ">")))
-            (: bol "*Help*")
-            (: bol "*Man " (* nonl) "*")
-            (: bol "*xref*")
-            (: bol "*grep*")
-            (: bol "*Org Agenda" (* nonl) "*")
-            (: bol "*ggtags-global*")
-            (: bol "COMMIT_EDITMSG")
-            (: bol "*Python*"))
-           eol)
-         display-buffer-in-side-window
-         (dedicated . side)
-         (side . right)
-         (window-width . 0.4)
-         (window-height . 0.66)
-         (window-parameters . ((no-other-window . t))))
-        (,(rx bol (or
-                   (: "*compilation*")
-                   (: "*Warnings*")
-                   (: "*Org Links*")
-                   (: "*eshell*")
-                   (: "*shell*")
-                   (: "*terminal*")
-                   (: "*TeX Help*")
-                   (: "*ansi-term*"))
-              eol)
-         display-buffer-in-side-window
-         (dedicated . side)
-         (inhibit-same-window . t)
-         (side . right)
-         (slot . 1)
-         (window-width . 0.4)
-         (window-height . 0.33)
-         (window-parameters . ((no-other-window . t))))
-        (,(lambda (name _) (with-current-buffer name (derived-mode-p 'term-mode)))
-         display-buffer-in-side-window
-         (dedicated . side)
-         (inhibit-same-window . t)
-         (side . right)
-         (slot . 1)
-         (window-width . 0.4)
-         (window-height . 0.33)
-         (window-parameters . ((no-other-window . t))))
-        (,(rx bol
-              (or
-               (: " *Agenda Commands*"))
-              eol)
-         display-buffer-in-side-window
-         (side . bottom)
-         (slot . 0)
-         (window-height . 0.35)
-         (window-parameters . ((no-other-window . t))))
-        (,(rx bol
-              (or
-               (: " *transient*"))
-              eol))))
 
 (defalias 'yes-or-no-p 'y-or-n-p)                            ;; replace yes or no prompts by y-or-n prompts
 
@@ -961,6 +878,94 @@ Only creates a notification if BUFFER is *compilation*."
       (whitespace-cleanup)))
 
   (add-hook 'before-save-hook 'my-whitespace-cleanup))
+
+(use-package window                     ;; GNU Emacs window commands aside from those written in C
+  :ensure nil ;; builtin
+  :config
+  (setq split-width-threshold nil)  ;; don't split vertically
+  (setq split-height-threshold nil) ;; don't split horizontally
+
+  (setq switch-to-buffer-obey-display-actions t)
+  (setq display-buffer-base-action '(display-buffer-use-some-window))
+
+  (setq display-buffer-alist
+        `((,(rx bol (or
+                     (: "*Org Select*")
+                     (: "*Capture*")
+                     (: "CAPTURE-" (* nonl) ".org")
+                     (: " *Org tags*")
+                     (: "*mu4e-main*")
+                     (: "*Ibuffer*")
+                     (: "*Messages*")
+                     (: "magit-log:" (* nonl))
+                     eol))
+           display-buffer-use-some-window)
+          (,(rx bol (or
+                     (: "*mu4e-draft*")
+                     (: "*mu4e-headers*"))
+                eol)
+           display-buffer-same-window)
+          (,(rx (: "*mu4e-article*"))
+           display-buffer-below-selected)
+          (,(rx
+             (or
+              (: bol "magit:" (* nonl))
+              (: ".pdf" (? (group "<" (1+ (not ">")) ">")))
+              (: bol "*Help*")
+              (: bol "*Man " (* nonl) "*")
+              (: bol "*xref*")
+              (: bol "*grep*")
+              (: bol "*Org Agenda" (* nonl) "*")
+              (: bol "*ggtags-global*")
+              (: bol "COMMIT_EDITMSG")
+              (: bol "*Python*"))
+             eol)
+           display-buffer-in-side-window
+           (dedicated . side)
+           (side . right)
+           (window-width . 0.4)
+           (window-height . 0.66)
+           (window-parameters . ((no-other-window . t))))
+          (,(rx bol (or
+                     (: "*compilation*")
+                     (: "*Warnings*")
+                     (: "*Org Links*")
+                     (: "*eshell*")
+                     (: "*shell*")
+                     (: "*terminal*")
+                     (: "*TeX Help*")
+                     (: "*ansi-term*"))
+                eol)
+           display-buffer-in-side-window
+           (dedicated . side)
+           (inhibit-same-window . t)
+           (side . right)
+           (slot . 1)
+           (window-width . 0.4)
+           (window-height . 0.33)
+           (window-parameters . ((no-other-window . t))))
+          (,(lambda (name _) (with-current-buffer name (derived-mode-p 'term-mode)))
+           display-buffer-in-side-window
+           (dedicated . side)
+           (inhibit-same-window . t)
+           (side . right)
+           (slot . 1)
+           (window-width . 0.4)
+           (window-height . 0.33)
+           (window-parameters . ((no-other-window . t))))
+          (,(rx bol
+                (or
+                 (: " *Agenda Commands*"))
+                eol)
+           display-buffer-in-side-window
+           (side . bottom)
+           (slot . 0)
+           (window-height . 0.35)
+           (window-parameters . ((no-other-window . t))))
+          (,(rx bol
+                (or
+                 (: " *transient*"))
+                eol)))))
 
 (use-package xref-js2                   ;; Jump to references/definitions using ag & js2-mode's AST
   :after js2-mode)
