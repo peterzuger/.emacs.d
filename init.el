@@ -729,82 +729,82 @@ Only creates a notification if BUFFER is *compilation*."
        (shell . t))))
 
   (use-package org-capture              ;; Fast note taking in Org
-    :ensure nil)
-
-  (setq org-capture-templates
-        '(("t" "Tasks")
-          ("tt" "personal todo" entry (file "todo.org")
-           "* TODO %^{title}
+    :ensure nil
+    :config
+    (setq org-capture-templates
+          '(("t" "Tasks")
+            ("tt" "personal todo" entry (file "todo.org")
+             "* TODO %^{title}
   :LOGBOOK:
   - Created on %U
   :END:
   %?")
 
-          ("ta" "appointment" entry (file "todo.org")
-           "* APPT %^{title}
+            ("ta" "appointment" entry (file "todo.org")
+             "* APPT %^{title}
   %^t
   :LOGBOOK:
   - Created on %U
   :END:
   %?")
 
-          ("tr" "repair something" entry (file "todo.org")
-           "* REPAIR %^{title}
+            ("tr" "repair something" entry (file "todo.org")
+             "* REPAIR %^{title}
   :LOGBOOK:
   - Created on %U
   :END:
   %?")
 
-          ("tl" "loaned something" entry (file "todo.org")
-           "* LOAN %^{title}
+            ("tl" "loaned something" entry (file "todo.org")
+             "* LOAN %^{title}
   :LOGBOOK:
   - Created on %U
   :END:
   %?")
 
-          ("to" "order something" entry (file "todo.org")
-           "* ORDER %^{title}
+            ("to" "order something" entry (file "todo.org")
+             "* ORDER %^{title}
   :LOGBOOK:
   - Created on %U
   :END:
   %?")
 
-          ("tp" "email todo" entry (file "todo.org")
-           "* TODO %:fromname: %a %^{title}
+            ("tp" "email todo" entry (file "todo.org")
+             "* TODO %:fromname: %a %^{title}
   :LOGBOOK:
   - Created on %U
   :END:
   %?")
 
-          ("w" "Work")
+            ("w" "Work")
 
-          ("wt" "todo" entry (file "work.org")
-           "* TODO %^{title}
+            ("wt" "todo" entry (file "work.org")
+             "* TODO %^{title}
   :LOGBOOK:
   - Created on %U
   :END:
   %?")
 
-          ("wp" "phone call" entry (file+headline "work.org" "Calls")
-           "* %<%H:%M> %^{title}
+            ("wp" "phone call" entry (file+headline "work.org" "Calls")
+             "* %<%H:%M> %^{title}
   :PROPERTIES:
   :CALLER: %^{caller}
   :END:
   %?")
 
-          ("wm" "meeting" entry (file+headline "work.org" "Meeting Notes")
-           "* %<%H:%M> %^{title}
+            ("wm" "meeting" entry (file+headline "work.org" "Meeting Notes")
+             "* %<%H:%M> %^{title}
   %?")
 
-          ("n" "general note" entry (file "notes.org")
-           "* %?")
+            ("n" "general note" entry (file "notes.org")
+             "* %?")
 
-          ("j" "journal entry" entry (file+datetree "journal.org")
-           "* %<%H:%M> %^{title}
+            ("j" "journal entry" entry (file+datetree "journal.org")
+             "* %<%H:%M> %^{title}
   %?" :time-prompt t)
 
-          ("c" "contact" entry (file "contacts.org")
-           "* %^{full name}
+            ("c" "contact" entry (file "contacts.org")
+             "* %^{full name}
   :PROPERTIES:
   :EMAIL:    %^{email}
   :PHONE:    %^{phone number}
@@ -812,8 +812,8 @@ Only creates a notification if BUFFER is *compilation*."
   :BIRTHDAY: %^{birthday}u
   :END:" :immediate-finish t)))
 
-  (setq org-capture-templates-contexts
-        '(("p" ((in-mode . "mu4e-headers") (in-mode . "mu4e-view"))))))
+    (setq org-capture-templates-contexts
+          '(("p" ((in-mode . "mu4e-headers") (in-mode . "mu4e-view")))))))
 
 (use-package orgit                      ;; Support for Org links to Magit buffers
   :after (magit org))
