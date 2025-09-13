@@ -309,8 +309,7 @@ Only creates a notification if BUFFER is *compilation*."
   (engine-mode))
 
 (use-package emojify                    ;; Display emojis in Emacs
-  :config
-  (global-emojify-mode))
+  :hook (after-init . global-emojify-mode))
 
 (use-package flycheck                   ;; On-the-fly syntax checking
   :init
