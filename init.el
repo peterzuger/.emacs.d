@@ -648,7 +648,7 @@ Only creates a notification if BUFFER is *compilation*."
   (setq mu4e-get-mail-command "offlineimap")
   (setq mu4e-update-interval  300)
 
-  (use-package smtpmail
+  (use-package smtpmail                 ;; simple SMTP protocol (RFC 821) for sending mail
     :ensure nil ;; builtin
     :after auth-source-pass
     :config
