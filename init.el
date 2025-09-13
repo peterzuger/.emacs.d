@@ -282,7 +282,10 @@ Only creates a notification if BUFFER is *compilation*."
   (sp-local-pair 'emacs-lisp-mode "`" "'"))
 
 (use-package engine-mode                ;; Define and query search engines from within Emacs
+  :bind-keymap ("C-c s" . engine-mode-prefixed-map)
   :config
+  (engine-mode t)
+
   (defengine duckduckgo
     "https://duckduckgo.com/?q=%s"
     :keybinding "d")
@@ -303,10 +306,7 @@ Only creates a notification if BUFFER is *compilation*."
     :docstring "Searchin' the wikis.")
 
   (defengine wolfram-alpha
-    "http://www.wolframalpha.com/input/?i=%s")
-
-  (engine/set-keymap-prefix (kbd "C-c s"))
-  (engine-mode))
+    "http://www.wolframalpha.com/input/?i=%s"))
 
 (use-package emojify                    ;; Display emojis in Emacs
   :hook (after-init . global-emojify-mode))
