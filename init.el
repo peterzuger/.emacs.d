@@ -664,6 +664,7 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package minibuffer                 ;; Minibuffer customization
   :ensure nil ;; builtin
   :config
+  (setq completions-detailed t)
   (setq enable-recursive-minibuffers t)
   (minibuffer-depth-indicate-mode t)
 
