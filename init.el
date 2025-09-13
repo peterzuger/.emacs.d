@@ -383,36 +383,42 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package ibuffer                    ;; An advanced replacement for BufferMenu
   :ensure nil ;; builtin
   :bind* ("C-x C-b" . ibuffer)
+  :functions ibuffer-update
   :config
+  (use-package ibuf-ext                 ;; extensions for ibuffer
+    :ensure nil
+    :functions ibuffer-switch-to-saved-filter-groups)
+
   (setq ibuffer-expert t)                    ;; delete unmodified buffers without asking
   (setq ibuffer-show-empty-filter-groups nil);; don't show empty groups
 
-  (defun git-root-dir (buf)
-    "Return the git root directory of BUF, or nil."
-    (when (buffer-file-name buf)
-      (locate-dominating-file (buffer-file-name buf) ".git")))
+  (eval-and-compile
+    (defun git-root-dir (buf)
+      "Return the git root directory of BUF, or nil."
+      (when (buffer-file-name buf)
+        (locate-dominating-file (buffer-file-name buf) ".git")))
 
-  (defun ibuffer-make-git-filter-group (buf)
-    "Return an ibuffer filter group based on BUF, or nil."
-    (when-let ((name (git-root-dir buf)))
-      `(, name (filename . , (expand-file-name name)))))
+    (defun ibuffer-make-git-filter-group (buf)
+      "Return an ibuffer filter group based on BUF, or nil."
+      (when-let ((name (git-root-dir buf)))
+        `(, name (filename . , (expand-file-name name)))))
 
-  (defun ibuffer-make-git-filter-groups (buffers)
-    "Return ibuffer filter groups based on the git-root of BUFFERS."
-    (ibuffer-remove-duplicates
-     (delq 'nil
-           (mapcar #'ibuffer-make-git-filter-group buffers))))
+    (defun ibuffer-make-git-filter-groups (buffers)
+      "Return ibuffer filter groups based on the git-root of BUFFERS."
+      (seq-uniq
+       (delq 'nil
+             (mapcar #'ibuffer-make-git-filter-group buffers))))
 
-  (defun ibuffer-append-git-filter-groups ()
-    "Append git filter groups to ibuffer-filter-groups and update ibuffer."
-    (ibuffer-switch-to-saved-filter-groups "default")
-    (setq ibuffer-filter-groups
-          (append ibuffer-filter-groups
-                  (ibuffer-make-git-filter-groups (buffer-list))))
-    (when-let ((ibuf (get-buffer "*Ibuffer*")))
-      (with-current-buffer ibuf
-        (pop-to-buffer ibuf)
-        (ibuffer-update nil t))))
+    (defun ibuffer-append-git-filter-groups ()
+      "Append git filter groups to ibuffer-filter-groups and update ibuffer."
+      (ibuffer-switch-to-saved-filter-groups "default")
+      (setq ibuffer-filter-groups
+            (append ibuffer-filter-groups
+                    (ibuffer-make-git-filter-groups (buffer-list))))
+      (when-let ((ibuf (get-buffer "*Ibuffer*")))
+        (with-current-buffer ibuf
+          (pop-to-buffer ibuf)
+          (ibuffer-update nil t)))))
 
   (add-hook 'ibuffer-hook 'ibuffer-append-git-filter-groups)
 
