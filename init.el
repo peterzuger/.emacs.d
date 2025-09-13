@@ -881,7 +881,7 @@ Only creates a notification if BUFFER is *compilation*."
   (put 'no-whitespace-cleanup 'safe-local-variable 'booleanp)
 
   (defun my-whitespace-cleanup ()
-    "Clean up the whitespace in a buffer, unless that buffer is in 'fundamental-mode'."
+    "Clean up whitespace in a buffer, unless that buffer is in `fundamental-mode'."
     (unless (or (eq major-mode 'fundamental-mode) no-whitespace-cleanup)
       (whitespace-cleanup)))
 
