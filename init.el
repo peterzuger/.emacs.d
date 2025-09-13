@@ -450,6 +450,7 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package immortal-scratch           ;; respawn the scratch buffer when it's killed
   :load-path "lisp/immortal-scratch/"
+  :functions immortal-scratch-mode
   :config
   (immortal-scratch-mode))
 
