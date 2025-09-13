@@ -43,9 +43,6 @@
 [submodule "themes/wilmersdorf-emacs-theme"]
         path = themes/wilmersdorf-emacs-theme
         url = https://github.com/ianpan870102/wilmersdorf-emacs-theme.git
-[submodule "lisp/use-package"]
-        path = lisp/use-package
-        url = https://github.com/jwiegley/use-package.git
 [submodule "lisp/immortal-scratch"]
         path = lisp/immortal-scratch
         url = https://github.com/peterzuger/immortal-scratch.git
