@@ -645,12 +645,12 @@ Only creates a notification if BUFFER is *compilation*."
                           'magit-insert-ignored-files
                           'magit-insert-stashes t))
 
-(use-package man                       ;; browse UNIX manual pages
+(use-package man                        ;; browse UNIX manual pages
   :ensure nil ;; builtin
   :config
   (setq Man-notify-method 'aggressive))
 
-(use-package markdown-mode             ;; Major mode for Markdown-formatted text
+(use-package markdown-mode              ;; Major mode for Markdown-formatted text
   :config
   (setq markdown-fontify-code-blocks-natively t))
 
