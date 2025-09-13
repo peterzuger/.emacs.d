@@ -50,46 +50,54 @@
 (load custom-file t)
 
 ;; core emacs config
-(setq-default truncate-lines t)                              ;; disable line wrap
-(setq-default tab-width 4)                                   ;; use 4 spaces
-(setq-default fill-column 80)                                ;; use 80 characters text width
-(setq use-short-answers t)
-(setq use-dialog-box nil)                                    ;; don't use dialog boxes
-(setq create-lockfiles nil)                                  ;; don't create .#<filename> files
-(setq message-log-max 16384)                                 ;; increase max message buffer size
-(setq ring-bell-function 'ignore)                            ;; no audible bell
+(use-package emacs
+  :ensure nil ;; pseudo package
+  :demand t
+  :config
+  ;; C source code
+  (setq-default truncate-lines t)                           ;; disable line wrap
+  (setq-default tab-width 4)                                ;; use 4 spaces
+  (setq-default fill-column 80)                             ;; use 80 characters text width
+  (setq use-short-answers t)
+  (setq use-dialog-box nil)                                 ;; don't use dialog boxes
+  (setq create-lockfiles nil)                               ;; don't create .#<filename> files
+  (setq message-log-max 16384)                              ;; increase max message buffer size
+  (setq ring-bell-function 'ignore)                         ;; no audible bell
 
-;; startup.el
-(setq initial-major-mode 'fundamental-mode)                  ;; start the scratch buffer in fundamental mode
-(setq initial-scratch-message nil)                           ;; no message for the scratch buffer
+  ;; startup.el
+  (setq initial-major-mode 'fundamental-mode)               ;; start the scratch buffer in fundamental mode
+  (setq initial-scratch-message nil)                        ;; no message for the scratch buffer
 
-;; simple.el
-(size-indication-mode t)                                     ;; display the buffer size
-(column-number-mode t)                                       ;; display line,column numbers
-(setq-default indent-tabs-mode nil)                          ;; DON'T EVER USE TABS !!
-(setq kill-ring-max 256)                                     ;; large kill-ring, never loose anything
+  ;; subr.el
+  (defalias 'yes-or-no-p 'y-or-n-p)                         ;; replace yes or no prompts by y-or-n prompts
 
-;; paragraphs.el
-(setq sentence-end-double-space nil)                         ;; one space is enough
+  ;; simple.el
+  (size-indication-mode t)                                  ;; display the buffer size
+  (column-number-mode t)                                    ;; display line,column numbers
+  (setq-default indent-tabs-mode nil)                       ;; DON'T EVER USE TABS !!
+  (setq kill-ring-max 256)                                  ;; large kill-ring, never loose anything
 
-;; files.el
-(setq-default require-final-newline t)                       ;; default to requiring a newline
-(setq large-file-warning-threshold (* 64 1024 1024))         ;; 64MiB files are large
-(setq backup-by-copying t)                                   ;; Don't delink hardlinks
-(setq version-control t)                                     ;; Use version numbers on backups
-(setq delete-old-versions t)                                 ;; Automatically delete excess backups
-(setq kept-new-versions 20)                                  ;; how many of the newest versions to keep
-(setq kept-old-versions 5)                                   ;; and how many of the old
-(setq backup-directory-alist                                 ;; move backup files to backup
-      `(("." . ,(emacs-path "backup"))))
-(setq auto-save-file-name-transforms                         ;; move auto-save files to backup
-      `((".*" ,(emacs-path "backup/") t)))
+  ;; paragraphs.el
+  (setq sentence-end-double-space nil)                      ;; one space is enough
 
+  ;; avoid.el
+  (mouse-avoidance-mode 'cat-and-mouse)                       ;; play cat and mouse with the cursor
 
-(defalias 'yes-or-no-p 'y-or-n-p)                            ;; replace yes or no prompts by y-or-n prompts
+  ;; prog-mode.el
+  (global-prettify-symbols-mode)                              ;; draw tokens as unicode glyph's
 
-(mouse-avoidance-mode 'cat-and-mouse)                        ;; play cat and mouse with the cursor
-(global-prettify-symbols-mode)                               ;; draw tokens as unicode glyph's
+  ;; files.el
+  (setq-default require-final-newline t)                    ;; default to requiring a newline
+  (setq large-file-warning-threshold (* 64 1024 1024))      ;; 64MiB files are large
+  (setq backup-by-copying t)                                ;; Don't delink hardlinks
+  (setq version-control t)                                  ;; Use version numbers on backups
+  (setq delete-old-versions t)                              ;; Automatically delete excess backups
+  (setq kept-new-versions 20)                               ;; how many of the newest versions to keep
+  (setq kept-old-versions 5)                                ;; and how many of the old
+  (setq backup-directory-alist                              ;; move backup files to backup
+        `(("." . ,(emacs-path "backup"))))
+  (setq auto-save-file-name-transforms                      ;; move auto-save files to backup
+        `((".*" ,(emacs-path "backup/") t))))
 
 (eval-and-compile
   (require 'package)
