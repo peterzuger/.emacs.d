@@ -538,13 +538,14 @@ Only creates a notification if BUFFER is *compilation*."
   (setq magit-log-section-commit-count 25)
   (setq magit-revision-show-gravatars t)
 
-  (defun magit-insert-notes-header ()
-    "Insert a header about the current note."
-    (let ((note  (magit-git-output "notes" "show")))
-      (unless (string-empty-p note)
-        (magit-insert-section (note)
-          (magit-insert-heading "Note")
-          (insert note "\n")))))
+  (eval-and-compile
+    (defun magit-insert-notes-header ()
+      "Insert a header about the current note."
+      (let ((note  (magit-git-output "notes" "show")))
+        (unless (string-empty-p note)
+          (magit-insert-section (note)
+            (magit-insert-heading "Note")
+            (insert note "\n"))))))
 
   (magit-add-section-hook 'magit-status-sections-hook
                           'magit-insert-user-header
