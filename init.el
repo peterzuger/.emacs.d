@@ -857,6 +857,7 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package smartparens                ;; Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
   :diminish
+  :functions sp-local-pair
   :config
   (smartparens-global-mode)             ;; global (){} completion
   (show-smartparens-global-mode))       ;; global (){} highlighting
