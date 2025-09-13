@@ -76,6 +76,7 @@
   (column-number-mode t)                                    ;; display line,column numbers
   (setq-default indent-tabs-mode nil)                       ;; DON'T EVER USE TABS !!
   (setq kill-ring-max 256)                                  ;; large kill-ring, never loose anything
+  (setq save-interprogram-paste-before-kill t)              ;; save system clipboard before overwriting
 
   ;; paragraphs.el
   (setq sentence-end-double-space nil)                      ;; one space is enough
