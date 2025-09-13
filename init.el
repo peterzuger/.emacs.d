@@ -621,7 +621,6 @@ Only creates a notification if BUFFER is *compilation*."
   (setq mail-user-agent 'mu4e-user-agent)
   (setq read-mail-command 'mu4e)
 
-  (setq mu4e-maildir       "~/Mail")            ;; top-level Maildir
   (setq mu4e-sent-folder   "/Sent Messages")    ;; folder for sent messages
   (setq mu4e-drafts-folder "/Drafts")           ;; unfinished messages
   (setq mu4e-trash-folder  "/Deleted Messages") ;; trashed messages
@@ -641,9 +640,6 @@ Only creates a notification if BUFFER is *compilation*."
            ("/Drafts"           . ?d)))
 
   (setq mu4e-use-fancy-chars t)
-  (setq mu4e-view-prefer-html t)
-  (setq mu4e-view-show-images t)
-  (setq mu4e-decryption-policy 'ask)
   (setq mu4e-sent-messages-behavior 'sent)
   (setq mu4e-get-mail-command "offlineimap")
   (setq mu4e-update-interval  300)
