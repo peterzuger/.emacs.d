@@ -597,17 +597,19 @@ Only creates a notification if BUFFER is *compilation*."
   (setq enable-recursive-minibuffers t)
   (minibuffer-depth-indicate-mode t)
 
-  (defun defer-garbage-collection-h ()
-    "Defer garbage collection."
-    (setq gc-cons-threshold most-positive-fixnum))
+  (eval-and-compile
+    (defun defer-garbage-collection-h ()
+      "Defer garbage collection."
+      (setq gc-cons-threshold most-positive-fixnum))
 
-  (defun restore-garbage-collection-h ()
-    "Restore garbage collection."
-    (setq gc-cons-threshold gc-cons-threshold-default))
+    (defvar gc-cons-threshold-default)
+    (defun restore-garbage-collection-h ()
+      "Restore garbage collection."
+      (setq gc-cons-threshold gc-cons-threshold-default))
 
-  (defun restore-garbage-collection-soon-h ()
-    "Defer it so that commands launched immediately after will enjoy the benefits."
-    (run-at-time 1 nil #'restore-garbage-collection-h))
+    (defun restore-garbage-collection-soon-h ()
+      "Defer it so that commands launched immediately after will enjoy the benefits."
+      (run-at-time 1 nil #'restore-garbage-collection-h)))
 
   (add-hook 'minibuffer-setup-hook #'defer-garbage-collection-h)
   (add-hook 'minibuffer-exit-hook #'restore-garbage-collection-soon-h))
