@@ -60,12 +60,8 @@
 (setq split-width-threshold nil)                             ;; don't split vertically
 (setq split-height-threshold nil)                            ;; don't split horizontally
 (setq kill-ring-max 256)                                     ;; large kill-ring, never loose anything
-(setq ad-redefinition-action 'accept)                        ;; no warning for advice redefinition
 (setq ring-bell-function 'ignore)                            ;; no audible bell
 (setq sentence-end-double-space nil)                         ;; one space is enough
-(setq vc-follow-symlinks t)                                  ;; always follow symlinks
-(setq vc-make-backup-files t)                                ;; also backup version controlled files
-(setq help-window-select t)                                  ;; automatically select help windows
 (setq large-file-warning-threshold (* 64 1024 1024))         ;; 64MiB files are large
 (setq backup-by-copying t)                                   ;; Don't delink hardlinks
 (setq version-control t)                                     ;; Use version numbers on backups
@@ -190,6 +186,11 @@
 
 (use-package ace-window                 ;; Quickly switch windows
   :bind* ("M-o" . ace-window))
+
+(use-package advice                     ;; An overloading mechanism for Emacs Lisp functions
+  :ensure nil ;; builtin
+  :config
+  (setq ad-redefinition-action 'accept)) ;; no warning for advice redefinition
 
 (use-package avy)                       ;; Jump to arbitrary positions in visible text and select text quickly
 
@@ -439,6 +440,11 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package haskell-mode               ;; A Haskell editing mode
   :hook (haskell-mode . interactive-haskell-mode))
+
+(use-package help                       ;; help commands for Emacs
+  :ensure nil ;; builtin
+  :config
+  (setq help-window-select t))          ;; automatically select help windows
 
 (use-package highlight-indent-guides    ;; Minor mode to highlight indentation
   :config
@@ -934,6 +940,12 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package swiper                     ;; Isearch with an overview. Oh, man!
   :after ivy
   :bind ("C-s" . swiper))
+
+(use-package vc                         ;; drive a version-control system from within Emacs
+  :ensure nil ;; builtin
+  :config
+  (setq vc-follow-symlinks t)           ;; always follow symlinks
+  (setq vc-make-backup-files t))        ;; also backup version controlled files
 
 (use-package whitespace                 ;; whitespace-cleanup customization's
   :ensure nil ;; builtin
