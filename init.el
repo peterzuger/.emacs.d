@@ -667,10 +667,11 @@ Only creates a notification if BUFFER is *compilation*."
   :hook (org-mode . hl-line-mode)
   :hook (org-capture-after-finalize . revert-buffer-noconfirm)
   :hook (org-after-todo-statistics . org-summary-todo)
+  :functions org-todo
   :preface
-  (defun org-summary-todo (n-done n-not-done)
+  (defun org-summary-todo (_ n-not-done)
     "Switch entry to DONE when all sub-entries are done, to TODO otherwise."
-    (let (org-log-done org-log-states)   ; turn off logging
+    (let (org-log-done _)   ; turn off logging
       (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
 
   (defun revert-buffer-noconfirm ()
@@ -679,8 +680,6 @@ Only creates a notification if BUFFER is *compilation*."
     (revert-buffer nil t))
 
   :config
-  (setq org-agenda-window-setup 'current-window)
-  (setq org-agenda-restore-windows-after-quit t)
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively t)
   (setq org-src-preserve-indentation t)
@@ -697,12 +696,40 @@ Only creates a notification if BUFFER is *compilation*."
   (setq org-archive-location (expand-file-name "archive.org" org-directory))
   (setq org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
 
+  (use-package org-agenda               ;; Dynamic task and appointment lists for Org
+    :ensure nil
+    :config
+    (setq org-agenda-window-setup 'current-window)
+    (setq org-agenda-restore-windows-after-quit t))
+
   (setq org-file-apps
         '((auto-mode . emacs)))
 
-  (require 'ox-extra)
-  (ox-extras-activate '(ignore-headlines))
+  (use-package ox-extra                 ;; Convenience functions for org export
+    :ensure nil
+    :functions ox-extras-activate
+    :config
+    (ox-extras-activate '(ignore-headlines)))
+
   (add-to-list 'org-latex-classes '("scrlttr2" "\\documentclass{scrlttr2}"))
+
+  (use-package ob                       ;; Working with Code Blocks in Org
+    :ensure nil
+    :config
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((C . t)
+       (awk . t)
+       (ditaa . t)
+       (dot . t)
+       (emacs-lisp . t)
+       (latex . t)
+       (makefile . t)
+       (python . t)
+       (shell . t))))
+
+  (use-package org-capture              ;; Fast note taking in Org
+    :ensure nil)
 
   (setq org-capture-templates
         '(("t" "Tasks")
@@ -786,19 +813,7 @@ Only creates a notification if BUFFER is *compilation*."
   :END:" :immediate-finish t)))
 
   (setq org-capture-templates-contexts
-        '(("p" ((in-mode . "mu4e-headers") (in-mode . "mu4e-view")))))
-
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((C . t)
-     (awk . t)
-     (ditaa . t)
-     (dot . t)
-     (emacs-lisp . t)
-     (latex . t)
-     (makefile . t)
-     (python . t)
-     (shell . t))))
+        '(("p" ((in-mode . "mu4e-headers") (in-mode . "mu4e-view"))))))
 
 (use-package orgit                      ;; Support for Org links to Magit buffers
   :after (magit org))
