@@ -44,22 +44,30 @@
 (load custom-file t)
 
 ;; core emacs config
-(size-indication-mode t)                                     ;; display the buffer size
-(column-number-mode t)                                       ;; display line,column numbers
-(setq-default indent-tabs-mode nil)                          ;; DON'T EVER USE TABS !!
 (setq-default truncate-lines t)                              ;; disable line wrap
 (setq-default tab-width 4)                                   ;; use 4 spaces
 (setq-default fill-column 80)                                ;; use 80 characters text width
-(setq-default require-final-newline t)                       ;; default to requiring a newline
 (setq use-short-answers t)
 (setq use-dialog-box nil)                                    ;; don't use dialog boxes
 (setq create-lockfiles nil)                                  ;; don't create .#<filename> files
 (setq message-log-max 16384)                                 ;; increase max message buffer size
+(setq ring-bell-function 'ignore)                            ;; no audible bell
+
+;; startup.el
 (setq initial-major-mode 'fundamental-mode)                  ;; start the scratch buffer in fundamental mode
 (setq initial-scratch-message nil)                           ;; no message for the scratch buffer
+
+;; simple.el
+(size-indication-mode t)                                     ;; display the buffer size
+(column-number-mode t)                                       ;; display line,column numbers
+(setq-default indent-tabs-mode nil)                          ;; DON'T EVER USE TABS !!
 (setq kill-ring-max 256)                                     ;; large kill-ring, never loose anything
-(setq ring-bell-function 'ignore)                            ;; no audible bell
+
+;; paragraphs.el
 (setq sentence-end-double-space nil)                         ;; one space is enough
+
+;; files.el
+(setq-default require-final-newline t)                       ;; default to requiring a newline
 (setq large-file-warning-threshold (* 64 1024 1024))         ;; 64MiB files are large
 (setq backup-by-copying t)                                   ;; Don't delink hardlinks
 (setq version-control t)                                     ;; Use version numbers on backups
