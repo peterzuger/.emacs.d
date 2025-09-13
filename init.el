@@ -684,7 +684,7 @@ Only creates a notification if BUFFER is *compilation*."
   (setq org-src-tab-acts-natively t)
   (setq org-src-preserve-indentation t)
   (setq org-adapt-indentation t)
-  (setq org-catch-invisible-edits 'smart)
+  (setq org-fold-catch-invisible-edits 'smart)
   (setq org-image-actual-width nil)
   (setq org-return-follows-link t)
   (setq org-insert-heading-respect-content t)
