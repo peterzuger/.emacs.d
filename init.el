@@ -278,7 +278,6 @@ Only creates a notification if BUFFER is *compilation*."
   :ensure nil ;; builtin
   :after (company smartparens)
   :config
-  (company-add-local-backend 'emacs-lisp-mode-hook 'company-elisp)
   (sp-local-pair 'emacs-lisp-mode "`" "'"))
 
 (use-package engine-mode                ;; Define and query search engines from within Emacs
