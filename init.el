@@ -268,6 +268,11 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package diminish)                  ;; Diminished modes are minor modes with no modeline display
 
+(use-package dired                      ;; directory-browsing commands
+  :ensure nil ;; builtin
+  :config
+  (setq dired-listing-switches "-alh"))
+
 (use-package display-fill-column-indicator ;; interface for display-fill-column-indicator
   :ensure nil ;; builtin
   :bind ("C-|" . #'display-fill-column-indicator-mode))
