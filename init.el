@@ -662,6 +662,14 @@ Only creates a notification if BUFFER is *compilation*."
     (setq smtpmail-smtp-user           user-mail-address)
     (setq smtpmail-smtp-service        587)))
 
+(use-package multiple-cursors           ;; Multiple cursors for emacs.
+  :bind
+  (("C-c m l" . mc/edit-lines)
+   ("C-c m n" . mc/mark-next-like-this)
+   ("C-c m a" . mc/mark-all-like-this)
+   ("C-c m m" . mc/mark-all-like-this-dwim)
+   ("C-c m p" . mc/insert-numbers)))
+
 (use-package org                        ;; Outline-based notes management and organizer
   :ensure org-contrib
   :after flyspell
