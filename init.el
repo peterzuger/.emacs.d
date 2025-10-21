@@ -270,6 +270,7 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package dired                      ;; directory-browsing commands
   :ensure nil ;; builtin
+  :hook (dired-mode . hl-line-mode)
   :config
   (setq dired-listing-switches "-alh"))
 
@@ -386,6 +387,7 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package ibuffer                    ;; An advanced replacement for BufferMenu
   :ensure nil ;; builtin
+  :hook (ibuffer-mode . hl-line-mode)
   :bind* ("C-x C-b" . ibuffer)
   :functions ibuffer-update
   :config
