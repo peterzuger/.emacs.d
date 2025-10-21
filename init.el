@@ -136,6 +136,7 @@
   :after smartparens
   :demand t
   :ensure nil ;; builtin
+  :hook ((c-mode c++-mode) . hide-ifdef-mode)
   :custom (c-noise-macro-names '("constexpr"))
   :bind (:map c-mode-base-map
               ("\C-m" . c-context-line-break))
