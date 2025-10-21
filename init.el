@@ -63,6 +63,7 @@
   (setq create-lockfiles nil)                               ;; don't create .#<filename> files
   (setq message-log-max 16384)                              ;; increase max message buffer size
   (setq ring-bell-function 'ignore)                         ;; no audible bell
+  (setq frame-title-format "GNU Emacs")                     ;; no dynamic title
 
   ;; startup.el
   (setq initial-major-mode 'fundamental-mode)               ;; start the scratch buffer in fundamental mode
