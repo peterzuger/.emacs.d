@@ -526,9 +526,11 @@ Only creates a notification if BUFFER is *compilation*."
               ("C-c C-s" . pdf-sync-forward-search))
   ;; enable forward/inverse search
   :hook (LaTeX-mode . TeX-source-correlate-mode)
+  :hook (LaTeX-mode . turn-on-reftex)
   ;; Update PDF buffers after successful LaTeX runs
   :hook (TeX-after-compilation-finished-functions . TeX-revert-document-buffer)
   :config
+  (setq reftex-plug-into-AUCTeX t)
   ;; Use pdf-tools to open PDF files
   (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
   (setq TeX-source-correlate-method 'synctex)
