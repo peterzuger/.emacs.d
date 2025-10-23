@@ -370,8 +370,10 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package gdb-mi                     ;; User Interface for running GDB
   :ensure nil ;; builtin
   :init
+  (setq gdb-restore-window-configuration-after-quit t)
   (setq gdb-debuginfod-enable-setting nil)
   (setq gdb-show-main t)
+  (setq gdb-use-colon-colon-notation t)
   (setq gdb-many-windows t))
 
 (use-package haskell-mode               ;; A Haskell editing mode
