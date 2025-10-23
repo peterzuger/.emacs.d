@@ -892,6 +892,9 @@ Only creates a notification if BUFFER is *compilation*."
   :after python
   :hook (python-mode . python-black-on-save-mode))
 
+(use-package python
+  :ensure nil);; builtin
+
 (use-package pyvenv                     ;; Python virtual environment interface
   :hook (python-mode . pyvenv-mode)
   :config
