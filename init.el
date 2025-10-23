@@ -848,7 +848,21 @@ Only creates a notification if BUFFER is *compilation*."
   :END:" :immediate-finish t)))
 
     (setq org-capture-templates-contexts
-          '(("p" ((in-mode . "mu4e-headers") (in-mode . "mu4e-view")))))))
+          '(("p" ((in-mode . "mu4e-headers") (in-mode . "mu4e-view"))))))
+
+  (use-package org-roam
+    :bind (("C-c n f" . org-roam-node-find)
+           ("C-c n c" . org-roam-capture))
+    :bind (:map org-mode-map
+                ("C-c n d" . org-id-get-create)
+                ("C-c n b" . org-roam-buffer-toggle)
+                ("C-c n n" . org-roam-node-insert)
+                ("C-c n i" . org-roam-ref-add)
+                ("C-c n q" . org-roam-tag-add))
+    :config
+    (setq org-roam-node-display-template "${title:80} ${tags}")
+    (setq org-roam-directory (expand-file-name "roam" org-directory))
+    (org-roam-db-autosync-mode)))
 
 (use-package orgit                      ;; Support for Org links to Magit buffers
   :after (magit org))
