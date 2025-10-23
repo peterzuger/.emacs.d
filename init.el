@@ -750,6 +750,7 @@ Only creates a notification if BUFFER is *compilation*."
     (org-babel-do-load-languages
      'org-babel-load-languages
      '((C . t)
+       (calc . t)
        (awk . t)
        (ditaa . t)
        (dot . t)
