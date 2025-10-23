@@ -5,6 +5,6 @@
 # contributor: Peter Züger
 # --
 ${1:#+NAME: ${2:name}
-}#+BEGIN_SRC python${3: -n}${4: :results silent}${5: :session ${6:venv}}
+}#+BEGIN_SRC python${3: -n}${4: :results ${5:$$(yas-choose-value '("output" "value" "silent"))}}${6: :session ${7:venv}}
 $0
 #+END_SRC
