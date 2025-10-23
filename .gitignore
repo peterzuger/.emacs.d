@@ -34,3 +34,10 @@ tramp
 
 # compiled snippets
 snippets/*/.yas-compiled-snippets.el
+
+# multiple-cursors preferences
+.mc-lists.el
+
+# org-roam
+.org-id-locations
+org-roam.db
