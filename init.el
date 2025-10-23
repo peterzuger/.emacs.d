@@ -444,6 +444,9 @@ Only creates a notification if BUFFER is *compilation*."
            ("emacs" (or
                      (name . "^\\*scratch\\*$")
                      (name . "^\\*Messages\\*$")))
+           ("org-roam" (and
+                        (filename . "/roam/")
+                        (file-extension . "org")))
            ("org" (mode . org-mode))
            ("pdf" (file-extension . "pdf"))
            ("magit" (derived-mode . magit-mode))
