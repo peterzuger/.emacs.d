@@ -442,7 +442,8 @@ Only creates a notification if BUFFER is *compilation*."
                      (name . "^\\*scratch\\*$")
                      (name . "^\\*Messages\\*$")))
            ("org" (mode . org-mode))
-           ("pdf" (name . "\\.pdf"))
+           ("pdf" (file-extension . "pdf"))
+           ("magit" (derived-mode . magit-mode))
            ("mu4e" (or
                     (mode . message-mode)
                     (mode . mail-mode)))))))
