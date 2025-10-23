@@ -724,6 +724,9 @@ Only creates a notification if BUFFER is *compilation*."
   (setq org-archive-location (expand-file-name "archive.org" org-directory))
   (setq org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
 
+  (setq org-link-frame-setup
+        '((file . find-file)))
+
   (use-package org-agenda               ;; Dynamic task and appointment lists for Org
     :ensure nil
     :config
