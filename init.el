@@ -528,6 +528,7 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package latex                      ;; Integrated environment for *TeX*
   :ensure auctex
+  :after pdf-tools
   :demand t
   :mode ((rx ".tex" string-end) . latex-mode)
   :bind (:map LaTeX-mode-map
@@ -877,7 +878,9 @@ Only creates a notification if BUFFER is *compilation*."
               ("C-g" . pdf-view-goto-page))
   :config
   ;; initialize pdf-tools
-  (pdf-tools-install :no-query))
+  (pdf-tools-install :no-query)
+  (use-package pdf-sync                 ;; Use synctex to correlate LaTeX-Sources with PDF positions.
+    :ensure nil))
 
 (use-package pinentry                   ;; GnuPG Pinentry server implementation
   :init
