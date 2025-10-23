@@ -991,6 +991,7 @@ Only creates a notification if BUFFER is *compilation*."
               (: bol "*Man " (* nonl) "*")
               (: bol "*xref*")
               (: bol "*grep*")
+              (: bol "*org-roam*")
               (: bol "*Org Agenda" (* nonl) "*")
               (: bol "*ggtags-global*")
               (: bol "COMMIT_EDITMSG")
