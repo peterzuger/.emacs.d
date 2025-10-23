@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: mp_printf
+# key: mp_printf
+# --
+mp_printf(${1:$$(yas-choose-value '("&mp_plat_print" "MP_PYTHON_PRINTER"))}, "${2:%d}${3:\r\n}"${2:$(when (string-match "%" yas-text) ", ")}$4);$0
