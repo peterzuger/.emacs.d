@@ -729,7 +729,7 @@ Only creates a notification if BUFFER is *compilation*."
   (setq org-directory "~/Notes/")
   (setq org-default-notes-file (expand-file-name "todo.org" org-directory))
   (setq org-archive-location (expand-file-name "archive.org" org-directory))
-  (setq org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
+  (setq org-blank-before-new-entry '((heading . t) (plain-list-item . nil)))
 
   (setq org-link-frame-setup
         '((file . find-file)))
