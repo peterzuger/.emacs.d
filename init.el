@@ -864,6 +864,12 @@ Only creates a notification if BUFFER is *compilation*."
                 ("C-c n i" . org-roam-ref-add)
                 ("C-c n q" . org-roam-tag-add))
     :config
+    (setq org-roam-capture-templates
+          '(("d" "default" plain "%?"
+             :target (file+head "${slug}.org"
+                                "#+title: ${title}\n#+date: %U\n")
+             :unnarrowed t)))
+
     (setq org-roam-node-display-template "${title:80} ${tags}")
     (setq org-roam-directory (expand-file-name "roam" org-directory))
     (org-roam-db-autosync-mode)))
