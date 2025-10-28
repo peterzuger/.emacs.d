@@ -446,8 +446,10 @@ Only creates a notification if BUFFER is *compilation*."
            ("pdf" (file-extension . "pdf"))
            ("magit" (derived-mode . magit-mode))
            ("mu4e" (or
-                    (mode . message-mode)
-                    (mode . mail-mode)))))))
+                    (name . "^\\*mu4e-.*\\*$")
+                    (derived-mode . message-mode)
+                    (derived-mode . mail-mode))))))
+  )
 
 (use-package irony                      ;; C/C++ minor mode powered by lib-clang
   :after cc-mode
