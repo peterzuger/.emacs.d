@@ -242,12 +242,7 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package conf-mode                  ;; Simple major mode for editing conf/ini/properties files
   :ensure nil ;; builtin
   :mode (rx
-         (or
-          (: "ssh" (? "d") "_config")
-          ".service"
-          ".timer"
-          ".socket"
-          ".network")
+         (: "ssh" (? "d") "_config")
          string-end)
   :mode ((rx "rc" string-end) . conf-space-mode))
 
