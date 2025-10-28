@@ -1008,6 +1008,7 @@ Only creates a notification if BUFFER is *compilation*."
               (: ".pdf" (? (group "<" (1+ (not ">")) ">")))
               (: bol "*Help*")
               (: bol "*Man " (* nonl) "*")
+              (: bol "*WoMan " (* nonl) "*")
               (: bol "*xref*")
               (: bol "*grep*")
               (: bol "*org-roam*")
