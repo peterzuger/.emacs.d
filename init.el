@@ -437,8 +437,18 @@ Only creates a notification if BUFFER is *compilation*."
         '(("default"
            ("dired" (mode . dired-mode))
            ("emacs" (or
+                     (mode . Man-mode)
+                     (mode . apropos-mode)
+                     (mode . backtrace-mode)
+                     (mode . grep-mode)
+                     (mode . help-mode)
+                     (mode . ibuffer-mode)
+                     (mode . native-comp-limple-mode)
+                     (name . "^\\*GNU Emacs\\*$")
+                     (name . "^\\*Messages\\*$")
+                     (name . "^\\*WoMan.*\\*$")
                      (name . "^\\*scratch\\*$")
-                     (name . "^\\*Messages\\*$")))
+                     (name . "^\\*xref\\*$")))
            ("org-roam" (and
                         (filename . "/roam/")
                         (file-extension . "org")))
