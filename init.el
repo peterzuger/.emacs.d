@@ -869,6 +869,7 @@ Only creates a notification if BUFFER is *compilation*."
                 ("C-c n b" . org-roam-buffer-toggle)
                 ("C-c n n" . org-roam-node-insert)
                 ("C-c n i" . org-roam-ref-add)
+                ("C-c n a" . org-roam-alias-add)
                 ("C-c n q" . org-roam-tag-add))
     :config
     (setq org-roam-capture-templates
