@@ -880,7 +880,11 @@ Only creates a notification if BUFFER is *compilation*."
 
     (setq org-roam-node-display-template "${title:80} ${tags}")
     (setq org-roam-directory (expand-file-name "roam" org-directory))
-    (org-roam-db-autosync-mode)))
+    (org-roam-db-autosync-mode))
+
+  (use-package org-roam-ui
+    :after org-roam
+    :bind ("C-c n g" . org-roam-ui-mode)))
 
 (use-package orgit                      ;; Support for Org links to Magit buffers
   :after (magit org))
