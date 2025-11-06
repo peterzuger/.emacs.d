@@ -896,7 +896,9 @@ Only creates a notification if BUFFER is *compilation*."
 
   (use-package org-roam-ui
     :after org-roam
-    :bind ("C-c n g" . org-roam-ui-mode)))
+    :bind ("C-c n g" . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-follow nil)))
 
 (use-package orgit                      ;; Support for Org links to Magit buffers
   :after (magit org))
