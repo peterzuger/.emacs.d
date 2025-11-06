@@ -873,7 +873,16 @@ Only creates a notification if BUFFER is *compilation*."
                 ("C-c n n" . org-roam-node-insert)
                 ("C-c n i" . org-roam-ref-add)
                 ("C-c n a" . org-roam-alias-add)
-                ("C-c n q" . org-roam-tag-add))
+                ("C-c n q" . my-org-roam-tag-add))
+    :functions (org-roam-db-query org-roam-tag-add)
+    :preface
+    (defun my-org-roam-tag-add ()
+      "Add a tag to the node at point with completion from existing tags."
+      (interactive)
+      (let* ((tags (seq-uniq (flatten-list (org-roam-db-query [:select tag :from tags]))))
+             (tag (completing-read "Tag: " tags)))
+        (org-roam-tag-add (list tag))))
+
     :config
     (setq org-roam-capture-templates
           '(("d" "default" plain "%?"
