@@ -761,6 +761,8 @@ Only creates a notification if BUFFER is *compilation*."
   (use-package ob                       ;; Working with Code Blocks in Org
     :ensure nil
     :config
+    (use-package ob-rust)
+
     (org-babel-do-load-languages
      'org-babel-load-languages
      '((C . t)
@@ -772,6 +774,7 @@ Only creates a notification if BUFFER is *compilation*."
        (latex . t)
        (makefile . t)
        (python . t)
+       (rust . t)
        (shell . t))))
 
   (use-package org-capture              ;; Fast note taking in Org
