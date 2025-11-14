@@ -700,7 +700,8 @@ Only creates a notification if BUFFER is *compilation*."
   :ensure org-contrib
   :after flyspell
   :bind (:map org-mode-map
-              ("C-c i" . org-insert-link))
+              ("C-c i" . org-insert-link)
+              ("C-c C-m" . nil))
   :bind* (("C-c c" . org-capture)
           ("C-c l" . org-store-link)
           ("C-c a" . org-agenda))
