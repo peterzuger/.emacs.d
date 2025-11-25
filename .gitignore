@@ -38,6 +38,9 @@ snippets/*/.yas-compiled-snippets.el
 # multiple-cursors preferences
 .mc-lists.el
 
+# interactive Emacs lisp history
+ielm-history.eld
+
 # org-roam
 .org-id-locations
 org-roam.db
