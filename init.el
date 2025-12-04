@@ -523,6 +523,9 @@ Only creates a notification if BUFFER is *compilation*."
   (setq TeX-source-correlate-start-server t))
 
 (use-package lsp-mode                   ;; LSP mode
+  :hook ((c-mode
+          c++-mode)
+         . lsp)
   :config
   (setq lsp-headerline-breadcrumb-enable nil)
   (setq lsp-keep-workspace-alive nil)
