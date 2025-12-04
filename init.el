@@ -184,13 +184,6 @@
   :config
   (company-add-local-backend 'go-mode-hook 'company-go))
 
-(use-package company-irony              ;; company-mode completion back-end for irony-mode
-  :after (company irony)
-  :hook (irony-mode . company-irony-setup-begin-commands)
-  :config
-  (company-add-local-backend 'c-mode-hook 'company-irony)
-  (company-add-local-backend 'c++-mode-hook 'company-irony))
-
 (use-package company-jedi               ;; company-mode completion back-end for Python JEDI
   :after (company python)
   :config
@@ -319,10 +312,6 @@ Only creates a notification if BUFFER is *compilation*."
   :config
   (setq flycheck-checker-error-threshold 1024))   ;; sometimes this happens
 
-(use-package flycheck-irony             ;; Flycheck: C/C++ support via Irony
-  :after (cc-mode flycheck irony)
-  :hook ((c-mode c++-mode) . flycheck-irony-setup))
-
 (use-package flycheck-pycheckers        ;; multiple syntax checker for Python, using Flycheck
   :after (flycheck python)
   :hook (python-mode . flycheck-pycheckers-setup)
@@ -334,15 +323,6 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package git-modes)                 ;; Major modes for editing Git configuration files
 
-(use-package ggtags                     ;; emacs frontend to GNU Global source code tagging system
-  :after cc-mode
-  :custom (ggtags-mode-prefix-key (kbd "C-'"))
-  :hook ((c-mode c++-mode) . 'enable-ggtags-mode)
-  :preface
-  (defun enable-ggtags-mode ()
-    "Enable ggtags mode for C/C++ files."
-    (when (derived-mode-p 'c-mode 'c++-mode)
-      (ggtags-mode 1))))
 
 (use-package grep                       ;; run `grep' and display the results
   :ensure nil ;; builtin
@@ -460,16 +440,6 @@ Only creates a notification if BUFFER is *compilation*."
                     (derived-mode . message-mode)
                     (derived-mode . mail-mode))))))
   )
-
-(use-package irony                      ;; C/C++ minor mode powered by lib-clang
-  :after cc-mode
-  :init
-  (setq irony-additional-clang-options '("-ferror-limit=0"))
-  :hook ((c-mode c++-mode) . irony-mode)
-  :hook (irony-mode . irony-cdb-autosetup-compile-options)
-  :config
-  (unless (file-exists-p (expand-file-name "bin/irony-server" irony-user-dir))
-    (call-interactively 'irony-install-server)))
 
 (use-package image                      ;; builtin image support
   :ensure nil ;; builtin
