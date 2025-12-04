@@ -38,6 +38,9 @@ snippets/*/.yas-compiled-snippets.el
 # multiple-cursors preferences
 .mc-lists.el
 
+# lsp client
+.lsp-session-v1
+
 # interactive Emacs lisp history
 ielm-history.eld
 
