@@ -522,7 +522,11 @@ Only creates a notification if BUFFER is *compilation*."
   (setq TeX-source-correlate-method 'synctex)
   (setq TeX-source-correlate-start-server t))
 
-(use-package lsp-mode)                  ;; LSP mode
+(use-package lsp-mode                   ;; LSP mode
+  :config
+  (setq lsp-headerline-breadcrumb-enable nil)
+  (setq lsp-keep-workspace-alive nil)
+  (setq lsp-modeline-code-actions-enable nil))
 
 (use-package magit                      ;; A Git porcelain inside Emacs.
   :bind ("C-c g" . magit-status)
