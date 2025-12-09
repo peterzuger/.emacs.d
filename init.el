@@ -460,38 +460,12 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package lsp-jedi                   ;; Lsp client plugin for Python Jedi Language Server
   :ensure t)
 
-(use-package js                         ;; Major mode for editing JavaScript
-  :ensure nil);; builtin
-
-(use-package js2-mode                   ;; Improved JavaScript editing mode
-  :mode (rx ".js" string-end)
-  ;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so unbind it.
-  :bind (:map js-mode-map
-              ("M-." . nil)
-              ("C-k" . js2r-kill))
-  :config
-  (setq js-indent-level 4)
-
-  (js2r-add-keybindings-with-prefix "C-c C-r")
-
-  (defun js2-mode-setup ()
-    "Enable js2-mode extras and xref-js2."
-    (add-hook 'xref-backend-functions 'xref-js2-xref-backend nil t)
-    (js2-imenu-extras-mode)
-    (js2-refactor-mode))
-
-  (add-hook 'js2-mode-hook 'js2-mode-setup))
-
-(use-package js2-refactor               ;; A JavaScript refactoring library for emacs.
-  :after js2-mode)
-
 (use-package json                       ;; JavaScript Object Notation parser / generator
   :ensure nil ;; builtin
   :config
   (setq json-encoding-default-indentation "    "))
 
 (use-package json-mode                  ;; Major mode for editing JSON files
-  :after js
   :mode (rx ".json" string-end))
 
 (use-package latex                      ;; Integrated environment for *TeX*
@@ -1052,9 +1026,6 @@ Only creates a notification if BUFFER is *compilation*."
                 (or
                  (: " *transient*"))
                 eol)))))
-
-(use-package xref-js2                   ;; Jump to references/definitions using ag & js2-mode's AST
-  :after js2-mode)
 
 (use-package yaml-mode)                 ;; Major mode for editing YAML files
 
