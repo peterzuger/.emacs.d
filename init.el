@@ -114,6 +114,10 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+(use-package abbrev                     ;; abbrev mode commands for Emacs
+  :ensure nil ;; builtin
+  :diminish)
+
 (use-package ace-window                 ;; Quickly switch windows
   :bind* ("M-o" . ace-window))
 
@@ -265,6 +269,10 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package dockerfile-mode)           ;; Major mode for editing Docker's Dockerfiles
 
+(use-package eldoc                      ;; Show function arglist or variable docstring in echo area
+  :ensure nil ;; builtin
+  :diminish)
+
 (use-package elisp-mode                 ;; Emacs Lisp mode
   :ensure nil ;; builtin
   :after (company smartparens)
@@ -353,6 +361,10 @@ Only creates a notification if BUFFER is *compilation*."
   :ensure nil ;; builtin
   :config
   (setq help-window-select t))          ;; automatically select help windows
+
+(use-package hideif                     ;; hides selected code within ifdef
+  :ensure nil ;; builtin
+  :diminish hide-ifdef-mode)
 
 (use-package highlight-indent-guides    ;; Minor mode to highlight indentation
   :config
