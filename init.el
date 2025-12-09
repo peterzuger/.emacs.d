@@ -464,6 +464,9 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package ivy-hydra                  ;; Additional key bindings for Ivy
   :after (ivy hydra))
 
+(use-package lsp-jedi                   ;; Lsp client plugin for Python Jedi Language Server
+  :ensure t)
+
 (use-package js                         ;; Major mode for editing JavaScript
   :ensure nil);; builtin
 
@@ -519,7 +522,8 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package lsp-mode                   ;; LSP mode
   :hook ((c-mode
-          c++-mode)
+          c++-mode
+          python-mode)
          . lsp)
   :config
   (setq lsp-headerline-breadcrumb-enable nil)
