@@ -183,11 +183,6 @@
   :config
   (add-to-list 'company-backends 'company-emoji t))
 
-(use-package company-go                 ;; company-mode backend for Go (using gocode)
-  :after (company go-mode)
-  :config
-  (company-add-local-backend 'go-mode-hook 'company-go))
-
 (use-package company-shell              ;; Company mode backend for shell functions
   :after company
   :config
@@ -330,20 +325,6 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package grep                       ;; run `grep' and display the results
   :ensure nil ;; builtin
   :bind* ("C-c r" . rgrep))
-
-(use-package go-mode                    ;; Major mode for the Go programming language
-  :after (company smartparens)
-  :bind (:map go-mode-map
-              ("M-." . godef-jump)
-              ("M-," . pop-tag-mark))
-  :config
-  (sp-local-pair 'go-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
-
-  (defun add-gofmt-before-save-locally ()
-    "Add gofmt-before-save to the local before-save-hook."
-    (add-hook 'before-save-hook 'gofmt-before-save nil t))
-
-  (add-hook 'go-mode-hook 'add-gofmt-before-save-locally))
 
 (use-package gdb-mi                     ;; User Interface for running GDB
   :ensure nil ;; builtin
