@@ -184,11 +184,6 @@
   :config
   (company-add-local-backend 'go-mode-hook 'company-go))
 
-(use-package company-jedi               ;; company-mode completion back-end for Python JEDI
-  :after (company python)
-  :config
-  (company-add-local-backend 'python-mode-hook 'company-jedi))
-
 (use-package company-shell              ;; Company mode backend for shell functions
   :after company
   :config
