@@ -83,10 +83,10 @@
   (setq sentence-end-double-space nil)                      ;; one space is enough
 
   ;; avoid.el
-  (mouse-avoidance-mode 'cat-and-mouse)                       ;; play cat and mouse with the cursor
+  (mouse-avoidance-mode 'cat-and-mouse)                     ;; play cat and mouse with the cursor
 
   ;; prog-mode.el
-  (global-prettify-symbols-mode)                              ;; draw tokens as unicode glyph's
+  (global-prettify-symbols-mode)                            ;; draw tokens as unicode glyph's
 
   ;; files.el
   (setq-default require-final-newline t)                    ;; default to requiring a newline
@@ -703,7 +703,7 @@ Only creates a notification if BUFFER is *compilation*."
   (use-package ob                       ;; Working with Code Blocks in Org
     :ensure nil
     :config
-    (use-package ob-rust)
+    (use-package ob-rust)               ;; Org-babel functions for Rust
 
     (org-babel-do-load-languages
      'org-babel-load-languages
@@ -806,7 +806,7 @@ Only creates a notification if BUFFER is *compilation*."
     (setq org-capture-templates-contexts
           '(("p" ((in-mode . "mu4e-headers") (in-mode . "mu4e-view"))))))
 
-  (use-package org-roam
+  (use-package org-roam                 ;; A database abstraction layer for Org-mode
     :bind (("C-c n f" . org-roam-node-find)
            ("C-c n c" . org-roam-capture))
     :bind (:map org-mode-map
@@ -836,7 +836,7 @@ Only creates a notification if BUFFER is *compilation*."
     (setq org-roam-directory (expand-file-name "roam" org-directory))
     (org-roam-db-autosync-mode))
 
-  (use-package org-roam-ui
+  (use-package org-roam-ui              ;; User Interface for Org-roam
     :after org-roam
     :bind ("C-c n g" . org-roam-ui-mode)
     :config
@@ -866,7 +866,7 @@ Only creates a notification if BUFFER is *compilation*."
   :after python
   :hook (python-mode . python-black-on-save-mode))
 
-(use-package python
+(use-package python                     ;; Python's flying circus support for Emacs
   :ensure nil);; builtin
 
 (use-package pyvenv                     ;; Python virtual environment interface
