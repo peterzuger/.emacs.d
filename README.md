@@ -138,12 +138,14 @@ usefulness:
 |-------------|-----------------------------------|-------------------------|
 | `M-o`       | switch window using ace shortcuts |                         |
 | `C-c c`     | org capture                       |                         |
+| `C-c n c`   | org roam node capture             |                         |
+| `C-c n f`   | org roam node find                |                         |
 | `C-c g`     | magit (just the best)             |                         |
 | `C-c C-l`   | compile from anywhere             |                         |
-| `<backtab>` | complete any yasnippet            |                         |
+| `C-Tab`     | complete any yasnippet            |                         |
 | `C-x C-g`   | insert a random string            |                         |
 | `C-x C-l`   | smart downcase region/word        |                         |
 | `C-x C-u`   | smart upcase region/word          |                         |
-| `C-c m`     | mu4e                              | only if mu is installed |
+| `C-c C-m`   | mu4e                              | only if mu is installed |
 | `C-c a`     | org agenda                        |                         |
 | `C-M-c C-l` | switch to compilation window      |                         |
