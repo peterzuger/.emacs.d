@@ -875,13 +875,6 @@ Only creates a notification if BUFFER is *compilation*."
   (add-hook 'pyvenv-post-activate-hooks 'pyvenv-restart-python)
   (add-hook 'pyvenv-post-deactivate-hooks 'pyvenv-restart-python))
 
-(use-package ranger                     ;; Make dired more like ranger
-  :disabled
-  :config
-  (ranger-override-dired-mode nil)      ;; use ranger instead of dired
-  (setq ranger-override-dired 'ranger)  ;; use ranger not deer
-  (setq ranger-cleanup-eagerly t))      ;; auto kill unused buffers
-
 (use-package scad-mode)                 ;; A major mode for editing OpenSCAD code
 
 (use-package server                     ;; Lisp code for GNU Emacs running as server process
