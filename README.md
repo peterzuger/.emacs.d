@@ -128,21 +128,6 @@ This only takes long during the very first startup.
 | [yasnippet](https://joaotavora.github.io/yasnippet/)                              |                                     |
 
 
-### Builtin Packages
-The following packages are builtins that have `use-package` definitions just for
-configuration purposes:
-
-| Builtin Package Name | Notes                         |
-|----------------------|-------------------------------|
-| cc-mode              |                               |
-| compile              | creates desktop notifications |
-| ibuffer              |                               |
-| image                |                               |
-| make-mode            |                               |
-| minibuffer           |                               |
-| sgml-mode            |                               |
-| whitespace           |                               |
-
 ### Use emacs
 And emacs is ready to use !
 
