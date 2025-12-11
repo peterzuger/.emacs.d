@@ -248,8 +248,6 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package csv-mode                   ;; Major mode for editing comma/char separated values
   :custom (csv-separators '("," "\t" ";")))
 
-(use-package debbugs)                   ;; SOAP library to access debbugs servers
-
 (use-package diminish)                  ;; Diminished modes are minor modes with no modeline display
 
 (use-package dired                      ;; directory-browsing commands
