@@ -319,6 +319,23 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package git-modes)                 ;; Major modes for editing Git configuration files
 
+(use-package gptel                      ;; Interact with ChatGPT or other LLMs
+  :functions gptel-make-tool gptel-make-preset
+  :config
+  (setq gptel-default-mode 'org-mode)
+  (setq gptel-expert-commands t)
+  (setq gptel-confirm-tool-calls t)
+  (setq gptel-model 'qwen3:latest)
+  (setq gptel-backend
+        (gptel-make-ollama "Ollama"
+                           :stream t
+                           :models '(deepseek-coder-v2:latest
+                                     deepseek-r1:latest
+                                     gemma3:latest
+                                     mistral:latest
+                                     qwen3:latest)))
+  )
+
 
 (use-package grep                       ;; run `grep' and display the results
   :ensure nil ;; builtin
