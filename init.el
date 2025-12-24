@@ -967,7 +967,6 @@ Only creates a notification if BUFFER is *compilation*."
               (: bol "*grep*")
               (: bol "*org-roam*")
               (: bol "*Org Agenda" (* nonl) "*")
-              (: bol "*ggtags-global*")
               (: bol "COMMIT_EDITMSG")
               (: bol "*Python*"))
              eol)
