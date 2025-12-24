@@ -966,6 +966,8 @@ Only creates a notification if BUFFER is *compilation*."
                      (: "magit-log:" (* nonl))
                      eol))
            display-buffer-use-some-window)
+          (,(lambda (name _) (with-current-buffer name (derived-mode-p 'gptel-mode)))
+           display-buffer-use-some-window)
           (,(rx bol (or
                      (: "*mu4e-draft*")
                      (: "*mu4e-headers*"))
