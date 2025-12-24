@@ -1,30 +1,15 @@
 [submodule "themes/zenburn"]
         path = themes/zenburn
         url = https://github.com/bbatsov/zenburn-emacs.git
-[submodule "themes/moe"]
-        path = themes/moe
-        url = https://github.com/kuanyui/moe-theme.el.git
 [submodule "themes/material"]
         path = themes/material
         url = https://github.com/cpaulik/emacs-material-theme.git
 [submodule "themes/cyberpunk"]
         path = themes/cyberpunk
         url = https://github.com/n3mo/cyberpunk-theme.el.git
-[submodule "themes/ample"]
-        path = themes/ample
-        url = https://github.com/jordonbiondo/ample-theme.git
-[submodule "themes/alect"]
-        path = themes/alect
-        url = https://github.com/alezost/alect-themes.git
 [submodule "themes/gotham"]
         path = themes/gotham
         url = https://github.com/wasamasa/gotham-theme.git
-[submodule "themes/tangotango"]
-        path = themes/tangotango
-        url = https://github.com/juba/color-theme-tangotango.git
-[submodule "themes/gruber"]
-        path = themes/gruber
-        url = https://github.com/rexim/gruber-darker-theme.git
 [submodule "themes/ample-zen"]
         path = themes/ample-zen
         url = https://github.com/mjwall/ample-zen.git
