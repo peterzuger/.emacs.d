@@ -342,12 +342,19 @@ Only creates a notification if BUFFER is *compilation*."
   (setq gptel-model 'qwen3:latest)
   (setq gptel-backend
         (gptel-make-ollama "Ollama"
-                           :stream t
-                           :models '(deepseek-coder-v2:latest
-                                     deepseek-r1:latest
-                                     gemma3:latest
-                                     mistral:latest
-                                     qwen3:latest)))
+          :stream t
+          :models '((deepseek-coder-v2:latest :capabilities ())
+                    (deepseek-r1:latest :capabilities (tool-use))
+                    (devstral-small-2:latest :capabilities (media tool-use))
+                    (gemma3:27b :capabilities (media))
+                    (gemma3:latest :capabilities (media))
+                    (gpt-oss:latest :capabilities (tool-use))
+                    (granite3.3:latest :capabilities (tool-use))
+                    (llama3.1:latest :capabilities (tool-use))
+                    (mistral:latest :capabilities (tool-use))
+                    (qwen3-coder:latest :capabilities (tool-use))
+                    (qwen3-vl:32b :capabilities (media tool-use))
+                    (qwen3:latest :capabilities (tool-use)))))
   )
 
 
