@@ -77,7 +77,7 @@
   (size-indication-mode t)                                  ;; display the buffer size
   (column-number-mode t)                                    ;; display line,column numbers
   (setq-default indent-tabs-mode nil)                       ;; DON'T EVER USE TABS !!
-  (setq kill-ring-max 256)                                  ;; large kill-ring, never loose anything
+  (setq kill-ring-max 16384)                                ;; large kill-ring, never loose anything
   (setq save-interprogram-paste-before-kill t)              ;; save system clipboard before overwriting
 
   ;; paragraphs.el
