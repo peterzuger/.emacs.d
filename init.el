@@ -700,6 +700,7 @@ Only creates a notification if BUFFER is *compilation*."
   (setq org-log-into-drawer t)
   (setq org-log-reschedule t)
   (setq org-log-redeadline t)
+  (setq org-table-header-line-p t)
   (setq org-directory "~/Notes/")
   (setq org-default-notes-file (expand-file-name "todo.org" org-directory))
   (setq org-archive-location (expand-file-name "archive.org" org-directory))
