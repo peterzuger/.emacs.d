@@ -274,6 +274,12 @@ Only creates a notification if BUFFER is *compilation*."
   :ensure nil ;; builtin
   :diminish)
 
+(use-package elfeed                     ;; An Emacs Atom/RSS feed reader
+  :config
+  (setq elfeed-feeds '(("https://apod.nasa.gov/apod.rss")     ;; NASA Astronomy Picture of the Day
+                       ("https://archlinux.org/feeds/news/")  ;; ArchLinux News Feed
+                       ("https://xkcd.com/atom.xml"))))
+
 (use-package elisp-mode                 ;; Emacs Lisp mode
   :ensure nil ;; builtin
   :after (company smartparens)
