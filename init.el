@@ -80,6 +80,13 @@
   (setq kill-ring-max 16384)                                ;; large kill-ring, never loose anything
   (setq save-interprogram-paste-before-kill t)              ;; save system clipboard before overwriting
 
+  ;; savehist.el
+  (savehist-mode t)                                         ;; save minibuffer history
+  (setq savehist-additional-variables                       ;; also save kill and search ring
+        '(kill-ring
+          search-ring
+          regexp-search-ring))
+
   ;; paragraphs.el
   (setq sentence-end-double-space nil)                      ;; one space is enough
 
