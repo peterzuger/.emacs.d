@@ -337,6 +337,7 @@ Only creates a notification if BUFFER is *compilation*."
   :functions gptel-make-tool gptel-make-preset
   :config
   (setq gptel-default-mode 'org-mode)
+  (setq gptel-track-media t)
   (setq gptel-expert-commands t)
   (setq gptel-confirm-tool-calls t)
   (setq gptel-model 'qwen3:latest)
