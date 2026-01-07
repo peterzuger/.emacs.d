@@ -368,6 +368,88 @@ Only creates a notification if BUFFER is *compilation*."
    :args (list '(:name "text"
                        :type string
                        :description "The text to send to the messages buffer")))
+
+  (gptel-make-tool
+   :name "list_buffers"
+   :description "List active Emacs buffers that are associated with files"
+   :category "emacs"
+   :function (lambda ()
+               (mapconcat (lambda (buf)
+                            (concat
+                             (buffer-name buf)
+                             (format " (visiting file: %s)" (buffer-file-name buf))))
+                          (seq-filter
+                           (lambda (buf)
+                             (buffer-file-name buf))
+                           (buffer-list))
+                          "\n")))
+
+  (gptel-make-tool
+   :name "read_buffer"
+   :description "Return the contents of an Emacs buffer"
+   :category "emacs"
+   :function (lambda (buffer)
+               (unless (buffer-live-p (get-buffer buffer))
+                 (error (concat "error: buffer %s is not live. maybe you can use "
+                                "read_file to open the file?" buffer)))
+               (with-current-buffer  buffer
+                 (buffer-substring-no-properties (point-min) (point-max))))
+   :args (list '(:name "buffer"
+                       :type string
+                       :description "the name of the buffer whose contents are to be retrieved")))
+
+  (gptel-make-tool
+   :name "append_to_buffer"
+   :description "Append text to an Emacs buffer. If the buffer does not exist, it will be created."
+   :category "emacs"
+   :function (lambda (buffer text)
+               (with-current-buffer (get-buffer-create buffer)
+                 (save-excursion
+                   (goto-char (point-max))
+                   (insert text)))
+               (format "Appended text to buffer %s" buffer))
+   :args (list '(:name "buffer"
+                       :type string
+                       :description "The name of the buffer to append text to.")
+               '(:name "text"
+                       :type string
+                       :description "The text to append to the buffer.")))
+
+  (defun codel-edit-buffer (buffer-name old-string new-string)
+    "In BUFFER-NAME, replace OLD-STRING with NEW-STRING."
+    (with-current-buffer buffer-name
+      (let ((case-fold-search nil))  ;; Case-sensitive search
+        (save-excursion
+          (goto-char (point-min))
+          (let ((count 0))
+            (while (search-forward old-string nil t)
+              (setq count (1+ count)))
+            (if (= count 0)
+                (format "Error: Could not find text to replace in buffer %s" buffer-name)
+              (if (> count 1)
+                  (format "Error: Found %d matches for the text to replace in buffer %s" count buffer-name)
+                (goto-char (point-min))
+                (search-forward old-string)
+                (replace-match new-string t t)
+                (format "Successfully edited buffer %s" buffer-name))))))))
+
+  (gptel-make-tool
+   :name "edit_buffer"
+   :description "Edits Emacs buffers"
+   :category "emacs"
+   :function #'codel-edit-buffer
+   :args '((:name "buffer_name"
+                  :type string
+                  :description "Name of the buffer to modify"
+                  :required t)
+           (:name "old_string"
+                  :type string
+                  :description "Text to replace (must match exactly)"
+                  :required t)
+           (:name "new_string"
+                  :type string
+                  :description "Text to replace old_string with"
+                  :required t)))
   )
 
 
