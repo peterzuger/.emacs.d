@@ -357,6 +357,17 @@ Only creates a notification if BUFFER is *compilation*."
                     (qwen3-coder:latest :capabilities (tool-use))
                     (qwen3-vl:32b :capabilities (media tool-use))
                     (qwen3:latest :capabilities (tool-use)))))
+
+  (gptel-make-tool
+   :name "echo_message"
+   :description "Send a message to the *Messages* buffer"
+   :category "emacs"
+   :function (lambda (text)
+               (message "%s" text)
+               (format "Message sent: %s" text))
+   :args (list '(:name "text"
+                       :type string
+                       :description "The text to send to the messages buffer")))
   )
 
 
