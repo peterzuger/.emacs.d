@@ -359,6 +359,67 @@ Only creates a notification if BUFFER is *compilation*."
                     (qwen3:latest :capabilities (tool-use)))))
 
   (gptel-make-tool
+   :name "read_file"
+   :description "Read and display the contents of a file"
+   :category "filesystem"
+   :function (lambda (filepath)
+               (with-temp-buffer
+                 (insert-file-contents (expand-file-name filepath))
+                 (buffer-string)))
+   :args (list '(:name "filepath"
+                       :type string
+                       :description "Path to the file to read. Supports relative paths and ~.")))
+
+  (gptel-make-tool
+   :name "create_file"
+   :description "Create a new file with the specified content"
+   :category "filesystem"
+   :function (lambda (path filename content)
+               (let ((full-path (expand-file-name filename path)))
+                 (with-temp-buffer
+                   (insert content)
+                   (write-file full-path))
+                 (format "Created file %s in %s" filename path)))
+   :args (list '(:name "path"
+                       :type string
+                       :description "The directory where to create the file")
+               '(:name "filename"
+                       :type string
+                       :description "The name of the file to create")
+               '(:name "content"
+                       :type string
+                       :description "The content to write to the file")))
+
+  (gptel-make-tool
+   :name "list_directory"
+   :description "List the contents of a given directory"
+   :category "filesystem"
+   :function (lambda (directory)
+               (mapconcat #'identity
+                          (directory-files directory)
+                          "\n"))
+   :args (list '(:name "directory"
+                       :type string
+                       :description "The path to the directory to list")))
+
+  (gptel-make-tool
+   :name "make_directory"
+   :description "Create a new directory with the given name in the specified parent directory"
+   :category "filesystem"
+   :function (lambda (parent name)
+               (condition-case nil
+                   (progn
+                     (make-directory (expand-file-name name parent) t)
+                     (format "Directory %s created/verified in %s" name parent))
+                 (error (format "Error creating directory %s in %s" name parent))))
+   :args (list '(:name "parent"
+                       :type string
+                       :description "The parent directory where the new directory should be created, e.g. /tmp")
+               '(:name "name"
+                       :type string
+                       :description "The name of the new directory to create, e.g. testdir")))
+
+  (gptel-make-tool
    :name "echo_message"
    :description "Send a message to the *Messages* buffer"
    :category "emacs"
