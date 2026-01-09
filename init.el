@@ -52,6 +52,8 @@
 ;; core emacs config
 (use-package emacs
   :ensure nil ;; pseudo package
+  :bind (("C-x C-l" . downcase-dwim)
+         ("C-x C-u" . upcase-dwim))
   :demand t
   :config
   ;; C source code
@@ -1264,8 +1266,6 @@ Only creates a notification if BUFFER is *compilation*."
 
 ;; global keybindings
 (global-set-key (kbd "C-x C-g") 'insert-random-string)
-(global-set-key (kbd "C-x C-l") 'downcase-dwim)
-(global-set-key (kbd "C-x C-u") 'upcase-dwim)
 
 
 ;; load some additional configurations
