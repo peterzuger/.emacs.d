@@ -366,9 +366,9 @@ Only creates a notification if BUFFER is *compilation*."
                (with-temp-buffer
                  (insert-file-contents (expand-file-name filepath))
                  (buffer-string)))
-   :args (list '(:name "filepath"
-                       :type string
-                       :description "Path to the file to read. Supports relative paths and ~.")))
+   :args '((:name "filepath"
+                  :type string
+                  :description "Path to the file to read. Supports relative paths and ~.")))
 
   (gptel-make-tool
    :name "create_file"
@@ -380,15 +380,15 @@ Only creates a notification if BUFFER is *compilation*."
                    (insert content)
                    (write-file full-path))
                  (format "Created file %s in %s" filename path)))
-   :args (list '(:name "path"
-                       :type string
-                       :description "The directory where to create the file")
-               '(:name "filename"
-                       :type string
-                       :description "The name of the file to create")
-               '(:name "content"
-                       :type string
-                       :description "The content to write to the file")))
+   :args '((:name "path"
+                  :type string
+                  :description "The directory where to create the file")
+           (:name "filename"
+                  :type string
+                  :description "The name of the file to create")
+           (:name "content"
+                  :type string
+                  :description "The content to write to the file")))
 
   (gptel-make-tool
    :name "list_directory"
@@ -396,11 +396,11 @@ Only creates a notification if BUFFER is *compilation*."
    :category "filesystem"
    :function (lambda (directory)
                (mapconcat #'identity
-                          (directory-files directory)
-                          "\n"))
-   :args (list '(:name "directory"
-                       :type string
-                       :description "The path to the directory to list")))
+                            (directory-files directory)
+                            "\n"))
+   :args '((:name "directory"
+                  :type string
+                  :description "The path to the directory to list")))
 
   (gptel-make-tool
    :name "make_directory"
@@ -412,12 +412,12 @@ Only creates a notification if BUFFER is *compilation*."
                      (make-directory (expand-file-name name parent) t)
                      (format "Directory %s created/verified in %s" name parent))
                  (error (format "Error creating directory %s in %s" name parent))))
-   :args (list '(:name "parent"
-                       :type string
-                       :description "The parent directory where the new directory should be created, e.g. /tmp")
-               '(:name "name"
-                       :type string
-                       :description "The name of the new directory to create, e.g. testdir")))
+   :args '((:name "parent"
+                  :type string
+                  :description "The parent directory where the new directory should be created, e.g. /tmp")
+           (:name "name"
+                  :type string
+                  :description "The name of the new directory to create, e.g. testdir")))
 
   (gptel-make-tool
    :name "echo_message"
@@ -426,9 +426,9 @@ Only creates a notification if BUFFER is *compilation*."
    :function (lambda (text)
                (message "%s" text)
                (format "Message sent: %s" text))
-   :args (list '(:name "text"
-                       :type string
-                       :description "The text to send to the messages buffer")))
+   :args '((:name "text"
+                  :type string
+                  :description "The text to send to the messages buffer")))
 
   (gptel-make-tool
    :name "list_buffers"
@@ -455,9 +455,9 @@ Only creates a notification if BUFFER is *compilation*."
                                 "read_file to open the file?" buffer)))
                (with-current-buffer  buffer
                  (buffer-substring-no-properties (point-min) (point-max))))
-   :args (list '(:name "buffer"
-                       :type string
-                       :description "the name of the buffer whose contents are to be retrieved")))
+   :args '((:name "buffer"
+                  :type string
+                  :description "the name of the buffer whose contents are to be retrieved")))
 
   (gptel-make-tool
    :name "append_to_buffer"
@@ -469,12 +469,12 @@ Only creates a notification if BUFFER is *compilation*."
                    (goto-char (point-max))
                    (insert text)))
                (format "Appended text to buffer %s" buffer))
-   :args (list '(:name "buffer"
-                       :type string
-                       :description "The name of the buffer to append text to.")
-               '(:name "text"
-                       :type string
-                       :description "The text to append to the buffer.")))
+   :args '((:name "buffer"
+                  :type string
+                  :description "The name of the buffer to append text to.")
+           (:name "text"
+                  :type string
+                  :description "The text to append to the buffer.")))
 
   (defun codel-edit-buffer (buffer-name old-string new-string)
     "In BUFFER-NAME, replace OLD-STRING with NEW-STRING."
