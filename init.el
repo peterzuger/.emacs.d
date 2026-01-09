@@ -334,6 +334,8 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package git-modes)                 ;; Major modes for editing Git configuration files
 
 (use-package gptel                      ;; Interact with ChatGPT or other LLMs
+  :bind* (("C-c C-g" . gptel)
+          ("C-c M-g" . gptel-menu))
   :functions gptel-make-tool gptel-make-preset
   :config
   (setq gptel-default-mode 'org-mode)
