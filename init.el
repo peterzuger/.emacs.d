@@ -278,8 +278,14 @@ Only creates a notification if BUFFER is *compilation*."
 
 (use-package elfeed                     ;; An Emacs Atom/RSS feed reader
   :config
-  (setq elfeed-feeds '(("https://apod.nasa.gov/apod.rss")     ;; NASA Astronomy Picture of the Day
-                       ("https://archlinux.org/feeds/news/")  ;; ArchLinux News Feed
+  (setq elfeed-feeds '(("https://apod.nasa.gov/apod.rss")              ;; NASA Astronomy Picture of the Day
+                       ("https://archlinux.org/feeds/news/")           ;; ArchLinux News Feed
+                       ("https://blog.llvm.org/index.xml")             ;; llvm blog
+                       ("https://feeds.feedburner.com/BenKrasnow")     ;; Applied Science
+                       ("https://planet.emacslife.com/atom.xml" emacs) ;; aggregator by Sacha Chua
+                       ("https://sachachua.com/blog/category/emacs-news/feed/" emacs)
+                       ("https://secret.club/feed" security)
+                       ("https://www.phoronix.com/rss.php" linux)
                        ("https://xkcd.com/atom.xml"))))
 
 (use-package elisp-mode                 ;; Emacs Lisp mode
