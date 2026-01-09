@@ -1269,7 +1269,6 @@ Only creates a notification if BUFFER is *compilation*."
 
 
 ;; load some additional configurations
-(when (eq system-type 'darwin)    (load (emacs-path "mac")))   ;; macOS
 (when (eq system-type 'gnu/linux) (load (emacs-path "linux"))) ;; Linux
 
 (load (emacs-path "themes")) ;; custom themes
