@@ -511,8 +511,26 @@ Only creates a notification if BUFFER is *compilation*."
                   :type string
                   :description "Text to replace old_string with"
                   :required t)))
-  )
 
+  (gptel-make-tool
+   :name "read_man"
+   :description "Read a man page from the system reference manual."
+   :category "documentation"
+   :function (lambda (page &optional section)
+               (let ((command (if section
+                                  (list (number-to-string section) page)
+                                (list page))))
+                 (with-temp-buffer
+                   (apply 'call-process "man" nil t nil command)
+                   (buffer-string))))
+   :args '((:name "page"
+                  :type string
+                  :description "The man PAGE to read")
+           (:name "section"
+                  :type integer
+                  :optional t
+                  :description "The SECTION of the man page to read.")))
+  )
 
 (use-package grep                       ;; run `grep' and display the results
   :ensure nil ;; builtin
