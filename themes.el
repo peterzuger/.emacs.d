@@ -34,12 +34,12 @@
              (file-directory-p (concat basedir f)))
         (add-to-list 'custom-theme-load-path (concat basedir f)))))
 
-;; TODO: use new frame parameter alpha-background in 29.1
+;; enable transparency in the terminal
+;; alpha-background does not seem to work for this
 (unless (display-graphic-p)
   (add-hook 'tty-setup-hook
             (lambda ()
               (modify-frame-parameters nil '((background-color))))))
-
 
 ;; load zenburn on start
 (load-theme 'zenburn t)
