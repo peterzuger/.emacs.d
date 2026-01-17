@@ -1,33 +1,9 @@
 [submodule "themes/zenburn"]
         path = themes/zenburn
         url = https://github.com/bbatsov/zenburn-emacs.git
-[submodule "themes/material"]
-        path = themes/material
-        url = https://github.com/cpaulik/emacs-material-theme.git
-[submodule "themes/cyberpunk"]
-        path = themes/cyberpunk
-        url = https://github.com/n3mo/cyberpunk-theme.el.git
-[submodule "themes/gotham"]
-        path = themes/gotham
-        url = https://github.com/wasamasa/gotham-theme.git
-[submodule "themes/ample-zen"]
-        path = themes/ample-zen
-        url = https://github.com/mjwall/ample-zen.git
-[submodule "themes/noctilux"]
-        path = themes/noctilux
-        url = https://github.com/sjrmanning/noctilux-theme.git
-[submodule "themes/afternoon"]
-        path = themes/afternoon
-        url = https://github.com/osener/emacs-afternoon-theme.git
-[submodule "themes/blackboard"]
-        path = themes/blackboard
-        url = https://github.com/don9z/blackboard-theme.git
 [submodule "themes/tron-legacy-emacs-theme"]
         path = themes/tron-legacy-emacs-theme
         url = https://github.com/ianpan870102/tron-legacy-emacs-theme.git
-[submodule "themes/wilmersdorf-emacs-theme"]
-        path = themes/wilmersdorf-emacs-theme
-        url = https://github.com/ianpan870102/wilmersdorf-emacs-theme.git
 [submodule "lisp/immortal-scratch"]
         path = lisp/immortal-scratch
         url = https://github.com/peterzuger/immortal-scratch.git
