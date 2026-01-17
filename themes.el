@@ -34,6 +34,19 @@
              (file-directory-p (concat basedir f)))
         (add-to-list 'custom-theme-load-path (concat basedir f)))))
 
+(defun my-adapt-font-size (&optional frame)
+  "Adapt the font size of FRAME to make the text 2mm high."
+  (let* ((attrs (frame-monitor-attributes frame))
+         (size (alist-get 'mm-size attrs))
+         (geometry (alist-get 'geometry attrs))
+         (ppm (/ (caddr geometry) (float (car size))))
+         (target-height (round (* ppm 20))))
+    (message "PPM: %s, Target height: %s" ppm target-height)
+    (set-face-attribute 'default frame :height target-height)))
+
+(add-function :after after-focus-change-function #'my-adapt-font-size)
+(add-hook 'after-make-frame-functions #'my-adapt-font-size)
+
 ;; enable transparency in the terminal
 ;; alpha-background does not seem to work for this
 (unless (display-graphic-p)
