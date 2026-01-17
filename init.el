@@ -872,7 +872,7 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   :when (require 'mu4e nil 'noerror)
   :ensure nil
   :after (flyspell message)
-  :bind ("C-c C-m" . mu4e)
+  :bind* ("C-c C-m" . mu4e)
   :hook (mu4e-compose-mode . flyspell-mode)
   :config
   (setq mail-user-agent 'mu4e-user-agent)
