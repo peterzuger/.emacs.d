@@ -41,6 +41,12 @@
             (lambda ()
               (modify-frame-parameters nil '((background-color))))))
 
+(defun my-toggle-transparency ()
+  "Toggle transparency between 95 and 100."
+  (let* ((current (cdr (assoc 'alpha-background (frame-parameters))))
+         (new (if (= current 100) 95 100)))
+    (set-frame-parameter nil 'alpha-background new)))
+
 ;; load zenburn on start
 (load-theme 'zenburn t)
 
