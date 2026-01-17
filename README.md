@@ -134,18 +134,23 @@ And emacs is ready to use !
 Some usefull keybinds that are not standard are listed here sorted by their
 usefulness:
 
-| Keybinding  | Description                       | Note                    |
-|-------------|-----------------------------------|-------------------------|
-| `M-o`       | switch window using ace shortcuts |                         |
-| `C-c c`     | org capture                       |                         |
-| `C-c n c`   | org roam node capture             |                         |
-| `C-c n f`   | org roam node find                |                         |
-| `C-c g`     | magit (just the best)             |                         |
-| `C-c C-l`   | compile from anywhere             |                         |
-| `C-Tab`     | complete any yasnippet            |                         |
-| `C-x C-g`   | insert a random string            |                         |
-| `C-x C-l`   | smart downcase region/word        |                         |
-| `C-x C-u`   | smart upcase region/word          |                         |
-| `C-c C-m`   | mu4e                              | only if mu is installed |
-| `C-c a`     | org agenda                        |                         |
-| `C-M-c C-l` | switch to compilation window      |                         |
+| Keybinding | Description                       | Note                    |
+|------------|-----------------------------------|-------------------------|
+| `M-o`      | switch window using ace shortcuts |                         |
+| `C-\|`     | toggle fill-column indicator      |                         |
+| `C-<tab>`  | complete any yasnippet            |                         |
+| `C-c g`    | magit (just the best)             |                         |
+| `C-c C-m`  | mu4e                              | only if mu is installed |
+| `C-c e`    | elfeed RSS/Atom reader            |                         |
+| `C-c c`    | org capture                       |                         |
+| `C-c a`    | org agenda                        |                         |
+| `C-c n f`  | org roam node find                |                         |
+| `C-c n c`  | org roam node capture             |                         |
+| `C-c n g`  | org roam ui mode                  |                         |
+| `C-c C-l`  | compile from anywhere             |                         |
+| `C-c M-l`  | switch to compilation window      |                         |
+| `C-c C-g`  | gptel                             |                         |
+| `C-c M-g`  | gptel menu                        |                         |
+| `C-x C-g`  | insert a random string            |                         |
+| `C-x C-l`  | smart downcase region/word        |                         |
+| `C-x C-u`  | smart upcase region/word          |                         |
