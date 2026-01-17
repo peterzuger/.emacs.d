@@ -346,6 +346,11 @@ Only creates a notification if BUFFER is *compilation*."
   :bind* (("C-c C-g" . gptel)
           ("C-c M-g" . gptel-menu))
   :functions gptel-make-tool gptel-make-preset
+  :preface
+  (require 'subr-x)
+  (require 'url)
+  (require 'dom)
+
   :config
   (setq gptel-default-mode 'org-mode)
   (setq gptel-log-level 'debug)
@@ -522,6 +527,59 @@ Only creates a notification if BUFFER is *compilation*."
                   :type string
                   :description "Text to replace old_string with"
                   :required t)))
+
+  (defun ddg-make-result (dom)
+    "Take the DOM and return a result string."
+    (when-let (title-element (dom-by-class dom "result__a"))
+      (let* ((title (dom-texts title-element))
+             (snippet (dom-texts (dom-by-class dom "result__snippet")))
+             (link (cdr (assq 'href (dom-attributes title-element)))))
+        (concat "Title: " title "\n"
+                "Link: " (string-remove-prefix "//duckduckgo.com/l/?uddg=" (url-unhex-string link)) "\n"
+                "Snippet: " snippet "\n"))))
+
+  (defun ddg-web-search (query)
+    "Perform a search for QUERY using DuckDuckGo and return the top results."
+    (let ((search-url (concat "https://html.duckduckgo.com/html/?q="
+                              (url-hexify-string query))))
+      (with-current-buffer (url-retrieve-synchronously search-url)
+        (goto-char (point-min))
+        (search-forward "<body>" nil t)
+        (let* ((dom (libxml-parse-html-region (point) (point-max)))
+               (results (dom-by-class dom "results")))
+          (replace-regexp-in-string "\\(\\(\\s \\)\\2+\\)" "\\2"
+                                    (mapconcat 'ddg-make-result results "\n"))))))
+
+  (gptel-make-tool
+   :name "search_web"
+   :description "Search the web for the first results to a query.
+The query can be an arbitrary string.
+Each result has the keys `Title:`, `Link:` and `Snippet:` for the corresponding search result.
+
+If required, consider using the url as the input to the `read_url` tool to get the contents of the url.
+Note that this might not work as the `read_url` tool does not handle javascript-enabled pages."
+   :category "web"
+   :function #'ddg-web-search
+   :args '((:name "query"
+                  :type string
+                  :description "The natural language search query, can be multiple words.")))
+
+  (gptel-make-tool
+   :name "read_url"
+   :description "Fetch and read the contents of a URL"
+   :category "web"
+   :function (lambda (url)
+               (with-current-buffer (url-retrieve-synchronously url)
+                 (goto-char (point-min))
+                 (forward-paragraph)
+                 (let ((dom (libxml-parse-html-region (point) (point-max))))
+                   (run-at-time 0 nil #'kill-buffer (current-buffer))
+                   (with-temp-buffer
+                     (shr-insert-document dom)
+                     (buffer-substring-no-properties (point-min) (point-max))))))
+   :args '((:name "url"
+                  :type string
+                  :description "The URL to read")))
 
   (gptel-make-tool
    :name "read_man"
