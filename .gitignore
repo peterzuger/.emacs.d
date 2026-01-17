@@ -10,6 +10,7 @@ transient/
 url/
 .cache/
 eln-cache/
+ltximg/
 
 # Autocomplete history
 ac-comphist.dat

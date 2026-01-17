@@ -953,6 +953,7 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   (setq org-image-actual-width nil)
   (setq org-return-follows-link t)
   (setq org-insert-heading-respect-content t)
+  (setq org-preview-latex-image-directory (emacs-path "ltximg/"))
   (setq org-log-into-drawer t)
   (setq org-log-reschedule t)
   (setq org-log-redeadline t)
