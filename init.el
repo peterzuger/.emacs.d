@@ -66,6 +66,7 @@
   (setq message-log-max 16384)                              ;; increase max message buffer size
   (setq ring-bell-function 'ignore)                         ;; no audible bell
   (setq frame-title-format "GNU Emacs")                     ;; no dynamic title
+  (setq show-trailing-whitespace t)                         ;; highlight trailing whitespace
   (setq history-length t)                                   ;; no truncation
 
   ;; startup.el
