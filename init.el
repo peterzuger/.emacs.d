@@ -1161,6 +1161,42 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   (add-hook 'pyvenv-post-activate-hooks 'pyvenv-restart-python)
   (add-hook 'pyvenv-post-deactivate-hooks 'pyvenv-restart-python))
 
+(use-package qrencode                   ;; encode data and display a QR Code
+  :ensure nil ;; pseudo package
+  :commands (qrencode qrencode-region)
+  :functions image-transform-fit-to-window
+  :config
+  (require 'image-mode)
+
+  (defun qrencode (data)
+    "Encode DATA in a QR Code and display it in a buffer.
+This is copied and adapted from Kisaragi Hiu on reddit."
+    (interactive "MData: ")
+    (let ((type (if (display-graphic-p) "PNG" "UTF8"))
+          (buffer (generate-new-buffer "*QR Encode*")))
+      (make-process
+       :name "qrencode"
+       :buffer buffer
+       :command `("qrencode" "-t" ,type ,data "-o" "-")
+       :coding 'no-conversion
+       :sentinel (lambda (process change)
+                   (when (string= change "finished\n")
+                     (with-current-buffer (process-buffer process)
+                       (if (string= type "PNG")
+                           (progn
+                             (image-mode)
+                             (image-transform-fit-to-window))
+                         (text-mode)
+                         (decode-coding-region (point-min) (point-max) 'utf-8))))))
+      (display-buffer buffer)))
+
+  (defun qrencode-region (start end)
+    "Make the region between START and END into a QR-code."
+    (interactive "r")
+    (when (region-active-p)
+      (qrencode
+       (buffer-substring-no-properties start end)))))
+
 (use-package scad-mode)                 ;; A major mode for editing OpenSCAD code
 
 (use-package server                     ;; Lisp code for GNU Emacs running as server process
