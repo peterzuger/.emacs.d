@@ -772,6 +772,7 @@ Note that this might not work as the `read_url` tool does not handle javascript-
 (use-package lsp-mode                   ;; LSP mode
   :hook ((c-mode
           c++-mode
+          csharp-mode
           python-mode)
          . lsp)
   :config
