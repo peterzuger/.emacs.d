@@ -1,4 +1,4 @@
-;;; snippets/c-common/.yas-setup.el --- C snippet helpers -*- lexical-binding: t; -*-
+;;; snippets/cc-mode/.yas-setup.el --- C snippet helpers -*- lexical-binding: t; -*-
 ;;;
 ;;; The MIT License (MIT)
 ;;;
