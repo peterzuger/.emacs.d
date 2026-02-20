@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: mp-fun
+# name: function with at least N args
 # key: mp-fun
 # --
 /**

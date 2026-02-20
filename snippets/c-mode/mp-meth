@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: mp-meth
+# name: method with at least N args
 # key: mp-meth
 # --
 /**

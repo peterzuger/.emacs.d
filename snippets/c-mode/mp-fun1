@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: mp-fun1
-# key: mp-fun1
+# name: function with 1 arg
+# key: mp-fun
 # --
 /**
  * Python: $1.$2($3)

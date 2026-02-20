@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: mp-meth-kw
-# key: mp-meth-kw
+# name: method with keyword args
+# key: mp-meth
 # --
 /**
  * Python: ${1:`(mpy-mod-name (buffer-file-name))`}.$2.$3(*args, **kwargs)

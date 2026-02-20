@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: mp-fun-kw
-# key: mp-fun-kw
+# name: function with keyword args
+# key: mp-fun
 # --
 /**
  * Python: $1.$2(*args, **kwargs)
