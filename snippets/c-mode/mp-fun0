@@ -1,5 +1,6 @@
 # -*- mode: snippet -*-
 # name: function without arguments
+# group: MicroPython
 # key: mp-fun
 # --
 /**

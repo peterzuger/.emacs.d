@@ -1,5 +1,6 @@
 # -*- mode: snippet -*-
 # name: key/value entry
+# group: MicroPython
 # key: mp-kv
 # --
 { MP_ROM_QSTR(MP_QSTR_${1:key}), MP_ROM_PTR(&${2:value}) },

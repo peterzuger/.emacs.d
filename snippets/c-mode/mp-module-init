@@ -1,5 +1,6 @@
 # -*- mode: snippet -*-
 # name: module __init__ method
+# group: MicroPython
 # key: __init__
 # --
 static mp_obj_t ${1:`(file-name-nondirectory (directory-file-name (file-name-directory (buffer-file-name))))`}___init__(){

@@ -1,5 +1,6 @@
 # -*- mode: snippet -*-
 # name: method with N to M args
+# group: MicroPython
 # key: mp-meth
 # --
 /**

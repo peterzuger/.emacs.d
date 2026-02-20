@@ -1,5 +1,6 @@
 # -*- mode: snippet -*-
 # name: type template
+# group: MicroPython
 # key: mp-type
 # --
 typedef struct _${1:`(mpy-mod-name (buffer-file-name))`}_$2_obj_t{

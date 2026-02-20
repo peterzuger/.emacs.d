@@ -1,5 +1,6 @@
 # -*- mode: snippet -*-
 # name: module __init__ method k/v entry
+# group: MicroPython
 # key: mp-init
 # --
 { MP_ROM_QSTR(MP_QSTR___init__), MP_ROM_PTR(&${1:`(file-name-nondirectory (directory-file-name (file-name-directory (buffer-file-name))))`}___init___fun_obj) },

@@ -1,5 +1,6 @@
 # -*- mode: snippet -*-
 # name: module template
+# group: MicroPython
 # key: mp-module
 # --
 /**
