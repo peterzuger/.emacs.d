@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: XML comment
+# key: comment
+# --
+/// <summary>
+/// $1
+/// </summary>

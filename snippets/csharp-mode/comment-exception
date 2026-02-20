@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: exeption
+# key: comment
+# --
+/// <exception cref="$1">$2</exception>
