@@ -1004,6 +1004,7 @@ Note that this might not work as the `read_url` tool does not handle javascript-
        (ditaa . t)
        (dot . t)
        (emacs-lisp . t)
+       (gnuplot . t)
        (latex . t)
        (makefile . t)
        (python . t)
