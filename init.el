@@ -617,6 +617,8 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   (setq gdb-use-colon-colon-notation t)
   (setq gdb-many-windows t))
 
+(use-package gnuplot)                   ;; Major-mode and interactive frontend for gnuplot
+
 (use-package haskell-mode               ;; A Haskell editing mode
   :hook (haskell-mode . interactive-haskell-mode))
 
