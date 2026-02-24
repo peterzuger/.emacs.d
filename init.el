@@ -759,8 +759,7 @@ Note that this might not work as the `read_url` tool does not handle javascript-
 (use-package ivy-hydra                  ;; Additional key bindings for Ivy
   :after (ivy hydra))
 
-(use-package lsp-jedi                   ;; Lsp client plugin for Python Jedi Language Server
-  :ensure t)
+(use-package lsp-jedi)                  ;; Lsp client plugin for Python Jedi Language Server
 
 (use-package json                       ;; JavaScript Object Notation parser / generator
   :ensure nil ;; builtin
