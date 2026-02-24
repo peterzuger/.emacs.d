@@ -988,6 +988,7 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   (setq org-default-notes-file (expand-file-name "todo.org" org-directory))
   (setq org-archive-location (expand-file-name "archive.org" org-directory))
   (setq org-blank-before-new-entry '((heading . t) (plain-list-item . nil)))
+  (setq org-export-allow-bind-keywords t)
 
   (setq org-link-frame-setup
         '((file . find-file)))
