@@ -673,6 +673,7 @@ Note that this might not work as the `read_url` tool does not handle javascript-
       (setq ibuffer-filter-groups
             (append ibuffer-filter-groups
                     (ibuffer-make-git-filter-groups (buffer-list))))
+      (setq ibuffer-hidden-filter-groups '("magit" "dired" "mu4e"))
       (when-let ((ibuf (get-buffer "*Ibuffer*")))
         (with-current-buffer ibuf
           (pop-to-buffer ibuf)
