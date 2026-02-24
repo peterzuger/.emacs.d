@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: beamer frame subtitle
+# group: beamer
+# key: subtitle
+# --
+#+latex: \framesubtitle{$1}
+$0
