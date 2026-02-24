@@ -647,8 +647,9 @@ Note that this might not work as the `read_url` tool does not handle javascript-
     :ensure nil
     :functions ibuffer-switch-to-saved-filter-groups)
 
-  (setq ibuffer-expert t)                    ;; delete unmodified buffers without asking
-  (setq ibuffer-show-empty-filter-groups nil);; don't show empty groups
+  (setq ibuffer-expert t)                               ;; delete unmodified buffers without asking
+  (setq ibuffer-show-empty-filter-groups nil)           ;; don't show empty groups
+  (setq ibuffer-default-sorting-mode 'filename/process) ;; sort by filename
 
   (eval-and-compile
     (defun git-root-dir (buf)
