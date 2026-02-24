@@ -1008,7 +1008,7 @@ Note that this might not work as the `read_url` tool does not handle javascript-
     :config
     (ox-extras-activate '(ignore-headlines)))
 
-  (add-to-list 'org-latex-classes '("scrlttr2" "\\documentclass{scrlttr2}"))
+  (require 'ox-koma-letter)
 
   (use-package ob                       ;; Working with Code Blocks in Org
     :ensure nil
