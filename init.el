@@ -83,6 +83,16 @@
   (setq kill-ring-max 16384)                                ;; large kill-ring, never loose anything
   (setq save-interprogram-paste-before-kill t)              ;; save system clipboard before overwriting
 
+  (defun kill-ring-save-collapsed (beg end &optional region)
+    "Variant of `kill-ring-save' that collapses whitespace."
+    (interactive (list (mark) (point) 'region))
+    (let* ((str-raw (if region
+                        (funcall region-extract-function nil)
+                      (filter-buffer-substring beg end)))
+           (str (replace-regexp-in-string (rx (+ (or blank "\n"))) " " str-raw)))
+      (kill-new str))
+    (setq deactivate-mark t))
+
   ;; savehist.el
   (savehist-mode t)                                         ;; save minibuffer history
   (setq savehist-additional-variables                       ;; also save kill and search ring
