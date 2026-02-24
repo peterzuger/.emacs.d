@@ -1009,6 +1009,7 @@ Note that this might not work as the `read_url` tool does not handle javascript-
     (ox-extras-activate '(ignore-headlines)))
 
   (require 'ox-koma-letter)
+  (require 'ox-beamer)
 
   (use-package ob                       ;; Working with Code Blocks in Org
     :ensure nil
