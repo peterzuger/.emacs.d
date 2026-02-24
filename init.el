@@ -687,7 +687,13 @@ Note that this might not work as the `read_url` tool does not handle javascript-
 
   (setq ibuffer-saved-filter-groups
         '(("default"
-           ("dired" (mode . dired-mode))
+           ("org" (and
+                   (mode . org-mode)
+                   (not (filename . "/roam/"))))
+           ("org-roam" (and
+                        (mode . org-mode)
+                        (filename . "/roam/")))
+           ("pdf" (file-extension . "pdf"))
            ("emacs" (or
                      (mode . Man-mode)
                      (mode . apropos-mode)
@@ -701,12 +707,8 @@ Note that this might not work as the `read_url` tool does not handle javascript-
                      (name . "^\\*WoMan.*\\*$")
                      (name . "^\\*scratch\\*$")
                      (name . "^\\*xref\\*$")))
-           ("org-roam" (and
-                        (filename . "/roam/")
-                        (file-extension . "org")))
-           ("org" (mode . org-mode))
-           ("pdf" (file-extension . "pdf"))
            ("magit" (derived-mode . magit-mode))
+           ("dired" (mode . dired-mode))
            ("mu4e" (or
                     (name . "^\\*mu4e-.*\\*$")
                     (derived-mode . message-mode)
