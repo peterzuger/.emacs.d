@@ -8,7 +8,7 @@
 \usecolortheme{${2:default}}
 
 \title{${3:Title}}
-\author{`(getenv "NAME")`}
+\author{`user-full-name`}
 \date{\today}
 
 \begin{document}
