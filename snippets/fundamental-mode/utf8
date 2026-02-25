@@ -1,5 +1,6 @@
 # -*- mode: snippet -*-
 # name: utf-8 encoding
 # key: utf8
+# type: command
 # --
--*- coding: utf-8 -*-
+(add-file-local-variable-prop-line 'coding 'utf-8)

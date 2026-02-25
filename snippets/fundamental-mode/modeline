@@ -1,5 +1,6 @@
 # -*- mode: snippet -*-
 # name: Mode line
 # key: modeline
+# type: command
 # --
--*- mode: ${1:`(substring (symbol-name major-mode) 0 -5)`}; -*-
+(add-file-local-variable-prop-line 'mode (make-symbol (downcase mode-name)))
