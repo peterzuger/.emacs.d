@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: ispell dictionary
+# key: dict
+# type: command
+# contributor: Peter Züger
+# --
+(add-file-local-variable-prop-line 'ispell-local-dictionary (make-symbol (yas-choose-value '("de_CH" "en_US" "en_GB"))))
