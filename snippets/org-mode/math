@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: display math (equation)
+# group: LaTeX fragments
+# key: math
+# --
+\[
+$0
+\]

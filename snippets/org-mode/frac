@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: fraction
+# group: LaTeX fragments
+# key: frac
+# --
+\frac{${1:num}}{${2:den}}

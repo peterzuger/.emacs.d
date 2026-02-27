@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Set Builder notation
+# group: LaTeX fragments
+# key: sb
+# --
+\\{ ${1:x} \in \mathbb{${2:$$(yas-choose-value '("N" "Z" "Q" "R" C))}} \mid ${3:\Phi(x)} \\}

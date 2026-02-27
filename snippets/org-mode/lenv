@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: latex env
+# group: LaTeX fragments
+# key: lenv
+# --
+\begin{${1:$$(yas-choose-value '("align" "aligned" "equation" "gather" "multiline" "split" "subequation"))}${2:*}}${3: \label{$4\}}
+$0
+\end{$1}

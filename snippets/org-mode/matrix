@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: matrix
+# group: LaTeX fragments
+# key: matrix
+# --
+\begin{${1:$$(yas-choose-value '("pmatrix" "bmatrix" "Bmatrix" "smallmatrix"))}}
+$0
+\end{$1}

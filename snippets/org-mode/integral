@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: integral
+# group: LaTeX fragments
+# key: int
+# --
+\int_{${1:a}}^{${2:b}} ${3:f(x)} \,\mathrm{d}x

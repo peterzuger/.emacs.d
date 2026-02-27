@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: derivative
+# group: LaTeX fragments
+# key: der
+# --
+\frac{\mathrm{d}${1:x}}{\mathrm{d}${2:y}} ${3:sin(x)}
