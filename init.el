@@ -1143,7 +1143,10 @@ Note that this might not work as the `read_url` tool does not handle javascript-
     (setq org-roam-capture-templates
           '(("d" "default" plain "%?"
              :target (file+head "${slug}.org"
-                                "#+title: ${title}\n#+date: %U\n")
+                                "#+startup: latexpreview
+#+startup: overview
+#+title: ${title}
+#+date: %U\n")
              :unnarrowed t)))
 
     (setq org-roam-node-display-template "${title:80} ${tags}")
