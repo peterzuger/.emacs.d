@@ -992,14 +992,17 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   (setq org-link-frame-setup
         '((file . find-file)))
 
+  (setq org-file-apps
+        '((auto-mode . emacs)))
+
+  (add-to-list 'org-latex-packages-alist
+               '("exponent-product=\\ensuremath{*}" "siunitx" t))
+
   (use-package org-agenda               ;; Dynamic task and appointment lists for Org
     :ensure nil
     :config
     (setq org-agenda-window-setup 'current-window)
     (setq org-agenda-restore-windows-after-quit t))
-
-  (setq org-file-apps
-        '((auto-mode . emacs)))
 
   (use-package ox-extra                 ;; Convenience functions for org export
     :ensure nil
