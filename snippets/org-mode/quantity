@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: siunitx quantity
+# key: si
+# --
+\qty{$1e${2:0}}{$3}

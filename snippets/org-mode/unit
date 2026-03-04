@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: siunitx unit
+# key: unit
+# --
+\unit{$1}
