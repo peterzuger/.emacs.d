@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: packed struct
+# key: packed
+# --
+__attribute__((packed))
