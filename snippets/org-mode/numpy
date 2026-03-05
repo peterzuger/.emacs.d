@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: numpy
+# key: <np
+# group: org-babel
+# contributor: Peter Züger
+# --
+${1:#+NAME: ${2:name}
+}#+BEGIN_SRC python${3: :results ${4:$$(yas-choose-value '("value" "output"))}}
+import numpy as np
+$0
+#+END_SRC
