@@ -1155,6 +1155,7 @@ Note that this might not work as the `read_url` tool does not handle javascript-
 
   (use-package org-roam-ui              ;; User Interface for Org-roam
     :after org-roam
+    :diminish
     :bind ("C-c n g" . org-roam-ui-mode)
     :config
     (setq org-roam-ui-follow nil)))
