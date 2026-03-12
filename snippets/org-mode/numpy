@@ -2,6 +2,7 @@
 # name: numpy
 # key: <np
 # group: org-babel
+# expand-env: ((yas-indent-line 'fixed))
 # contributor: Peter Züger
 # --
 ${1:#+NAME: ${2:name}
