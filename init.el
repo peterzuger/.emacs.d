@@ -1303,7 +1303,9 @@ This is copied and adapted from Kisaragi Hiu on reddit."
                      (: "magit-log:" (* nonl))
                      eol))
            display-buffer-use-some-window)
-          (,(lambda (name _) (with-current-buffer name gptel-mode))
+          (,(lambda (name _) (with-current-buffer name
+                          (when (boundp 'gptel-mode)
+                            (symbol-value 'gptel-mode))))
            display-buffer-use-some-window)
           (,(rx bol (or
                      (: "*mu4e-draft*")
