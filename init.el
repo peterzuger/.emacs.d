@@ -341,6 +341,7 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package flycheck                   ;; On-the-fly syntax checking
   :init
   (global-flycheck-mode)                          ;; enable flycheck globally
+  :custom (flycheck-disabled-checkers '(org-lint))
   :config
   (setq flycheck-checker-error-threshold 1024))   ;; sometimes this happens
 
