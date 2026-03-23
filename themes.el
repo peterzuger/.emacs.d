@@ -35,13 +35,13 @@
         (add-to-list 'custom-theme-load-path (concat basedir f)))))
 
 (defun my-adapt-font-size (&optional frame)
-  "Adapt the font size of FRAME to make the text 2mm high."
+  "Adapt the font size of FRAME to make the text 2.2mm high."
   (let* ((attrs (frame-monitor-attributes frame))
          (size (alist-get 'mm-size attrs))
          (geometry (alist-get 'geometry attrs))
          (ppm (/ (caddr geometry) (float (car size))))
-         (target-height (round (* ppm 20))))
-    (message "PPM: %s, Target height: %s" ppm target-height)
+         (target-height (round (* ppm 22))))
+    (message "Pixel Per mm: %.2f, Target height: %d" ppm target-height)
     (set-face-attribute 'default frame :height target-height)))
 
 (add-function :after after-focus-change-function #'my-adapt-font-size)
