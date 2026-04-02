@@ -599,6 +599,18 @@ Only creates a notification if BUFFER is *compilation*."
                   :optional t
                   :description "number of commits to show")))
 
+  (gptel-make-tool
+   :name "shell_command"
+   :description "execute a shell command."
+   :category "system"
+   :function (lambda (cmd)
+               (let ((command (list "-c" cmd)))
+                 (with-output-to-string
+                   (apply 'call-process "sh" nil standard-output nil command))))
+   :args '((:name "cmd"
+                  :type string
+                  :description "the shell command to execute")))
+
   (defun ddg-make-result (dom)
     "Take the DOM and return a result string."
     (when-let (title-element (dom-by-class dom "result__a"))
