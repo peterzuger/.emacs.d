@@ -545,6 +545,60 @@ Only creates a notification if BUFFER is *compilation*."
                   :description "Text to replace old_string with"
                   :required t)))
 
+  (gptel-make-tool
+   :name "git_status"
+   :description "get the git status."
+   :category "git"
+   :function (lambda ()
+               (with-output-to-string
+                 (call-process "git" nil standard-output nil "status" "--short"))))
+
+  (gptel-make-tool
+   :name "git_add"
+   :description "stage a file for commit."
+   :category "git"
+   :function (lambda (file-path)
+               (let ((command (list "add" file-path)))
+                 (apply 'call-process "git" nil nil nil command))
+               (format "Staged file '%s' for commit" file-path))
+   :args '((:name "file-path"
+                  :type string
+                  :description "path of the file to stage")))
+
+  (gptel-make-tool
+   :name "git_commit"
+   :description "commit staged changes to the git repository."
+   :category "git"
+   :function (lambda (message)
+               (let ((command (list
+                               "commit"
+                               "--message"
+                               message
+                               "--trailer"
+                               (format "Co-developed-by: %s" gptel-model))))
+                 (with-output-to-string
+                   (apply 'call-process "git" nil standard-output nil command)))
+               (format "Committed changes with message: '%s'" message))
+   :args '((:name "message"
+                  :type string
+                  :description "commit message")))
+
+  (gptel-make-tool
+   :name "git_log"
+   :description "show the git commit history."
+   :category "git"
+   :function (lambda (&optional num-commits)
+               (let ((command (list
+                               "log"
+                               "--max-count"
+                               (number-to-string (or num-commits 10)))))
+                 (with-output-to-string
+                   (apply 'call-process "git" nil standard-output nil command))))
+   :args '((:name "num-commits"
+                  :type integer
+                  :optional t
+                  :description "number of commits to show")))
+
   (defun ddg-make-result (dom)
     "Take the DOM and return a result string."
     (when-let (title-element (dom-by-class dom "result__a"))
