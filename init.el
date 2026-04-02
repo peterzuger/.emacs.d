@@ -603,9 +603,8 @@ Note that this might not work as the `read_url` tool does not handle javascript-
                (let ((command (if section
                                   (list (number-to-string section) page)
                                 (list page))))
-                 (with-temp-buffer
-                   (apply 'call-process "man" nil t nil command)
-                   (buffer-string))))
+                 (with-output-to-string
+                   (apply 'call-process "man" nil standard-output nil command))))
    :args '((:name "page"
                   :type string
                   :description "The man PAGE to read")
