@@ -371,7 +371,7 @@ Only creates a notification if BUFFER is *compilation*."
   (setq gptel-track-media t)
   (setq gptel-expert-commands t)
   (setq gptel-confirm-tool-calls t)
-  (setq gptel-model 'qwen3:latest)
+  (setq gptel-model 'qwen3.5:latest)
   (setq gptel-backend
         (gptel-make-ollama "Ollama"
           :stream t
@@ -386,7 +386,10 @@ Only creates a notification if BUFFER is *compilation*."
                     (mistral:latest :capabilities (tool-use))
                     (qwen3-coder:latest :capabilities (tool-use))
                     (qwen3-vl:32b :capabilities (media tool-use))
-                    (qwen3:latest :capabilities (tool-use)))))
+                    (qwen3:latest :capabilities (tool-use))
+                    (qwen3.5:latest :capabilities (tool-use))
+                    (qwen3.5:27b :capabilities (tool-use))
+                    (qwen3.5:35b :capabilities (tool-use)))))
 
   (gptel-make-tool
    :name "read_file"
