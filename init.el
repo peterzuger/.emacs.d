@@ -600,6 +600,19 @@ Only creates a notification if BUFFER is *compilation*."
                   :description "number of commits to show")))
 
   (gptel-make-tool
+   :name "git_diff"
+   :description "show the git diff of the given commit."
+   :category "git"
+   :function (lambda (&optional commit)
+               (let ((command (list "diff" commit)))
+                 (with-output-to-string
+                   (apply 'call-process "git" nil standard-output nil command))))
+   :args '((:name "commit"
+                  :type string
+                  :optional t
+                  :description "the commit to show")))
+
+  (gptel-make-tool
    :name "shell_command"
    :description "execute a shell command."
    :category "system"
