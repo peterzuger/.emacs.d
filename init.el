@@ -575,7 +575,7 @@ Only creates a notification if BUFFER is *compilation*."
                                "--message"
                                message
                                "--trailer"
-                               (format "Co-developed-by: %s" gptel-model))))
+                               (format "Assisted-by: %s" gptel-model))))
                  (with-output-to-string
                    (apply 'call-process "git" nil standard-output nil command)))
                (format "Committed changes with message: '%s'" message))
