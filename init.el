@@ -890,6 +890,9 @@ Note that this might not work as the `read_url` tool does not handle javascript-
 
   (setq magit-display-buffer-function 'display-buffer)
 
+  ;; dabbrev-capf in emacs 30.2 raises an ugly user-error
+  (remove-hook 'git-commit-setup-hook 'git-commit-setup-capf)
+
   (setq magit-section-initial-visibility-alist
         '((stashes . hide) (ignored . hide) (local . hide)))
 
