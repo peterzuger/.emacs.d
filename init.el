@@ -32,11 +32,11 @@
 
 ;; don't display the splash screen when a file is opened directly
 (when (> (length command-line-args) 1)
-  (setq inhibit-splash-screen t))
+  (setopt inhibit-splash-screen t))
 
 ;; don't quit immediately
 (when (display-graphic-p)
-  (setq confirm-kill-emacs 'y-or-n-p)
+  (setopt confirm-kill-emacs 'y-or-n-p)
   (global-unset-key (kbd "C-x C-z"))
   (global-unset-key (kbd "C-z")))
 
@@ -46,7 +46,7 @@
     (expand-file-name path user-emacs-directory)))
 
 ;; please don't litter my init.el
-(setq custom-file (emacs-path "custom.el"))
+(setopt custom-file (emacs-path "custom.el"))
 (load custom-file t)
 
 ;; core emacs config
@@ -70,8 +70,8 @@
   (setq history-length t)                                   ;; no truncation
 
   ;; startup.el
-  (setq initial-major-mode 'fundamental-mode)               ;; start the scratch buffer in fundamental mode
-  (setq initial-scratch-message nil)                        ;; no message for the scratch buffer
+  (setopt initial-major-mode 'fundamental-mode)             ;; start the scratch buffer in fundamental mode
+  (setopt initial-scratch-message nil)                      ;; no message for the scratch buffer
 
   ;; subr.el
   (defalias 'yes-or-no-p 'y-or-n-p)                         ;; replace yes or no prompts by y-or-n prompts
@@ -80,8 +80,8 @@
   (size-indication-mode t)                                  ;; display the buffer size
   (column-number-mode t)                                    ;; display line,column numbers
   (setq-default indent-tabs-mode nil)                       ;; DON'T EVER USE TABS !!
-  (setq kill-ring-max 16384)                                ;; large kill-ring, never loose anything
-  (setq save-interprogram-paste-before-kill t)              ;; save system clipboard before overwriting
+  (setopt kill-ring-max 16384)                              ;; large kill-ring, never loose anything
+  (setopt save-interprogram-paste-before-kill t)            ;; save system clipboard before overwriting
 
   (defun kill-ring-save-collapsed (beg end &optional region)
     "Variant of `kill-ring-save' that collapses whitespace."
@@ -95,13 +95,13 @@
 
   ;; savehist.el
   (savehist-mode t)                                         ;; save minibuffer history
-  (setq savehist-additional-variables                       ;; also save kill and search ring
-        '(kill-ring
-          search-ring
-          regexp-search-ring))
+  (setopt savehist-additional-variables                     ;; also save kill and search ring
+          '(kill-ring
+            search-ring
+            regexp-search-ring))
 
   ;; paragraphs.el
-  (setq sentence-end-double-space nil)                      ;; one space is enough
+  (setopt sentence-end-double-space nil)                    ;; one space is enough
 
   ;; avoid.el
   (mouse-avoidance-mode 'cat-and-mouse)                     ;; play cat and mouse with the cursor
@@ -111,29 +111,29 @@
 
   ;; files.el
   (setq-default require-final-newline t)                    ;; default to requiring a newline
-  (setq large-file-warning-threshold (* 64 1024 1024))      ;; 64MiB files are large
-  (setq backup-by-copying t)                                ;; Don't delink hardlinks
-  (setq version-control t)                                  ;; Use version numbers on backups
-  (setq delete-old-versions t)                              ;; Automatically delete excess backups
-  (setq kept-new-versions 20)                               ;; how many of the newest versions to keep
-  (setq kept-old-versions 5)                                ;; and how many of the old
-  (setq backup-directory-alist                              ;; move backup files to backup
-        `(("." . ,(emacs-path "backup"))))
-  (setq auto-save-file-name-transforms                      ;; move auto-save files to backup
-        `((".*" ,(emacs-path "backup/") t))))
+  (setopt large-file-warning-threshold (* 64 1024 1024))    ;; 64MiB files are large
+  (setopt backup-by-copying t)                              ;; Don't delink hardlinks
+  (setopt version-control t)                                ;; Use version numbers on backups
+  (setopt delete-old-versions t)                            ;; Automatically delete excess backups
+  (setopt kept-new-versions 20)                             ;; how many of the newest versions to keep
+  (setopt kept-old-versions 5)                              ;; and how many of the old
+  (setopt backup-directory-alist                            ;; move backup files to backup
+          `(("." . ,(emacs-path "backup"))))
+  (setopt auto-save-file-name-transforms                    ;; move auto-save files to backup
+          `((".*" ,(emacs-path "backup/") t))))
 
 (eval-and-compile
   (require 'package)
   (package-initialize))
 
 ;; add elpa and melpa archive
-(setq package-archives
-      '(("gnu" . "http://elpa.gnu.org/packages/")
-        ("nongnu" . "https://elpa.nongnu.org/nongnu/")
-        ("melpa" . "http://melpa.org/packages/")))
+(setopt package-archives
+        '(("gnu" . "http://elpa.gnu.org/packages/")
+          ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+          ("melpa" . "http://melpa.org/packages/")))
 
 (require 'use-package-ensure)
-(setq use-package-always-ensure t)
+(setopt use-package-always-ensure t)
 
 (use-package abbrev                     ;; abbrev mode commands for Emacs
   :ensure nil ;; builtin
@@ -145,7 +145,7 @@
 (use-package advice                     ;; An overloading mechanism for Emacs Lisp functions
   :ensure nil ;; builtin
   :config
-  (setq ad-redefinition-action 'accept)) ;; no warning for advice redefinition
+  (setopt ad-redefinition-action 'accept)) ;; no warning for advice redefinition
 
 (use-package avy)                       ;; Jump to arbitrary positions in visible text and select text quickly
 
@@ -156,7 +156,7 @@
   :after auth-source
   :ensure nil ;; builtin
   :init
-  (setq auth-sources '(password-store)))
+  (setopt auth-sources '(password-store)))
 
 (use-package cc-mode                    ;; C, C++, Objective-C, Java, CORBA IDL Pike and AWK code
   :after smartparens
@@ -167,10 +167,10 @@
   :bind (:map c-mode-base-map
               ("\C-m" . c-context-line-break))
   :config
-  (setq c-basic-offset 4)
-  (setq c-default-style
-        '((awk-mode . "awk")
-          (other . "k&r")))
+  (setopt c-basic-offset 4)
+  (setopt c-default-style
+          '((awk-mode . "awk")
+            (other . "k&r")))
   (c-set-offset 'inextern-lang 0)
 
   (sp-local-pair '(c-mode c++-mode) "{" nil :post-handlers '(("||\n[i]" "RET"))))
@@ -189,13 +189,13 @@
                 (add-to-list (make-local-variable 'company-backends) backend))))
 
   :config
-  (setq company-idle-delay 0)
-  (setq company-minimum-prefix-length 2)
+  (setopt company-idle-delay 0)
+  (setopt company-minimum-prefix-length 2)
 
-  (setq company-backends
-        '(company-files
-          company-capf
-          company-keywords))
+  (setopt company-backends
+          '(company-files
+            company-capf
+            company-keywords))
 
   (global-company-mode))
 
@@ -223,7 +223,7 @@
       (pop-to-buffer "*compilation*")))
 
   :config
-  (setq compilation-scroll-output t)
+  (setopt compilation-scroll-output t)
 
   (defvar compilation-time 0)
   (defun my-compilation-start (_)
@@ -259,12 +259,12 @@ Only creates a notification if BUFFER is *compilation*."
   :bind (("C-x C-f" . counsel-find-file)
          ("C-x C-M-f" . counsel-locate))
   :config
-  (setq counsel-find-file-ignore-regexp
-        (rx
-         (or
-          (: bol (or "__pycache__/" ".mypy_cache/" "GTAGS" "GRTAGS" "GPATH"))
-          (or ".pyc" ".elc" ".o" ".d" ".aux" ".synctex.gz"))
-         eol)))
+  (setopt counsel-find-file-ignore-regexp
+          (rx
+           (or
+            (: bol (or "__pycache__/" ".mypy_cache/" "GTAGS" "GRTAGS" "GPATH"))
+            (or ".pyc" ".elc" ".o" ".d" ".aux" ".synctex.gz"))
+           eol)))
 
 (use-package csv-mode                   ;; Major mode for editing comma/char separated values
   :custom (csv-separators '("," "\t" ";")))
@@ -275,7 +275,7 @@ Only creates a notification if BUFFER is *compilation*."
   :ensure nil ;; builtin
   :hook (dired-mode . hl-line-mode)
   :config
-  (setq dired-listing-switches "-alh"))
+  (setopt dired-listing-switches "-alh"))
 
 (use-package display-fill-column-indicator ;; interface for display-fill-column-indicator
   :ensure nil ;; builtin
@@ -290,17 +290,17 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package elfeed                     ;; An Emacs Atom/RSS feed reader
   :bind ("C-c e" . elfeed)
   :config
-  (setq elfeed-db-directory (emacs-path "elfeed"))
+  (setopt elfeed-db-directory (emacs-path "elfeed"))
 
-  (setq elfeed-feeds '(("https://apod.nasa.gov/apod.rss")              ;; NASA Astronomy Picture of the Day
-                       ("https://archlinux.org/feeds/news/")           ;; ArchLinux News Feed
-                       ("https://blog.llvm.org/index.xml")             ;; llvm blog
-                       ("https://feeds.feedburner.com/BenKrasnow")     ;; Applied Science
-                       ("https://planet.emacslife.com/atom.xml" emacs) ;; aggregator by Sacha Chua
-                       ("https://sachachua.com/blog/category/emacs-news/feed/" emacs)
-                       ("https://secret.club/feed" security)
-                       ("https://www.phoronix.com/rss.php" linux)
-                       ("https://xkcd.com/atom.xml"))))
+  (setopt elfeed-feeds '(("https://apod.nasa.gov/apod.rss")              ;; NASA Astronomy Picture of the Day
+                         ("https://archlinux.org/feeds/news/")           ;; ArchLinux News Feed
+                         ("https://blog.llvm.org/index.xml")             ;; llvm blog
+                         ("https://feeds.feedburner.com/BenKrasnow")     ;; Applied Science
+                         ("https://planet.emacslife.com/atom.xml" emacs) ;; aggregator by Sacha Chua
+                         ("https://sachachua.com/blog/category/emacs-news/feed/" emacs)
+                         ("https://secret.club/feed" security)
+                         ("https://www.phoronix.com/rss.php" linux)
+                         ("https://xkcd.com/atom.xml"))))
 
 (use-package elisp-mode                 ;; Emacs Lisp mode
   :ensure nil ;; builtin
@@ -343,13 +343,13 @@ Only creates a notification if BUFFER is *compilation*."
   (global-flycheck-mode)                          ;; enable flycheck globally
   :custom (flycheck-disabled-checkers '(org-lint))
   :config
-  (setq flycheck-checker-error-threshold 1024))   ;; sometimes this happens
+  (setopt flycheck-checker-error-threshold 1024)) ;; sometimes this happens
 
 (use-package flycheck-pycheckers        ;; multiple syntax checker for Python, using Flycheck
   :after (flycheck python)
   :hook (python-mode . flycheck-pycheckers-setup)
   :config
-  (setq flycheck-pycheckers-checkers '(pylint flake8 pyflakes bandit)))
+  (setopt flycheck-pycheckers-checkers '(pylint flake8 pyflakes bandit)))
 
 (use-package flyspell                   ;; On-the-fly spell checker
   :ensure nil);; builtin
@@ -366,30 +366,33 @@ Only creates a notification if BUFFER is *compilation*."
   (require 'dom)
 
   :config
-  (setq gptel-default-mode 'org-mode)
-  (setq gptel-log-level 'debug)
-  (setq gptel-track-media t)
   (setq gptel-expert-commands t)
-  (setq gptel-confirm-tool-calls t)
-  (setq gptel-model 'qwen3.5:latest)
-  (setq gptel-backend
-        (gptel-make-ollama "Ollama"
-          :stream t
-          :models '((deepseek-coder-v2:latest :capabilities ())
-                    (deepseek-r1:latest :capabilities (tool-use))
-                    (devstral-small-2:latest :capabilities (media tool-use))
-                    (gemma3:27b :capabilities (media))
-                    (gemma3:latest :capabilities (media))
-                    (gpt-oss:latest :capabilities (tool-use))
-                    (granite3.3:latest :capabilities (tool-use))
-                    (llama3.1:latest :capabilities (tool-use))
-                    (mistral:latest :capabilities (tool-use))
-                    (qwen3-coder:latest :capabilities (tool-use))
-                    (qwen3-vl:32b :capabilities (media tool-use))
-                    (qwen3:latest :capabilities (tool-use))
-                    (qwen3.5:latest :capabilities (tool-use))
-                    (qwen3.5:27b :capabilities (tool-use))
-                    (qwen3.5:35b :capabilities (tool-use)))))
+
+  (setopt gptel-default-mode 'org-mode)
+  (setopt gptel-log-level 'debug)
+  (setopt gptel-track-media t)
+  (setopt gptel-confirm-tool-calls t)
+  (setopt gptel-include-tool-results t)
+  (setopt gptel-model 'qwen3.5:latest)
+
+  (setopt gptel-backend
+          (gptel-make-ollama "Ollama"
+            :stream t
+            :models '((deepseek-coder-v2:latest :capabilities ())
+                      (deepseek-r1:latest :capabilities (tool-use))
+                      (devstral-small-2:latest :capabilities (media tool-use))
+                      (gemma3:27b :capabilities (media))
+                      (gemma3:latest :capabilities (media))
+                      (gpt-oss:latest :capabilities (tool-use))
+                      (granite3.3:latest :capabilities (tool-use))
+                      (llama3.1:latest :capabilities (tool-use))
+                      (mistral:latest :capabilities (tool-use))
+                      (qwen3-coder:latest :capabilities (tool-use))
+                      (qwen3-vl:32b :capabilities (media tool-use))
+                      (qwen3:latest :capabilities (tool-use))
+                      (qwen3.5:latest :capabilities (tool-use))
+                      (qwen3.5:27b :capabilities (tool-use))
+                      (qwen3.5:35b :capabilities (tool-use)))))
 
   (gptel-make-tool
    :name "read_file"
@@ -429,8 +432,8 @@ Only creates a notification if BUFFER is *compilation*."
    :category "filesystem"
    :function (lambda (directory)
                (mapconcat #'identity
-                            (directory-files directory)
-                            "\n"))
+                          (directory-files directory)
+                          "\n"))
    :args '((:name "directory"
                   :type string
                   :description "The path to the directory to list")))
@@ -703,11 +706,11 @@ Note that this might not work as the `read_url` tool does not handle javascript-
 (use-package gdb-mi                     ;; User Interface for running GDB
   :ensure nil ;; builtin
   :init
-  (setq gdb-restore-window-configuration-after-quit t)
-  (setq gdb-debuginfod-enable-setting nil)
-  (setq gdb-show-main t)
-  (setq gdb-use-colon-colon-notation t)
-  (setq gdb-many-windows t))
+  (setopt gdb-restore-window-configuration-after-quit t)
+  (setopt gdb-debuginfod-enable-setting nil)
+  (setopt gdb-show-main t)
+  (setopt gdb-use-colon-colon-notation t)
+  (setopt gdb-many-windows t))
 
 (use-package gnuplot)                   ;; Major-mode and interactive frontend for gnuplot
 
@@ -717,7 +720,7 @@ Note that this might not work as the `read_url` tool does not handle javascript-
 (use-package help                       ;; help commands for Emacs
   :ensure nil ;; builtin
   :config
-  (setq help-window-select t))          ;; automatically select help windows
+  (setopt help-window-select t))        ;; automatically select help windows
 
 (use-package hideif                     ;; hides selected code within ifdef
   :ensure nil ;; builtin
@@ -725,7 +728,7 @@ Note that this might not work as the `read_url` tool does not handle javascript-
 
 (use-package highlight-indent-guides    ;; Minor mode to highlight indentation
   :config
-  (setq highlight-indent-guides-method 'character))
+  (setopt highlight-indent-guides-method 'character))
 
 (use-package hydra)                     ;; Make bindings that stick around.
 
@@ -739,9 +742,9 @@ Note that this might not work as the `read_url` tool does not handle javascript-
     :ensure nil
     :functions ibuffer-switch-to-saved-filter-groups)
 
-  (setq ibuffer-expert t)                               ;; delete unmodified buffers without asking
-  (setq ibuffer-show-empty-filter-groups nil)           ;; don't show empty groups
-  (setq ibuffer-default-sorting-mode 'filename/process) ;; sort by filename
+  (setopt ibuffer-expert t)                               ;; delete unmodified buffers without asking
+  (setopt ibuffer-show-empty-filter-groups nil)           ;; don't show empty groups
+  (setopt ibuffer-default-sorting-mode 'filename/process) ;; sort by filename
 
   (eval-and-compile
     (defun git-root-dir (buf)
@@ -779,38 +782,38 @@ Note that this might not work as the `read_url` tool does not handle javascript-
     (:name "Size" :inline t)
     (file-size-human-readable (buffer-size) 'iec))
 
-  (setq ibuffer-saved-filter-groups
-        '(("default"
-           ("org" (and
-                   (mode . org-mode)
-                   (not (filename . "/roam/"))))
-           ("org-roam" (and
-                        (mode . org-mode)
-                        (filename . "/roam/")))
-           ("pdf" (file-extension . "pdf"))
-           ("emacs" (or
-                     (mode . Man-mode)
-                     (mode . apropos-mode)
-                     (mode . backtrace-mode)
-                     (mode . grep-mode)
-                     (mode . help-mode)
-                     (mode . ibuffer-mode)
-                     (mode . native-comp-limple-mode)
-                     (name . "^\\*GNU Emacs\\*$")
-                     (name . "^\\*Warnings\\*$")
-                     (name . "^\\*Backtrace\\*$")
-                     (name . "^\\*Packages\\*$")
-                     (name . "^\\*Compile-Log\\*$")
-                     (name . "^\\*Messages\\*$")
-                     (name . "^\\*WoMan.*\\*$")
-                     (name . "^\\*scratch\\*$")
-                     (name . "^\\*xref\\*$")))
-           ("magit" (derived-mode . magit-mode))
-           ("dired" (mode . dired-mode))
-           ("mu4e" (or
-                    (name . "^\\*mu4e-.*\\*$")
-                    (derived-mode . message-mode)
-                    (derived-mode . mail-mode))))))
+  (setopt ibuffer-saved-filter-groups
+          '(("default"
+             ("org" (and
+                     (mode . org-mode)
+                     (not (filename . "/roam/"))))
+             ("org-roam" (and
+                          (mode . org-mode)
+                          (filename . "/roam/")))
+             ("pdf" (file-extension . "pdf"))
+             ("emacs" (or
+                       (mode . Man-mode)
+                       (mode . apropos-mode)
+                       (mode . backtrace-mode)
+                       (mode . grep-mode)
+                       (mode . help-mode)
+                       (mode . ibuffer-mode)
+                       (mode . native-comp-limple-mode)
+                       (name . "^\\*GNU Emacs\\*$")
+                       (name . "^\\*Warnings\\*$")
+                       (name . "^\\*Backtrace\\*$")
+                       (name . "^\\*Packages\\*$")
+                       (name . "^\\*Compile-Log\\*$")
+                       (name . "^\\*Messages\\*$")
+                       (name . "^\\*WoMan.*\\*$")
+                       (name . "^\\*scratch\\*$")
+                       (name . "^\\*xref\\*$")))
+             ("magit" (derived-mode . magit-mode))
+             ("dired" (mode . dired-mode))
+             ("mu4e" (or
+                      (name . "^\\*mu4e-.*\\*$")
+                      (derived-mode . message-mode)
+                      (derived-mode . mail-mode))))))
   )
 
 (use-package image                      ;; builtin image support
@@ -827,10 +830,10 @@ Note that this might not work as the `read_url` tool does not handle javascript-
 (use-package ivy                        ;; Incremental Vertical completYon
   :diminish
   :config
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-use-selectable-prompt t)
-  (setq search-default-mode #'char-fold-to-regexp)
-  (setq ivy-count-format "(%d/%d) ")
+  (setopt ivy-use-virtual-buffers t)
+  (setopt ivy-use-selectable-prompt t)
+  (setopt search-default-mode #'char-fold-to-regexp)
+  (setopt ivy-count-format "(%d/%d) ")
 
   (setq ivy-re-builders-alist
         '((swiper . ivy--regex-plus)
@@ -864,11 +867,11 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   ;; Update PDF buffers after successful LaTeX runs
   :hook (TeX-after-compilation-finished-functions . TeX-revert-document-buffer)
   :config
-  (setq reftex-plug-into-AUCTeX t)
+  (setopt reftex-plug-into-AUCTeX t)
   ;; Use pdf-tools to open PDF files
-  (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
-  (setq TeX-source-correlate-method 'synctex)
-  (setq TeX-source-correlate-start-server t))
+  (setopt TeX-view-program-selection '((output-pdf "PDF Tools")))
+  (setopt TeX-source-correlate-method 'synctex)
+  (setopt TeX-source-correlate-start-server t))
 
 (use-package lsp-mode                   ;; LSP mode
   :hook ((c-mode
@@ -877,27 +880,27 @@ Note that this might not work as the `read_url` tool does not handle javascript-
           python-mode)
          . lsp)
   :config
-  (setq lsp-headerline-breadcrumb-enable nil)
-  (setq lsp-keep-workspace-alive nil)
-  (setq lsp-modeline-code-actions-enable nil))
+  (setopt lsp-headerline-breadcrumb-enable nil)
+  (setopt lsp-keep-workspace-alive nil)
+  (setopt lsp-modeline-code-actions-enable nil))
 
 (use-package magit                      ;; A Git porcelain inside Emacs.
   :bind ("C-c g" . magit-status)
   :hook (git-commit-setup . git-commit-turn-on-flyspell)
   :config
-  (setq transient-default-level 7)
-  (setq magit-diff-refine-hunk 'all)
+  (setopt transient-default-level 7)
+  (setopt magit-diff-refine-hunk 'all)
 
-  (setq magit-display-buffer-function 'display-buffer)
+  (setopt magit-display-buffer-function 'display-buffer)
 
   ;; dabbrev-capf in emacs 30.2 raises an ugly user-error
   (remove-hook 'git-commit-setup-hook 'git-commit-setup-capf)
 
-  (setq magit-section-initial-visibility-alist
-        '((stashes . hide) (ignored . hide) (local . hide)))
+  (setopt magit-section-initial-visibility-alist
+          '((stashes . hide) (ignored . hide) (local . hide)))
 
-  (setq magit-log-section-commit-count 25)
-  (setq magit-revision-show-gravatars t)
+  (setopt magit-log-section-commit-count 25)
+  (setopt magit-revision-show-gravatars t)
 
   (eval-and-compile
     (defun magit-insert-notes-header ()
@@ -939,24 +942,24 @@ Note that this might not work as the `read_url` tool does not handle javascript-
 (use-package man                        ;; browse UNIX manual pages
   :ensure nil ;; builtin
   :config
-  (setq Man-notify-method 'aggressive))
+  (setopt Man-notify-method 'aggressive))
 
 (use-package markdown-mode              ;; Major mode for Markdown-formatted text
   :config
-  (setq markdown-fontify-code-blocks-natively t))
+  (setopt markdown-fontify-code-blocks-natively t))
 
 (use-package message                    ;; composing mail and news messages
   :ensure nil ;; builtin
   :config
-  (setq message-signature (concat user-full-name "\n"))
-  (setq message-send-mail-function 'smtpmail-send-it)
-  (setq message-kill-buffer-on-exit t))    ;; don't keep message buffers around
+  (setopt message-signature (concat user-full-name "\n"))
+  (setopt message-send-mail-function 'smtpmail-send-it)
+  (setopt message-kill-buffer-on-exit t))    ;; don't keep message buffers around
 
 (use-package minibuffer                 ;; Minibuffer customization
   :ensure nil ;; builtin
   :config
-  (setq completions-detailed t)
   (setq enable-recursive-minibuffers t)
+  (setopt completions-detailed t)
   (minibuffer-depth-indicate-mode t)
 
   (eval-and-compile
@@ -983,40 +986,40 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   :bind* ("C-c C-m" . mu4e)
   :hook (mu4e-compose-mode . flyspell-mode)
   :config
-  (setq mail-user-agent 'mu4e-user-agent)
-  (setq read-mail-command 'mu4e)
+  (setopt mail-user-agent 'mu4e-user-agent)
+  (setopt read-mail-command 'mu4e)
 
-  (setq mu4e-sent-folder   "/Sent Messages")    ;; folder for sent messages
-  (setq mu4e-drafts-folder "/Drafts")           ;; unfinished messages
-  (setq mu4e-trash-folder  "/Deleted Messages") ;; trashed messages
-  (setq mu4e-refile-folder "/Archive")          ;; saved messages
-  (setq mu4e-attachment-dir "~/Downloads/Mail") ;; attachments
+  (setopt mu4e-sent-folder   "/Sent Messages")    ;; folder for sent messages
+  (setopt mu4e-drafts-folder "/Drafts")           ;; unfinished messages
+  (setopt mu4e-trash-folder  "/Deleted Messages") ;; trashed messages
+  (setopt mu4e-refile-folder "/Archive")          ;; saved messages
+  (setopt mu4e-attachment-dir "~/Downloads/Mail") ;; attachments
 
   (setf (nth 0 mu4e-bookmarks)
         '( :name  "Unread messages"
            :query "flag:unread AND NOT flag:trashed AND NOT maildir:/Junk"
            :key   ?u))
 
-  (setq mu4e-maildir-shortcuts
-        '( ("/INBOX"            . ?i)
-           ("/Sent Messages"    . ?s)
-           ("/Deleted Messages" . ?t)
-           ("/Archive"          . ?a)
-           ("/Drafts"           . ?d)))
+  (setopt mu4e-maildir-shortcuts
+          '( ("/INBOX"            . ?i)
+             ("/Sent Messages"    . ?s)
+             ("/Deleted Messages" . ?t)
+             ("/Archive"          . ?a)
+             ("/Drafts"           . ?d)))
 
-  (setq mu4e-use-fancy-chars t)
-  (setq mu4e-sent-messages-behavior 'sent)
-  (setq mu4e-get-mail-command "offlineimap")
-  (setq mu4e-update-interval  300)
+  (setopt mu4e-use-fancy-chars t)
+  (setopt mu4e-sent-messages-behavior 'sent)
+  (setopt mu4e-get-mail-command "offlineimap")
+  (setopt mu4e-update-interval  300)
 
   (use-package smtpmail                 ;; simple SMTP protocol (RFC 821) for sending mail
     :ensure nil ;; builtin
     :after auth-source-pass
     :config
-    (setq smtpmail-default-smtp-server "smtp.mail.me.com")
-    (setq smtpmail-smtp-server         "smtp.mail.me.com")
-    (setq smtpmail-smtp-user           user-mail-address)
-    (setq smtpmail-smtp-service        587)))
+    (setopt smtpmail-default-smtp-server "smtp.mail.me.com")
+    (setopt smtpmail-smtp-server         "smtp.mail.me.com")
+    (setopt smtpmail-smtp-user           user-mail-address)
+    (setopt smtpmail-smtp-service        587)))
 
 (use-package multiple-cursors           ;; Multiple cursors for emacs.
   :bind
@@ -1053,32 +1056,32 @@ Note that this might not work as the `read_url` tool does not handle javascript-
     (revert-buffer nil t))
 
   :config
-  (setq org-src-fontify-natively t)
-  (setq org-src-tab-acts-natively t)
-  (setq org-src-preserve-indentation t)
-  (setq org-adapt-indentation t)
-  (setq org-fold-catch-invisible-edits 'smart)
-  (setq org-image-actual-width nil)
-  (setq org-return-follows-link t)
-  (setq org-insert-heading-respect-content t)
-  (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
-  (setq org-preview-latex-default-process 'dvisvgm)
-  (setq org-preview-latex-image-directory (emacs-path "ltximg/"))
-  (setq org-log-into-drawer t)
-  (setq org-log-reschedule t)
-  (setq org-log-redeadline t)
-  (setq org-table-header-line-p t)
-  (setq org-directory "~/Notes/")
-  (setq org-default-notes-file (expand-file-name "todo.org" org-directory))
-  (setq org-archive-location (expand-file-name "archive.org" org-directory))
-  (setq org-blank-before-new-entry '((heading . t) (plain-list-item . nil)))
-  (setq org-export-allow-bind-keywords t)
+  (setopt org-src-fontify-natively t)
+  (setopt org-src-tab-acts-natively t)
+  (setopt org-src-preserve-indentation t)
+  (setopt org-adapt-indentation t)
+  (setopt org-fold-catch-invisible-edits 'smart)
+  (setopt org-image-actual-width nil)
+  (setopt org-return-follows-link t)
+  (setopt org-insert-heading-respect-content t)
+  (setopt org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
+  (setopt org-preview-latex-default-process 'dvisvgm)
+  (setopt org-preview-latex-image-directory (emacs-path "ltximg/"))
+  (setopt org-log-into-drawer t)
+  (setopt org-log-reschedule t)
+  (setopt org-log-redeadline t)
+  (setopt org-table-header-line-p t)
+  (setopt org-directory "~/Notes/")
+  (setopt org-default-notes-file (expand-file-name "todo.org" org-directory))
+  (setopt org-archive-location (expand-file-name "archive.org" org-directory))
+  (setopt org-blank-before-new-entry '((heading . t) (plain-list-item . nil)))
+  (setopt org-export-allow-bind-keywords t)
 
-  (setq org-link-frame-setup
-        '((file . find-file)))
+  (setopt org-link-frame-setup
+          '((file . find-file)))
 
-  (setq org-file-apps
-        '((auto-mode . emacs)))
+  (setopt org-file-apps
+          '((auto-mode . emacs)))
 
   (add-to-list 'org-latex-packages-alist
                '("exponent-product=\\ensuremath{*}" "siunitx" t))
@@ -1086,8 +1089,8 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   (use-package org-agenda               ;; Dynamic task and appointment lists for Org
     :ensure nil
     :config
-    (setq org-agenda-window-setup 'current-window)
-    (setq org-agenda-restore-windows-after-quit t))
+    (setopt org-agenda-window-setup 'current-window)
+    (setopt org-agenda-restore-windows-after-quit t))
 
   (use-package ox-extra                 ;; Convenience functions for org export
     :ensure nil
@@ -1121,80 +1124,80 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   (use-package org-capture              ;; Fast note taking in Org
     :ensure nil
     :config
-    (setq org-capture-templates
-          '(("t" "Tasks")
-            ("tt" "personal todo" entry (file "todo.org")
-             "* TODO %^{title}
+    (setopt org-capture-templates
+            '(("t" "Tasks")
+              ("tt" "personal todo" entry (file "todo.org")
+               "* TODO %^{title}
   :LOGBOOK:
   - Created on %U
   :END:
   %?")
 
-            ("ta" "appointment" entry (file "todo.org")
-             "* APPT %^{title}
+              ("ta" "appointment" entry (file "todo.org")
+               "* APPT %^{title}
   %^t
   :LOGBOOK:
   - Created on %U
   :END:
   %?")
 
-            ("tr" "repair something" entry (file "todo.org")
-             "* REPAIR %^{title}
+              ("tr" "repair something" entry (file "todo.org")
+               "* REPAIR %^{title}
   :LOGBOOK:
   - Created on %U
   :END:
   %?")
 
-            ("tl" "loaned something" entry (file "todo.org")
-             "* LOAN %^{title}
+              ("tl" "loaned something" entry (file "todo.org")
+               "* LOAN %^{title}
   :LOGBOOK:
   - Created on %U
   :END:
   %?")
 
-            ("to" "order something" entry (file "todo.org")
-             "* ORDER %^{title}
+              ("to" "order something" entry (file "todo.org")
+               "* ORDER %^{title}
   :LOGBOOK:
   - Created on %U
   :END:
   %?")
 
-            ("tp" "email todo" entry (file "todo.org")
-             "* TODO %:fromname: %a %^{title}
+              ("tp" "email todo" entry (file "todo.org")
+               "* TODO %:fromname: %a %^{title}
   :LOGBOOK:
   - Created on %U
   :END:
   %?")
 
-            ("w" "Work")
+              ("w" "Work")
 
-            ("wt" "todo" entry (file "work.org")
-             "* TODO %^{title}
+              ("wt" "todo" entry (file "work.org")
+               "* TODO %^{title}
   :LOGBOOK:
   - Created on %U
   :END:
   %?")
 
-            ("wp" "phone call" entry (file+headline "work.org" "Calls")
-             "* %<%H:%M> %^{title}
+              ("wp" "phone call" entry (file+headline "work.org" "Calls")
+               "* %<%H:%M> %^{title}
   :PROPERTIES:
   :CALLER: %^{caller}
   :END:
   %?")
 
-            ("wm" "meeting" entry (file+headline "work.org" "Meeting Notes")
-             "* %<%H:%M> %^{title}
+              ("wm" "meeting" entry (file+headline "work.org" "Meeting Notes")
+               "* %<%H:%M> %^{title}
   %?")
 
-            ("n" "general note" entry (file "notes.org")
-             "* %?")
+              ("n" "general note" entry (file "notes.org")
+               "* %?")
 
-            ("j" "journal entry" entry (file+datetree "journal.org")
-             "* %<%H:%M> %^{title}
+              ("j" "journal entry" entry (file+datetree "journal.org")
+               "* %<%H:%M> %^{title}
   %?" :time-prompt t)
 
-            ("c" "contact" entry (file "contacts.org")
-             "* %^{full name}
+              ("c" "contact" entry (file "contacts.org")
+               "* %^{full name}
   :PROPERTIES:
   :EMAIL:    %^{email}
   :PHONE:    %^{phone number}
@@ -1202,8 +1205,9 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   :BIRTHDAY: %^{birthday}u
   :END:" :immediate-finish t)))
 
-    (setq org-capture-templates-contexts
-          '(("p" ((in-mode . "mu4e-headers") (in-mode . "mu4e-view"))))))
+    (setopt org-capture-templates-contexts
+            '(("p" ((in-mode . "mu4e-headers")
+                    (in-mode . "mu4e-view"))))))
 
   (use-package org-roam                 ;; A database abstraction layer for Org-mode
     :bind (("C-c n f" . org-roam-node-find)
@@ -1225,17 +1229,17 @@ Note that this might not work as the `read_url` tool does not handle javascript-
         (org-roam-tag-add (list tag))))
 
     :config
-    (setq org-roam-capture-templates
-          '(("d" "default" plain "%?"
-             :target (file+head "${slug}.org"
-                                "#+startup: latexpreview
+    (setopt org-roam-capture-templates
+            '(("d" "default" plain "%?"
+               :target (file+head "${slug}.org"
+                                  "#+startup: latexpreview
 #+startup: overview
 #+title: ${title}
 #+date: %U\n")
-             :unnarrowed t)))
+               :unnarrowed t)))
 
-    (setq org-roam-node-display-template "${title:80} ${tags}")
-    (setq org-roam-directory (expand-file-name "roam" org-directory))
+    (setopt org-roam-node-display-template "${title:80} ${tags}")
+    (setopt org-roam-directory (expand-file-name "roam" org-directory))
     (org-roam-db-autosync-mode))
 
   (use-package org-roam-ui              ;; User Interface for Org-roam
@@ -1243,7 +1247,7 @@ Note that this might not work as the `read_url` tool does not handle javascript-
     :diminish
     :bind ("C-c n g" . org-roam-ui-mode)
     :config
-    (setq org-roam-ui-follow nil)))
+    (setopt org-roam-ui-follow nil)))
 
 (use-package orgit                      ;; Support for Org links to Magit buffers
   :after (magit org))
@@ -1261,7 +1265,7 @@ Note that this might not work as the `read_url` tool does not handle javascript-
 
 (use-package pinentry                   ;; GnuPG Pinentry server implementation
   :init
-  (setq epg-pinentry-mode 'loopback)
+  (setopt epg-pinentry-mode 'loopback)
   :config
   (pinentry-start))
 
@@ -1327,7 +1331,7 @@ This is copied and adapted from Kisaragi Hiu on reddit."
   :ensure nil ;; builtin
   :mode ((rx ".handlebars" string-end) . html-mode)
   :config
-  (setq sgml-basic-offset 4))
+  (setopt sgml-basic-offset 4))
 
 (use-package simple                     ;; basic editing commands for Emacs
   :ensure nil ;; builtin
@@ -1350,8 +1354,8 @@ This is copied and adapted from Kisaragi Hiu on reddit."
 (use-package vc                         ;; drive a version-control system from within Emacs
   :ensure nil ;; builtin
   :config
-  (setq vc-follow-symlinks t)           ;; always follow symlinks
-  (setq vc-make-backup-files t))        ;; also backup version controlled files
+  (setopt vc-follow-symlinks t)           ;; always follow symlinks
+  (setopt vc-make-backup-files t))        ;; also backup version controlled files
 
 (use-package whitespace                 ;; whitespace-cleanup customization's
   :ensure nil ;; builtin
@@ -1370,95 +1374,95 @@ This is copied and adapted from Kisaragi Hiu on reddit."
 (use-package window                     ;; GNU Emacs window commands aside from those written in C
   :ensure nil ;; builtin
   :config
-  (setq split-width-threshold nil)  ;; don't split vertically
-  (setq split-height-threshold nil) ;; don't split horizontally
+  (setopt split-width-threshold nil)  ;; don't split vertically
+  (setopt split-height-threshold nil) ;; don't split horizontally
 
-  (setq switch-to-buffer-obey-display-actions t)
-  (setq display-buffer-base-action '(display-buffer-use-some-window))
+  (setopt switch-to-buffer-obey-display-actions t)
+  (setopt display-buffer-base-action '(display-buffer-use-some-window))
 
-  (setq display-buffer-alist
-        `((,(rx bol (or
-                     (: "*Org Select*")
-                     (: "*Capture*")
-                     (: "CAPTURE-" (* nonl) ".org")
-                     (: " *Org tags*")
-                     (: "*mu4e-main*")
-                     (: "*Ibuffer*")
-                     (: "*Messages*")
-                     (: "magit-log:" (* nonl))
-                     eol))
-           display-buffer-use-some-window)
-          (,(lambda (name _) (with-current-buffer name
-                          (when (boundp 'gptel-mode)
-                            (symbol-value 'gptel-mode))))
-           display-buffer-use-some-window)
-          (,(rx bol (or
-                     (: "*mu4e-draft*")
-                     (: "*mu4e-headers*"))
-                eol)
-           display-buffer-same-window)
-          (,(rx (: "*mu4e-article*"))
-           display-buffer-below-selected)
-          (,(rx
-             (or
-              (: bol "magit:" (* nonl))
-              (: ".pdf" (? (group "<" (1+ (not ">")) ">")))
-              (: bol "*Help*")
-              (: bol "*Man " (* nonl) "*")
-              (: bol "*WoMan " (* nonl) "*")
-              (: bol "*xref*")
-              (: bol "*grep*")
-              (: bol "*org-roam*")
-              (: bol "*Org Agenda" (* nonl) "*")
-              (: bol "COMMIT_EDITMSG")
-              (: bol "*Python*"))
-             eol)
-           display-buffer-in-side-window
-           (dedicated . side)
-           (side . right)
-           (window-width . 0.4)
-           (window-height . 0.66)
-           (window-parameters . ((no-other-window . t))))
-          (,(rx bol (or
-                     (: "*compilation*")
-                     (: "*Warnings*")
-                     (: "*Org Links*")
-                     (: "*eshell*")
-                     (: "*shell*")
-                     (: "*terminal*")
-                     (: "*TeX Help*")
-                     (: "*ansi-term*"))
-                eol)
-           display-buffer-in-side-window
-           (dedicated . side)
-           (inhibit-same-window . t)
-           (side . right)
-           (slot . 1)
-           (window-width . 0.4)
-           (window-height . 0.33)
-           (window-parameters . ((no-other-window . t))))
-          (,(lambda (name _) (with-current-buffer name (derived-mode-p 'term-mode)))
-           display-buffer-in-side-window
-           (dedicated . side)
-           (inhibit-same-window . t)
-           (side . right)
-           (slot . 1)
-           (window-width . 0.4)
-           (window-height . 0.33)
-           (window-parameters . ((no-other-window . t))))
-          (,(rx bol
-                (or
-                 (: " *Agenda Commands*"))
-                eol)
-           display-buffer-in-side-window
-           (side . bottom)
-           (slot . 0)
-           (window-height . 0.35)
-           (window-parameters . ((no-other-window . t))))
-          (,(rx bol
-                (or
-                 (: " *transient*"))
-                eol)))))
+  (setopt display-buffer-alist
+          `((,(rx bol (or
+                       (: "*Org Select*")
+                       (: "*Capture*")
+                       (: "CAPTURE-" (* nonl) ".org")
+                       (: " *Org tags*")
+                       (: "*mu4e-main*")
+                       (: "*Ibuffer*")
+                       (: "*Messages*")
+                       (: "magit-log:" (* nonl))
+                       eol))
+             display-buffer-use-some-window)
+            (,(lambda (name _) (with-current-buffer name
+                            (when (boundp 'gptel-mode)
+                              (symbol-value 'gptel-mode))))
+             display-buffer-use-some-window)
+            (,(rx bol (or
+                       (: "*mu4e-draft*")
+                       (: "*mu4e-headers*"))
+                  eol)
+             display-buffer-same-window)
+            (,(rx (: "*mu4e-article*"))
+             display-buffer-below-selected)
+            (,(rx
+               (or
+                (: bol "magit:" (* nonl))
+                (: ".pdf" (? (group "<" (1+ (not ">")) ">")))
+                (: bol "*Help*")
+                (: bol "*Man " (* nonl) "*")
+                (: bol "*WoMan " (* nonl) "*")
+                (: bol "*xref*")
+                (: bol "*grep*")
+                (: bol "*org-roam*")
+                (: bol "*Org Agenda" (* nonl) "*")
+                (: bol "COMMIT_EDITMSG")
+                (: bol "*Python*"))
+               eol)
+             display-buffer-in-side-window
+             (dedicated . side)
+             (side . right)
+             (window-width . 0.4)
+             (window-height . 0.66)
+             (window-parameters . ((no-other-window . t))))
+            (,(rx bol (or
+                       (: "*compilation*")
+                       (: "*Warnings*")
+                       (: "*Org Links*")
+                       (: "*eshell*")
+                       (: "*shell*")
+                       (: "*terminal*")
+                       (: "*TeX Help*")
+                       (: "*ansi-term*"))
+                  eol)
+             display-buffer-in-side-window
+             (dedicated . side)
+             (inhibit-same-window . t)
+             (side . right)
+             (slot . 1)
+             (window-width . 0.4)
+             (window-height . 0.33)
+             (window-parameters . ((no-other-window . t))))
+            (,(lambda (name _) (with-current-buffer name (derived-mode-p 'term-mode)))
+             display-buffer-in-side-window
+             (dedicated . side)
+             (inhibit-same-window . t)
+             (side . right)
+             (slot . 1)
+             (window-width . 0.4)
+             (window-height . 0.33)
+             (window-parameters . ((no-other-window . t))))
+            (,(rx bol
+                  (or
+                   (: " *Agenda Commands*"))
+                  eol)
+             display-buffer-in-side-window
+             (side . bottom)
+             (slot . 0)
+             (window-height . 0.35)
+             (window-parameters . ((no-other-window . t))))
+            (,(rx bol
+                  (or
+                   (: " *transient*"))
+                  eol)))))
 
 (use-package yaml-mode)                 ;; Major mode for editing YAML files
 
