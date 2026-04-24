@@ -1176,7 +1176,6 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   %?")
 
               ("w" "Work")
-
               ("wt" "todo" entry (file "work.org")
                "* TODO %^{title}
   :LOGBOOK:
@@ -1198,7 +1197,7 @@ Note that this might not work as the `read_url` tool does not handle javascript-
               ("n" "general note" entry (file "notes.org")
                "* %?")
 
-              ("j" "journal entry" entry (file+datetree "journal.org")
+              ("j" "journal entry" entry (file+olp+datetree "journal.org")
                "* %<%H:%M> %^{title}
   %?" :time-prompt t)
 
@@ -1212,8 +1211,8 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   :END:" :immediate-finish t)))
 
     (setopt org-capture-templates-contexts
-            '(("p" ((in-mode . "mu4e-headers")
-                    (in-mode . "mu4e-view"))))))
+            '(("p" "p" ((in-mode . "mu4e-headers")
+                        (in-mode . "mu4e-view"))))))
 
   (use-package org-roam                 ;; A database abstraction layer for Org-mode
     :bind (("C-c n f" . org-roam-node-find)
