@@ -1080,7 +1080,11 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   (setopt org-export-allow-bind-keywords t)
 
   (setopt org-link-frame-setup
-          '((file . find-file)))
+          '((vm . vm-visit-folder)
+            (vm-imap . vm-visit-imap-folder)
+            (gnus . org-gnus-no-new-news)
+            (file . find-file)
+            (wl . wl)))
 
   (setopt org-file-apps
           '((auto-mode . emacs)))
