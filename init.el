@@ -1467,7 +1467,8 @@ This is copied and adapted from Kisaragi Hiu on reddit."
             (,(rx bol
                   (or
                    (: " *transient*"))
-                  eol)))))
+                  eol)
+             display-buffer-pop-up-window))))
 
 (use-package yaml-mode)                 ;; Major mode for editing YAML files
 
