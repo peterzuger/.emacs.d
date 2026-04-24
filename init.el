@@ -867,7 +867,9 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   ;; Update PDF buffers after successful LaTeX runs
   :hook (TeX-after-compilation-finished-functions . TeX-revert-document-buffer)
   :config
+  (require 'reftex)
   (setopt reftex-plug-into-AUCTeX t)
+
   ;; Use pdf-tools to open PDF files
   (setopt TeX-view-program-selection '((output-pdf "PDF Tools")))
   (setopt TeX-source-correlate-method 'synctex)
