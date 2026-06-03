@@ -1252,7 +1252,8 @@ Note that this might not work as the `read_url` tool does not handle javascript-
     :diminish
     :bind ("C-c n g" . org-roam-ui-mode)
     :config
-    (setopt org-roam-ui-follow nil)))
+    (setopt org-roam-ui-follow nil)
+    (setopt org-roam-ui-open-on-start nil)))
 
 (use-package orgit                      ;; Support for Org links to Magit buffers
   :after (magit org))
