@@ -147,8 +147,6 @@
   :config
   (setopt ad-redefinition-action 'accept)) ;; no warning for advice redefinition
 
-(use-package avy)                       ;; Jump to arbitrary positions in visible text and select text quickly
-
 (use-package auth-source                ;; authentication sources for Gnus and Emacs
   :ensure nil);; builtin
 
@@ -157,6 +155,8 @@
   :ensure nil ;; builtin
   :init
   (setopt auth-sources '(password-store)))
+
+(use-package avy)                       ;; Jump to arbitrary positions in visible text and select text quickly
 
 (use-package cc-mode                    ;; C, C++, Objective-C, Java, CORBA IDL Pike and AWK code
   :after smartparens
@@ -308,6 +308,9 @@ Only creates a notification if BUFFER is *compilation*."
   :config
   (sp-local-pair 'emacs-lisp-mode "`" "'"))
 
+(use-package emojify                    ;; Display emojis in Emacs
+  :hook (after-init . global-emojify-mode))
+
 (use-package engine-mode                ;; Define and query search engines from within Emacs
   :bind-keymap ("C-c s" . engine-mode-prefixed-map)
   :config
@@ -335,9 +338,6 @@ Only creates a notification if BUFFER is *compilation*."
   (defengine wolfram-alpha
     "http://www.wolframalpha.com/input/?i=%s"))
 
-(use-package emojify                    ;; Display emojis in Emacs
-  :hook (after-init . global-emojify-mode))
-
 (use-package flycheck                   ;; On-the-fly syntax checking
   :init
   (global-flycheck-mode)                          ;; enable flycheck globally
@@ -354,7 +354,18 @@ Only creates a notification if BUFFER is *compilation*."
 (use-package flyspell                   ;; On-the-fly spell checker
   :ensure nil);; builtin
 
+(use-package gdb-mi                     ;; User Interface for running GDB
+  :ensure nil ;; builtin
+  :init
+  (setopt gdb-restore-window-configuration-after-quit t)
+  (setopt gdb-debuginfod-enable-setting nil)
+  (setopt gdb-show-main t)
+  (setopt gdb-use-colon-colon-notation t)
+  (setopt gdb-many-windows t))
+
 (use-package git-modes)                 ;; Major modes for editing Git configuration files
+
+(use-package gnuplot)                   ;; Major-mode and interactive frontend for gnuplot
 
 (use-package gptel                      ;; Interact with ChatGPT or other LLMs
   :bind* (("C-c C-g" . gptel)
@@ -703,17 +714,6 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   :ensure nil ;; builtin
   :bind* ("C-c r" . rgrep))
 
-(use-package gdb-mi                     ;; User Interface for running GDB
-  :ensure nil ;; builtin
-  :init
-  (setopt gdb-restore-window-configuration-after-quit t)
-  (setopt gdb-debuginfod-enable-setting nil)
-  (setopt gdb-show-main t)
-  (setopt gdb-use-colon-colon-notation t)
-  (setopt gdb-many-windows t))
-
-(use-package gnuplot)                   ;; Major-mode and interactive frontend for gnuplot
-
 (use-package haskell-mode               ;; A Haskell editing mode
   :hook (haskell-mode . interactive-haskell-mode))
 
@@ -844,8 +844,6 @@ Note that this might not work as the `read_url` tool does not handle javascript-
 (use-package ivy-hydra                  ;; Additional key bindings for Ivy
   :after (ivy hydra))
 
-(use-package lsp-jedi)                  ;; Lsp client plugin for Python Jedi Language Server
-
 (use-package json                       ;; JavaScript Object Notation parser / generator
   :ensure nil ;; builtin
   :config
@@ -875,6 +873,8 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   (setopt TeX-source-correlate-method 'synctex)
   (setopt TeX-source-correlate-start-server t))
 
+(use-package lsp-jedi)                  ;; Lsp client plugin for Python Jedi Language Server
+
 (use-package lsp-mode                   ;; LSP mode
   :hook ((c-mode
           c++-mode
@@ -885,6 +885,8 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   (setopt lsp-headerline-breadcrumb-enable nil)
   (setopt lsp-keep-workspace-alive nil)
   (setopt lsp-modeline-code-actions-enable nil))
+
+(use-package lua-mode)                  ;; A major-mode for editing Lua scripts
 
 (use-package magit                      ;; A Git porcelain inside Emacs.
   :bind ("C-c g" . magit-status)
@@ -1275,12 +1277,12 @@ Note that this might not work as the `read_url` tool does not handle javascript-
   :config
   (pinentry-start))
 
+(use-package python                     ;; Python's flying circus support for Emacs
+  :ensure nil);; builtin
+
 (use-package python-black               ;; Reformat Python using python-black
   :after python
   :hook (python-mode . python-black-on-save-mode))
-
-(use-package python                     ;; Python's flying circus support for Emacs
-  :ensure nil);; builtin
 
 (use-package pyvenv                     ;; Python virtual environment interface
   :hook (python-mode . pyvenv-mode)
@@ -1351,11 +1353,11 @@ This is copied and adapted from Kisaragi Hiu on reddit."
   (smartparens-global-mode)             ;; global (){} completion
   (show-smartparens-global-mode))       ;; global (){} highlighting
 
-(use-package systemd)                   ;; Major mode for editing systemd units
-
 (use-package swiper                     ;; Isearch with an overview. Oh, man!
   :after ivy
   :bind ("C-s" . swiper))
+
+(use-package systemd)                   ;; Major mode for editing systemd units
 
 (use-package vc                         ;; drive a version-control system from within Emacs
   :ensure nil ;; builtin
